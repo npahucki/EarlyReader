@@ -1,0 +1,477 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		E85F39C919A6BB670004C80F /* Word.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85F39C819A6BB670004C80F /* Word.swift */; };
+		E85F39CA19A6BB670004C80F /* Word.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85F39C819A6BB670004C80F /* Word.swift */; };
+		E85F39CC19A6BB670004C80F /* WordSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85F39CB19A6BB670004C80F /* WordSet.swift */; };
+		E85F39CD19A6BB670004C80F /* WordSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85F39CB19A6BB670004C80F /* WordSet.swift */; };
+		E8BA1C2419BA11DB0092974A /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8BA1C2319BA11DB0092974A /* SettingsViewController.swift */; };
+		E8CDE7E9199FD18F0036CFE8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8CDE7E8199FD18F0036CFE8 /* AppDelegate.swift */; };
+		E8CDE7EC199FD18F0036CFE8 /* LittleReader.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E8CDE7EA199FD18F0036CFE8 /* LittleReader.xcdatamodeld */; };
+		E8CDE7EE199FD18F0036CFE8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8CDE7ED199FD18F0036CFE8 /* ViewController.swift */; };
+		E8CDE7F1199FD18F0036CFE8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E8CDE7EF199FD18F0036CFE8 /* Main.storyboard */; };
+		E8CDE7F3199FD18F0036CFE8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E8CDE7F2199FD18F0036CFE8 /* Images.xcassets */; };
+		E8CDE7FF199FD18F0036CFE8 /* LittleReaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8CDE7FE199FD18F0036CFE8 /* LittleReaderTests.swift */; };
+		E8CDE80919A03AB70036CFE8 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8CDE80819A03AB70036CFE8 /* QuartzCore.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		E8CDE7F9199FD18F0036CFE8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E8CDE7DB199FD18F0036CFE8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E8CDE7E2199FD18F0036CFE8;
+			remoteInfo = LittleReader;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		E85F39C819A6BB670004C80F /* Word.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Word.swift; sourceTree = "<group>"; };
+		E85F39CB19A6BB670004C80F /* WordSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordSet.swift; sourceTree = "<group>"; };
+		E8BA1C2319BA11DB0092974A /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		E8CDE7E3199FD18F0036CFE8 /* LittleReader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LittleReader.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E8CDE7E7199FD18F0036CFE8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E8CDE7E8199FD18F0036CFE8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		E8CDE7EB199FD18F0036CFE8 /* LittleReader.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LittleReader.xcdatamodel; sourceTree = "<group>"; };
+		E8CDE7ED199FD18F0036CFE8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		E8CDE7F0199FD18F0036CFE8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		E8CDE7F2199FD18F0036CFE8 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		E8CDE7F8199FD18F0036CFE8 /* LittleReaderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LittleReaderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E8CDE7FD199FD18F0036CFE8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E8CDE7FE199FD18F0036CFE8 /* LittleReaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LittleReaderTests.swift; sourceTree = "<group>"; };
+		E8CDE80819A03AB70036CFE8 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		E8CDE7E0199FD18F0036CFE8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E8CDE80919A03AB70036CFE8 /* QuartzCore.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E8CDE7F5199FD18F0036CFE8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		E85F39AE19A695500004C80F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E85F39CB19A6BB670004C80F /* WordSet.swift */,
+				E85F39C819A6BB670004C80F /* Word.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		E85F39AF19A695610004C80F /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				E8BA1C2319BA11DB0092974A /* SettingsViewController.swift */,
+				E8CDE7ED199FD18F0036CFE8 /* ViewController.swift */,
+			);
+			name = ViewController;
+			sourceTree = "<group>";
+		};
+		E8CDE7DA199FD18F0036CFE8 = {
+			isa = PBXGroup;
+			children = (
+				E8CDE80819A03AB70036CFE8 /* QuartzCore.framework */,
+				E8CDE7E5199FD18F0036CFE8 /* LittleReader */,
+				E8CDE7FB199FD18F0036CFE8 /* LittleReaderTests */,
+				E8CDE7E4199FD18F0036CFE8 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		E8CDE7E4199FD18F0036CFE8 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E8CDE7E3199FD18F0036CFE8 /* LittleReader.app */,
+				E8CDE7F8199FD18F0036CFE8 /* LittleReaderTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E8CDE7E5199FD18F0036CFE8 /* LittleReader */ = {
+			isa = PBXGroup;
+			children = (
+				E8CDE7EF199FD18F0036CFE8 /* Main.storyboard */,
+				E8CDE7E8199FD18F0036CFE8 /* AppDelegate.swift */,
+				E85F39AF19A695610004C80F /* ViewController */,
+				E85F39AE19A695500004C80F /* Model */,
+				E8CDE7F2199FD18F0036CFE8 /* Images.xcassets */,
+				E8CDE7EA199FD18F0036CFE8 /* LittleReader.xcdatamodeld */,
+				E8CDE7E6199FD18F0036CFE8 /* Supporting Files */,
+			);
+			path = LittleReader;
+			sourceTree = "<group>";
+		};
+		E8CDE7E6199FD18F0036CFE8 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				E8CDE7E7199FD18F0036CFE8 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		E8CDE7FB199FD18F0036CFE8 /* LittleReaderTests */ = {
+			isa = PBXGroup;
+			children = (
+				E8CDE7FE199FD18F0036CFE8 /* LittleReaderTests.swift */,
+				E8CDE7FC199FD18F0036CFE8 /* Supporting Files */,
+			);
+			path = LittleReaderTests;
+			sourceTree = "<group>";
+		};
+		E8CDE7FC199FD18F0036CFE8 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				E8CDE7FD199FD18F0036CFE8 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		E8CDE7E2199FD18F0036CFE8 /* LittleReader */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E8CDE802199FD18F0036CFE8 /* Build configuration list for PBXNativeTarget "LittleReader" */;
+			buildPhases = (
+				E8CDE7DF199FD18F0036CFE8 /* Sources */,
+				E8CDE7E0199FD18F0036CFE8 /* Frameworks */,
+				E8CDE7E1199FD18F0036CFE8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LittleReader;
+			productName = LittleReader;
+			productReference = E8CDE7E3199FD18F0036CFE8 /* LittleReader.app */;
+			productType = "com.apple.product-type.application";
+		};
+		E8CDE7F7199FD18F0036CFE8 /* LittleReaderTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E8CDE805199FD18F0036CFE8 /* Build configuration list for PBXNativeTarget "LittleReaderTests" */;
+			buildPhases = (
+				E8CDE7F4199FD18F0036CFE8 /* Sources */,
+				E8CDE7F5199FD18F0036CFE8 /* Frameworks */,
+				E8CDE7F6199FD18F0036CFE8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E8CDE7FA199FD18F0036CFE8 /* PBXTargetDependency */,
+			);
+			name = LittleReaderTests;
+			productName = LittleReaderTests;
+			productReference = E8CDE7F8199FD18F0036CFE8 /* LittleReaderTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E8CDE7DB199FD18F0036CFE8 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0600;
+				ORGANIZATIONNAME = "Nathan Pahucki";
+				TargetAttributes = {
+					E8CDE7E2199FD18F0036CFE8 = {
+						CreatedOnToolsVersion = 6.0;
+					};
+					E8CDE7F7199FD18F0036CFE8 = {
+						CreatedOnToolsVersion = 6.0;
+						TestTargetID = E8CDE7E2199FD18F0036CFE8;
+					};
+				};
+			};
+			buildConfigurationList = E8CDE7DE199FD18F0036CFE8 /* Build configuration list for PBXProject "LittleReader" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = E8CDE7DA199FD18F0036CFE8;
+			productRefGroup = E8CDE7E4199FD18F0036CFE8 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				E8CDE7E2199FD18F0036CFE8 /* LittleReader */,
+				E8CDE7F7199FD18F0036CFE8 /* LittleReaderTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		E8CDE7E1199FD18F0036CFE8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E8CDE7F1199FD18F0036CFE8 /* Main.storyboard in Resources */,
+				E8CDE7F3199FD18F0036CFE8 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E8CDE7F6199FD18F0036CFE8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		E8CDE7DF199FD18F0036CFE8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E8CDE7EE199FD18F0036CFE8 /* ViewController.swift in Sources */,
+				E85F39C919A6BB670004C80F /* Word.swift in Sources */,
+				E8CDE7EC199FD18F0036CFE8 /* LittleReader.xcdatamodeld in Sources */,
+				E8CDE7E9199FD18F0036CFE8 /* AppDelegate.swift in Sources */,
+				E85F39CC19A6BB670004C80F /* WordSet.swift in Sources */,
+				E8BA1C2419BA11DB0092974A /* SettingsViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E8CDE7F4199FD18F0036CFE8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E8CDE7FF199FD18F0036CFE8 /* LittleReaderTests.swift in Sources */,
+				E85F39CA19A6BB670004C80F /* Word.swift in Sources */,
+				E85F39CD19A6BB670004C80F /* WordSet.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		E8CDE7FA199FD18F0036CFE8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E8CDE7E2199FD18F0036CFE8 /* LittleReader */;
+			targetProxy = E8CDE7F9199FD18F0036CFE8 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		E8CDE7EF199FD18F0036CFE8 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E8CDE7F0199FD18F0036CFE8 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		E8CDE800199FD18F0036CFE8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		E8CDE801199FD18F0036CFE8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		E8CDE803199FD18F0036CFE8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
+				INFOPLIST_FILE = LittleReader/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Debug;
+		};
+		E8CDE804199FD18F0036CFE8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
+				INFOPLIST_FILE = LittleReader/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Release;
+		};
+		E8CDE806199FD18F0036CFE8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = LittleReaderTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LittleReader.app/LittleReader";
+			};
+			name = Debug;
+		};
+		E8CDE807199FD18F0036CFE8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = LittleReaderTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LittleReader.app/LittleReader";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		E8CDE7DE199FD18F0036CFE8 /* Build configuration list for PBXProject "LittleReader" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E8CDE800199FD18F0036CFE8 /* Debug */,
+				E8CDE801199FD18F0036CFE8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E8CDE802199FD18F0036CFE8 /* Build configuration list for PBXNativeTarget "LittleReader" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E8CDE803199FD18F0036CFE8 /* Debug */,
+				E8CDE804199FD18F0036CFE8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E8CDE805199FD18F0036CFE8 /* Build configuration list for PBXNativeTarget "LittleReaderTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E8CDE806199FD18F0036CFE8 /* Debug */,
+				E8CDE807199FD18F0036CFE8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		E8CDE7EA199FD18F0036CFE8 /* LittleReader.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				E8CDE7EB199FD18F0036CFE8 /* LittleReader.xcdatamodel */,
+			);
+			currentVersion = E8CDE7EB199FD18F0036CFE8 /* LittleReader.xcdatamodel */;
+			path = LittleReader.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = E8CDE7DB199FD18F0036CFE8 /* Project object */;
+}
