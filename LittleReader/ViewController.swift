@@ -23,19 +23,7 @@ class ViewController: UIViewController, UIAlertViewDelegate,NSFetchedResultsCont
         super.viewDidLoad()
         textLabel.font = UIFont.systemFontOfSize(500)
         self.resetToDefaultScreen()
-        //self.importWords()
     }
-
-    
-    func controllerDidChangeContent(controller: NSFetchedResultsController!) {
-        let count = fetchedResultController.sections[0].numberOfObjects
-        for var i : Int = 0; i < count; i++ {
-            let indexPath = NSIndexPath(index: i)
-            let word = fetchedResultController.objectAtIndexPath(indexPath) as Word
-            NSLog("WORD ID: %@, TEXT: %@", word.objectID, word.text)
-        }
-    }
-    
 
 
     func showNextWord() {
@@ -65,37 +53,46 @@ class ViewController: UIViewController, UIAlertViewDelegate,NSFetchedResultsCont
     }
     
     @IBAction func didClickStartLesson(sender: UIBarButtonItem) {
-        fetchedResultController = getFetchedResultController()
-        fetchedResultController.delegate = self
         var error: NSError? = nil
-        fetchedResultController.performFetch(nil)
-        if error == nil {
-            textLabel.textColor = UIColor.redColor()
-            self.currentIdx = 1
-            self.setNeedsStatusBarAppearanceUpdate()
-            self.navigationController.navigationBar.hidden = true
-            let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
-            // TODO: Load word set from DB!
-            self.currentWords = fetchedResultController.fetchedObjects as? [Word]
-            self.timer = NSTimer.scheduledTimerWithTimeInterval(1.5, target: self, selector: "showNextWord", userInfo: nil, repeats: true)
-        } else {
+        let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+        if let ctx = appDelegate.managedObjectContext {
+            let fetchRequest = NSFetchRequest(entityName: "WordSet")
+            //fetchRequest.predicate = NSPredicate(format: "number = %d", argumentArray: [1])
+            if let results = ctx.executeFetchRequest(fetchRequest, error: &error) as? [WordSet] {
+                NSLog("%@", results);
+                if(results.count > 0) {
+                    let wordSet = results[0]
+                    textLabel.textColor = UIColor.redColor()
+                    self.currentIdx = 1
+                    self.setNeedsStatusBarAppearanceUpdate()
+                    self.navigationController?.navigationBar.hidden = true
+                    let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+                    self.currentWords = wordSet.words.allObjects as? [Word]
+                    self.timer = NSTimer.scheduledTimerWithTimeInterval(1.5, target: self, selector: "showNextWord", userInfo: nil, repeats: true)
+                    
+                }
+            }
+
+            
+//            let fetchRequest = NSFetchRequest(entityName: "Word")
+//            //fetchRequest.predicate = NSPredicate(format: "wordSet.number = %d", argumentArray: [1])
+//            fetchRequest.sortDescriptors = [NSSortDescriptor(key: "lastViewedOn", ascending: true)]
+//            let results = ctx.executeFetchRequest(fetchRequest, error: &error)
+        }
+        
+        if error != nil {
             NSLog("FETCH FAILED: %@",error!);
         }
+
+        
+        
     }
     
-    func getFetchedResultController() -> NSFetchedResultsController {
-        let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
-        let fetchRequest = NSFetchRequest(entityName: "Word")
-        //fetchRequest = [NSPredicate predicateWithFormat:@"enity.name = Blah"];
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "lastViewedOn", ascending: true)]
-        fetchedResultController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: appDelegate.managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
-        return fetchedResultController
-    }
     
     func resetToDefaultScreen() {
         textLabel.text = "LittleReader"
         textLabel.textColor = UIColor .greenColor()
-        self.navigationController.navigationBar.hidden = false
+        self.navigationController?.navigationBar.hidden = false
         self.currentIdx = 0
         self.setNeedsStatusBarAppearanceUpdate()
     }

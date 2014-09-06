@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E858B7EF19BA3D59003C5727 /* StreamReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E858B7EE19BA3D59003C5727 /* StreamReader.swift */; };
 		E85F39C919A6BB670004C80F /* Word.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85F39C819A6BB670004C80F /* Word.swift */; };
 		E85F39CA19A6BB670004C80F /* Word.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85F39C819A6BB670004C80F /* Word.swift */; };
 		E85F39CC19A6BB670004C80F /* WordSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85F39CB19A6BB670004C80F /* WordSet.swift */; };
@@ -32,6 +33,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E858B7EE19BA3D59003C5727 /* StreamReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StreamReader.swift; sourceTree = "<group>"; };
 		E85F39C819A6BB670004C80F /* Word.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Word.swift; sourceTree = "<group>"; };
 		E85F39CB19A6BB670004C80F /* WordSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordSet.swift; sourceTree = "<group>"; };
 		E8BA1C2319BA11DB0092974A /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
@@ -67,6 +69,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E858B7ED19BA3D3A003C5727 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				E858B7EE19BA3D59003C5727 /* StreamReader.swift */,
+			);
+			name = Util;
+			sourceTree = "<group>";
+		};
 		E85F39AE19A695500004C80F /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -111,6 +121,7 @@
 				E8CDE7E8199FD18F0036CFE8 /* AppDelegate.swift */,
 				E85F39AF19A695610004C80F /* ViewController */,
 				E85F39AE19A695500004C80F /* Model */,
+				E858B7ED19BA3D3A003C5727 /* Util */,
 				E8CDE7F2199FD18F0036CFE8 /* Images.xcassets */,
 				E8CDE7EA199FD18F0036CFE8 /* LittleReader.xcdatamodeld */,
 				E8CDE7E6199FD18F0036CFE8 /* Supporting Files */,
@@ -245,6 +256,7 @@
 				E8CDE7EE199FD18F0036CFE8 /* ViewController.swift in Sources */,
 				E85F39C919A6BB670004C80F /* Word.swift in Sources */,
 				E8CDE7EC199FD18F0036CFE8 /* LittleReader.xcdatamodeld in Sources */,
+				E858B7EF19BA3D59003C5727 /* StreamReader.swift in Sources */,
 				E8CDE7E9199FD18F0036CFE8 /* AppDelegate.swift in Sources */,
 				E85F39CC19A6BB670004C80F /* WordSet.swift in Sources */,
 				E8BA1C2419BA11DB0092974A /* SettingsViewController.swift in Sources */,

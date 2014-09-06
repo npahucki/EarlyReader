@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6205" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="KWF-gG-bQq">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6206.9" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="KWF-gG-bQq">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6198"/>
+        <deployment defaultVersion="1792" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7026.1"/>
         <capability name="Constraints with attributes relative to the layout margin" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -26,6 +27,9 @@
                                                     <state key="normal" title="Load Words">
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="didClickLoadWords:" destination="45I-s5-k26" eventType="touchUpInside" id="Ue0-9K-AyV"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -39,14 +43,57 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8Dk-qY-hLh" id="mQy-Ja-N9E">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1.5" minValue="1" maxValue="5" translatesAutoresizingMaskIntoConstraints="NO" id="mOO-0t-rj5">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HtG-k4-U2O">
+                                                    <rect key="frame" x="8" y="8" width="84" height="30"/>
+                                                    <state key="normal" title="Clear Words">
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="didClickClearWords:" destination="45I-s5-k26" eventType="touchUpInside" id="lac-Mk-TfT"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="HtG-k4-U2O" firstAttribute="top" secondItem="mQy-Ja-N9E" secondAttribute="topMargin" id="DFu-1H-0EU"/>
+                                                <constraint firstItem="HtG-k4-U2O" firstAttribute="leading" secondItem="mQy-Ja-N9E" secondAttribute="leadingMargin" id="X4H-Y1-AJe"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="vij-gM-y2s">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vij-gM-y2s" id="5sW-pW-h6C">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NH9-hJ-Uq5">
+                                                    <rect key="frame" x="8" y="8" width="146" height="30"/>
+                                                    <state key="normal" title="Re/Create Word Lists">
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="didClickRecreateWordLists:" destination="45I-s5-k26" eventType="touchUpInside" id="kEz-gs-0JV"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="NH9-hJ-Uq5" firstAttribute="leading" secondItem="5sW-pW-h6C" secondAttribute="leadingMargin" id="Caa-m2-TRf"/>
+                                                <constraint firstItem="NH9-hJ-Uq5" firstAttribute="top" secondItem="5sW-pW-h6C" secondAttribute="topMargin" id="Ol9-IH-JMy"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="OUV-6X-1q5">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="OUV-6X-1q5" id="OMb-n5-Qhd">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1.5" minValue="1" maxValue="5" translatesAutoresizingMaskIntoConstraints="NO" id="Faj-aS-Hab">
                                                     <rect key="frame" x="6" y="10" width="188" height="31"/>
+                                                    <color key="thumbTintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 </slider>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="centerY" secondItem="mOO-0t-rj5" secondAttribute="centerY" id="E95-Pf-KxW"/>
-                                                <constraint firstItem="mOO-0t-rj5" firstAttribute="leading" secondItem="mQy-Ja-N9E" secondAttribute="leadingMargin" id="mEG-iB-jfZ"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="mOO-0t-rj5" secondAttribute="trailing" id="sRF-Vp-Mvg"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="Faj-aS-Hab" secondAttribute="trailing" id="09V-bk-fv5"/>
+                                                <constraint firstAttribute="centerY" secondItem="Faj-aS-Hab" secondAttribute="centerY" id="Ia2-tQ-ynx"/>
+                                                <constraint firstItem="Faj-aS-Hab" firstAttribute="leading" secondItem="OMb-n5-Qhd" secondAttribute="leadingMargin" id="nim-rY-gdq"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -60,6 +107,9 @@
                     </tableView>
                     <value key="contentSizeForViewInPopover" type="size" width="200" height="200"/>
                     <nil key="simulatedStatusBarMetrics"/>
+                    <connections>
+                        <outlet property="clearWordsButton" destination="HtG-k4-U2O" id="A4m-4G-qRw"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tIp-ON-WjZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -88,16 +138,8 @@
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="6hX-9E-sYW" secondAttribute="trailing" id="403-TC-TaZ"/>
                             <constraint firstItem="6hX-9E-sYW" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="e80-J5-iOi"/>
-                            <constraint firstItem="6hX-9E-sYW" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="ebo-sa-a0m"/>
                             <constraint firstAttribute="centerY" secondItem="6hX-9E-sYW" secondAttribute="centerY" id="ojb-bs-SK6"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="6hX-9E-sYW" secondAttribute="bottom" id="xQt-fY-UcZ"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="ebo-sa-a0m"/>
-                                <exclude reference="xQt-fY-UcZ"/>
-                            </mask>
-                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="eAA-oR-GtN">
                         <barButtonItem key="leftBarButtonItem" title="Settings" id="6gw-FU-aRa">
