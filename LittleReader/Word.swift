@@ -13,6 +13,7 @@ import CoreData
 class Word: NSManagedObject {
 
     @NSManaged var lastViewedOn: NSDate
+    @NSManaged var activatedOn: NSDate
     @NSManaged var retiredOn: NSDate
     @NSManaged var text: String
     @NSManaged var wordSet: WordSet

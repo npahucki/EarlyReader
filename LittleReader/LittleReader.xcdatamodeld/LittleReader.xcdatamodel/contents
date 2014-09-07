@@ -1,17 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6220.8" systemVersion="13E28" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6220.17" systemVersion="13E28" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="Word" representedClassName="Word" syncable="YES">
+        <attribute name="activatedOn" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="lastViewedOn" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="retiredOn" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="text" attributeType="String" syncable="YES"/>
         <relationship name="wordSet" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="WordSet" inverseName="words" inverseEntity="WordSet" syncable="YES"/>
     </entity>
     <entity name="WordSet" representedClassName="WordSet" syncable="YES">
+        <attribute name="lastViewedOn" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="number" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <relationship name="words" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Word" inverseName="wordSet" inverseEntity="Word" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Word" positionX="4653" positionY="-5742" width="128" height="103"/>
-        <element name="WordSet" positionX="4338" positionY="-5751" width="128" height="73"/>
+        <element name="Word" positionX="4653" positionY="-5742" width="128" height="118"/>
+        <element name="WordSet" positionX="4338" positionY="-5751" width="128" height="88"/>
     </elements>
 </model>

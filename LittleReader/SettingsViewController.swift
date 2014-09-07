@@ -23,15 +23,19 @@ class SettingsViewController: UITableViewController {
     @IBAction func didClickLoadWords(sender: AnyObject) {
         // TODO: Get from S3, make private call.
         let url = NSURL.URLWithString("http://s3.amazonaws.com/InfantIQLittleReader/WordSets/en/basic.txt")
+        NSLog("Loading words from source...")
         let task = NSURLSession.sharedSession().dataTaskWithURL(url) {(data, response, error) in
             if error != nil {
                 UIAlertView(title: "Error!", message: "Could not download word list", delegate: nil, cancelButtonTitle: "Ok").show()
                 NSLog("Failed to download word list: %@", error!)
             } else {
+                NSLog("Parsing words...")
                 let wordString = NSString(data:data, encoding: NSUTF8StringEncoding)
                 let words = wordString.componentsSeparatedByString("\n") as [String]
+                NSLog("Saving words in DB...")
                 let count = self.insertWords(words)
                 self.updateWordCount()
+                NSLog("YAY, \(count) words loaded and saved")
                 UIAlertView(title: "Success!", message: "Imported \(count) new words", delegate: nil, cancelButtonTitle: "Ok").show()
             }
         }
@@ -74,7 +78,10 @@ class SettingsViewController: UITableViewController {
             fetchRequest.includesPropertyValues = false
             let wordSets = ctx.executeFetchRequest(fetchRequest, error: &error)
             if error == nil {
-                for wordSet in wordSets as [WordSet] {ctx.deleteObject(wordSet)}
+                for wordSet in wordSets as [WordSet] {
+                    ctx.deleteObject(wordSet)
+                    NSLog("Deleting WordSet #%@", wordSet.number)
+                }
                 ctx.save(&error)
             }
             
@@ -84,19 +91,23 @@ class SettingsViewController: UITableViewController {
                 fetchRequest.sortDescriptors = [NSSortDescriptor(key: "lastViewedOn", ascending: true)]
                 fetchRequest.fetchLimit = 25;
                 fetchRequest.predicate = NSPredicate(format: "wordSet = NULL", argumentArray: nil)
-                if let words = ctx.executeFetchRequest(fetchRequest, error: &error) {
+                if let words = ctx.executeFetchRequest(fetchRequest, error: &error) as? [Word] {
                     let wordsPerGroup = words.count / numberOfWordSets
                     let oddWords = words.count % numberOfWordSets // TODO: something with this
                     var wordIdx = 0
                     for var i = 0; i < numberOfWordSets; i++ {
                         if let entityDescripition = NSEntityDescription.entityForName("WordSet", inManagedObjectContext:ctx) {
-                            var set = NSMutableSet()
-                            for var ii = 0; i < wordsPerGroup; i++ {
-                                set.addObject(words[wordIdx++])
-                            }
                             let wordSet = WordSet(entity: entityDescripition, insertIntoManagedObjectContext: ctx)
                             wordSet.number = i
-                            wordSet.words = set
+                            wordSet.words = NSMutableSet()
+                            for var ii = 0; ii < wordsPerGroup; ii++ {
+                                let word = words[wordIdx++]
+                                wordSet.words.addObject(word)
+                                word.wordSet = wordSet // TODO: See if this is neccesssary
+                                word.activatedOn = NSDate()
+                                NSLog("Added word '%@' to wordSet #%@",word.text,wordSet.number)
+                                NSLog("Word's set #%@",word.wordSet.number)
+                            }
                         }
                     }
                     ctx.save(&error)
