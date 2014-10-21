@@ -95,7 +95,7 @@
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" continuous="NO" autorepeat="NO" value="15" minimumValue="15" maximumValue="60" stepValue="5" translatesAutoresizingMaskIntoConstraints="NO" id="OB3-l1-7IU">
+                                                <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" continuous="NO" autorepeat="NO" value="30" minimumValue="15" maximumValue="60" stepValue="5" translatesAutoresizingMaskIntoConstraints="NO" id="OB3-l1-7IU">
                                                     <rect key="frame" x="178" y="10" width="94" height="29"/>
                                                     <connections>
                                                         <action selector="didChangeReminderInverval:" destination="45I-s5-k26" eventType="valueChanged" id="7Ch-6w-YTi"/>
@@ -205,10 +205,19 @@
                                 <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You wait at least 15 minutes more before giving the next lesson" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6da-PR-mmF">
+                                <rect key="frame" x="8" y="510" width="584" height="27"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="6hX-9E-sYW" secondAttribute="trailing" constant="8" id="403-TC-TaZ"/>
+                            <constraint firstAttribute="trailing" secondItem="6da-PR-mmF" secondAttribute="trailing" constant="8" id="6K5-pR-HND"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="6da-PR-mmF" secondAttribute="bottom" constant="64" id="WiX-CP-Dk3"/>
+                            <constraint firstItem="6da-PR-mmF" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="8" id="dnx-YB-4Uo"/>
                             <constraint firstItem="6hX-9E-sYW" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="8" id="e80-J5-iOi"/>
                             <constraint firstAttribute="centerY" secondItem="6hX-9E-sYW" secondAttribute="centerY" id="ojb-bs-SK6"/>
                         </constraints>
@@ -230,6 +239,7 @@
                     <nil key="simulatedStatusBarMetrics"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <connections>
+                        <outlet property="auxMessageLabel" destination="6da-PR-mmF" id="5CE-e0-fH1"/>
                         <outlet property="textLabel" destination="6hX-9E-sYW" id="9ge-Cb-ag8"/>
                     </connections>
                 </viewController>

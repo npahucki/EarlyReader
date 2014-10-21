@@ -15,7 +15,7 @@ class UserPreferences {
         }
         get {
             let interval = NSUserDefaults.standardUserDefaults().doubleForKey("lessonReminderInverval");
-            return interval > 0 ? interval : 15.0
+            return interval > 0 ? interval : 30.0
         }
     }
     
@@ -28,7 +28,20 @@ class UserPreferences {
             return interval > 0 ? interval : 1.5
         }
     }
+    
+    class var lastLessonTakenAt : NSDate? {
+        set(lastLessonTakenAt) {
+        NSUserDefaults.standardUserDefaults().setDouble(lastLessonTakenAt!.timeIntervalSince1970, forKey:"lastLessonTakenAt");
+        }
+        get {
+            let interval = NSUserDefaults.standardUserDefaults().doubleForKey("lastLessonTakenAt");
+            return interval > 0 ? NSDate(timeIntervalSince1970: interval) : nil
+        }
+    }
 
+
+    
+    
     
     
 }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E818296519F6F04A007B6DC9 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E818296419F6F04A007B6DC9 /* Localizable.strings */; };
 		E82DEBFD19F6AA4100EED0A8 /* UserPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = E82DEBFC19F6AA4100EED0A8 /* UserPreferences.swift */; };
 		E82DEC0519F6B97300EED0A8 /* UsageAnalytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = E82DEC0419F6B97300EED0A8 /* UsageAnalytics.swift */; };
 		E858B7EF19BA3D59003C5727 /* StreamReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E858B7EE19BA3D59003C5727 /* StreamReader.swift */; };
@@ -35,6 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E818296419F6F04A007B6DC9 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		E82DEBFC19F6AA4100EED0A8 /* UserPreferences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPreferences.swift; sourceTree = "<group>"; };
 		E82DEC0419F6B97300EED0A8 /* UsageAnalytics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsageAnalytics.swift; sourceTree = "<group>"; };
 		E858B7EE19BA3D59003C5727 /* StreamReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StreamReader.swift; sourceTree = "<group>"; };
@@ -131,6 +133,7 @@
 				E8CDE7F2199FD18F0036CFE8 /* Images.xcassets */,
 				E8CDE7EA199FD18F0036CFE8 /* LittleReader.xcdatamodeld */,
 				E8CDE7E6199FD18F0036CFE8 /* Supporting Files */,
+				E818296419F6F04A007B6DC9 /* Localizable.strings */,
 			);
 			path = LittleReader;
 			sourceTree = "<group>";
@@ -241,6 +244,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E8CDE7F1199FD18F0036CFE8 /* Main.storyboard in Resources */,
+				E818296519F6F04A007B6DC9 /* Localizable.strings in Resources */,
 				E8CDE7F3199FD18F0036CFE8 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

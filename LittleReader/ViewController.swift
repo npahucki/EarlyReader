@@ -17,6 +17,7 @@ import CoreData
 class ViewController: UIViewController, UIAlertViewDelegate,NSFetchedResultsControllerDelegate {
     
     @IBOutlet weak var textLabel: UILabel!
+    @IBOutlet weak var auxMessageLabel: UILabel!
 
     private var fetchedResultController: NSFetchedResultsController = NSFetchedResultsController()
     private var timer : NSTimer?
@@ -27,9 +28,9 @@ class ViewController: UIViewController, UIAlertViewDelegate,NSFetchedResultsCont
     override func viewDidLoad() {
         super.viewDidLoad()
         textLabel.font = UIFont.systemFontOfSize(500)
+        NSTimer.scheduledTimerWithTimeInterval(30.0 , target: self, selector: "updateWaitBeforeNextLessonMessage", userInfo: nil, repeats:true)
         resetToDefaultScreen()
     }
-
 
     func showNextWord() {
         if let words = currentWords {
@@ -65,12 +66,20 @@ class ViewController: UIViewController, UIAlertViewDelegate,NSFetchedResultsCont
         saveUpdatedWordsAndSets()
         resetToDefaultScreen()
         scheduleReminder()
+        UserPreferences.lastLessonTakenAt = NSDate()
+        
+        
+        updateWaitBeforeNextLessonMessage()
+        self.auxMessageLabel.hidden = false;
     }
     
     func willStartWordSet(set : WordSet) {
+        auxMessageLabel.hidden = true
         textLabel.text = ""
         textLabel.textColor = UIColor.redColor()
         navigationController?.navigationBar.hidden = true
+        // Since we have started a new lesson, we don't want a reminder until after this lesson is complete
+        UIApplication.sharedApplication().cancelAllLocalNotifications()
     }
 
     func findNextWordSet() -> WordSet? {
@@ -104,9 +113,28 @@ class ViewController: UIViewController, UIAlertViewDelegate,NSFetchedResultsCont
         UIApplication.sharedApplication().scheduleLocalNotification(localNotification)
     }
    
+    func updateWaitBeforeNextLessonMessage() {
+        if let lastLessonFinished = UserPreferences.lastLessonTakenAt {
+            auxMessageLabel.hidden = false
+            let nextLessonStart = NSDate(timeInterval: 30.0 * 60.0, sinceDate: lastLessonFinished)
+            if(nextLessonStart.timeIntervalSinceNow > 0) {
+                auxMessageLabel.text = NSString(format: NSLocalizedString("You should wait at least %d minutes before giving the next lesson",comment: ""),  Int(nextLessonStart.timeIntervalSinceNow / 60.0))
+                auxMessageLabel.textColor = UIColor.orangeColor()
+                return
+            }
+        }
+        
+        auxMessageLabel.text = NSLocalizedString("It's time for the next lesson. Press Start Lesson!",comment: "")
+        auxMessageLabel.textColor = UIColor.greenColor()
+    }
+    
     
     override func prefersStatusBarHidden() -> Bool {
         return self.currentIdx >= 0
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        updateWaitBeforeNextLessonMessage() // Update the time if needed
     }
     
     @IBAction func didClickStartLesson(sender: UIBarButtonItem) {
@@ -125,6 +153,7 @@ class ViewController: UIViewController, UIAlertViewDelegate,NSFetchedResultsCont
     func resetToDefaultScreen() {
         textLabel.text = "LittleReader"
         textLabel.textColor = UIColor .greenColor()
+        auxMessageLabel.hidden = false;
         navigationController?.navigationBar.hidden = false
         setNeedsStatusBarAppearanceUpdate()
     }
