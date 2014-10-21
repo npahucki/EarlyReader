@@ -11,7 +11,7 @@
             <objects>
                 <tableViewController id="45I-s5-k26" userLabel="Settings" customClass="SettingsViewController" customModule="LittleReader" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="50" sectionHeaderHeight="22" sectionFooterHeight="22" id="ZTw-LB-aby">
-                        <rect key="frame" x="0.0" y="0.0" width="280" height="315"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <sections>
@@ -89,13 +89,13 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lEw-or-zli" id="GFa-bC-PLt">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Every 15 mins" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aBT-bG-rcU">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Every 30 mins" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aBT-bG-rcU">
                                                     <rect key="frame" x="8" y="15" width="108" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" continuous="NO" autorepeat="NO" value="30" minimumValue="15" maximumValue="60" stepValue="5" translatesAutoresizingMaskIntoConstraints="NO" id="OB3-l1-7IU">
+                                                <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" continuous="NO" autorepeat="NO" value="30" minimumValue="15" maximumValue="60" stepValue="5" translatesAutoresizingMaskIntoConstraints="NO" id="OB3-l1-7IU">
                                                     <rect key="frame" x="178" y="10" width="94" height="29"/>
                                                     <connections>
                                                         <action selector="didChangeReminderInverval:" destination="45I-s5-k26" eventType="valueChanged" id="7Ch-6w-YTi"/>
@@ -131,13 +131,13 @@
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xUm-mg-jLo">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="5" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xUm-mg-jLo">
                                                     <rect key="frame" x="262" y="15" width="10" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1.5" minValue="1" maxValue="5" translatesAutoresizingMaskIntoConstraints="NO" id="Iv6-Lx-OGX">
+                                                <slider opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1.5" minValue="1" maxValue="5" translatesAutoresizingMaskIntoConstraints="NO" id="Iv6-Lx-OGX">
                                                     <rect key="frame" x="24" y="10" width="232" height="31"/>
                                                     <color key="thumbTintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <connections>
@@ -185,17 +185,77 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tIp-ON-WjZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="971" y="-886"/>
+            <point key="canvasLocation" x="976" y="-326"/>
         </scene>
-        <!--Main-->
-        <scene sceneID="tne-QT-ifu">
+        <!--Idle View Controller-->
+        <scene sceneID="zNI-qE-8Rc">
             <objects>
-                <viewController title="Main" id="BYZ-38-t0r" customClass="ViewController" customModule="LittleReader" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="9NH-X2-hqh" userLabel="Idle View Controller" customClass="IdleScreenViewController" customModule="LittleReader" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
-                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                        <viewControllerLayoutGuide type="top" id="DZY-4a-iS4"/>
+                        <viewControllerLayoutGuide type="bottom" id="0Iz-oe-uiC"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC" userLabel="Main View">
+                    <view key="view" contentMode="scaleToFill" id="Bmf-fz-Dou">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You wait at least 15 minutes more before giving the next lesson" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gnm-5D-NWq">
+                                <rect key="frame" x="8" y="509" width="584" height="27"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <color key="textColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LittleReader" textAlignment="center" lineBreakMode="clip" minimumFontSize="80" translatesAutoresizingMaskIntoConstraints="NO" id="yI5-ek-gDK">
+                                <rect key="frame" x="8" y="121" width="584" height="358"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="300"/>
+                                <color key="textColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="yI5-ek-gDK" firstAttribute="leading" secondItem="Bmf-fz-Dou" secondAttribute="leading" constant="8" id="7l1-wX-XxO"/>
+                            <constraint firstAttribute="centerY" secondItem="yI5-ek-gDK" secondAttribute="centerY" id="D1r-Rj-1J0"/>
+                            <constraint firstItem="gnm-5D-NWq" firstAttribute="leading" secondItem="Bmf-fz-Dou" secondAttribute="leading" constant="8" id="Ohm-4V-ENo"/>
+                            <constraint firstItem="0Iz-oe-uiC" firstAttribute="top" secondItem="gnm-5D-NWq" secondAttribute="bottom" constant="64" id="RQs-d3-9IW"/>
+                            <constraint firstAttribute="trailing" secondItem="gnm-5D-NWq" secondAttribute="trailing" constant="8" id="iey-QH-kYk"/>
+                            <constraint firstAttribute="trailing" secondItem="yI5-ek-gDK" secondAttribute="trailing" constant="8" id="lhT-8m-zzN"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="Cld-WE-0vI">
+                        <barButtonItem key="leftBarButtonItem" title="Settings" id="8vy-0Q-frp">
+                            <connections>
+                                <segue destination="45I-s5-k26" kind="popoverPresentation" identifier="showSettings" popoverAnchorBarButtonItem="8vy-0Q-frp" id="hQW-an-KeF">
+                                    <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                </segue>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Start Lesson" id="LkV-9y-qKq">
+                            <connections>
+                                <segue destination="WjB-gp-FKd" kind="showDetail" identifier="startLesson" id="U8w-ys-4UF"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="auxMessageLabel" destination="gnm-5D-NWq" id="eXt-hx-FGS"/>
+                        <outlet property="textLabel" destination="yI5-ek-gDK" id="Lyl-Zv-aVG"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SVZ-iL-UBs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="803" y="809"/>
+        </scene>
+        <!--Lesson View Controller-->
+        <scene sceneID="Tik-cX-eCw">
+            <objects>
+                <viewController id="WjB-gp-FKd" userLabel="Lesson View Controller" customClass="LessonViewController" customModule="LittleReader" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="il3-LO-Bjm"/>
+                        <viewControllerLayoutGuide type="bottom" id="g1f-K0-FmA"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="wRe-wK-mPg">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -205,52 +265,28 @@
                                 <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You wait at least 15 minutes more before giving the next lesson" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6da-PR-mmF">
-                                <rect key="frame" x="8" y="510" width="584" height="27"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="6hX-9E-sYW" secondAttribute="trailing" constant="8" id="403-TC-TaZ"/>
-                            <constraint firstAttribute="trailing" secondItem="6da-PR-mmF" secondAttribute="trailing" constant="8" id="6K5-pR-HND"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="6da-PR-mmF" secondAttribute="bottom" constant="64" id="WiX-CP-Dk3"/>
-                            <constraint firstItem="6da-PR-mmF" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="8" id="dnx-YB-4Uo"/>
-                            <constraint firstItem="6hX-9E-sYW" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="8" id="e80-J5-iOi"/>
-                            <constraint firstAttribute="centerY" secondItem="6hX-9E-sYW" secondAttribute="centerY" id="ojb-bs-SK6"/>
+                            <constraint firstAttribute="trailing" secondItem="6hX-9E-sYW" secondAttribute="trailing" constant="8" id="Goq-Zw-F4e"/>
+                            <constraint firstItem="6hX-9E-sYW" firstAttribute="leading" secondItem="wRe-wK-mPg" secondAttribute="leading" constant="8" id="Iyx-ZF-gjX"/>
+                            <constraint firstAttribute="centerY" secondItem="6hX-9E-sYW" secondAttribute="centerY" id="SdT-L2-JWn"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="eAA-oR-GtN">
-                        <barButtonItem key="leftBarButtonItem" title="Settings" id="6gw-FU-aRa">
-                            <connections>
-                                <segue destination="45I-s5-k26" kind="popoverPresentation" popoverAnchorBarButtonItem="6gw-FU-aRa" id="zA2-fa-qg8">
-                                    <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                                </segue>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Start Lesson" id="qzc-IS-b0e">
-                            <connections>
-                                <action selector="didClickStartLesson:" destination="BYZ-38-t0r" id="SdW-vC-WGb"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
                     <nil key="simulatedStatusBarMetrics"/>
-                    <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    <nil key="simulatedTopBarMetrics"/>
                     <connections>
-                        <outlet property="auxMessageLabel" destination="6da-PR-mmF" id="5CE-e0-fH1"/>
-                        <outlet property="textLabel" destination="6hX-9E-sYW" id="9ge-Cb-ag8"/>
+                        <outlet property="textLabel" destination="6hX-9E-sYW" id="wt4-rY-qKD"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="34c-CJ-dh3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="951" y="110"/>
+            <point key="canvasLocation" x="1588" y="809"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Main View Controller-->
         <scene sceneID="VbB-zD-8jO">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="KWF-gG-bQq" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="KWF-gG-bQq" customClass="MainViewController" customModule="LittleReader" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="5y9-DL-6Cz">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -258,12 +294,12 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="rgM-xa-l8i"/>
+                        <segue destination="9NH-X2-hqh" kind="relationship" relationship="rootViewController" id="CJT-TB-nGS"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mEH-Va-att" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="139" y="110"/>
+            <point key="canvasLocation" x="101" y="809"/>
         </scene>
     </scenes>
 </document>

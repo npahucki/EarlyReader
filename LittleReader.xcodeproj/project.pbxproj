@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		E818296519F6F04A007B6DC9 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E818296419F6F04A007B6DC9 /* Localizable.strings */; };
+		E818296A19F6FCB6007B6DC9 /* IdleScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E818296919F6FCB6007B6DC9 /* IdleScreenViewController.swift */; };
+		E818296C19F6FE87007B6DC9 /* LessonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E818296B19F6FE87007B6DC9 /* LessonViewController.swift */; };
 		E82DEBFD19F6AA4100EED0A8 /* UserPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = E82DEBFC19F6AA4100EED0A8 /* UserPreferences.swift */; };
 		E82DEC0519F6B97300EED0A8 /* UsageAnalytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = E82DEC0419F6B97300EED0A8 /* UsageAnalytics.swift */; };
 		E858B7EF19BA3D59003C5727 /* StreamReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E858B7EE19BA3D59003C5727 /* StreamReader.swift */; };
@@ -18,7 +20,7 @@
 		E8BA1C2419BA11DB0092974A /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8BA1C2319BA11DB0092974A /* SettingsViewController.swift */; };
 		E8CDE7E9199FD18F0036CFE8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8CDE7E8199FD18F0036CFE8 /* AppDelegate.swift */; };
 		E8CDE7EC199FD18F0036CFE8 /* LittleReader.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E8CDE7EA199FD18F0036CFE8 /* LittleReader.xcdatamodeld */; };
-		E8CDE7EE199FD18F0036CFE8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8CDE7ED199FD18F0036CFE8 /* ViewController.swift */; };
+		E8CDE7EE199FD18F0036CFE8 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8CDE7ED199FD18F0036CFE8 /* MainViewController.swift */; };
 		E8CDE7F1199FD18F0036CFE8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E8CDE7EF199FD18F0036CFE8 /* Main.storyboard */; };
 		E8CDE7F3199FD18F0036CFE8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E8CDE7F2199FD18F0036CFE8 /* Images.xcassets */; };
 		E8CDE7FF199FD18F0036CFE8 /* LittleReaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8CDE7FE199FD18F0036CFE8 /* LittleReaderTests.swift */; };
@@ -37,6 +39,8 @@
 
 /* Begin PBXFileReference section */
 		E818296419F6F04A007B6DC9 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		E818296919F6FCB6007B6DC9 /* IdleScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IdleScreenViewController.swift; sourceTree = "<group>"; };
+		E818296B19F6FE87007B6DC9 /* LessonViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LessonViewController.swift; sourceTree = "<group>"; };
 		E82DEBFC19F6AA4100EED0A8 /* UserPreferences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPreferences.swift; sourceTree = "<group>"; };
 		E82DEC0419F6B97300EED0A8 /* UsageAnalytics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsageAnalytics.swift; sourceTree = "<group>"; };
 		E858B7EE19BA3D59003C5727 /* StreamReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StreamReader.swift; sourceTree = "<group>"; };
@@ -47,7 +51,7 @@
 		E8CDE7E7199FD18F0036CFE8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E8CDE7E8199FD18F0036CFE8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E8CDE7EB199FD18F0036CFE8 /* LittleReader.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LittleReader.xcdatamodel; sourceTree = "<group>"; };
-		E8CDE7ED199FD18F0036CFE8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		E8CDE7ED199FD18F0036CFE8 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		E8CDE7F0199FD18F0036CFE8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E8CDE7F2199FD18F0036CFE8 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		E8CDE7F8199FD18F0036CFE8 /* LittleReaderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LittleReaderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -98,7 +102,9 @@
 			isa = PBXGroup;
 			children = (
 				E8BA1C2319BA11DB0092974A /* SettingsViewController.swift */,
-				E8CDE7ED199FD18F0036CFE8 /* ViewController.swift */,
+				E8CDE7ED199FD18F0036CFE8 /* MainViewController.swift */,
+				E818296919F6FCB6007B6DC9 /* IdleScreenViewController.swift */,
+				E818296B19F6FE87007B6DC9 /* LessonViewController.swift */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -263,10 +269,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E8CDE7EE199FD18F0036CFE8 /* ViewController.swift in Sources */,
+				E8CDE7EE199FD18F0036CFE8 /* MainViewController.swift in Sources */,
 				E82DEBFD19F6AA4100EED0A8 /* UserPreferences.swift in Sources */,
 				E85F39C919A6BB670004C80F /* Word.swift in Sources */,
 				E8CDE7EC199FD18F0036CFE8 /* LittleReader.xcdatamodeld in Sources */,
+				E818296C19F6FE87007B6DC9 /* LessonViewController.swift in Sources */,
+				E818296A19F6FCB6007B6DC9 /* IdleScreenViewController.swift in Sources */,
 				E858B7EF19BA3D59003C5727 /* StreamReader.swift in Sources */,
 				E8CDE7E9199FD18F0036CFE8 /* AppDelegate.swift in Sources */,
 				E85F39CC19A6BB670004C80F /* WordSet.swift in Sources */,
