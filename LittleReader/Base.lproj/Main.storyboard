@@ -11,11 +11,11 @@
             <objects>
                 <tableViewController id="45I-s5-k26" userLabel="Settings" customClass="SettingsViewController" customModule="LittleReader" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="50" sectionHeaderHeight="22" sectionFooterHeight="22" id="ZTw-LB-aby">
-                        <rect key="frame" x="0.0" y="0.0" width="200" height="249"/>
+                        <rect key="frame" x="0.0" y="0.0" width="280" height="315"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <sections>
-                            <tableViewSection id="XJ2-vq-DLZ">
+                            <tableViewSection headerTitle="Words" id="XJ2-vq-DLZ">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="hik-FA-ssf">
                                         <autoresizingMask key="autoresizingMask"/>
@@ -34,7 +34,7 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="slF-4M-btT" firstAttribute="top" secondItem="IeS-26-eiE" secondAttribute="topMargin" id="GcP-0p-ydv"/>
-                                                <constraint firstItem="slF-4M-btT" firstAttribute="leading" secondItem="IeS-26-eiE" secondAttribute="leadingMargin" id="u1l-4g-sug"/>
+                                                <constraint firstItem="slF-4M-btT" firstAttribute="leading" secondItem="IeS-26-eiE" secondAttribute="leading" constant="8" id="u1l-4g-sug"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -55,7 +55,7 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="HtG-k4-U2O" firstAttribute="top" secondItem="mQy-Ja-N9E" secondAttribute="topMargin" id="DFu-1H-0EU"/>
-                                                <constraint firstItem="HtG-k4-U2O" firstAttribute="leading" secondItem="mQy-Ja-N9E" secondAttribute="leadingMargin" id="X4H-Y1-AJe"/>
+                                                <constraint firstItem="HtG-k4-U2O" firstAttribute="leading" secondItem="mQy-Ja-N9E" secondAttribute="leading" constant="8" id="X4H-Y1-AJe"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -75,52 +75,92 @@
                                                 </button>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="NH9-hJ-Uq5" firstAttribute="leading" secondItem="5sW-pW-h6C" secondAttribute="leadingMargin" id="Caa-m2-TRf"/>
+                                                <constraint firstItem="NH9-hJ-Uq5" firstAttribute="leading" secondItem="5sW-pW-h6C" secondAttribute="leading" constant="8" id="Caa-m2-TRf"/>
                                                 <constraint firstItem="NH9-hJ-Uq5" firstAttribute="top" secondItem="5sW-pW-h6C" secondAttribute="topMargin" id="Ol9-IH-JMy"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="OUV-6X-1q5">
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection headerTitle="Reminders" id="aUW-nt-9Pa" userLabel="Reminders">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="lEw-or-zli">
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="OUV-6X-1q5" id="OMb-n5-Qhd">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lEw-or-zli" id="GFa-bC-PLt">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1.5" minValue="1" maxValue="5" translatesAutoresizingMaskIntoConstraints="NO" id="Faj-aS-Hab">
-                                                    <rect key="frame" x="6" y="10" width="188" height="31"/>
-                                                    <color key="thumbTintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                </slider>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="trailingMargin" secondItem="Faj-aS-Hab" secondAttribute="trailing" id="09V-bk-fv5"/>
-                                                <constraint firstAttribute="centerY" secondItem="Faj-aS-Hab" secondAttribute="centerY" id="Ia2-tQ-ynx"/>
-                                                <constraint firstItem="Faj-aS-Hab" firstAttribute="leading" secondItem="OMb-n5-Qhd" secondAttribute="leadingMargin" id="nim-rY-gdq"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="PWS-ny-H3g">
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="PWS-ny-H3g" id="YZ5-Sa-fXx">
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reminders" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mKp-W8-GZx">
-                                                    <rect key="frame" x="8" y="14.5" width="82.5" height="20.5"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Every 15 mins" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aBT-bG-rcU">
+                                                    <rect key="frame" x="8" y="15" width="108" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XMQ-E6-Epx">
-                                                    <rect key="frame" x="143" y="9" width="51" height="31"/>
+                                                <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" continuous="NO" autorepeat="NO" value="15" minimumValue="15" maximumValue="60" stepValue="5" translatesAutoresizingMaskIntoConstraints="NO" id="OB3-l1-7IU">
+                                                    <rect key="frame" x="178" y="10" width="94" height="29"/>
                                                     <connections>
-                                                        <action selector="didChangeReminderSwitch:" destination="45I-s5-k26" eventType="valueChanged" id="jLK-ZA-93W"/>
+                                                        <action selector="didChangeReminderInverval:" destination="45I-s5-k26" eventType="valueChanged" id="7Ch-6w-YTi"/>
                                                     </connections>
-                                                </switch>
+                                                </stepper>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="centerY" secondItem="mKp-W8-GZx" secondAttribute="centerY" id="IC5-Y9-Yn4"/>
-                                                <constraint firstItem="mKp-W8-GZx" firstAttribute="leading" secondItem="YZ5-Sa-fXx" secondAttribute="leading" constant="8" id="INa-6q-EZZ"/>
-                                                <constraint firstAttribute="trailing" secondItem="XMQ-E6-Epx" secondAttribute="trailing" constant="8" id="OJq-RU-TgX"/>
-                                                <constraint firstAttribute="centerY" secondItem="XMQ-E6-Epx" secondAttribute="centerY" id="mmM-qK-bQI"/>
+                                                <constraint firstItem="aBT-bG-rcU" firstAttribute="leading" secondItem="GFa-bC-PLt" secondAttribute="leading" constant="8" id="3cq-dZ-Are"/>
+                                                <constraint firstAttribute="centerY" secondItem="OB3-l1-7IU" secondAttribute="centerY" id="Mak-l4-myf"/>
+                                                <constraint firstAttribute="trailing" secondItem="OB3-l1-7IU" secondAttribute="trailing" constant="8" id="T9I-oF-eaO"/>
+                                                <constraint firstItem="aBT-bG-rcU" firstAttribute="leading" secondItem="GFa-bC-PLt" secondAttribute="leading" constant="8" id="gDv-oH-rt4"/>
+                                                <constraint firstAttribute="centerY" secondItem="aBT-bG-rcU" secondAttribute="centerY" id="qSK-rr-JfM"/>
                                             </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="gDv-oH-rt4"/>
+                                                </mask>
+                                            </variation>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection headerTitle="Slide Display Duration Seconds" id="HPf-nD-8Ic">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="LUZ-F5-tgK">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="LUZ-F5-tgK" id="8kf-65-cae">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O5U-6J-ERJ">
+                                                    <rect key="frame" x="8" y="15" width="10" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xUm-mg-jLo">
+                                                    <rect key="frame" x="262" y="15" width="10" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1.5" minValue="1" maxValue="5" translatesAutoresizingMaskIntoConstraints="NO" id="Iv6-Lx-OGX">
+                                                    <rect key="frame" x="24" y="10" width="232" height="31"/>
+                                                    <color key="thumbTintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                </slider>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="centerY" secondItem="O5U-6J-ERJ" secondAttribute="centerY" id="6d8-KB-3oZ"/>
+                                                <constraint firstItem="Iv6-Lx-OGX" firstAttribute="leading" secondItem="O5U-6J-ERJ" secondAttribute="trailing" constant="8" id="HT2-D6-Mad"/>
+                                                <constraint firstAttribute="trailing" secondItem="xUm-mg-jLo" secondAttribute="trailing" constant="8" id="KKQ-SA-sDJ"/>
+                                                <constraint firstItem="Iv6-Lx-OGX" firstAttribute="leading" secondItem="8kf-65-cae" secondAttribute="leading" id="Ube-tG-k4X"/>
+                                                <constraint firstAttribute="centerY" secondItem="xUm-mg-jLo" secondAttribute="centerY" id="UcP-8R-kuW"/>
+                                                <constraint firstItem="xUm-mg-jLo" firstAttribute="leading" secondItem="Iv6-Lx-OGX" secondAttribute="trailing" constant="8" id="drn-0M-Y8g"/>
+                                                <constraint firstAttribute="centerY" secondItem="Iv6-Lx-OGX" secondAttribute="centerY" id="gig-Vs-0OH"/>
+                                                <constraint firstAttribute="centerY" secondItem="Iv6-Lx-OGX" secondAttribute="centerY" id="hyD-7P-zDp"/>
+                                                <constraint firstAttribute="trailing" secondItem="Iv6-Lx-OGX" secondAttribute="trailing" id="tNk-hA-07T"/>
+                                                <constraint firstItem="O5U-6J-ERJ" firstAttribute="leading" secondItem="8kf-65-cae" secondAttribute="leading" constant="8" id="vVY-Ug-mZ6"/>
+                                            </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="Ube-tG-k4X"/>
+                                                    <exclude reference="hyD-7P-zDp"/>
+                                                    <exclude reference="tNk-hA-07T"/>
+                                                </mask>
+                                            </variation>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
@@ -131,11 +171,12 @@
                             <outlet property="delegate" destination="45I-s5-k26" id="VR7-Up-Avv"/>
                         </connections>
                     </tableView>
-                    <value key="contentSizeForViewInPopover" type="size" width="200" height="260"/>
+                    <value key="contentSizeForViewInPopover" type="size" width="280" height="315"/>
                     <nil key="simulatedStatusBarMetrics"/>
                     <connections>
                         <outlet property="clearWordsButton" destination="HtG-k4-U2O" id="A4m-4G-qRw"/>
-                        <outlet property="reminderSwitch" destination="XMQ-E6-Epx" id="ap6-nd-bnc"/>
+                        <outlet property="reminderIntervalLabel" destination="aBT-bG-rcU" id="kSf-zQ-pVp"/>
+                        <outlet property="reminderIntervalStepper" destination="OB3-l1-7IU" id="O14-fE-GMN"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tIp-ON-WjZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -155,7 +196,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Text" textAlignment="center" lineBreakMode="clip" minimumFontSize="80" translatesAutoresizingMaskIntoConstraints="NO" id="6hX-9E-sYW">
-                                <rect key="frame" x="16" y="121" width="568" height="358"/>
+                                <rect key="frame" x="8" y="121" width="584" height="358"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="300"/>
                                 <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -163,8 +204,8 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="6hX-9E-sYW" secondAttribute="trailing" id="403-TC-TaZ"/>
-                            <constraint firstItem="6hX-9E-sYW" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="e80-J5-iOi"/>
+                            <constraint firstAttribute="trailing" secondItem="6hX-9E-sYW" secondAttribute="trailing" constant="8" id="403-TC-TaZ"/>
+                            <constraint firstItem="6hX-9E-sYW" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="8" id="e80-J5-iOi"/>
                             <constraint firstAttribute="centerY" secondItem="6hX-9E-sYW" secondAttribute="centerY" id="ojb-bs-SK6"/>
                         </constraints>
                     </view>

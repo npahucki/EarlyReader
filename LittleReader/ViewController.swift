@@ -14,8 +14,6 @@ import CoreData
 // 1) Each day: Retire oldest word after showing for some amount of time.
 // 2) Describe a time to play next word set
 
-let REMINDER_INVERAL = 60.0 * 30.0
-
 class ViewController: UIViewController, UIAlertViewDelegate,NSFetchedResultsControllerDelegate {
     
     @IBOutlet weak var textLabel: UILabel!
@@ -98,7 +96,7 @@ class ViewController: UIViewController, UIAlertViewDelegate,NSFetchedResultsCont
     
     func scheduleReminder() {
         let localNotification = UILocalNotification()
-        localNotification.fireDate = NSDate(timeIntervalSinceNow: REMINDER_INVERAL)
+        localNotification.fireDate = NSDate(timeIntervalSinceNow:  NSTimeInterval(UserPreferences.lessonReminderInvervalMins * 60.0))
         localNotification.alertBody =  NSLocalizedString("Time for a reading Lesson!", comment:"Main message shown in local notification");
         localNotification.timeZone = NSTimeZone.defaultTimeZone()
         localNotification.alertAction = NSLocalizedString("Slide to start lesson now", comment:"The side prompt shown in local notification");

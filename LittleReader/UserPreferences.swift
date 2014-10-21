@@ -9,12 +9,13 @@
 import Foundation
 
 class UserPreferences {
-    class var lessonRemindersEnabled: Bool {
-        set(lessonRemindersEnabled) {
-            NSUserDefaults.standardUserDefaults().setBool(lessonRemindersEnabled, forKey:"lessonRemindersEnabled");
+    class var lessonReminderInvervalMins : Int {
+        set(lessonReminderInvervalMins) {
+            NSUserDefaults.standardUserDefaults().setInteger(lessonReminderInvervalMins, forKey:"lessonRemindersEnabled");
         }
         get {
-            return NSUserDefaults.standardUserDefaults().boolForKey("lessonRemindersEnabled");
+            let interval = NSUserDefaults.standardUserDefaults().integerForKey("lessonRemindersEnabled");
+            return interval > 0 ? interval : 15
         }
     }
 }

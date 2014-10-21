@@ -13,14 +13,15 @@ import CoreData
 class SettingsViewController: UITableViewController {
 
     @IBOutlet weak var clearWordsButton: UIButton!
-    @IBOutlet weak var reminderSwitch: UISwitch!
+    @IBOutlet weak var reminderIntervalStepper: UIStepper!
+    @IBOutlet weak var reminderIntervalLabel: UILabel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.updateWordCount()
-        self.reminderSwitch.on = UserPreferences.lessonRemindersEnabled
+        self.reminderIntervalStepper.value = Double(UserPreferences.lessonReminderInvervalMins)
+        didChangeReminderInverval(self.reminderIntervalStepper) // Force label update
     }
-
 
     @IBAction func didClickLoadWords(sender: AnyObject) {
         // TODO: Get from S3, make private call.
@@ -75,23 +76,20 @@ class SettingsViewController: UITableViewController {
         }
     }
     
-    @IBAction func didChangeReminderSwitch(sender: UISwitch) {
-        if(sender.on != UserPreferences.lessonRemindersEnabled) {
-            if(sender.on) {
-                let settings = UIUserNotificationSettings(forTypes: UIUserNotificationType.Sound | UIUserNotificationType.Alert | UIUserNotificationType.Badge, categories: nil)
-                // Delays the prompt for push notificaitons until now.
-                UIApplication.sharedApplication().registerUserNotificationSettings(settings)
-                if !UIApplication.sharedApplication().currentUserNotificationSettings().isEqual(settings) {
-                    sender.on = false;
-                    let title = NSLocalizedString("Can't Activate Notifiactions", comment:"")
-                    let msg = NSLocalizedString("You have previously denied permision to send notifications to LittleReader. You must go to iOS Settings->Notification Center->LittleReader and allow notifications if you want activate reminders.", comment:"")
-                    let cancelButtonTitle = NSLocalizedString("Ok",comment:"")
-                    UIAlertView(title: title, message: msg, delegate: nil, cancelButtonTitle: cancelButtonTitle).show()
-                }
-            }
-            UserPreferences.lessonRemindersEnabled = sender.on;
+    @IBAction func didChangeReminderInverval(sender: UIStepper) {
+        UserPreferences.lessonReminderInvervalMins = Int(sender.value)
+        let intervalString = NSLocalizedString("Every %d mins", comment:"Label in the settings pane for reminder inverval")
+        self.reminderIntervalLabel.text = NSString(format: intervalString, UserPreferences.lessonReminderInvervalMins)
+        let settings = UIUserNotificationSettings(forTypes: UIUserNotificationType.Sound | UIUserNotificationType.Alert | UIUserNotificationType.Badge, categories: nil)
+        if !UIApplication.sharedApplication().currentUserNotificationSettings().isEqual(settings) {
+            let title = NSLocalizedString("Reminders Can Not Be Sent", comment:"")
+            let msg = NSLocalizedString("You have previously denied permision to send notifications to the LittleReader App. You must go to iOS Settings->Notification Center->LittleReader and allow notifications if you want recieve reminders.", comment:"")
+            let cancelButtonTitle = NSLocalizedString("Ok",comment:"")
+            UIAlertView(title: title, message: msg, delegate: nil, cancelButtonTitle: cancelButtonTitle).show()
         }
     }
+
+    
     
     @IBAction func didClickRecreateWordLists(sender: AnyObject) {
         let numberOfWordSets = 5
