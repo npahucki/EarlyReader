@@ -13,30 +13,33 @@ import CoreData
 class SettingsViewController: UITableViewController {
 
     @IBOutlet weak var clearWordsButton: UIButton!
-    
+    @IBOutlet weak var reminderSwitch: UISwitch!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.updateWordCount()
+        self.reminderSwitch.on = UserPreferences.lessonRemindersEnabled
     }
 
 
     @IBAction func didClickLoadWords(sender: AnyObject) {
         // TODO: Get from S3, make private call.
         let url = NSURL.URLWithString("http://s3.amazonaws.com/InfantIQLittleReader/WordSets/en/basic.txt")
-        NSLog("Loading words from source...")
         let task = NSURLSession.sharedSession().dataTaskWithURL(url) {(data, response, error) in
             if error != nil {
-                UIAlertView(title: "Error!", message: "Could not download word list", delegate: nil, cancelButtonTitle: "Ok").show()
-                NSLog("Failed to download word list: %@", error!)
+                let title = NSLocalizedString("Could Not Download Word List", comment: "")
+                let msg = NSLocalizedString("Check your network connection and try again please.", comment: "")
+                UIAlertView(title: title, message: msg, delegate: nil, cancelButtonTitle: "Ok").show()
+                UsageAnalytics.trackError("Failed to download word list", error: error)
             } else {
-                NSLog("Parsing words...")
                 let wordString = NSString(data:data, encoding: NSUTF8StringEncoding)
                 let words = wordString.componentsSeparatedByString("\n") as [String]
-                NSLog("Saving words in DB...")
                 let count = self.insertWords(words)
                 self.updateWordCount()
-                NSLog("YAY, \(count) words loaded and saved")
-                UIAlertView(title: "Success!", message: "Imported \(count) new words", delegate: nil, cancelButtonTitle: "Ok").show()
+                
+                let title = NSLocalizedString("Sucess!",comment: "")
+                let msg = NSLocalizedString("Imported %d new words", comment: "Message for alert box after words have been imported")
+                UIAlertView(title: "Success!", message: NSString(format: msg, count), delegate: nil, cancelButtonTitle: "Ok").show()
             }
         }
         
@@ -57,16 +60,38 @@ class SettingsViewController: UITableViewController {
                 ctx.save(&error)
             }
                 
-            if error == nil {
-                self.updateWordCount()
-                UIAlertView(title: "Success!", message: "Deleted all words", delegate: nil, cancelButtonTitle: "Ok").show()
+            if let err = error {
+                let title = NSLocalizedString("Could Not Delete Words", comment: "")
+                let cancelButtonTitle = NSLocalizedString("Ok", comment : "Cancel/Accept button title");
+                UIAlertView(title: title, message: error?.localizedDescription, delegate: nil, cancelButtonTitle: cancelButtonTitle).show()
+                UsageAnalytics.trackError("Failed to delete words", error: err)
             } else {
-                UIAlertView(title: "Error!", message: "Could not delete words", delegate: nil, cancelButtonTitle: "Ok").show()
-                NSLog("Failed to delete words : %@", error!)
+                self.updateWordCount()
+                let title = NSLocalizedString("Success!", comment: "")
+                let msg = NSLocalizedString("Deleted all words.", comment:"")
+                let cancelButtonTitle = NSLocalizedString("Ok", comment : "Cancel/Accept button title");
+                UIAlertView(title: title, message: msg, delegate: nil, cancelButtonTitle: cancelButtonTitle).show()
             }
         }
     }
     
+    @IBAction func didChangeReminderSwitch(sender: UISwitch) {
+        if(sender.on != UserPreferences.lessonRemindersEnabled) {
+            if(sender.on) {
+                let settings = UIUserNotificationSettings(forTypes: UIUserNotificationType.Sound | UIUserNotificationType.Alert | UIUserNotificationType.Badge, categories: nil)
+                // Delays the prompt for push notificaitons until now.
+                UIApplication.sharedApplication().registerUserNotificationSettings(settings)
+                if !UIApplication.sharedApplication().currentUserNotificationSettings().isEqual(settings) {
+                    sender.on = false;
+                    let title = NSLocalizedString("Can't Activate Notifiactions", comment:"")
+                    let msg = NSLocalizedString("You have previously denied permision to send notifications to LittleReader. You must go to iOS Settings->Notification Center->LittleReader and allow notifications if you want activate reminders.", comment:"")
+                    let cancelButtonTitle = NSLocalizedString("Ok",comment:"")
+                    UIAlertView(title: title, message: msg, delegate: nil, cancelButtonTitle: cancelButtonTitle).show()
+                }
+            }
+            UserPreferences.lessonRemindersEnabled = sender.on;
+        }
+    }
     
     @IBAction func didClickRecreateWordLists(sender: AnyObject) {
         let numberOfWordSets = 5
@@ -80,7 +105,6 @@ class SettingsViewController: UITableViewController {
             if error == nil {
                 for wordSet in wordSets as [WordSet] {
                     ctx.deleteObject(wordSet)
-                    NSLog("Deleting WordSet #%@", wordSet.number)
                 }
                 ctx.save(&error)
             }
@@ -105,8 +129,6 @@ class SettingsViewController: UITableViewController {
                                 wordSet.words.addObject(word)
                                 word.wordSet = wordSet // TODO: See if this is neccesssary
                                 word.activatedOn = NSDate()
-                                NSLog("Added word '%@' to wordSet #%@",word.text,wordSet.number)
-                                NSLog("Word's set #%@",word.wordSet.number)
                             }
                         }
                     }
@@ -114,11 +136,16 @@ class SettingsViewController: UITableViewController {
                 }
             }
 
-            if error == nil {
-                UIAlertView(title: "Success!", message: "Created \(numberOfWordSets) sets of words", delegate: nil, cancelButtonTitle: "Ok").show()
+            if let err = error {
+                let title = NSLocalizedString("Could not create sets of words.", comment: "")
+                let cancelButtonTitle = NSLocalizedString("Ok", comment : "Cancel/Accept button title");
+                UIAlertView(title: title, message: err.localizedDescription, delegate: nil, cancelButtonTitle: cancelButtonTitle).show()
+                UsageAnalytics.trackError("Failed to create word sets", error: err)
             } else {
-                UIAlertView(title: "Error!", message: "Could not create sets of words", delegate: nil, cancelButtonTitle: "Ok").show()
-                NSLog("Failed to delete words : %@", error!)
+                let title = NSLocalizedString("Success!", comment: "")
+                let msg = NSString(format: NSLocalizedString("Created %d sets of words.", comment:""), numberOfWordSets)
+                let cancelButtonTitle = NSLocalizedString("Ok", comment : "Cancel/Accept button title");
+                UIAlertView(title: title, message: msg, delegate: nil, cancelButtonTitle: cancelButtonTitle).show()
             }
         }
     }
@@ -149,11 +176,11 @@ class SettingsViewController: UITableViewController {
             
             var error: NSError? = nil
             ctx.save(&error)
-            if error == nil {
-                NSLog("Words Saved")
-                self.clearWordsButton.setTitle("Clear Words (\(count))", forState: UIControlState.Normal)
+            if let err = error {
+                UsageAnalytics.trackError("Filed to insertWords into CoreData", error: err)
             } else {
-                NSLog("FAILED: %@",error!);
+                let title = NSString(format: NSLocalizedString("Clear Words (%d)",comment : "Settings menu text"), count)
+                self.clearWordsButton.setTitle(title, forState: UIControlState.Normal)
             }
         }
 

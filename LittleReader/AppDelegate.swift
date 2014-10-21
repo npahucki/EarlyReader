@@ -16,7 +16,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication!, didFinishLaunchingWithOptions launchOptions: NSDictionary!) -> Bool {
-        // Override point for customization after application launch.
+        // registering for sending user various kinds of notifications
+        if(UserPreferences.lessonRemindersEnabled) {
+            application.registerUserNotificationSettings(UIUserNotificationSettings(forTypes: UIUserNotificationType.Sound | UIUserNotificationType.Alert | UIUserNotificationType.Badge, categories: nil))
+        }
         return true
     }
 
@@ -36,6 +39,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidBecomeActive(application: UIApplication!) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+        application.applicationIconBadgeNumber = 0
     }
 
     func applicationWillTerminate(application: UIApplication!) {
@@ -44,6 +48,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.saveContext()
     }
 
+    func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {
+        if application.applicationState == UIApplicationState.Active {
+            let title = NSLocalizedString("Still there?", comment: "Title of alert shown during a lesson noficiation and the app is still open")
+            let msg = NSLocalizedString("It's time for your baby's next reading lesson", comment: "Message of alert shown during a lesson noficiation and the app is still open")
+            UIAlertView(title: title , message: msg, delegate: nil, cancelButtonTitle: "Ok").show()
+        }
+    }
+    
     // MARK: - Core Data stack
 
     lazy var applicationDocumentsDirectory: NSURL = {
@@ -72,11 +84,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             dict[NSLocalizedDescriptionKey] = "Failed to initialize the application's saved data"
             dict[NSLocalizedFailureReasonErrorKey] = failureReason
             dict[NSUnderlyingErrorKey] = error
-            error = NSError.errorWithDomain("YOUR_ERROR_DOMAIN", code: 9999, userInfo: dict)
+            error = NSError.errorWithDomain("LittleReader", code: 9999, userInfo: dict)
             // Replace this with code to handle the error appropriately.
-            // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-            NSLog("Unresolved error \(error), \(error!.userInfo)")
-            abort()
+            UsageAnalytics.trackError("Failed to create the persistentStoreCoordinator", error: error!)
+            #if DEBUG
+                abort()
+            #endif
         }
         
         return coordinator
@@ -99,10 +112,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if let moc = self.managedObjectContext {
             var error: NSError? = nil
             if moc.hasChanges && !moc.save(&error) {
-                // Replace this implementation with code to handle the error appropriately.
-                // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                NSLog("Unresolved error \(error), \(error!.userInfo)")
-                abort()
+                UsageAnalytics.trackError("Failed to create the persistentStoreCoordinator", error: error!)
+                #if DEBUG
+                    abort()
+                #endif
             }
         }
     }
