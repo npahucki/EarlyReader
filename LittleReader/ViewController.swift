@@ -47,7 +47,7 @@ class ViewController: UIViewController, UIAlertViewDelegate,NSFetchedResultsCont
                 textLabel.text = word.text
                 textLabel.setNeedsUpdateConstraints();
                 textLabel.setNeedsLayout();
-                timer = NSTimer.scheduledTimerWithTimeInterval(1.5, target: self, selector: "showNextWord", userInfo: nil, repeats: false)
+                timer = NSTimer.scheduledTimerWithTimeInterval(UserPreferences.slideDisplayInverval , target: self, selector: "showNextWord", userInfo: nil, repeats: false)
             } else {
                 // Stop the timer
                 if let t = timer {
@@ -58,7 +58,6 @@ class ViewController: UIViewController, UIAlertViewDelegate,NSFetchedResultsCont
                 didCompleteWordSet(currentWordSet!)
             }
         }
-        
     }
     
     func didCompleteWordSet(wordSet : WordSet) {
@@ -96,7 +95,7 @@ class ViewController: UIViewController, UIAlertViewDelegate,NSFetchedResultsCont
     
     func scheduleReminder() {
         let localNotification = UILocalNotification()
-        localNotification.fireDate = NSDate(timeIntervalSinceNow:  NSTimeInterval(UserPreferences.lessonReminderInvervalMins * 60.0))
+        localNotification.fireDate = NSDate(timeIntervalSinceNow:  UserPreferences.lessonReminderInverval)
         localNotification.alertBody =  NSLocalizedString("Time for a reading Lesson!", comment:"Main message shown in local notification");
         localNotification.timeZone = NSTimeZone.defaultTimeZone()
         localNotification.alertAction = NSLocalizedString("Slide to start lesson now", comment:"The side prompt shown in local notification");

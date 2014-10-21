@@ -9,14 +9,27 @@
 import Foundation
 
 class UserPreferences {
-    class var lessonReminderInvervalMins : Int {
-        set(lessonReminderInvervalMins) {
-            NSUserDefaults.standardUserDefaults().setInteger(lessonReminderInvervalMins, forKey:"lessonRemindersEnabled");
+    class var lessonReminderInverval : NSTimeInterval {
+        set(lessonReminderInverval) {
+            NSUserDefaults.standardUserDefaults().setDouble(lessonReminderInverval, forKey:"lessonReminderInverval");
         }
         get {
-            let interval = NSUserDefaults.standardUserDefaults().integerForKey("lessonRemindersEnabled");
-            return interval > 0 ? interval : 15
+            let interval = NSUserDefaults.standardUserDefaults().doubleForKey("lessonReminderInverval");
+            return interval > 0 ? interval : 15.0
         }
     }
+    
+    class var slideDisplayInverval : NSTimeInterval {
+        set(slideDisplayInverval) {
+            NSUserDefaults.standardUserDefaults().setDouble(slideDisplayInverval, forKey:"slideDisplayInverval");
+        }
+        get {
+            let interval = NSUserDefaults.standardUserDefaults().doubleForKey("slideDisplayInverval");
+            return interval > 0 ? interval : 1.5
+        }
+    }
+
+    
+    
 }
 

@@ -15,12 +15,14 @@ class SettingsViewController: UITableViewController {
     @IBOutlet weak var clearWordsButton: UIButton!
     @IBOutlet weak var reminderIntervalStepper: UIStepper!
     @IBOutlet weak var reminderIntervalLabel: UILabel!
+    @IBOutlet weak var slideDurationSlider: UISlider!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.updateWordCount()
-        self.reminderIntervalStepper.value = Double(UserPreferences.lessonReminderInvervalMins)
+        self.reminderIntervalStepper.value = UserPreferences.lessonReminderInverval / 60.0
         didChangeReminderInverval(self.reminderIntervalStepper) // Force label update
+        self.slideDurationSlider.value = Float(UserPreferences.slideDisplayInverval)
     }
 
     @IBAction func didClickLoadWords(sender: AnyObject) {
@@ -77,9 +79,9 @@ class SettingsViewController: UITableViewController {
     }
     
     @IBAction func didChangeReminderInverval(sender: UIStepper) {
-        UserPreferences.lessonReminderInvervalMins = Int(sender.value)
+        UserPreferences.lessonReminderInverval = NSTimeInterval(sender.value * 60.0)
         let intervalString = NSLocalizedString("Every %d mins", comment:"Label in the settings pane for reminder inverval")
-        self.reminderIntervalLabel.text = NSString(format: intervalString, UserPreferences.lessonReminderInvervalMins)
+        self.reminderIntervalLabel.text = NSString(format: intervalString, Int(sender.value))
         let settings = UIUserNotificationSettings(forTypes: UIUserNotificationType.Sound | UIUserNotificationType.Alert | UIUserNotificationType.Badge, categories: nil)
         if !UIApplication.sharedApplication().currentUserNotificationSettings().isEqual(settings) {
             let title = NSLocalizedString("Reminders Can Not Be Sent", comment:"")
@@ -90,6 +92,9 @@ class SettingsViewController: UITableViewController {
     }
 
     
+    @IBAction func didChangeSlideDisplayInverval(sender: UISlider) {
+        UserPreferences.slideDisplayInverval = NSTimeInterval(sender.value);
+    }
     
     @IBAction func didClickRecreateWordLists(sender: AnyObject) {
         let numberOfWordSets = 5

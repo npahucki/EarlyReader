@@ -140,6 +140,9 @@
                                                 <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1.5" minValue="1" maxValue="5" translatesAutoresizingMaskIntoConstraints="NO" id="Iv6-Lx-OGX">
                                                     <rect key="frame" x="24" y="10" width="232" height="31"/>
                                                     <color key="thumbTintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <connections>
+                                                        <action selector="didChangeSlideDisplayInverval:" destination="45I-s5-k26" eventType="valueChanged" id="N40-F2-iUJ"/>
+                                                    </connections>
                                                 </slider>
                                             </subviews>
                                             <constraints>
@@ -177,6 +180,7 @@
                         <outlet property="clearWordsButton" destination="HtG-k4-U2O" id="A4m-4G-qRw"/>
                         <outlet property="reminderIntervalLabel" destination="aBT-bG-rcU" id="kSf-zQ-pVp"/>
                         <outlet property="reminderIntervalStepper" destination="OB3-l1-7IU" id="O14-fE-GMN"/>
+                        <outlet property="slideDurationSlider" destination="Iv6-Lx-OGX" id="Xt1-uO-gnz"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tIp-ON-WjZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
