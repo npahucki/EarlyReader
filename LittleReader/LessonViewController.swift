@@ -54,7 +54,10 @@ class LessonViewController: UIViewController,NSFetchedResultsControllerDelegate 
             showNextWord()
         } else {
             // TODO: Automatically load?
-            UIAlertView(title: "No Word Sets Loaded", message: "Please go to settings and load some words", delegate: nil, cancelButtonTitle : "Ok").show()
+            let title = NSLocalizedString("error_title_no_wordsets", comment:"")
+            let msg = NSLocalizedString("error_msg_no_wordsets", comment:"")
+            let cancelTitle = NSLocalizedString("uialert_accept_button_title", comment:"")
+            UIAlertView(title: title, message: msg, delegate: nil, cancelButtonTitle : cancelTitle).show()
         }
     }
     
@@ -136,9 +139,9 @@ class LessonViewController: UIViewController,NSFetchedResultsControllerDelegate 
     private func scheduleReminder() {
         let localNotification = UILocalNotification()
         localNotification.fireDate = NSDate(timeIntervalSinceNow:  UserPreferences.lessonReminderInverval)
-        localNotification.alertBody =  NSLocalizedString("Time for a reading Lesson!", comment:"Main message shown in local notification");
+        localNotification.alertBody =  NSLocalizedString("local_notification_reminder_alert_body", comment:"Main message shown in local notification");
         localNotification.timeZone = NSTimeZone.defaultTimeZone()
-        localNotification.alertAction = NSLocalizedString("Slide to start lesson now", comment:"The side prompt shown in local notification");
+        localNotification.alertAction = NSLocalizedString("local_notification_reminder_alert_action", comment:"The side prompt shown in local notification");
         //localNotification.soundName = // : String? // name of resource in app's bundle to play or UILocalNotificationDefaultSoundName
         localNotification.applicationIconBadgeNumber = 1
         UIApplication.sharedApplication().scheduleLocalNotification(localNotification)

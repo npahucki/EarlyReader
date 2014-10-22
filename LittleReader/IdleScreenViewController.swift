@@ -35,13 +35,13 @@ class IdleScreenViewController: UIViewController, LessonStateDelegate {
             auxMessageLabel.hidden = false
             let nextLessonStart = NSDate(timeInterval: 30.0 * 60.0, sinceDate: lastLessonFinished)
             if(nextLessonStart.timeIntervalSinceNow > 0) {
-                auxMessageLabel.text = NSString(format: NSLocalizedString("You should wait at least %d minutes before giving the next lesson",comment: ""),  Int(nextLessonStart.timeIntervalSinceNow / 60.0 + 1))
+                auxMessageLabel.text = NSString(format: NSLocalizedString("wait_time_for_next_lesson",comment: ""),  Int(nextLessonStart.timeIntervalSinceNow / 60.0 + 1))
                 auxMessageLabel.textColor = UIColor.orangeColor()
                 return
             }
         }
         
-        auxMessageLabel.text = NSLocalizedString("It's time for the next lesson. Press Start Lesson!",comment: "")
+        auxMessageLabel.text = NSLocalizedString("time_for_next_lesson",comment: "")
         auxMessageLabel.textColor = UIColor.greenColor()
     }
     

@@ -47,9 +47,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {
         if application.applicationState == UIApplicationState.Active {
-            let title = NSLocalizedString("Still there?", comment: "Title of alert shown during a lesson noficiation and the app is still open")
-            let msg = NSLocalizedString("It's time for your baby's next reading lesson", comment: "Message of alert shown during a lesson noficiation and the app is still open")
-            UIAlertView(title: title , message: msg, delegate: nil, cancelButtonTitle: "Ok").show()
+            let title = NSLocalizedString("time_for_lesson2_title", comment: "Title of alert shown during a lesson noficiation and the app is still open")
+            let msg = NSLocalizedString("time_for_next_lesson2", comment: "Message of alert shown during a lesson noficiation and the app is still open")
+            let cancelTitle = NSLocalizedString("uialert_accept_button_title", comment:"")
+            UIAlertView(title: title , message: msg, delegate: nil, cancelButtonTitle: cancelTitle).show()
         }
     }
     

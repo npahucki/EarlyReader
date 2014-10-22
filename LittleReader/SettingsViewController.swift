@@ -30,9 +30,10 @@ class SettingsViewController: UITableViewController {
         let url = NSURL.URLWithString("http://s3.amazonaws.com/InfantIQLittleReader/WordSets/en/basic.txt")
         let task = NSURLSession.sharedSession().dataTaskWithURL(url) {(data, response, error) in
             if error != nil {
-                let title = NSLocalizedString("Could Not Download Word List", comment: "")
-                let msg = NSLocalizedString("Check your network connection and try again please.", comment: "")
-                UIAlertView(title: title, message: msg, delegate: nil, cancelButtonTitle: "Ok").show()
+                let title = NSLocalizedString("error_title_download_word_list", comment: "")
+                let msg = NSLocalizedString("error_msg_check_network_try_again", comment: "")
+                let cancelTitle = NSLocalizedString("uialert_accept_button_title", comment:"")
+                UIAlertView(title: title, message: msg, delegate: nil, cancelButtonTitle: cancelTitle).show()
                 UsageAnalytics.trackError("Failed to download word list", error: error)
             } else {
                 let wordString = NSString(data:data, encoding: NSUTF8StringEncoding)
@@ -40,9 +41,10 @@ class SettingsViewController: UITableViewController {
                 let count = self.insertWords(words)
                 self.updateWordCount()
                 
-                let title = NSLocalizedString("Sucess!",comment: "")
-                let msg = NSLocalizedString("Imported %d new words", comment: "Message for alert box after words have been imported")
-                UIAlertView(title: "Success!", message: NSString(format: msg, count), delegate: nil, cancelButtonTitle: "Ok").show()
+                let title = NSLocalizedString("success_title!",comment: "")
+                let msg = NSLocalizedString("success_msg_import_words", comment: "Message for alert box after words have been imported")
+                let cancelTitle = NSLocalizedString("uialert_accept_button_title", comment:"")
+                UIAlertView(title: "success_title", message: NSString(format: msg, count), delegate: nil, cancelButtonTitle: cancelTitle).show()
             }
         }
         
@@ -64,15 +66,15 @@ class SettingsViewController: UITableViewController {
             }
                 
             if let err = error {
-                let title = NSLocalizedString("Could Not Delete Words", comment: "")
-                let cancelButtonTitle = NSLocalizedString("Ok", comment : "Cancel/Accept button title");
+                let title = NSLocalizedString("error_title_delete_words", comment: "")
+                let cancelButtonTitle = NSLocalizedString("uialert_accept_button_title", comment : "Cancel/Accept button title");
                 UIAlertView(title: title, message: error?.localizedDescription, delegate: nil, cancelButtonTitle: cancelButtonTitle).show()
                 UsageAnalytics.trackError("Failed to delete words", error: err)
             } else {
                 self.updateWordCount()
-                let title = NSLocalizedString("Success!", comment: "")
-                let msg = NSLocalizedString("Deleted all words.", comment:"")
-                let cancelButtonTitle = NSLocalizedString("Ok", comment : "Cancel/Accept button title");
+                let title = NSLocalizedString("success_title", comment: "")
+                let msg = NSLocalizedString("success_msg_delete_words", comment:"")
+                let cancelButtonTitle = NSLocalizedString("uialert_accept_button_title", comment : "Cancel/Accept button title");
                 UIAlertView(title: title, message: msg, delegate: nil, cancelButtonTitle: cancelButtonTitle).show()
             }
         }
@@ -80,13 +82,13 @@ class SettingsViewController: UITableViewController {
     
     @IBAction func didChangeReminderInverval(sender: UIStepper) {
         UserPreferences.lessonReminderInverval = NSTimeInterval(sender.value * 60.0)
-        let intervalString = NSLocalizedString("Every %d mins", comment:"Label in the settings pane for reminder inverval")
+        let intervalString = NSLocalizedString("settings_label_reminder", comment:"Label in the settings pane for reminder inverval")
         self.reminderIntervalLabel.text = NSString(format: intervalString, Int(sender.value))
         let settings = UIUserNotificationSettings(forTypes: UIUserNotificationType.Sound | UIUserNotificationType.Alert | UIUserNotificationType.Badge, categories: nil)
         if !UIApplication.sharedApplication().currentUserNotificationSettings().isEqual(settings) {
-            let title = NSLocalizedString("Reminders Can Not Be Sent", comment:"")
-            let msg = NSLocalizedString("You have previously denied permision to send notifications to the LittleReader App. You must go to iOS Settings->Notification Center->LittleReader and allow notifications if you want recieve reminders.", comment:"")
-            let cancelButtonTitle = NSLocalizedString("Ok",comment:"")
+            let title = NSLocalizedString("error_title_reminders_cannot_be_sent", comment:"")
+            let msg = NSLocalizedString("error_msg_activate_alerts", comment:"")
+            let cancelButtonTitle = NSLocalizedString("uialert_accept_button_title",comment:"")
             UIAlertView(title: title, message: msg, delegate: nil, cancelButtonTitle: cancelButtonTitle).show()
         }
     }
@@ -140,14 +142,14 @@ class SettingsViewController: UITableViewController {
             }
 
             if let err = error {
-                let title = NSLocalizedString("Could not create sets of words.", comment: "")
-                let cancelButtonTitle = NSLocalizedString("Ok", comment : "Cancel/Accept button title");
+                let title = NSLocalizedString("error_title_create_word_set", comment: "")
+                let cancelButtonTitle = NSLocalizedString("uialert_accept_button_title", comment : "Cancel/Accept button title");
                 UIAlertView(title: title, message: err.localizedDescription, delegate: nil, cancelButtonTitle: cancelButtonTitle).show()
                 UsageAnalytics.trackError("Failed to create word sets", error: err)
             } else {
-                let title = NSLocalizedString("Success!", comment: "")
-                let msg = NSString(format: NSLocalizedString("Created %d sets of words.", comment:""), numberOfWordSets)
-                let cancelButtonTitle = NSLocalizedString("Ok", comment : "Cancel/Accept button title");
+                let title = NSLocalizedString("success_title", comment: "")
+                let msg = NSString(format: NSLocalizedString("success_msg_create_word_sets", comment:""), numberOfWordSets)
+                let cancelButtonTitle = NSLocalizedString("uialert_accept_button_title", comment : "Cancel/Accept button title");
                 UIAlertView(title: title, message: msg, delegate: nil, cancelButtonTitle: cancelButtonTitle).show()
             }
         }
@@ -182,7 +184,7 @@ class SettingsViewController: UITableViewController {
             if let err = error {
                 UsageAnalytics.trackError("Filed to insertWords into CoreData", error: err)
             } else {
-                let title = NSString(format: NSLocalizedString("Clear Words (%d)",comment : "Settings menu text"), count)
+                let title = NSString(format: NSLocalizedString("settings_menu_clear_words",comment : "Settings menu text"), count)
                 self.clearWordsButton.setTitle(title, forState: UIControlState.Normal)
             }
         }
