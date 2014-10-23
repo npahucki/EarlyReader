@@ -19,7 +19,8 @@ class SettingsViewController: UITableViewController, ManagedObjectContextHolder 
     @IBOutlet weak var reminderIntervalStepper: UIStepper!
     @IBOutlet weak var reminderIntervalLabel: UILabel!
     @IBOutlet weak var slideDurationSlider: UISlider!
-
+    @IBOutlet weak var loadingWordsIndicator: UIActivityIndicatorView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.updateWordCount()
@@ -30,17 +31,21 @@ class SettingsViewController: UITableViewController, ManagedObjectContextHolder 
 
     @IBAction func didClickLoadWords(sender: AnyObject) {
         // TODO: Get from S3, make private call.
+        loadingWordsIndicator.startAnimating()
         let url = NSURL(string: "http://s3.amazonaws.com/InfantIQLittleReader/WordSets/en/basic.txt")
         let task = NSURLSession.sharedSession().dataTaskWithURL(url!) {(data, response, error) in
             if error != nil {
                 UIAlertView.showLocalizedErrorMessageWithOkButton("error_msg_check_network_try_again", title_key: "error_title_download_word_list")
                 UsageAnalytics.trackError("Failed to download word list", error: error)
             } else {
-                let wordString = NSString(data:data, encoding: NSUTF8StringEncoding)
-                let words = wordString?.componentsSeparatedByString("\n") as [String]
-                let count = self.insertWords(words)
-                self.updateWordCount()
-                UIAlertView.showGenericLocalizedSuccessMessage("success_msg_import_words")
+                // Called on background thread
+                dispatch_async(dispatch_get_main_queue(),{ () -> Void in
+                    let wordString = NSString(data:data, encoding: NSUTF8StringEncoding)
+                    let words = wordString?.componentsSeparatedByString("\n") as [String]
+                    let count = self.insertWords(words)
+                    self.updateWordCount()
+                    UIAlertView.showGenericLocalizedSuccessMessage("success_msg_import_words")
+                })
             }
         }
         
@@ -133,7 +138,6 @@ class SettingsViewController: UITableViewController, ManagedObjectContextHolder 
                 UsageAnalytics.trackError("Failed to create word sets", error: err)
             } else {
                 UIAlertView.showGenericLocalizedSuccessMessage("success_msg_create_word_sets")
-                NSLog("")
             }
         }
     }
@@ -162,6 +166,7 @@ class SettingsViewController: UITableViewController, ManagedObjectContextHolder 
             
             var error: NSError? = nil
             ctx.save(&error)
+            loadingWordsIndicator.stopAnimating()
             if let err = error {
                 UsageAnalytics.trackError("Filed to insertWords into CoreData", error: err)
             } else {

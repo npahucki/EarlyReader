@@ -31,8 +31,13 @@
                                                         <action selector="didClickLoadWords:" destination="45I-s5-k26" eventType="touchUpInside" id="Ue0-9K-AyV"/>
                                                     </connections>
                                                 </button>
+                                                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="ZxJ-e4-uPC">
+                                                    <rect key="frame" x="271" y="15" width="20" height="20"/>
+                                                </activityIndicatorView>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstAttribute="centerY" secondItem="ZxJ-e4-uPC" secondAttribute="centerY" id="Dlh-sL-Tg7"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="ZxJ-e4-uPC" secondAttribute="trailing" constant="16" id="G7C-NT-7Vb"/>
                                                 <constraint firstItem="slF-4M-btT" firstAttribute="top" secondItem="IeS-26-eiE" secondAttribute="topMargin" id="GcP-0p-ydv"/>
                                                 <constraint firstItem="slF-4M-btT" firstAttribute="leading" secondItem="IeS-26-eiE" secondAttribute="leading" constant="8" id="u1l-4g-sug"/>
                                             </constraints>
@@ -178,6 +183,7 @@
                     <nil key="simulatedStatusBarMetrics"/>
                     <connections>
                         <outlet property="clearWordsButton" destination="HtG-k4-U2O" id="A4m-4G-qRw"/>
+                        <outlet property="loadingWordsIndicator" destination="ZxJ-e4-uPC" id="8cz-kN-TVf"/>
                         <outlet property="reminderIntervalLabel" destination="aBT-bG-rcU" id="kSf-zQ-pVp"/>
                         <outlet property="reminderIntervalStepper" destination="OB3-l1-7IU" id="O14-fE-GMN"/>
                         <outlet property="slideDurationSlider" destination="Iv6-Lx-OGX" id="Xt1-uO-gnz"/>
