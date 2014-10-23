@@ -10,6 +10,9 @@
 		E818296519F6F04A007B6DC9 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E818296419F6F04A007B6DC9 /* Localizable.strings */; };
 		E818296A19F6FCB6007B6DC9 /* IdleScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E818296919F6FCB6007B6DC9 /* IdleScreenViewController.swift */; };
 		E818296C19F6FE87007B6DC9 /* LessonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E818296B19F6FE87007B6DC9 /* LessonViewController.swift */; };
+		E81846D019F94B580012EAAF /* ChildInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E81846CF19F94B580012EAAF /* ChildInfoViewController.swift */; };
+		E81846D219F9503D0012EAAF /* MangedObjectContextHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E81846D119F9503D0012EAAF /* MangedObjectContextHolder.swift */; };
+		E81846D419F961870012EAAF /* UIAlertViewWithError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E81846D319F961870012EAAF /* UIAlertViewWithError.swift */; };
 		E82DEBFD19F6AA4100EED0A8 /* UserPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = E82DEBFC19F6AA4100EED0A8 /* UserPreferences.swift */; };
 		E82DEC0519F6B97300EED0A8 /* UsageAnalytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = E82DEC0419F6B97300EED0A8 /* UsageAnalytics.swift */; };
 		E858B7EF19BA3D59003C5727 /* StreamReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E858B7EE19BA3D59003C5727 /* StreamReader.swift */; };
@@ -18,6 +21,7 @@
 		E85F39CC19A6BB670004C80F /* WordSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85F39CB19A6BB670004C80F /* WordSet.swift */; };
 		E85F39CD19A6BB670004C80F /* WordSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85F39CB19A6BB670004C80F /* WordSet.swift */; };
 		E8BA1C2419BA11DB0092974A /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8BA1C2319BA11DB0092974A /* SettingsViewController.swift */; };
+		E8BF775D19F932DA00F1BF0A /* Baby.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8BF775C19F932DA00F1BF0A /* Baby.swift */; };
 		E8CDE7E9199FD18F0036CFE8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8CDE7E8199FD18F0036CFE8 /* AppDelegate.swift */; };
 		E8CDE7EC199FD18F0036CFE8 /* LittleReader.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E8CDE7EA199FD18F0036CFE8 /* LittleReader.xcdatamodeld */; };
 		E8CDE7EE199FD18F0036CFE8 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8CDE7ED199FD18F0036CFE8 /* MainViewController.swift */; };
@@ -41,12 +45,16 @@
 		E818296419F6F04A007B6DC9 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		E818296919F6FCB6007B6DC9 /* IdleScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IdleScreenViewController.swift; sourceTree = "<group>"; };
 		E818296B19F6FE87007B6DC9 /* LessonViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LessonViewController.swift; sourceTree = "<group>"; };
+		E81846CF19F94B580012EAAF /* ChildInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChildInfoViewController.swift; sourceTree = "<group>"; };
+		E81846D119F9503D0012EAAF /* MangedObjectContextHolder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MangedObjectContextHolder.swift; sourceTree = "<group>"; };
+		E81846D319F961870012EAAF /* UIAlertViewWithError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIAlertViewWithError.swift; sourceTree = "<group>"; };
 		E82DEBFC19F6AA4100EED0A8 /* UserPreferences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPreferences.swift; sourceTree = "<group>"; };
 		E82DEC0419F6B97300EED0A8 /* UsageAnalytics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsageAnalytics.swift; sourceTree = "<group>"; };
 		E858B7EE19BA3D59003C5727 /* StreamReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StreamReader.swift; sourceTree = "<group>"; };
 		E85F39C819A6BB670004C80F /* Word.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Word.swift; sourceTree = "<group>"; };
 		E85F39CB19A6BB670004C80F /* WordSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordSet.swift; sourceTree = "<group>"; };
 		E8BA1C2319BA11DB0092974A /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		E8BF775C19F932DA00F1BF0A /* Baby.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Baby.swift; sourceTree = "<group>"; };
 		E8CDE7E3199FD18F0036CFE8 /* LittleReader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LittleReader.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8CDE7E7199FD18F0036CFE8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E8CDE7E8199FD18F0036CFE8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -85,6 +93,7 @@
 				E858B7EE19BA3D59003C5727 /* StreamReader.swift */,
 				E82DEBFC19F6AA4100EED0A8 /* UserPreferences.swift */,
 				E82DEC0419F6B97300EED0A8 /* UsageAnalytics.swift */,
+				E81846D319F961870012EAAF /* UIAlertViewWithError.swift */,
 			);
 			name = Util;
 			sourceTree = "<group>";
@@ -94,6 +103,7 @@
 			children = (
 				E85F39CB19A6BB670004C80F /* WordSet.swift */,
 				E85F39C819A6BB670004C80F /* Word.swift */,
+				E8BF775C19F932DA00F1BF0A /* Baby.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -105,6 +115,8 @@
 				E8CDE7ED199FD18F0036CFE8 /* MainViewController.swift */,
 				E818296919F6FCB6007B6DC9 /* IdleScreenViewController.swift */,
 				E818296B19F6FE87007B6DC9 /* LessonViewController.swift */,
+				E81846CF19F94B580012EAAF /* ChildInfoViewController.swift */,
+				E81846D119F9503D0012EAAF /* MangedObjectContextHolder.swift */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -273,9 +285,13 @@
 				E82DEBFD19F6AA4100EED0A8 /* UserPreferences.swift in Sources */,
 				E85F39C919A6BB670004C80F /* Word.swift in Sources */,
 				E8CDE7EC199FD18F0036CFE8 /* LittleReader.xcdatamodeld in Sources */,
+				E81846D219F9503D0012EAAF /* MangedObjectContextHolder.swift in Sources */,
 				E818296C19F6FE87007B6DC9 /* LessonViewController.swift in Sources */,
 				E818296A19F6FCB6007B6DC9 /* IdleScreenViewController.swift in Sources */,
+				E81846D019F94B580012EAAF /* ChildInfoViewController.swift in Sources */,
 				E858B7EF19BA3D59003C5727 /* StreamReader.swift in Sources */,
+				E8BF775D19F932DA00F1BF0A /* Baby.swift in Sources */,
+				E81846D419F961870012EAAF /* UIAlertViewWithError.swift in Sources */,
 				E8CDE7E9199FD18F0036CFE8 /* AppDelegate.swift in Sources */,
 				E85F39CC19A6BB670004C80F /* WordSet.swift in Sources */,
 				E82DEC0519F6B97300EED0A8 /* UsageAnalytics.swift in Sources */,

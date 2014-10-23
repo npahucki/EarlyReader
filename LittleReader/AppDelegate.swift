@@ -17,6 +17,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication!, didFinishLaunchingWithOptions launchOptions: NSDictionary!) -> Bool {
         // registering for sending user various kinds of notifications
             application.registerUserNotificationSettings(UIUserNotificationSettings(forTypes: UIUserNotificationType.Sound | UIUserNotificationType.Alert | UIUserNotificationType.Badge, categories: nil))
+        
+
+        // Inject this so it can be injected into the other view controllers.
+        var rootViewController = self.window!.rootViewController as MainViewController
+        rootViewController.managedContext = self.managedObjectContext
+        
         return true
     }
 
@@ -47,10 +53,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {
         if application.applicationState == UIApplicationState.Active {
-            let title = NSLocalizedString("time_for_lesson2_title", comment: "Title of alert shown during a lesson noficiation and the app is still open")
-            let msg = NSLocalizedString("time_for_next_lesson2", comment: "Message of alert shown during a lesson noficiation and the app is still open")
-            let cancelTitle = NSLocalizedString("uialert_accept_button_title", comment:"")
-            UIAlertView(title: title , message: msg, delegate: nil, cancelButtonTitle: cancelTitle).show()
+            UIAlertView.showLocalizedErrorMessageWithOkButton("time_for_next_lesson2", title_key: "time_for_lesson2_title")
         }
     }
     
@@ -65,7 +68,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     lazy var managedObjectModel: NSManagedObjectModel = {
         // The managed object model for the application. This property is not optional. It is a fatal error for the application not to be able to find and load its model.
         let modelURL = NSBundle.mainBundle().URLForResource("LittleReader", withExtension: "momd")
-        return NSManagedObjectModel(contentsOfURL: modelURL!)
+        return NSManagedObjectModel(contentsOfURL: modelURL!)!
     }()
 
     lazy var persistentStoreCoordinator: NSPersistentStoreCoordinator? = {
@@ -82,7 +85,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             dict[NSLocalizedDescriptionKey] = "Failed to initialize the application's saved data"
             dict[NSLocalizedFailureReasonErrorKey] = failureReason
             dict[NSUnderlyingErrorKey] = error
-            error = NSError.errorWithDomain("LittleReader", code: 9999, userInfo: dict)
+            error = NSError(domain: "LittleReader", code: 9999, userInfo: dict)
             // Replace this with code to handle the error appropriately.
             UsageAnalytics.trackError("Failed to create the persistentStoreCoordinator", error: error!)
             #if DEBUG

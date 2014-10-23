@@ -7,13 +7,33 @@
 //
 
 import UIKit
+import CoreData
 
-// TODO: 
-// 1) Each day: Retire oldest word after showing for some amount of time.
-// 2) Describe a time to play next word set
-
-class MainViewController : UINavigationController {
+class MainViewController : UINavigationController, UINavigationControllerDelegate, ManagedObjectContextHolder{
     
-   
+    var managedContext : NSManagedObjectContext? = nil
+    
+    override func viewDidLoad() {
+        self.delegate = self
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        if Baby.currentBaby == nil {
+            // Show the dialog to enter a baby. 
+            self.performSegueWithIdentifier("showNewChildDialog", sender: self)
+        }
+    }
+
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if let vc = segue.destinationViewController as? ManagedObjectContextHolder {
+            vc.managedContext = self.managedContext
+        }
+    }
+    
+    func navigationController(navigationController: UINavigationController, willShowViewController viewController: UIViewController, animated: Bool) {
+        if let vc = viewController as? ManagedObjectContextHolder {
+            vc.managedContext = self.managedContext
+        }
+    }
 }
 

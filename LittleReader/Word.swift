@@ -17,6 +17,5 @@ class Word: NSManagedObject {
     @NSManaged var retiredOn: NSDate
     @NSManaged var text: String
     @NSManaged var wordSet: WordSet
-
     
 }

@@ -22,9 +22,9 @@ class StreamReader  {
         self.chunkSize = chunkSize
         self.encoding = encoding
         
-        fileHandle = NSFileHandle.fileHandleForReadingFromURL(NSURL(string: url), error: nil)
-        assert(fileHandle != nil) // returning nil in an initializer is not (yet) supported
-        buffer = NSMutableData(capacity: chunkSize)
+        fileHandle = NSFileHandle(forReadingFromURL: NSURL(string: url)!, error: nil)
+        //assert(fileHandle != nil) // returning nil in an initializer is not (yet) supported
+        buffer = NSMutableData(capacity: chunkSize)!
         
         // Create NSData object containing the line delimiter:
         delimData = delimiter.dataUsingEncoding(NSUTF8StringEncoding)!

@@ -16,8 +16,11 @@ protocol LessonStateDelegate  {
 
 
 
-class LessonViewController: UIViewController,NSFetchedResultsControllerDelegate {
+class LessonViewController: UIViewController,NSFetchedResultsControllerDelegate, ManagedObjectContextHolder {
 
+    var managedContext : NSManagedObjectContext? = nil
+
+    
     @IBOutlet weak var textLabel: UILabel!
     
     private var fetchedResultController: NSFetchedResultsController = NSFetchedResultsController()
@@ -54,10 +57,8 @@ class LessonViewController: UIViewController,NSFetchedResultsControllerDelegate 
             showNextWord()
         } else {
             // TODO: Automatically load?
-            let title = NSLocalizedString("error_title_no_wordsets", comment:"")
-            let msg = NSLocalizedString("error_msg_no_wordsets", comment:"")
-            let cancelTitle = NSLocalizedString("uialert_accept_button_title", comment:"")
-            UIAlertView(title: title, message: msg, delegate: nil, cancelButtonTitle : cancelTitle).show()
+            UIAlertView.showLocalizedErrorMessageWithOkButton("error_msg_no_wordsets", title_key: "error_title_no_wordsets")
+            self.dismissViewControllerAnimated(false, completion: nil)
         }
     }
     
@@ -107,27 +108,32 @@ class LessonViewController: UIViewController,NSFetchedResultsControllerDelegate 
     
     private func findNextWordSet() -> WordSet? {
         var set : WordSet? = nil;
-        var error: NSError? = nil
-        let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
-        if let ctx = appDelegate.managedObjectContext {
-            let fetchRequest = NSFetchRequest(entityName: "WordSet")
-            fetchRequest.sortDescriptors = [NSSortDescriptor(key: "lastViewedOn", ascending: true)]
-            fetchRequest.fetchLimit = 1
-            if let results = ctx.executeFetchRequest(fetchRequest, error: &error) as? [WordSet] {
-                set = results.count > 0 ? results.first : nil
-            }
-        }
+
         
-        if error != nil {
-            UsageAnalytics.trackError("Error trying to load word set from CoreData", error:error!);
+        if let baby = Baby.currentBaby {
+            var error: NSError? = nil
+            if let ctx = managedContext {
+                let fetchRequest = NSFetchRequest(entityName: "WordSet")
+                fetchRequest.sortDescriptors = [NSSortDescriptor(key: "lastViewedOn", ascending: true)]
+                fetchRequest.fetchLimit = 1
+                fetchRequest.predicate = NSPredicate(format: "(baby == %@)",baby)
+                if let results = ctx.executeFetchRequest(fetchRequest, error: &error) as? [WordSet] {
+                    set = results.count > 0 ? results.first : nil
+                }
+            }
+            
+            if error != nil {
+                UsageAnalytics.trackError("Error trying to load word set from CoreData", error:error!);
+            }
+        } else {
+            NSLog("No Baby set!");
         }
         
         return set;
     }
     
     private func saveUpdatedWordsAndSets() {
-        let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
-        if let ctx = appDelegate.managedObjectContext {
+        if let ctx = managedContext {
             var error : NSError? = nil;
             ctx.save(&error)
             if let err = error {

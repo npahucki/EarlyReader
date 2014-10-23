@@ -15,5 +15,6 @@ class WordSet: NSManagedObject {
     @NSManaged var number: NSNumber
     @NSManaged var lastViewedOn: NSDate
     @NSManaged var words: NSMutableSet
+    @NSManaged var baby: NSManagedObject
 
 }
