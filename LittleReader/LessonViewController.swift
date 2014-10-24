@@ -75,6 +75,7 @@ class LessonViewController: UIViewController,NSFetchedResultsControllerDelegate,
                 
                 let word = words[self.currentIdx]
                 word.lastViewedOn = NSDate()
+                word.timesViewed++
                 textLabel.text = word.text
                 textLabel.setNeedsUpdateConstraints();
                 textLabel.setNeedsLayout();

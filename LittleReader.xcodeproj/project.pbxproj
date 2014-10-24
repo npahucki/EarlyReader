@@ -15,6 +15,9 @@
 		E81846D419F961870012EAAF /* UIAlertViewWithError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E81846D319F961870012EAAF /* UIAlertViewWithError.swift */; };
 		E82DEBFD19F6AA4100EED0A8 /* UserPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = E82DEBFC19F6AA4100EED0A8 /* UserPreferences.swift */; };
 		E82DEC0519F6B97300EED0A8 /* UsageAnalytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = E82DEC0419F6B97300EED0A8 /* UsageAnalytics.swift */; };
+		E841F67219FA868700684DD6 /* WordListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E841F67119FA868700684DD6 /* WordListViewController.swift */; };
+		E841F67619FA935800684DD6 /* NSDate+HumanizedTime.m in Sources */ = {isa = PBXBuildFile; fileRef = E841F67419FA935800684DD6 /* NSDate+HumanizedTime.m */; };
+		E841F67819FA938400684DD6 /* NSDateHumanizedTime.strings in Resources */ = {isa = PBXBuildFile; fileRef = E841F67719FA938400684DD6 /* NSDateHumanizedTime.strings */; };
 		E858B7EF19BA3D59003C5727 /* StreamReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E858B7EE19BA3D59003C5727 /* StreamReader.swift */; };
 		E85F39C919A6BB670004C80F /* Word.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85F39C819A6BB670004C80F /* Word.swift */; };
 		E85F39CA19A6BB670004C80F /* Word.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85F39C819A6BB670004C80F /* Word.swift */; };
@@ -50,6 +53,11 @@
 		E81846D319F961870012EAAF /* UIAlertViewWithError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIAlertViewWithError.swift; sourceTree = "<group>"; };
 		E82DEBFC19F6AA4100EED0A8 /* UserPreferences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPreferences.swift; sourceTree = "<group>"; };
 		E82DEC0419F6B97300EED0A8 /* UsageAnalytics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsageAnalytics.swift; sourceTree = "<group>"; };
+		E841F67119FA868700684DD6 /* WordListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordListViewController.swift; sourceTree = "<group>"; };
+		E841F67419FA935800684DD6 /* NSDate+HumanizedTime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+HumanizedTime.m"; sourceTree = "<group>"; };
+		E841F67519FA935800684DD6 /* NSDate+HumanizedTime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+HumanizedTime.h"; sourceTree = "<group>"; };
+		E841F67719FA938400684DD6 /* NSDateHumanizedTime.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = NSDateHumanizedTime.strings; sourceTree = "<group>"; };
+		E841F67919FA93CB00684DD6 /* ObjCBridging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjCBridging.h; sourceTree = "<group>"; };
 		E858B7EE19BA3D59003C5727 /* StreamReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StreamReader.swift; sourceTree = "<group>"; };
 		E85F39C819A6BB670004C80F /* Word.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Word.swift; sourceTree = "<group>"; };
 		E85F39CB19A6BB670004C80F /* WordSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordSet.swift; sourceTree = "<group>"; };
@@ -87,6 +95,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E841F67319FA92AC00684DD6 /* Third Party ObjC */ = {
+			isa = PBXGroup;
+			children = (
+				E841F67719FA938400684DD6 /* NSDateHumanizedTime.strings */,
+				E841F67419FA935800684DD6 /* NSDate+HumanizedTime.m */,
+				E841F67519FA935800684DD6 /* NSDate+HumanizedTime.h */,
+			);
+			name = "Third Party ObjC";
+			sourceTree = "<group>";
+		};
 		E858B7ED19BA3D3A003C5727 /* Util */ = {
 			isa = PBXGroup;
 			children = (
@@ -116,6 +134,7 @@
 				E818296919F6FCB6007B6DC9 /* IdleScreenViewController.swift */,
 				E818296B19F6FE87007B6DC9 /* LessonViewController.swift */,
 				E81846CF19F94B580012EAAF /* ChildInfoViewController.swift */,
+				E841F67119FA868700684DD6 /* WordListViewController.swift */,
 				E81846D119F9503D0012EAAF /* MangedObjectContextHolder.swift */,
 			);
 			name = ViewController;
@@ -145,11 +164,13 @@
 			children = (
 				E8CDE7EF199FD18F0036CFE8 /* Main.storyboard */,
 				E8CDE7E8199FD18F0036CFE8 /* AppDelegate.swift */,
+				E841F67919FA93CB00684DD6 /* ObjCBridging.h */,
 				E85F39AF19A695610004C80F /* ViewController */,
 				E85F39AE19A695500004C80F /* Model */,
 				E858B7ED19BA3D3A003C5727 /* Util */,
-				E8CDE7F2199FD18F0036CFE8 /* Images.xcassets */,
+				E841F67319FA92AC00684DD6 /* Third Party ObjC */,
 				E8CDE7EA199FD18F0036CFE8 /* LittleReader.xcdatamodeld */,
+				E8CDE7F2199FD18F0036CFE8 /* Images.xcassets */,
 				E8CDE7E6199FD18F0036CFE8 /* Supporting Files */,
 				E818296419F6F04A007B6DC9 /* Localizable.strings */,
 			);
@@ -263,6 +284,7 @@
 			files = (
 				E8CDE7F1199FD18F0036CFE8 /* Main.storyboard in Resources */,
 				E818296519F6F04A007B6DC9 /* Localizable.strings in Resources */,
+				E841F67819FA938400684DD6 /* NSDateHumanizedTime.strings in Resources */,
 				E8CDE7F3199FD18F0036CFE8 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -294,7 +316,9 @@
 				E81846D419F961870012EAAF /* UIAlertViewWithError.swift in Sources */,
 				E8CDE7E9199FD18F0036CFE8 /* AppDelegate.swift in Sources */,
 				E85F39CC19A6BB670004C80F /* WordSet.swift in Sources */,
+				E841F67619FA935800684DD6 /* NSDate+HumanizedTime.m in Sources */,
 				E82DEC0519F6B97300EED0A8 /* UsageAnalytics.swift in Sources */,
+				E841F67219FA868700684DD6 /* WordListViewController.swift in Sources */,
 				E8BA1C2419BA11DB0092974A /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -369,6 +393,7 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				SWIFT_OBJC_BRIDGING_HEADER = LIttleReader/ObjCBridging.h;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -405,6 +430,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OBJC_BRIDGING_HEADER = LIttleReader/ObjCBridging.h;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};

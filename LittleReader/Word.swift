@@ -12,10 +12,19 @@ import CoreData
 @objc(Word)
 class Word: NSManagedObject {
 
-    @NSManaged var lastViewedOn: NSDate
-    @NSManaged var activatedOn: NSDate
-    @NSManaged var retiredOn: NSDate
+    @NSManaged var lastViewedOn: NSDate?
+    @NSManaged var activatedOn: NSDate?
+    @NSManaged var retiredOn: NSDate?
     @NSManaged var text: String
-    @NSManaged var wordSet: WordSet
+    @NSManaged var timesViewed: Int16
+    @NSManaged var wordSet: WordSet?
+    
+    func wordSetNumber() -> Int {
+        if let set = self.wordSet {
+            return set.number.integerValue
+        } else {
+            return -1
+        }
+    }
     
 }

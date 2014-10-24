@@ -178,4 +178,11 @@ class SettingsViewController: UITableViewController, ManagedObjectContextHolder 
         return count
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if let vc = segue.destinationViewController as? ManagedObjectContextHolder {
+            vc.managedContext = self.managedContext
+        }
+    }
+
+    
 }

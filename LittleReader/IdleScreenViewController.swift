@@ -46,7 +46,7 @@ class IdleScreenViewController: UIViewController, ManagedObjectContextHolder, Le
     func updateWaitBeforeNextLessonMessage() {
         if let lastLessonFinished = UserPreferences.lastLessonTakenAt {
             auxMessageLabel.hidden = false
-            let nextLessonStart = NSDate(timeInterval: 30.0 * 60.0, sinceDate: lastLessonFinished)
+            let nextLessonStart = NSDate(timeInterval: 15.0 * 60.0, sinceDate: lastLessonFinished)
             if(nextLessonStart.timeIntervalSinceNow > 0) {
                 auxMessageLabel.text = NSString(format: NSLocalizedString("wait_time_for_next_lesson",comment: ""),  Int(nextLessonStart.timeIntervalSinceNow / 60.0 + 1))
                 auxMessageLabel.textColor = UIColor.orangeColor()
