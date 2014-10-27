@@ -57,7 +57,7 @@ class LessonViewController: UIViewController,NSFetchedResultsControllerDelegate,
             showNextWord()
         } else {
             // TODO: Automatically load?
-            UIAlertView.showLocalizedErrorMessageWithOkButton("error_msg_no_wordsets", title_key: "error_title_no_wordsets")
+            UIAlertView.showLocalizedErrorMessageWithOkButton("msg_error_no_wordsets", title_key: "error_title_no_wordsets")
             self.dismissViewControllerAnimated(false, completion: nil)
         }
     }
@@ -75,7 +75,9 @@ class LessonViewController: UIViewController,NSFetchedResultsControllerDelegate,
                 
                 let word = words[self.currentIdx]
                 word.lastViewedOn = NSDate()
-                word.timesViewed++
+                if word.activatedOn == nil {
+                    word.activatedOn = word.lastViewedOn
+                }
                 textLabel.text = word.text
                 textLabel.setNeedsUpdateConstraints();
                 textLabel.setNeedsLayout();
@@ -94,11 +96,21 @@ class LessonViewController: UIViewController,NSFetchedResultsControllerDelegate,
     
     private func didCompleteWordSet(wordSet : WordSet) {
         wordSet.lastViewedOn = NSDate()
+        var retireResult = wordSet.retireOldWords()
+        var fillResult = wordSet.fill(WORDS_PER_WORDSET)
+        NSLog("From WordSet #%@, %d words were retired and %d new words were added back in.", wordSet.number, retireResult.numberOfWordsRetired, fillResult.numberOfWordsAdded);
         saveUpdatedWordsAndSets()
         UserPreferences.lastLessonTakenAt = NSDate()
         scheduleReminder()
         if let d = delegate { d.didCompleteLesson() }
         self.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
+        
+        if let e = retireResult.error {
+            UsageAnalytics.trackError("Could not retire words in word set", error: e)
+        }
+        if let e = fillResult.error {
+            UsageAnalytics.trackError("Could not fill words in word set", error: e)
+        }
     }
     
     private func willStartWordSet(set : WordSet) {

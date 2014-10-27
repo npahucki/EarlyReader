@@ -21,8 +21,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         // Inject this so it can be injected into the other view controllers.
         var rootViewController = self.window!.rootViewController as MainViewController
+        _mainManagedObjectContext = self.managedObjectContext
         rootViewController.managedContext = self.managedObjectContext
-        
         return true
     }
 

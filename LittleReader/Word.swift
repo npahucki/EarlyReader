@@ -16,7 +16,7 @@ class Word: NSManagedObject {
     @NSManaged var activatedOn: NSDate?
     @NSManaged var retiredOn: NSDate?
     @NSManaged var text: String
-    @NSManaged var timesViewed: Int16
+    @NSManaged var timesViewed: UInt16
     @NSManaged var wordSet: WordSet?
     
     func wordSetNumber() -> Int {

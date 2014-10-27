@@ -8,6 +8,7 @@
 
 import Foundation
 
+@objc(UsageAnalytics)
 class UsageAnalytics {
     
     class func trackError(description: NSString, error: NSError) {

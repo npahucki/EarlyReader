@@ -45,7 +45,7 @@ class ChildInfoViewController: UIViewController, UITextFieldDelegate, ManagedObj
         baby!.managedObjectContext!.save(&error)
         if let e = error {
             UsageAnalytics.trackError("Could not save baby", error: e)
-            UIAlertView.showGenericLocalizedErrorMessage("error_msg_baby_save")
+            UIAlertView.showGenericLocalizedErrorMessage("msg_error_baby_save")
         } else {
             Baby.currentBaby = baby
             self.dismissViewControllerAnimated(true, nil)

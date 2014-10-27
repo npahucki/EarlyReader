@@ -34,10 +34,12 @@ class WordListViewController: UITableViewController,ManagedObjectContextHolder, 
     
     func taskFetchRequest() -> NSFetchRequest {
         let fetchRequest = NSFetchRequest(entityName: "Word")
+//        NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES selector:@selector(caseInsensitiveCompare:)];
+
         fetchRequest.sortDescriptors = [
             NSSortDescriptor(key: "wordSet.number", ascending: false),
             NSSortDescriptor(key: "retiredOn", ascending: false),
-            NSSortDescriptor(key: "text", ascending: true)
+            NSSortDescriptor(key: "text", ascending: true, selector: "localizedCaseInsensitiveCompare:")
         ]
         fetchRequest.propertiesToFetch = ["wordSet"]
         return fetchRequest
