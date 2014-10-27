@@ -45,7 +45,7 @@ class SettingsViewController: UITableViewController, ManagedObjectContextHolder 
                     self.insertWords(words)
                     self.updateWordCount()
                     UIAlertView.showGenericLocalizedSuccessMessage("msg_success_import_words")
-                    loadingWordsIndicator.stopAnimating()
+                    self.loadingWordsIndicator.stopAnimating()
                 })
             }
         }
