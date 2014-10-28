@@ -34,8 +34,6 @@ class WordListViewController: UITableViewController,ManagedObjectContextHolder, 
     
     func taskFetchRequest() -> NSFetchRequest {
         let fetchRequest = NSFetchRequest(entityName: "Word")
-//        NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES selector:@selector(caseInsensitiveCompare:)];
-
         fetchRequest.sortDescriptors = [
             NSSortDescriptor(key: "wordSet.number", ascending: false),
             NSSortDescriptor(key: "retiredOn", ascending: false),
@@ -53,6 +51,20 @@ class WordListViewController: UITableViewController,ManagedObjectContextHolder, 
         }
     }
 
+    
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if editingStyle == UITableViewCellEditingStyle.Delete {
+            let word = self.fetchedResultsController.objectAtIndexPath(indexPath) as Word
+            var wordSet = word.wordSet
+            self.managedContext?.deleteObject(word)
+            self.managedContext?.save(nil)
+            if wordSet != nil {
+                wordSet!.fill()
+                self.tableView.reloadData()
+            }
+        }
+    }
+    
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let sections = fetchedResultsController.sections {
             return sections[section].numberOfObjects
