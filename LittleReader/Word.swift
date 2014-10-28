@@ -9,7 +9,6 @@
 import Foundation
 import CoreData
 
-@objc(Word)
 class Word: NSManagedObject {
 
     @NSManaged var lastViewedOn: NSDate?

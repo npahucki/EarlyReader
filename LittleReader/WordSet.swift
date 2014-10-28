@@ -10,7 +10,6 @@ import Foundation
 import CoreData
 
 
-@objc(WordSet)
 class WordSet: NSManagedObject {
 
     @NSManaged var number: NSNumber

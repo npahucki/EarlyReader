@@ -15,21 +15,16 @@
 		E81846D019F94B580012EAAF /* ChildInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E81846CF19F94B580012EAAF /* ChildInfoViewController.swift */; };
 		E81846D219F9503D0012EAAF /* MangedObjectContextHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E81846D119F9503D0012EAAF /* MangedObjectContextHolder.swift */; };
 		E81846D419F961870012EAAF /* UIAlertViewWithError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E81846D319F961870012EAAF /* UIAlertViewWithError.swift */; };
-		E81C445A19FBEA2B007966E5 /* Baby.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8BF775C19F932DA00F1BF0A /* Baby.swift */; };
-		E81C445B19FBEA2E007966E5 /* Word.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85F39C819A6BB670004C80F /* Word.swift */; };
-		E81C445C19FBEA31007966E5 /* WordSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85F39CB19A6BB670004C80F /* WordSet.swift */; };
-		E81C445E19FBF7AB007966E5 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = E81C445D19FBF7AB007966E5 /* File.swift */; };
-		E81C445F19FBF7AB007966E5 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = E81C445D19FBF7AB007966E5 /* File.swift */; };
 		E81C446019FBFA5C007966E5 /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = E816042C19FAE05200B87B9D /* Common.swift */; };
-		E81C446219FE7794007966E5 /* WordTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E81C446119FE7794007966E5 /* WordTests.swift */; };
+		E81C446219FE7794007966E5 /* WordImporterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E81C446119FE7794007966E5 /* WordImporterTests.swift */; };
 		E81C446419FE77C6007966E5 /* WordSetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E81C446319FE77C6007966E5 /* WordSetTests.swift */; };
 		E82DEBFD19F6AA4100EED0A8 /* UserPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = E82DEBFC19F6AA4100EED0A8 /* UserPreferences.swift */; };
 		E82DEC0519F6B97300EED0A8 /* UsageAnalytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = E82DEC0419F6B97300EED0A8 /* UsageAnalytics.swift */; };
 		E839D8D219FE802900D0765E /* WordImporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E839D8D119FE802900D0765E /* WordImporter.swift */; };
-		E839D8D319FE802900D0765E /* WordImporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E839D8D119FE802900D0765E /* WordImporter.swift */; };
 		E841F67219FA868700684DD6 /* WordListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E841F67119FA868700684DD6 /* WordListViewController.swift */; };
 		E841F67619FA935800684DD6 /* NSDate+HumanizedTime.m in Sources */ = {isa = PBXBuildFile; fileRef = E841F67419FA935800684DD6 /* NSDate+HumanizedTime.m */; };
 		E841F67819FA938400684DD6 /* NSDateHumanizedTime.strings in Resources */ = {isa = PBXBuildFile; fileRef = E841F67719FA938400684DD6 /* NSDateHumanizedTime.strings */; };
+		E84AE46119FEEC2E00910BC0 /* LittleReader.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E8CDE7EA199FD18F0036CFE8 /* LittleReader.xcdatamodeld */; };
 		E858B7EF19BA3D59003C5727 /* StreamReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E858B7EE19BA3D59003C5727 /* StreamReader.swift */; };
 		E85F39C919A6BB670004C80F /* Word.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85F39C819A6BB670004C80F /* Word.swift */; };
 		E85F39CC19A6BB670004C80F /* WordSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85F39CB19A6BB670004C80F /* WordSet.swift */; };
@@ -42,6 +37,10 @@
 		E8CDE7F3199FD18F0036CFE8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E8CDE7F2199FD18F0036CFE8 /* Images.xcassets */; };
 		E8CDE7FF199FD18F0036CFE8 /* LittleReaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8CDE7FE199FD18F0036CFE8 /* LittleReaderTests.swift */; };
 		E8CDE80919A03AB70036CFE8 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8CDE80819A03AB70036CFE8 /* QuartzCore.framework */; };
+		E8D9C13919FF247B00FAFA8F /* WordImporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E839D8D119FE802900D0765E /* WordImporter.swift */; };
+		E8D9C13A19FF247E00FAFA8F /* Baby.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8BF775C19F932DA00F1BF0A /* Baby.swift */; };
+		E8D9C13B19FF248100FAFA8F /* Word.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85F39C819A6BB670004C80F /* Word.swift */; };
+		E8D9C13C19FF248400FAFA8F /* WordSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85F39CB19A6BB670004C80F /* WordSet.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,8 +61,7 @@
 		E81846CF19F94B580012EAAF /* ChildInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChildInfoViewController.swift; sourceTree = "<group>"; };
 		E81846D119F9503D0012EAAF /* MangedObjectContextHolder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MangedObjectContextHolder.swift; sourceTree = "<group>"; };
 		E81846D319F961870012EAAF /* UIAlertViewWithError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIAlertViewWithError.swift; sourceTree = "<group>"; };
-		E81C445D19FBF7AB007966E5 /* File.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
-		E81C446119FE7794007966E5 /* WordTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WordTests.swift; path = ../LittleReader/WordTests.swift; sourceTree = "<group>"; };
+		E81C446119FE7794007966E5 /* WordImporterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WordImporterTests.swift; path = ../LittleReader/WordImporterTests.swift; sourceTree = "<group>"; };
 		E81C446319FE77C6007966E5 /* WordSetTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordSetTests.swift; sourceTree = "<group>"; };
 		E82DEBFC19F6AA4100EED0A8 /* UserPreferences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPreferences.swift; sourceTree = "<group>"; };
 		E82DEC0419F6B97300EED0A8 /* UsageAnalytics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsageAnalytics.swift; sourceTree = "<group>"; };
@@ -190,7 +188,6 @@
 				E8CDE7F2199FD18F0036CFE8 /* Images.xcassets */,
 				E8CDE7E6199FD18F0036CFE8 /* Supporting Files */,
 				E818296419F6F04A007B6DC9 /* Localizable.strings */,
-				E81C445D19FBF7AB007966E5 /* File.swift */,
 			);
 			path = LittleReader;
 			sourceTree = "<group>";
@@ -206,10 +203,10 @@
 		E8CDE7FB199FD18F0036CFE8 /* LittleReaderTests */ = {
 			isa = PBXGroup;
 			children = (
-				E81C446119FE7794007966E5 /* WordTests.swift */,
+				E81C446319FE77C6007966E5 /* WordSetTests.swift */,
+				E81C446119FE7794007966E5 /* WordImporterTests.swift */,
 				E8CDE7FE199FD18F0036CFE8 /* LittleReaderTests.swift */,
 				E8CDE7FC199FD18F0036CFE8 /* Supporting Files */,
-				E81C446319FE77C6007966E5 /* WordSetTests.swift */,
 			);
 			path = LittleReaderTests;
 			sourceTree = "<group>";
@@ -341,7 +338,6 @@
 				E841F67619FA935800684DD6 /* NSDate+HumanizedTime.m in Sources */,
 				E82DEC0519F6B97300EED0A8 /* UsageAnalytics.swift in Sources */,
 				E841F67219FA868700684DD6 /* WordListViewController.swift in Sources */,
-				E81C445E19FBF7AB007966E5 /* File.swift in Sources */,
 				E8BA1C2419BA11DB0092974A /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -351,14 +347,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				E816042919FAD89F00B87B9D /* UsageAnalytics.swift in Sources */,
-				E839D8D319FE802900D0765E /* WordImporter.swift in Sources */,
-				E81C445F19FBF7AB007966E5 /* File.swift in Sources */,
-				E81C445B19FBEA2E007966E5 /* Word.swift in Sources */,
-				E81C445A19FBEA2B007966E5 /* Baby.swift in Sources */,
+				E84AE46119FEEC2E00910BC0 /* LittleReader.xcdatamodeld in Sources */,
+				E8D9C13B19FF248100FAFA8F /* Word.swift in Sources */,
 				E8CDE7FF199FD18F0036CFE8 /* LittleReaderTests.swift in Sources */,
-				E81C446219FE7794007966E5 /* WordTests.swift in Sources */,
+				E8D9C13C19FF248400FAFA8F /* WordSet.swift in Sources */,
+				E8D9C13A19FF247E00FAFA8F /* Baby.swift in Sources */,
+				E81C446219FE7794007966E5 /* WordImporterTests.swift in Sources */,
 				E81C446419FE77C6007966E5 /* WordSetTests.swift in Sources */,
-				E81C445C19FBEA31007966E5 /* WordSet.swift in Sources */,
+				E8D9C13919FF247B00FAFA8F /* WordImporter.swift in Sources */,
 				E81C446019FBFA5C007966E5 /* Common.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

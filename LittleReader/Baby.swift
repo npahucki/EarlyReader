@@ -11,8 +11,6 @@ import CoreData
 import UIKit
 
 
-
-@objc(Baby)
 class Baby: NSManagedObject {
 
     @NSManaged var name: String

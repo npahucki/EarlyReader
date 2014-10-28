@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6252" systemVersion="13F34" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
-    <entity name="Baby" representedClassName="Baby" syncable="YES">
+    <entity name="Baby" representedClassName="LittleReader.Baby" syncable="YES">
         <attribute name="birthDate" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="wordSets" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="WordSet" inverseName="baby" inverseEntity="WordSet" syncable="YES"/>
     </entity>
-    <entity name="Word" representedClassName="Word" syncable="YES">
+    <entity name="Word" representedClassName="LittleReader.Word" syncable="YES">
         <attribute name="activatedOn" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="lastViewedOn" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="retiredOn" optional="YES" attributeType="Date" syncable="YES"/>
@@ -13,7 +13,7 @@
         <attribute name="timesViewed" attributeType="Integer 16" minValueString="0" defaultValueString="0" syncable="YES"/>
         <relationship name="wordSet" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="WordSet" inverseName="words" inverseEntity="WordSet" syncable="YES"/>
     </entity>
-    <entity name="WordSet" representedClassName="WordSet" syncable="YES">
+    <entity name="WordSet" representedClassName="LittleReader.WordSet" syncable="YES">
         <attribute name="lastViewedOn" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="number" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <relationship name="baby" maxCount="1" deletionRule="Nullify" destinationEntity="Baby" inverseName="wordSets" inverseEntity="Baby" syncable="YES"/>
@@ -22,6 +22,6 @@
     <elements>
         <element name="Baby" positionX="4345" positionY="-5974" width="128" height="88"/>
         <element name="Word" positionX="4653" positionY="-5742" width="128" height="135"/>
-        <element name="WordSet" positionX="4338" positionY="-5751" width="128" height="28"/>
+        <element name="WordSet" positionX="4338" positionY="-5751" width="128" height="103"/>
     </elements>
 </model>

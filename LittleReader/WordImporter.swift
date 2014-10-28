@@ -19,11 +19,6 @@ class WordImporter {
     }
     
     
-    
-    
-    
-    
-    
     func importWords(wordList : [String]) -> (numberOfWordsAdded : Int, error : NSError?) {
         var count = 0
         var error: NSError? = nil
@@ -32,36 +27,35 @@ class WordImporter {
         let words = wordList.sorted { $0.localizedCaseInsensitiveCompare($1) == NSComparisonResult.OrderedAscending }
         // Sort words ascending
         
-        if let entityDescripition = NSEntityDescription.entityForName("Word", inManagedObjectContext:_managedContext) {
             var wordsThatAlreadyExistIdx = 0
             // First get a list of existing words
-            let fetchRequest = NSFetchRequest()
-            fetchRequest.entity = entityDescripition
+             let fetchRequest = NSFetchRequest(entityName: "Word")
             fetchRequest.predicate = NSPredicate(format:"(text IN %@)", words);
             fetchRequest.sortDescriptors = [NSSortDescriptor(key: "text", ascending: true, selector: "localizedCaseInsensitiveCompare:")]
             fetchRequest.propertiesToFetch = ["text"]
-            let wordsThatAlreadyExist = _managedContext.executeFetchRequest(fetchRequest, error: &error) as [Word]
-            
-            // Now insert words that don't already exist
-            if(error == nil) {
-                for w in words {
-                    if !w.isEmpty {
-                        if wordsThatAlreadyExist.count > 0 &&
-                            w.localizedCaseInsensitiveCompare(wordsThatAlreadyExist[wordsThatAlreadyExistIdx].text) == NSComparisonResult.OrderedSame {
-                            // Skip, already eixts
-                            wordsThatAlreadyExistIdx++
-                            NSLog("Skipped import of %@ because it already exists", w)
-                        } else {
+            let wordsThatAlreadyExist = _managedContext.executeFetchRequest(fetchRequest, error: &error)
+        
+            for w in words {
+                if !w.isEmpty {
+                    var currentExistingWord : String? = wordsThatAlreadyExist?.count > 0 ? (wordsThatAlreadyExist![wordsThatAlreadyExistIdx] as Word).text : nil
+                    if currentExistingWord != nil && w.localizedCaseInsensitiveCompare(currentExistingWord!) == NSComparisonResult.OrderedSame {
+                        // Skip, already eixts
+                        wordsThatAlreadyExistIdx++
+                        NSLog("Skipped import of %@ because it already exists", w)
+                    } else {
+                        if let entityDescription = NSEntityDescription.entityForName("Word", inManagedObjectContext:_managedContext) {
                             count++
-                            let word = Word(entity: entityDescripition, insertIntoManagedObjectContext: _managedContext)
+                            let word = Word(entity: entityDescription, insertIntoManagedObjectContext: _managedContext)
                             word.text = w
                         }
                     }
                 }
-                
+            }
+        
+            // Now insert words that don't already exist
+            if(error == nil) {
                 _managedContext.save(&error)
             }
-        }
         return (numberOfWordsAdded : count, error: error)
         
     }
