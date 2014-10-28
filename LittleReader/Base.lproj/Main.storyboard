@@ -64,27 +64,6 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="vij-gM-y2s">
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vij-gM-y2s" id="5sW-pW-h6C">
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NH9-hJ-Uq5">
-                                                    <rect key="frame" x="8" y="8" width="146" height="30"/>
-                                                    <state key="normal" title="Re/Create Word Lists">
-                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                    </state>
-                                                    <connections>
-                                                        <action selector="didClickRecreateWordLists:" destination="45I-s5-k26" eventType="touchUpInside" id="kEz-gs-0JV"/>
-                                                    </connections>
-                                                </button>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="NH9-hJ-Uq5" firstAttribute="leading" secondItem="5sW-pW-h6C" secondAttribute="leading" constant="8" id="Caa-m2-TRf"/>
-                                                <constraint firstItem="NH9-hJ-Uq5" firstAttribute="top" secondItem="5sW-pW-h6C" secondAttribute="topMargin" id="Ol9-IH-JMy"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="206-Is-QpV">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="206-Is-QpV" id="BYF-JU-cce">
@@ -105,6 +84,32 @@
                                             <constraints>
                                                 <constraint firstItem="uv4-Rl-63b" firstAttribute="leading" secondItem="BYF-JU-cce" secondAttribute="leading" constant="8" id="udb-rb-g9P"/>
                                                 <constraint firstItem="uv4-Rl-63b" firstAttribute="top" secondItem="BYF-JU-cce" secondAttribute="topMargin" id="vwC-bl-9ad"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="xVp-bp-gmC">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xVp-bp-gmC" id="xov-7h-mDk">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" continuous="NO" autorepeat="NO" value="3" minimumValue="3" maximumValue="7" translatesAutoresizingMaskIntoConstraints="NO" id="ZGQ-lJ-YhB">
+                                                    <rect key="frame" x="213" y="10" width="94" height="29"/>
+                                                    <connections>
+                                                        <action selector="didChangeNumberOfWordSets:" destination="45I-s5-k26" eventType="valueChanged" id="es1-4s-CDy"/>
+                                                    </connections>
+                                                </stepper>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Using 3 sets of words" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RwG-Rj-9Y5">
+                                                    <rect key="frame" x="8" y="15" width="167" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="centerY" secondItem="ZGQ-lJ-YhB" secondAttribute="centerY" id="5Nv-6w-odz"/>
+                                                <constraint firstItem="RwG-Rj-9Y5" firstAttribute="leading" secondItem="xov-7h-mDk" secondAttribute="leading" constant="8" id="WN0-65-csU"/>
+                                                <constraint firstAttribute="centerY" secondItem="RwG-Rj-9Y5" secondAttribute="centerY" id="jGH-mR-gNa"/>
+                                                <constraint firstAttribute="trailing" secondItem="ZGQ-lJ-YhB" secondAttribute="trailing" constant="8" id="oQK-bc-rfl"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -207,6 +212,8 @@
                     <connections>
                         <outlet property="clearWordsButton" destination="HtG-k4-U2O" id="A4m-4G-qRw"/>
                         <outlet property="loadingWordsIndicator" destination="ZxJ-e4-uPC" id="8cz-kN-TVf"/>
+                        <outlet property="numberOfWordSetsLabel" destination="RwG-Rj-9Y5" id="cVZ-Fb-kZQ"/>
+                        <outlet property="numberOfWordSetsStepper" destination="ZGQ-lJ-YhB" id="LRW-sU-ThL"/>
                         <outlet property="reminderIntervalLabel" destination="aBT-bG-rcU" id="kSf-zQ-pVp"/>
                         <outlet property="reminderIntervalStepper" destination="OB3-l1-7IU" id="O14-fE-GMN"/>
                         <outlet property="slideDurationSlider" destination="Iv6-Lx-OGX" id="Xt1-uO-gnz"/>
@@ -214,7 +221,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tIp-ON-WjZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="976" y="-326"/>
+            <point key="canvasLocation" x="975.5" y="-326"/>
         </scene>
         <!--Word List View Controller-->
         <scene sceneID="NrU-f7-Dfw">

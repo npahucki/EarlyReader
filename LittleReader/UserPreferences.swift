@@ -19,6 +19,16 @@ class UserPreferences {
         }
     }
     
+    class var numberOfWordSets : Int {
+        set(numberOfWordSets) {
+        NSUserDefaults.standardUserDefaults().setInteger(numberOfWordSets, forKey:"numberOfWordSets");
+        }
+        get {
+            let numberSets = NSUserDefaults.standardUserDefaults().integerForKey("numberOfWordSets");
+            return numberSets > 0 ? numberSets : 3
+        }
+    }
+    
     class var slideDisplayInverval : NSTimeInterval {
         set(slideDisplayInverval) {
             NSUserDefaults.standardUserDefaults().setDouble(slideDisplayInverval, forKey:"slideDisplayInverval");

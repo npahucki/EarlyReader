@@ -61,11 +61,13 @@ class WordSet: NSManagedObject {
         var wordRetired = false
         var error : NSError? = nil
         let now = NSDate()
-        if self.lastWordRetiredOn?.timeIntervalSinceDate(now) > TIME_INTERVAL_24_HOURS {
+        var shouldRetire = false
+        if self.lastWordRetiredOn == nil || self.lastWordRetiredOn!.timeIntervalSinceDate(now) > TIME_INTERVAL_24_HOURS {
             let result = self.retireOldWords(1)
             error = result.error
             wordRetired = result.numberOfWordsRetired > 0
         }
+        
         return (wasWordRetired : wordRetired, error : error);
     }
     
@@ -76,16 +78,15 @@ class WordSet: NSManagedObject {
         var wordsRetired = 0
         let now = NSDate()
         let wordsInSet = self.words.count
-        for object in self.words {
-            if let word = object as? Word {
-                if word.timesViewed >= WORD_VIEWS_BEFORE_RETIREMENT {
-                    self.lastWordRetiredOn = now
-                    word.retiredOn = now
-                    word.wordSet = nil;
-                    wordsRetired++
-                    if wordsRetired >= maximumWordsToRetire {
-                     break
-                    }
+        let wordsSortedByViews = self.words.sortedArrayUsingDescriptors([NSSortDescriptor(key: "timesViewed", ascending:false)]) as [Word]
+        for word in wordsSortedByViews {
+            if word.timesViewed >= WORD_VIEWS_BEFORE_RETIREMENT {
+                self.lastWordRetiredOn = now
+                word.retiredOn = now
+                word.wordSet = nil;
+                wordsRetired++
+                if wordsRetired >= maximumWordsToRetire {
+                    break
                 }
             }
         }

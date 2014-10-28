@@ -47,17 +47,17 @@ class Baby: NSManagedObject {
         }
     }
 
-    /// Populates all the word sets for the baby, returning the number of sets added.
+    /// Populates all the word sets for the baby, returning the number of sets added/removed to conform to the number specified.
     /// Note, if word sets already exist, they will not be created again, but they will be filled
     /// The numberOfWordSetsCreated only returns new sets created, not any ecisting ones that were filled, thus a return value of zero
     /// doen't necessarily mean something when wrong. Check the value of error to see if something went wrong. 
-    func populateWordSets(numberOfWordSets : Int, numberOfWordsPerSet : Int) -> (numberOfWordSetsCreated: Int, error: NSError?) {
+    func populateWordSets(numberOfWordSets : Int, numberOfWordsPerSet : Int = WORDS_PER_WORDSET) -> (numberOfWordSetsCreated: Int, error: NSError?) {
         var setsCreated = 0
         var error : NSError? = nil
         if let ctx = managedObjectContext {
             // If any word sets are missing, populate them
             var countOfWordSets = self.wordSets.count
-            if(countOfWordSets < numberOfWordSets) {
+            if countOfWordSets < numberOfWordSets {
                 let numberOfWordSetsToCreate = numberOfWordSets - countOfWordSets
                 let entityDescripition = NSEntityDescription.entityForName("WordSet", inManagedObjectContext:ctx)
                 for(var i = 0; i<numberOfWordSetsToCreate; i++) {
@@ -65,6 +65,17 @@ class Baby: NSManagedObject {
                     wordSet.number = countOfWordSets + i
                     wordSet.baby = Baby.currentBaby!
                     setsCreated++
+                }
+            } else if countOfWordSets > numberOfWordSets  {
+                // need to reduce the number of sets
+                let sortedWordSets = self.wordSets.sortedArrayUsingDescriptors([NSSortDescriptor(key: "number", ascending:false)]) as [WordSet]
+                var setsToRemove = countOfWordSets - numberOfWordSets
+                for set in sortedWordSets {
+                    self.managedObjectContext?.deleteObject(set)
+                    setsCreated--
+                    if --setsToRemove <= 0 {
+                        break
+                    }
                 }
             }
             

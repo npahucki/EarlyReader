@@ -80,8 +80,7 @@ class LessonViewController: UIViewController,NSFetchedResultsControllerDelegate,
                 textLabel.text = word.text
                 textLabel.setNeedsUpdateConstraints();
                 textLabel.setNeedsLayout();
-                // TODO: FIx below test code!
-                timer = NSTimer.scheduledTimerWithTimeInterval(/*UserPreferences.slideDisplayInverval*/ 0.1, target: self, selector: "showNextWord", userInfo: nil, repeats: false)
+                timer = NSTimer.scheduledTimerWithTimeInterval(UserPreferences.slideDisplayInverval, target: self, selector: "showNextWord", userInfo: nil, repeats: false)
             } else {
                 // Stop the timer
                 if let t = timer {

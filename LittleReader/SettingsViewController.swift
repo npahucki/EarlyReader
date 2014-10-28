@@ -20,12 +20,16 @@ class SettingsViewController: UITableViewController, ManagedObjectContextHolder 
     @IBOutlet weak var reminderIntervalLabel: UILabel!
     @IBOutlet weak var slideDurationSlider: UISlider!
     @IBOutlet weak var loadingWordsIndicator: UIActivityIndicatorView!
-    
+    @IBOutlet weak var numberOfWordSetsStepper: UIStepper!
+    @IBOutlet weak var numberOfWordSetsLabel: UILabel!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.updateWordCount()
         self.reminderIntervalStepper.value = UserPreferences.lessonReminderInverval / 60.0
+        self.numberOfWordSetsStepper.value = Double(Baby.currentBaby?.wordSets.count ?? 3)
         didChangeReminderInverval(self.reminderIntervalStepper) // Force label update
+        didChangeNumberOfWordSets(self.numberOfWordSetsStepper)
         self.slideDurationSlider.value = Float(UserPreferences.slideDisplayInverval)
     }
     
@@ -46,6 +50,7 @@ class SettingsViewController: UITableViewController, ManagedObjectContextHolder 
                     self.insertWords(words)
                     self.updateWordCount()
                     UIAlertView.showGenericLocalizedSuccessMessage("msg_success_import_words")
+                    Baby.currentBaby?.populateWordSets(UserPreferences.numberOfWordSets)
                     self.loadingWordsIndicator.stopAnimating()
                 }
             })
@@ -87,25 +92,29 @@ class SettingsViewController: UITableViewController, ManagedObjectContextHolder 
         }
     }
     
+    @IBAction func didChangeNumberOfWordSets(sender: UIStepper) {
+        let newNumberOfWordSets = Int(sender.value)
+
+        if let baby = Baby.currentBaby {
+            if baby.wordSets.count != newNumberOfWordSets {
+                let result = baby.populateWordSets(newNumberOfWordSets)
+                if let err = result.error {
+                    UsageAnalytics.trackError("Failed to change the word set count", error: err)
+                    UIAlertView.showGenericLocalizedErrorMessage("msg_error_create_word_set")
+                }
+                
+                UserPreferences.numberOfWordSets = baby.wordSets.count
+                sender.value = Double(baby.wordSets.count)
+            }
+        }
+        
+        let wordSetString = NSLocalizedString("settings_label_number_of_wordsets", comment:"Label in the settings pane for number of WordSets")
+        self.numberOfWordSetsLabel.text = NSString(format: wordSetString,  Int(sender.value))
+
+    }
     
     @IBAction func didChangeSlideDisplayInverval(sender: UISlider) {
         UserPreferences.slideDisplayInverval = NSTimeInterval(sender.value);
-    }
-    
-    @IBAction func didClickRecreateWordLists(sender: AnyObject) {
-        let numberOfWordSets = 5 // TODO: Read from settings
-        
-        if let baby = Baby.currentBaby {
-            var result = baby.populateWordSets(numberOfWordSets, numberOfWordsPerSet: 5)
-            if let e = result.error {
-                UsageAnalytics.trackError("Failed to save new word sets", error: e)
-                UIAlertView.showGenericLocalizedErrorMessage("msg_error_create_word_set")
-            }  else if result.numberOfWordSetsCreated > 0 {
-                UIAlertView.showGenericLocalizedSuccessMessage("msg_success_create_word_sets")
-            } else {
-                UIAlertView.showGenericLocalizedErrorMessage("msg_create_word_set_none")
-            }
-        }
     }
     
     func updateWordCount() {
