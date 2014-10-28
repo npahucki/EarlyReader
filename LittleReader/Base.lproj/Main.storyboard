@@ -43,6 +43,27 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="MhT-G1-OTv">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="MhT-G1-OTv" id="dys-2M-S6f">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hr2-8a-Skf">
+                                                    <rect key="frame" x="8" y="8" width="76" height="30"/>
+                                                    <state key="normal" title="Add Words">
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <connections>
+                                                        <segue destination="gdO-A8-fQw" kind="presentation" modalPresentationStyle="currentContext" id="PqX-kO-9W5"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="hr2-8a-Skf" firstAttribute="leading" secondItem="dys-2M-S6f" secondAttribute="leading" constant="8" id="N8X-ct-el1"/>
+                                                <constraint firstItem="hr2-8a-Skf" firstAttribute="top" secondItem="dys-2M-S6f" secondAttribute="topMargin" id="zYW-PX-JmG"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="8Dk-qY-hLh">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8Dk-qY-hLh" id="mQy-Ja-N9E">
@@ -258,17 +279,75 @@
                             <outlet property="delegate" destination="rbc-kI-bcy" id="Eib-eU-WM0"/>
                         </connections>
                     </tableView>
+                    <toolbarItems/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="y9M-nI-f0G" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="vkw-C2-OJi">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                    <items>
-                        <barButtonItem title="Item" id="TN8-fH-xDk"/>
-                    </items>
-                </toolbar>
             </objects>
-            <point key="canvasLocation" x="1611" y="40"/>
+            <point key="canvasLocation" x="1610" y="128"/>
+        </scene>
+        <!--Add Words View Controller-->
+        <scene sceneID="BhV-g1-aBK">
+            <objects>
+                <viewController id="gdO-A8-fQw" customClass="AddWordsViewController" customModule="LittleReader" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="eTo-vz-PJU"/>
+                        <viewControllerLayoutGuide type="bottom" id="Qni-Ps-okl"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="jBT-eb-eUz">
+                        <rect key="frame" x="0.0" y="0.0" width="315" height="400"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Paste in or type the words.  One word per line!" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Sf-Wi-jDu">
+                                <rect key="frame" x="47" y="8" width="221" height="43"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7JX-od-Sqn">
+                                <rect key="frame" x="262" y="362" width="37" height="30"/>
+                                <state key="normal" title="Done">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="didClickDoneButton:" destination="gdO-A8-fQw" eventType="touchUpInside" id="9bm-3S-YRg"/>
+                                </connections>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r9s-DP-iBM">
+                                <rect key="frame" x="16" y="67" width="283" height="287"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="done"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Qni-Ps-okl" firstAttribute="top" secondItem="r9s-DP-iBM" secondAttribute="bottom" constant="16" id="Jpj-xb-Hbn"/>
+                            <constraint firstItem="r9s-DP-iBM" firstAttribute="leading" secondItem="jBT-eb-eUz" secondAttribute="leading" constant="16" id="SUB-xV-MAJ"/>
+                            <constraint firstAttribute="trailing" secondItem="r9s-DP-iBM" secondAttribute="trailing" constant="16" id="ckb-91-eRV"/>
+                            <constraint firstItem="7JX-od-Sqn" firstAttribute="top" secondItem="r9s-DP-iBM" secondAttribute="bottom" constant="8" id="f6j-pF-vxs"/>
+                            <constraint firstAttribute="centerX" secondItem="2Sf-Wi-jDu" secondAttribute="centerX" id="gpF-Sk-65m"/>
+                            <constraint firstItem="Qni-Ps-okl" firstAttribute="top" secondItem="7JX-od-Sqn" secondAttribute="bottom" constant="8" id="m9R-5S-Vd6"/>
+                            <constraint firstAttribute="trailing" secondItem="7JX-od-Sqn" secondAttribute="trailing" constant="16" id="oMr-fx-IyV"/>
+                            <constraint firstItem="2Sf-Wi-jDu" firstAttribute="top" secondItem="eTo-vz-PJU" secondAttribute="bottom" constant="8" id="tbk-Ho-ISJ"/>
+                            <constraint firstItem="r9s-DP-iBM" firstAttribute="top" secondItem="2Sf-Wi-jDu" secondAttribute="bottom" constant="16" id="xCs-sK-hBF"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="Jpj-xb-Hbn"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="315" height="400"/>
+                    <connections>
+                        <outlet property="textView" destination="r9s-DP-iBM" id="ZpS-Mu-ape"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="37g-3d-ix5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2359" y="-334"/>
         </scene>
         <!--Idle View Controller-->
         <scene sceneID="zNI-qE-8Rc">

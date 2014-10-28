@@ -79,8 +79,9 @@ class Baby: NSManagedObject {
                 }
             }
             
-            for object in self.wordSets {
-                let wordSet = object as WordSet
+            let sortedWordSets = self.wordSets.sortedArrayUsingDescriptors([NSSortDescriptor(key: "number", ascending:true)]) as [WordSet]
+            // Iterate sorted, so that we fill number 1 first, then 2, 3, etc....
+            for wordSet in sortedWordSets {
                 var fillResult = wordSet.fill(numberOfWordsPerSet)
                 if fillResult.numberOfWordsAdded < numberOfWordsPerSet {
                     // TODO: this probably means that we are running out of words

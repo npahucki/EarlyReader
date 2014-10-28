@@ -48,9 +48,7 @@ class SettingsViewController: UITableViewController, ManagedObjectContextHolder 
                     let wordString = NSString(data:data, encoding: NSUTF8StringEncoding)
                     let words = wordString?.componentsSeparatedByString("\n") as [String]
                     self.insertWords(words)
-                    self.updateWordCount()
                     UIAlertView.showGenericLocalizedSuccessMessage("msg_success_import_words")
-                    Baby.currentBaby?.populateWordSets(UserPreferences.numberOfWordSets)
                     self.loadingWordsIndicator.stopAnimating()
                 }
             })
@@ -92,6 +90,8 @@ class SettingsViewController: UITableViewController, ManagedObjectContextHolder 
         }
     }
     
+    
+    
     @IBAction func didChangeNumberOfWordSets(sender: UIStepper) {
         let newNumberOfWordSets = Int(sender.value)
 
@@ -121,7 +121,8 @@ class SettingsViewController: UITableViewController, ManagedObjectContextHolder 
         if let ctx = managedContext {
             let fetchRequest = NSFetchRequest(entityName: "Word")
             let count = ctx.countForFetchRequest(fetchRequest, error: nil)
-            self.clearWordsButton.setTitle("Clear Words (\(count))", forState: UIControlState.Normal)
+            let title = NSString(format: NSLocalizedString("settings_menu_clear_words",comment : "Settings menu text"), count)
+            self.clearWordsButton.setTitle(title, forState: UIControlState.Normal)
         }
     }
     
@@ -132,8 +133,8 @@ class SettingsViewController: UITableViewController, ManagedObjectContextHolder 
             if let err = result.error {
                 UsageAnalytics.trackError("Failed to insertWords into CoreData", error: err)
             } else {
-                let title = NSString(format: NSLocalizedString("settings_menu_clear_words",comment : "Settings menu text"), result.numberOfWordsAdded)
-                self.clearWordsButton.setTitle(title, forState: UIControlState.Normal)
+                Baby.currentBaby?.populateWordSets(UserPreferences.numberOfWordSets)
+                updateWordCount()
             }
         }
     }
@@ -142,6 +143,11 @@ class SettingsViewController: UITableViewController, ManagedObjectContextHolder 
         if let vc = segue.destinationViewController as? ManagedObjectContextHolder {
             vc.managedContext = self.managedContext
         }
+        
+        if let vc = segue.destinationViewController as? AddWordsViewController {
+            vc.settingsViewController = self
+        }
+        
     }
     
     

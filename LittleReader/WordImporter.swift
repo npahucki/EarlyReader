@@ -24,8 +24,10 @@ class WordImporter {
         var error: NSError? = nil
         
         
-        let words = wordList.sorted { $0.localizedCaseInsensitiveCompare($1) == NSComparisonResult.OrderedAscending }
-        // Sort words ascending
+        // Sort words ascending, trim words
+        let words = wordList
+            .map{ $0.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()) }
+            .sorted { $0.localizedCaseInsensitiveCompare($1) == NSComparisonResult.OrderedAscending }
         
             var wordsThatAlreadyExistIdx = 0
             // First get a list of existing words
@@ -33,11 +35,11 @@ class WordImporter {
             fetchRequest.predicate = NSPredicate(format:"(text IN %@)", words);
             fetchRequest.sortDescriptors = [NSSortDescriptor(key: "text", ascending: true, selector: "localizedCaseInsensitiveCompare:")]
             fetchRequest.propertiesToFetch = ["text"]
-            let wordsThatAlreadyExist = _managedContext.executeFetchRequest(fetchRequest, error: &error)
+            let wordsThatAlreadyExist = _managedContext.executeFetchRequest(fetchRequest, error: &error) as [Word]?
         
             for w in words {
                 if !w.isEmpty {
-                    var currentExistingWord : String? = wordsThatAlreadyExist?.count > 0 ? (wordsThatAlreadyExist![wordsThatAlreadyExistIdx] as Word).text : nil
+                    var currentExistingWord : String? = wordsThatAlreadyExist?.count > 0 ? wordsThatAlreadyExist![wordsThatAlreadyExistIdx].text : nil
                     if currentExistingWord != nil && w.localizedCaseInsensitiveCompare(currentExistingWord!) == NSComparisonResult.OrderedSame {
                         // Skip, already eixts
                         wordsThatAlreadyExistIdx++
