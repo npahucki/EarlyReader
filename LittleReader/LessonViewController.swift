@@ -75,13 +75,13 @@ class LessonViewController: UIViewController,NSFetchedResultsControllerDelegate,
                 
                 let word = words[self.currentIdx]
                 word.lastViewedOn = NSDate()
-                if word.activatedOn == nil {
-                    word.activatedOn = word.lastViewedOn
-                }
+                word.timesViewed++
+                
                 textLabel.text = word.text
                 textLabel.setNeedsUpdateConstraints();
                 textLabel.setNeedsLayout();
-                timer = NSTimer.scheduledTimerWithTimeInterval(UserPreferences.slideDisplayInverval , target: self, selector: "showNextWord", userInfo: nil, repeats: false)
+                // TODO: FIx below test code!
+                timer = NSTimer.scheduledTimerWithTimeInterval(/*UserPreferences.slideDisplayInverval*/ 0.1, target: self, selector: "showNextWord", userInfo: nil, repeats: false)
             } else {
                 // Stop the timer
                 if let t = timer {
@@ -96,9 +96,9 @@ class LessonViewController: UIViewController,NSFetchedResultsControllerDelegate,
     
     private func didCompleteWordSet(wordSet : WordSet) {
         wordSet.lastViewedOn = NSDate()
-        var retireResult = wordSet.retireOldWords()
-        var fillResult = wordSet.fill(WORDS_PER_WORDSET)
-        NSLog("From WordSet #%@, %d words were retired and %d new words were added back in.", wordSet.number, retireResult.numberOfWordsRetired, fillResult.numberOfWordsAdded);
+        var retireResult = wordSet.retireOldWord()
+        var fillResult = wordSet.fill()
+        NSLog("From WordSet #%@, %d words were retired and %d new words were added back in.", wordSet.number, retireResult.wasWordRetired ? 1 : 0, fillResult.numberOfWordsAdded);
         saveUpdatedWordsAndSets()
         UserPreferences.lastLessonTakenAt = NSDate()
         scheduleReminder()

@@ -13,7 +13,7 @@ import CoreData
 
 let WORDS_PER_WORDSET = 5
 let WORD_VIEWS_BEFORE_RETIREMENT : UInt16 = 15
-
+let TIME_INTERVAL_24_HOURS = NSTimeInterval(60 * 60 * 24)
 
 
 // Icky Global, but no other good way to get the context to Baby class.

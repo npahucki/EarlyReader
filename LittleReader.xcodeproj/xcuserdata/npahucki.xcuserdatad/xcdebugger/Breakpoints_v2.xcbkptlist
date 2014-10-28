@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LittleReader/SettingsViewController.swift"
-            timestampString = "435796192.870118"
+            timestampString = "436199785.588561"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "93"
-            endingLineNumber = "93"
+            startingLineNumber = "95"
+            endingLineNumber = "95"
             landmarkName = "didClickRecreateWordLists(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -58,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LittleReader/SettingsViewController.swift"
-            timestampString = "435796192.870118"
+            timestampString = "436199785.588561"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "77"
-            endingLineNumber = "77"
+            startingLineNumber = "79"
+            endingLineNumber = "79"
             landmarkName = "SettingsViewController"
             landmarkType = "3">
          </BreakpointContent>
@@ -90,11 +90,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LittleReader/SettingsViewController.swift"
-            timestampString = "435796192.870118"
+            timestampString = "436199785.588561"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "54"
-            endingLineNumber = "54"
+            startingLineNumber = "56"
+            endingLineNumber = "56"
             landmarkName = "SettingsViewController"
             landmarkType = "3">
             <Locations>
@@ -136,11 +136,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LittleReader/SettingsViewController.swift"
-            timestampString = "435796192.870118"
+            timestampString = "436199785.588561"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "55"
-            endingLineNumber = "55"
+            startingLineNumber = "57"
+            endingLineNumber = "57"
             landmarkName = "didClickClearWords(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -152,11 +152,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LittleReader/SettingsViewController.swift"
-            timestampString = "435796192.870118"
+            timestampString = "436199785.588561"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "56"
-            endingLineNumber = "56"
+            startingLineNumber = "58"
+            endingLineNumber = "58"
             landmarkName = "didClickClearWords(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -324,41 +324,25 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LittleReader/SettingsViewController.swift"
-            timestampString = "435796192.870118"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "49"
-            endingLineNumber = "49"
-            landmarkName = "didClickLoadWords(_:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "LittleReader/SettingsViewController.swift"
-            timestampString = "435944628.822143"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "170"
-            endingLineNumber = "170">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "LittleReader/SettingsViewController.swift"
-            timestampString = "435944628.822143"
+            timestampString = "436199785.588561"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "157"
             endingLineNumber = "157">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LittleReader/SettingsViewController.swift"
+            timestampString = "436199785.588561"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "144"
+            endingLineNumber = "144">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -464,11 +448,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LittleReader/Baby.swift"
-            timestampString = "436105443.924578"
+            timestampString = "436132053.572118"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "61"
-            endingLineNumber = "61">
+            startingLineNumber = "59"
+            endingLineNumber = "59"
+            landmarkName = "populateWordSets(_:numberOfWordsPerSet:)"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -478,11 +464,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LittleReader/WordSet.swift"
-            timestampString = "436106171.071921"
+            timestampString = "436199610.167411"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "38"
-            endingLineNumber = "38"
+            startingLineNumber = "46"
+            endingLineNumber = "46"
             landmarkName = "fill(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -494,11 +480,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LittleReader/WordSet.swift"
-            timestampString = "436106282.264375"
+            timestampString = "436199610.167411"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "47"
-            endingLineNumber = "47"
+            startingLineNumber = "55"
+            endingLineNumber = "55"
             landmarkName = "fill(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -510,11 +496,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LittleReader/Baby.swift"
-            timestampString = "436106340.814635"
+            timestampString = "436132053.572118"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "60"
-            endingLineNumber = "60">
+            startingLineNumber = "58"
+            endingLineNumber = "58"
+            landmarkName = "populateWordSets(_:numberOfWordsPerSet:)"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -524,12 +512,486 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LittleReader/WordImporter.swift"
-            timestampString = "436111566.701964"
+            timestampString = "436152552.117945"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "72"
-            endingLineNumber = "72"
+            startingLineNumber = "61"
+            endingLineNumber = "61"
             landmarkName = "importWords(_:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LittleReader/WordImporterTests.swift"
+            timestampString = "436138570.045215"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "83"
+            endingLineNumber = "83"
+            landmarkName = "setUp()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LittleReader/AppDelegate.swift"
+            timestampString = "436125070.620327"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "24"
+            endingLineNumber = "24"
+            landmarkName = "application(_:didFinishLaunchingWithOptions:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LittleReader/WordImporterTests.swift"
+            timestampString = "436138570.045215"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "112"
+            endingLineNumber = "112"
+            landmarkName = "testDuplicateWordsRejected()"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "LittleReaderTests.WordImporterTests.testDuplicateWordsRejected (LittleReaderTests.WordImporterTests)() -&gt; ()"
+                  moduleName = "LittleReaderTests"
+                  urlString = "file:///Users/npahucki/Projects/LittleReader/LittleReader/WordImporterTests.swift"
+                  timestampString = "436135506.364204"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "56"
+                  endingLineNumber = "56"
+                  offsetFromSymbolStart = "2635">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "LittleReaderTests.WordImporterTests.(testDuplicateWordsRejected (LittleReaderTests.WordImporterTests) -&gt; () -&gt; ()).(implicit closure #3)"
+                  moduleName = "LittleReaderTests"
+                  urlString = "file:///Users/npahucki/Projects/LittleReader/LittleReader/WordImporterTests.swift"
+                  timestampString = "436135506.364372"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "56"
+                  endingLineNumber = "56"
+                  offsetFromSymbolStart = "33">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "LittleReaderTests.WordImporterTests.(testDuplicateWordsRejected (LittleReaderTests.WordImporterTests) -&gt; () -&gt; ()).(implicit closure #4)"
+                  moduleName = "LittleReaderTests"
+                  urlString = "file:///Users/npahucki/Projects/LittleReader/LittleReader/WordImporterTests.swift"
+                  timestampString = "436135506.364479"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "56"
+                  endingLineNumber = "56"
+                  offsetFromSymbolStart = "68">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LittleReader/WordImporter.swift"
+            timestampString = "436138570.045215"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "27"
+            endingLineNumber = "27"
+            landmarkName = "importWords(_:)"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "LittleReader.WordImporter.importWords (LittleReader.WordImporter)(Swift.Array&lt;Swift.String&gt;) -&gt; (numberOfWordsAdded : Swift.Int, error : Swift.Optional&lt;ObjectiveC.NSError&gt;)"
+                  moduleName = "LittleReader"
+                  urlString = "file:///Users/npahucki/Projects/LittleReader/LittleReader/WordImporter.swift"
+                  timestampString = "436152590.553417"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "27"
+                  endingLineNumber = "27"
+                  offsetFromSymbolStart = "59">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "LittleReader.WordImporter.(importWords (LittleReader.WordImporter) -&gt; (Swift.Array&lt;Swift.String&gt;) -&gt; (numberOfWordsAdded : Swift.Int, error : Swift.Optional&lt;ObjectiveC.NSError&gt;)).(closure #1)"
+                  moduleName = "LittleReader"
+                  urlString = "file:///Users/npahucki/Projects/LittleReader/LittleReader/WordImporter.swift"
+                  timestampString = "436152590.553567"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "27"
+                  endingLineNumber = "27"
+                  offsetFromSymbolStart = "45">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "reabstraction thunk helper from @callee_owned (@owned Swift.String, @owned Swift.String) -&gt; (@unowned Swift.Bool) to @callee_owned (@in Swift.String, @in Swift.String) -&gt; (@unowned Swift.Bool)"
+                  moduleName = "LittleReader"
+                  urlString = "file:///Users/npahucki/Projects/LittleReader/LittleReader/WordImporter.swift"
+                  timestampString = "436152590.553657"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "27"
+                  endingLineNumber = "27"
+                  offsetFromSymbolStart = "21">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LittleReader/WordImporter.swift"
+            timestampString = "436138570.045215"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "28"
+            endingLineNumber = "28"
+            landmarkName = "importWords(_:)"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "LittleReader.WordImporter.importWords (LittleReader.WordImporter)(Swift.Array&lt;Swift.String&gt;) -&gt; (numberOfWordsAdded : Swift.Int, error : Swift.Optional&lt;ObjectiveC.NSError&gt;)"
+                  moduleName = "LittleReader"
+                  urlString = "file:///Users/npahucki/Projects/LittleReader/LittleReader/WordImporter.swift"
+                  timestampString = "436132380.733428"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "35"
+                  endingLineNumber = "35"
+                  offsetFromSymbolStart = "221">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "LittleReaderTests.WordImporter.importWords (LittleReaderTests.WordImporter)(Swift.Array&lt;Swift.String&gt;) -&gt; (numberOfWordsAdded : Swift.Int, error : Swift.Optional&lt;ObjectiveC.NSError&gt;)"
+                  moduleName = "LittleReaderTests"
+                  urlString = "file:///Users/npahucki/Projects/LittleReader/LittleReader/WordImporter.swift"
+                  timestampString = "436132380.733582"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "35"
+                  endingLineNumber = "35"
+                  offsetFromSymbolStart = "221">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LittleReader/WordImporterTests.swift"
+            timestampString = "436137925.240119"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "69"
+            endingLineNumber = "69"
+            landmarkName = "setUp()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LittleReader/WordImporter.swift"
+            timestampString = "436138570.045215"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "36"
+            endingLineNumber = "36"
+            landmarkName = "importWords(_:)"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "LittleReader.WordImporter.importWords (LittleReader.WordImporter)(Swift.Array&lt;Swift.String&gt;) -&gt; (numberOfWordsAdded : Swift.Int, error : Swift.Optional&lt;ObjectiveC.NSError&gt;)"
+                  moduleName = "LittleReader"
+                  urlString = "file:///Users/npahucki/Projects/LittleReader/LittleReader/WordImporter.swift"
+                  timestampString = "436136393.344393"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "41"
+                  endingLineNumber = "41"
+                  offsetFromSymbolStart = "1979">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "LittleReaderTests.WordImporter.importWords (LittleReaderTests.WordImporter)(Swift.Array&lt;Swift.String&gt;) -&gt; (numberOfWordsAdded : Swift.Int, error : Swift.Optional&lt;ObjectiveC.NSError&gt;)"
+                  moduleName = "LittleReaderTests"
+                  urlString = "file:///Users/npahucki/Projects/LittleReader/LittleReader/WordImporter.swift"
+                  timestampString = "436136393.451667"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "41"
+                  endingLineNumber = "41"
+                  offsetFromSymbolStart = "1979">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LittleReader/WordImporterTests.swift"
+            timestampString = "436138570.045215"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "113"
+            endingLineNumber = "113"
+            landmarkName = "testDuplicateWordsRejected()"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "LittleReaderTests.WordImporterTests.testDuplicateWordsRejected (LittleReaderTests.WordImporterTests)() -&gt; ()"
+                  moduleName = "LittleReaderTests"
+                  urlString = "file:///Users/npahucki/Projects/LittleReader/LittleReader/WordImporterTests.swift"
+                  timestampString = "436135512.794293"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "57"
+                  endingLineNumber = "57"
+                  offsetFromSymbolStart = "3009">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "LittleReaderTests.WordImporterTests.(testDuplicateWordsRejected (LittleReaderTests.WordImporterTests) -&gt; () -&gt; ()).(implicit closure #3)"
+                  moduleName = "LittleReaderTests"
+                  urlString = "file:///Users/npahucki/Projects/LittleReader/LittleReader/WordImporterTests.swift"
+                  timestampString = "436135512.794419"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "57"
+                  endingLineNumber = "57"
+                  offsetFromSymbolStart = "50">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LittleReader/WordImporter.swift"
+            timestampString = "436152552.117945"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "41"
+            endingLineNumber = "41"
+            landmarkName = "importWords(_:)"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "LittleReader.WordImporter.importWords (LittleReader.WordImporter)(Swift.Array&lt;Swift.String&gt;) -&gt; (numberOfWordsAdded : Swift.Int, error : Swift.Optional&lt;ObjectiveC.NSError&gt;)"
+                  moduleName = "LittleReader"
+                  urlString = "file:///Users/npahucki/Projects/LittleReader/LittleReader/WordImporter.swift"
+                  timestampString = "436137434.288854"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "46"
+                  endingLineNumber = "46"
+                  offsetFromSymbolStart = "5276">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "LittleReaderTests.WordImporter.importWords (LittleReaderTests.WordImporter)(Swift.Array&lt;Swift.String&gt;) -&gt; (numberOfWordsAdded : Swift.Int, error : Swift.Optional&lt;ObjectiveC.NSError&gt;)"
+                  moduleName = "LittleReaderTests"
+                  urlString = "file:///Users/npahucki/Projects/LittleReader/LittleReader/WordImporter.swift"
+                  timestampString = "436137434.53889"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "46"
+                  endingLineNumber = "46"
+                  offsetFromSymbolStart = "5276">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "LittleReaderTests.WordImporter.importWords (LittleReaderTests.WordImporter)(Swift.Array&lt;Swift.String&gt;) -&gt; (numberOfWordsAdded : Swift.Int, error : Swift.Optional&lt;ObjectiveC.NSError&gt;)"
+                  moduleName = "LittleReaderTests"
+                  urlString = "file:///Users/npahucki/Projects/LittleReader/LittleReader/WordImporter.swift"
+                  timestampString = "436137434.539044"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "46"
+                  endingLineNumber = "46"
+                  offsetFromSymbolStart = "6210">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LittleReader/WordImporter.swift"
+            timestampString = "436152552.117945"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "38"
+            endingLineNumber = "38"
+            landmarkName = "importWords(_:)"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "LittleReader.WordImporter.importWords (LittleReader.WordImporter)(Swift.Array&lt;Swift.String&gt;) -&gt; (numberOfWordsAdded : Swift.Int, error : Swift.Optional&lt;ObjectiveC.NSError&gt;)"
+                  moduleName = "LittleReader"
+                  urlString = "file:///Users/npahucki/Projects/LittleReader/LittleReader/WordImporter.swift"
+                  timestampString = "436137434.290024"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "43"
+                  endingLineNumber = "43"
+                  offsetFromSymbolStart = "3134">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "LittleReaderTests.WordImporter.importWords (LittleReaderTests.WordImporter)(Swift.Array&lt;Swift.String&gt;) -&gt; (numberOfWordsAdded : Swift.Int, error : Swift.Optional&lt;ObjectiveC.NSError&gt;)"
+                  moduleName = "LittleReaderTests"
+                  urlString = "file:///Users/npahucki/Projects/LittleReader/LittleReader/WordImporter.swift"
+                  timestampString = "436137434.539241"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "43"
+                  endingLineNumber = "43"
+                  offsetFromSymbolStart = "3134">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LittleReader/WordImporter.swift"
+            timestampString = "436152552.117945"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "40"
+            endingLineNumber = "40"
+            landmarkName = "importWords(_:)"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "LittleReader.WordImporter.importWords (LittleReader.WordImporter)(Swift.Array&lt;Swift.String&gt;) -&gt; (numberOfWordsAdded : Swift.Int, error : Swift.Optional&lt;ObjectiveC.NSError&gt;)"
+                  moduleName = "LittleReader"
+                  urlString = "file:///Users/npahucki/Projects/LittleReader/LittleReader/WordImporter.swift"
+                  timestampString = "436136425.920558"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "45"
+                  endingLineNumber = "45"
+                  offsetFromSymbolStart = "2721">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "LittleReaderTests.WordImporter.importWords (LittleReaderTests.WordImporter)(Swift.Array&lt;Swift.String&gt;) -&gt; (numberOfWordsAdded : Swift.Int, error : Swift.Optional&lt;ObjectiveC.NSError&gt;)"
+                  moduleName = "LittleReaderTests"
+                  urlString = "file:///Users/npahucki/Projects/LittleReader/LittleReader/WordImporter.swift"
+                  timestampString = "436136425.920702"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "45"
+                  endingLineNumber = "45"
+                  offsetFromSymbolStart = "2721">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LittleReader/WordSet.swift"
+            timestampString = "436199610.167411"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "64"
+            endingLineNumber = "64"
+            landmarkName = "retireOldWord()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

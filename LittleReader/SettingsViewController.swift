@@ -30,24 +30,25 @@ class SettingsViewController: UITableViewController, ManagedObjectContextHolder 
     }
     
     @IBAction func didClickLoadWords(sender: AnyObject) {
-        // TODO: Get from S3, make private call.
+        // TODO: Get from S3, make private call, or use a signed URL that expires waaaaay in the future.
         loadingWordsIndicator.startAnimating()
         let url = NSURL(string: "http://s3.amazonaws.com/InfantIQLittleReader/WordSets/en/basic.txt")
         let task = NSURLSession.sharedSession().dataTaskWithURL(url!) {(data, response, error) in
-            if error != nil {
-                UIAlertView.showLocalizedErrorMessageWithOkButton("msg_error_check_network_try_again", title_key: "error_title_download_word_list")
-                UsageAnalytics.trackError("Failed to download word list", error: error)
-            } else {
                 // Called on background thread
-                dispatch_async(dispatch_get_main_queue(),{ () -> Void in
+            dispatch_async(dispatch_get_main_queue(),{ () -> Void in
+                if error != nil {
+                    self.loadingWordsIndicator.stopAnimating()
+                    UIAlertView.showLocalizedErrorMessageWithOkButton("msg_error_check_network_try_again", title_key: "error_title_download_word_list")
+                    UsageAnalytics.trackError("Failed to download word list", error: error)
+                } else {
                     let wordString = NSString(data:data, encoding: NSUTF8StringEncoding)
                     let words = wordString?.componentsSeparatedByString("\n") as [String]
                     self.insertWords(words)
                     self.updateWordCount()
                     UIAlertView.showGenericLocalizedSuccessMessage("msg_success_import_words")
                     self.loadingWordsIndicator.stopAnimating()
-                })
-            }
+                }
+            })
         }
         
         task.resume()

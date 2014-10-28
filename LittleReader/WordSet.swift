@@ -13,10 +13,19 @@ import CoreData
 class WordSet: NSManagedObject {
 
     @NSManaged var number: NSNumber
-    @NSManaged var lastViewedOn: NSDate
+    @NSManaged var lastViewedOn: NSDate?
+    @NSManaged var lastWordRetiredOn: NSDate?
     @NSManaged var words: NSMutableSet
     @NSManaged var baby: Baby
 
+    
+    /// Makes sure the word set is filled with the default number of words per wordset
+    /// This method does NOT save the context.
+    ///
+    /// :returns: A tuple, with the number of words added to the set (possibly 0) and an error (if any)
+    func fill() -> (numberOfWordsAdded : Int , error: NSError?) {
+            return fill(WORDS_PER_WORDSET)
+    }
     
     /// Makes sure the word set is filled with the number of words per wordset
     /// This method does NOT save the context.
@@ -45,19 +54,38 @@ class WordSet: NSManagedObject {
         
         return (numberOfWordsAdded : count, error : error)
     }
+
+
+    /// Retires at most a single word, if not words in this set have been retired in the last 24 hours.
+    func retireOldWord() -> (wasWordRetired : Bool, error : NSError?) {
+        var wordRetired = false
+        var error : NSError? = nil
+        let now = NSDate()
+        if self.lastWordRetiredOn?.timeIntervalSinceDate(now) > TIME_INTERVAL_24_HOURS {
+            let result = self.retireOldWords(1)
+            error = result.error
+            wordRetired = result.numberOfWordsRetired > 0
+        }
+        return (wasWordRetired : wordRetired, error : error);
+    }
     
-    /// Removes any words that have been viewed the maximum number of times
-    /// then fills the set to the number of words it had before the removal
-    func retireOldWords() -> (numberOfWordsRetired : Int, error : NSError?) {
+    /// Retires up to maximumWordsToRetire words that have been viewed at least WORD_VIEWS_BEFORE_RETIREMENT
+    /// and returns the number of words actually retired. See also retireOldWord() which should be generally 
+    /// prefered to this method.
+    func retireOldWords(maximumWordsToRetire:Int) -> (numberOfWordsRetired : Int, error : NSError?) {
         var wordsRetired = 0
         let now = NSDate()
         let wordsInSet = self.words.count
         for object in self.words {
             if let word = object as? Word {
                 if word.timesViewed >= WORD_VIEWS_BEFORE_RETIREMENT {
-                    word.retiredOn = NSDate()
+                    self.lastWordRetiredOn = now
+                    word.retiredOn = now
                     word.wordSet = nil;
                     wordsRetired++
+                    if wordsRetired >= maximumWordsToRetire {
+                     break
+                    }
                 }
             }
         }
