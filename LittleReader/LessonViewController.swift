@@ -28,6 +28,10 @@ class LessonViewController: UIViewController,NSFetchedResultsControllerDelegate,
     private var currentIdx  = -1
     private var currentWords : [Word]?
     private var currentWordSet : WordSet?
+    private var isManualMode = false
+    
+    @IBOutlet weak var nextButton: UIButton!
+    @IBOutlet weak var previousButton: UIButton!
     
     var delegate : LessonStateDelegate?
     
@@ -35,6 +39,8 @@ class LessonViewController: UIViewController,NSFetchedResultsControllerDelegate,
         super.viewDidLoad()
         textLabel.font = UIFont.systemFontOfSize(500)
         textLabel.text = ""
+        updateButtonState()
+        self.isManualMode = UserPreferences.alwaysUseManualMode
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -47,13 +53,31 @@ class LessonViewController: UIViewController,NSFetchedResultsControllerDelegate,
     override func prefersStatusBarHidden() -> Bool {
         return true
     }
+
+    @IBAction func didPinchScreen(sender: UIPinchGestureRecognizer) {
+        if !isManualMode {
+            isManualMode = true
+            cancelTimer()
+            updateButtonState()
+        }
+    }
     
+    @IBAction func didPressNextButton(sender: AnyObject) {
+        showNextWord()
+    }
+    
+    @IBAction func didPressPreviousButton(sender: AnyObject) {
+        showPreviousWord()
+    }
+    
+        
     func startNextLesson() {
         if let wordSet = findNextWordSet() {
             currentWordSet = wordSet
             currentWords = (wordSet.words.allObjects as [Word])
             currentWords!.sort {(_,_) in arc4random() % 2 == 0}
             willStartWordSet(wordSet)
+            updateButtonState()
             showNextWord()
         } else {
             // TODO: Automatically load?
@@ -62,35 +86,68 @@ class LessonViewController: UIViewController,NSFetchedResultsControllerDelegate,
         }
     }
     
+    
     func showNextWord() {
         if let words = currentWords {
             currentIdx++
-            setNeedsStatusBarAppearanceUpdate()
+            updateButtonState()
             if currentIdx < words.count {
-                var animation = CATransition()
-                animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
-                animation.type = kCATransitionFade;
-                animation.duration = 0.25;
-                textLabel.layer.addAnimation(animation, forKey: kCATransitionFade)
-                
-                let word = words[self.currentIdx]
-                word.lastViewedOn = NSDate()
-                word.timesViewed++
-                
-                textLabel.text = word.text
-                textLabel.setNeedsUpdateConstraints();
-                textLabel.setNeedsLayout();
-                timer = NSTimer.scheduledTimerWithTimeInterval(UserPreferences.slideDisplayInverval, target: self, selector: "showNextWord", userInfo: nil, repeats: false)
-            } else {
-                // Stop the timer
-                if let t = timer {
-                    t.invalidate();
-                    timer = nil;
+                transitionToWord(words[currentIdx])
+                if !isManualMode {
+                    timer = NSTimer.scheduledTimerWithTimeInterval(UserPreferences.slideDisplayInverval, target: self, selector: "showNextWord", userInfo: nil, repeats: false)
                 }
+            } else {
+                cancelTimer()
                 currentIdx = -1
                 didCompleteWordSet(currentWordSet!)
             }
         }
+    }
+
+    private func showPreviousWord() {
+        if let words = currentWords {
+            currentIdx--
+            updateButtonState()
+            if currentIdx >= 0 {
+                transitionToWord(words[currentIdx])
+                if !isManualMode {
+                    timer = NSTimer.scheduledTimerWithTimeInterval(UserPreferences.slideDisplayInverval, target: self, selector: "showNextWord", userInfo: nil, repeats: false)
+                }
+            } else {
+                didCompleteWordSet(currentWordSet!)
+            }
+        }
+    }
+   
+    private func cancelTimer() {
+        if let t = timer {
+            t.invalidate();
+            timer = nil;
+        }
+    }
+    
+    private func updateButtonState() {
+        nextButton.hidden = !isManualMode
+        previousButton.hidden = !isManualMode
+        if let words = currentWords {
+            nextButton.setTitle(currentIdx + 1 < words.count ? ">" : "X", forState: UIControlState.Normal)
+            previousButton.setTitle(currentIdx > 0 ? "<" : "X", forState: UIControlState.Normal)
+        }
+    }
+    
+    private func transitionToWord(word: Word) {
+        var animation = CATransition()
+        animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+        animation.type = kCATransitionFade;
+        animation.duration = 0.25;
+        textLabel.layer.addAnimation(animation, forKey: kCATransitionFade)
+        
+        word.lastViewedOn = NSDate()
+        word.timesViewed++
+        
+        textLabel.text = word.text
+        textLabel.setNeedsUpdateConstraints();
+        textLabel.setNeedsLayout();
     }
     
     private func didCompleteWordSet(wordSet : WordSet) {

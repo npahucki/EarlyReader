@@ -38,6 +38,16 @@ class UserPreferences {
             return interval > 0 ? interval : 1.5
         }
     }
+
+    class var alwaysUseManualMode : Bool {
+        set(alwaysUseManualMode) {
+            NSUserDefaults.standardUserDefaults().setBool(alwaysUseManualMode, forKey:"alwaysUseManualMode");
+        }
+        get {
+            return NSUserDefaults.standardUserDefaults().boolForKey("alwaysUseManualMode");
+        }
+    }
+
     
     class var lastLessonTakenAt : NSDate? {
         set(lastLessonTakenAt) {

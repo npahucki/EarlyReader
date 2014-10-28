@@ -49,7 +49,7 @@ class Baby: NSManagedObject {
 
     /// Populates all the word sets for the baby, returning the number of sets added/removed to conform to the number specified.
     /// Note, if word sets already exist, they will not be created again, but they will be filled
-    /// The numberOfWordSetsCreated only returns new sets created, not any ecisting ones that were filled, thus a return value of zero
+    /// The numberOfWordSetsCreated only returns new sets created, not any existing ones that were filled, thus a return value of zero
     /// doen't necessarily mean something when wrong. Check the value of error to see if something went wrong. 
     func populateWordSets(numberOfWordSets : Int, numberOfWordsPerSet : Int = WORDS_PER_WORDSET) -> (numberOfWordSetsCreated: Int, error: NSError?) {
         var setsCreated = 0
@@ -83,7 +83,7 @@ class Baby: NSManagedObject {
             // Iterate sorted, so that we fill number 1 first, then 2, 3, etc....
             for wordSet in sortedWordSets {
                 var fillResult = wordSet.fill(numberOfWordsPerSet)
-                if fillResult.numberOfWordsAdded < numberOfWordsPerSet {
+                if wordSet.words.count < numberOfWordsPerSet && fillResult.numberOfWordsAdded < numberOfWordsPerSet {
                     // TODO: this probably means that we are running out of words
                     // we may need to send an alert, or signal an error.
                     NSLog("WARNING: Did not completely fill word set %@. Added %d of %d words",wordSet.number,fillResult.numberOfWordsAdded,numberOfWordsPerSet)

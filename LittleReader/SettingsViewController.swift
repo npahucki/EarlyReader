@@ -22,6 +22,7 @@ class SettingsViewController: UITableViewController, ManagedObjectContextHolder 
     @IBOutlet weak var loadingWordsIndicator: UIActivityIndicatorView!
     @IBOutlet weak var numberOfWordSetsStepper: UIStepper!
     @IBOutlet weak var numberOfWordSetsLabel: UILabel!
+    @IBOutlet weak var manualAdvanceOnlySwitch: UISwitch!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +32,14 @@ class SettingsViewController: UITableViewController, ManagedObjectContextHolder 
         didChangeReminderInverval(self.reminderIntervalStepper) // Force label update
         didChangeNumberOfWordSets(self.numberOfWordSetsStepper)
         self.slideDurationSlider.value = Float(UserPreferences.slideDisplayInverval)
+        self.manualAdvanceOnlySwitch.on = UserPreferences.alwaysUseManualMode
+        self.slideDurationSlider.enabled = !UserPreferences.alwaysUseManualMode
+
+    }
+    
+    @IBAction func didChangeManualAdvanceOnly(sender: UISwitch) {
+        UserPreferences.alwaysUseManualMode = sender.on
+        self.slideDurationSlider.enabled = !sender.on
     }
     
     @IBAction func didClickLoadWords(sender: AnyObject) {

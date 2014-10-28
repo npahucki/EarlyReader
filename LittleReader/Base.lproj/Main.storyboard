@@ -11,7 +11,7 @@
             <objects>
                 <tableViewController id="45I-s5-k26" userLabel="Settings" customClass="SettingsViewController" customModule="LittleReader" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="50" sectionHeaderHeight="22" sectionFooterHeight="22" id="ZTw-LB-aby">
-                        <rect key="frame" x="0.0" y="0.0" width="315" height="380"/>
+                        <rect key="frame" x="0.0" y="0.0" width="315" height="465"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <sections>
@@ -220,6 +220,32 @@
                                             </variation>
                                         </tableViewCellContentView>
                                     </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="Gcw-kc-i4y">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Gcw-kc-i4y" id="g7Q-9R-bWc">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Manual Advance Only" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9zJ-ek-nli">
+                                                    <rect key="frame" x="8" y="16" width="168" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XuL-7W-P47">
+                                                    <rect key="frame" x="258" y="10" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="didChangeManualAdvanceOnly:" destination="45I-s5-k26" eventType="valueChanged" id="TwK-x0-Kft"/>
+                                                    </connections>
+                                                </switch>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="centerY" secondItem="9zJ-ek-nli" secondAttribute="centerY" id="3Kq-HJ-2sr"/>
+                                                <constraint firstItem="9zJ-ek-nli" firstAttribute="leading" secondItem="g7Q-9R-bWc" secondAttribute="leading" constant="8" id="8gr-gU-unX"/>
+                                                <constraint firstAttribute="centerY" secondItem="XuL-7W-P47" secondAttribute="centerY" id="8tX-Gm-2Ob"/>
+                                                <constraint firstAttribute="trailing" secondItem="XuL-7W-P47" secondAttribute="trailing" constant="8" id="ly8-wb-s7R"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
@@ -228,11 +254,14 @@
                             <outlet property="delegate" destination="45I-s5-k26" id="VR7-Up-Avv"/>
                         </connections>
                     </tableView>
-                    <value key="contentSizeForViewInPopover" type="size" width="315" height="381"/>
+                    <value key="contentSizeForViewInPopover" type="size" width="315" height="465"/>
                     <nil key="simulatedStatusBarMetrics"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="315" height="465"/>
                     <connections>
                         <outlet property="clearWordsButton" destination="HtG-k4-U2O" id="A4m-4G-qRw"/>
                         <outlet property="loadingWordsIndicator" destination="ZxJ-e4-uPC" id="8cz-kN-TVf"/>
+                        <outlet property="manualAdvanceOnlySwitch" destination="XuL-7W-P47" id="Cl0-Ra-05T"/>
                         <outlet property="numberOfWordSetsLabel" destination="RwG-Rj-9Y5" id="cVZ-Fb-kZQ"/>
                         <outlet property="numberOfWordSetsStepper" destination="ZGQ-lJ-YhB" id="LRW-sU-ThL"/>
                         <outlet property="reminderIntervalLabel" destination="aBT-bG-rcU" id="kSf-zQ-pVp"/>
@@ -528,21 +557,66 @@
                                 <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" alpha="0.29999999999999999" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ACE-to-ljy">
+                                <rect key="frame" x="556" y="278" width="44" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="44" id="fsi-dd-jsf"/>
+                                    <constraint firstAttribute="height" constant="44" id="tyt-Yn-YPu"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="47"/>
+                                <state key="normal" title=">">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="didPressNextButton:" destination="WjB-gp-FKd" eventType="touchUpInside" id="Apc-Fw-Xlf"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" alpha="0.29999999999999966" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5v4-LP-O9R">
+                                <rect key="frame" x="0.0" y="278" width="44" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="Q8R-Jd-Lhd"/>
+                                    <constraint firstAttribute="width" constant="44" id="Qh5-6G-kfV"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="47"/>
+                                <state key="normal" title="&lt;">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="didPressPreviousButton:" destination="WjB-gp-FKd" eventType="touchUpInside" id="ntM-B7-L0K"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                         <constraints>
+                            <constraint firstAttribute="centerY" secondItem="ACE-to-ljy" secondAttribute="centerY" id="9WP-aM-RVQ"/>
+                            <constraint firstAttribute="centerY" secondItem="5v4-LP-O9R" secondAttribute="centerY" id="GBk-4s-0xj"/>
                             <constraint firstAttribute="trailing" secondItem="6hX-9E-sYW" secondAttribute="trailing" constant="8" id="Goq-Zw-F4e"/>
                             <constraint firstItem="6hX-9E-sYW" firstAttribute="leading" secondItem="wRe-wK-mPg" secondAttribute="leading" constant="8" id="Iyx-ZF-gjX"/>
                             <constraint firstAttribute="centerY" secondItem="6hX-9E-sYW" secondAttribute="centerY" id="SdT-L2-JWn"/>
+                            <constraint firstAttribute="trailing" secondItem="ACE-to-ljy" secondAttribute="trailing" id="VkZ-C5-WyT"/>
+                            <constraint firstItem="5v4-LP-O9R" firstAttribute="leading" secondItem="wRe-wK-mPg" secondAttribute="leading" id="b6F-z4-bc1"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="qw2-ta-h6u" appends="YES" id="KAS-w8-Z7w"/>
+                        </connections>
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
+                        <outlet property="nextButton" destination="ACE-to-ljy" id="4tQ-Rh-UuM"/>
+                        <outlet property="previousButton" destination="5v4-LP-O9R" id="wlJ-Wn-R4R"/>
                         <outlet property="textLabel" destination="6hX-9E-sYW" id="wt4-rY-qKD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="34c-CJ-dh3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <pinchGestureRecognizer id="qw2-ta-h6u">
+                    <connections>
+                        <action selector="didPinchScreen:" destination="WjB-gp-FKd" id="kI4-x0-jWw"/>
+                    </connections>
+                </pinchGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1588" y="809"/>
         </scene>
