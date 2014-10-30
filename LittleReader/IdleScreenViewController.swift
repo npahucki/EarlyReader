@@ -50,6 +50,9 @@ class IdleScreenViewController: UIViewController, ManagedObjectContextHolder, Le
             if nextLesson.timeIntervalSinceNow <= 0 {
                 auxMessageLabel.text = NSLocalizedString("time_for_next_lesson",comment: "")
                 auxMessageLabel.textColor = UIColor.greenColor()
+            } else if nextLesson.isTomorrow() {
+                auxMessageLabel.text = NSLocalizedString("todays_lessons_completed",comment: "")
+                auxMessageLabel.textColor = UIColor.orangeColor()
             } else {
                 auxMessageLabel.text = NSString(format: NSLocalizedString("wait_time_for_next_lesson",comment: ""),  nextLesson.stringWithHumanizedTimeDifference(false))
                 auxMessageLabel.textColor = UIColor.orangeColor()
