@@ -29,26 +29,29 @@ class WordImporter {
             .map{ $0.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()) }
             .sorted { $0.localizedCaseInsensitiveCompare($1) == NSComparisonResult.OrderedAscending }
         
-            var wordsThatAlreadyExistIdx = 0
             // First get a list of existing words
              let fetchRequest = NSFetchRequest(entityName: "Word")
             fetchRequest.predicate = NSPredicate(format:"(text IN %@)", words);
             fetchRequest.sortDescriptors = [NSSortDescriptor(key: "text", ascending: true, selector: "localizedCaseInsensitiveCompare:")]
             fetchRequest.propertiesToFetch = ["text"]
-            let wordsThatAlreadyExist = _managedContext.executeFetchRequest(fetchRequest, error: &error) as [Word]?
+            var wordsThatAlreadyExist = NSMutableSet()
+            if let words = _managedContext.executeFetchRequest(fetchRequest, error: &error) as [Word]? {
+                for word in words {
+                    wordsThatAlreadyExist.addObject(word.text.lowercaseString)
+                }
+            }
         
             for w in words {
                 if !w.isEmpty {
-                    var currentExistingWord : String? = wordsThatAlreadyExist?.count > 0 ? wordsThatAlreadyExist![wordsThatAlreadyExistIdx].text : nil
-                    if currentExistingWord != nil && w.localizedCaseInsensitiveCompare(currentExistingWord!) == NSComparisonResult.OrderedSame {
+                    if wordsThatAlreadyExist.containsObject(w.lowercaseString) {
                         // Skip, already eixts
-                        wordsThatAlreadyExistIdx++
                         NSLog("Skipped import of %@ because it already exists", w)
                     } else {
                         if let entityDescription = NSEntityDescription.entityForName("Word", inManagedObjectContext:_managedContext) {
                             count++
                             let word = Word(entity: entityDescription, insertIntoManagedObjectContext: _managedContext)
                             word.text = w
+                            wordsThatAlreadyExist.addObject(w.lowercaseString)
                         }
                     }
                 }
