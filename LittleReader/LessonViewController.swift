@@ -28,7 +28,7 @@ class LessonViewController: UIViewController,NSFetchedResultsControllerDelegate,
     private var _currentIdx  = -1
     private var _currentWords : [Word]?
     private var _isManualMode = UserPreferences.alwaysUseManualMode
-    private let _LessonPlanner = LessonPlanner(baby: Baby.currentBaby!)
+    private let _lessonPlanner = LessonPlanner(baby: Baby.currentBaby!)
     
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var previousButton: UIButton!
@@ -71,7 +71,7 @@ class LessonViewController: UIViewController,NSFetchedResultsControllerDelegate,
     
         
     func startNextLesson() {
-        _currentWords = _LessonPlanner.startLesson()
+        _currentWords = _lessonPlanner.startLesson()
         if _currentWords?.count < 1 {
             // TODO: Automatically import?
             UIAlertView.showLocalizedErrorMessageWithOkButton("msg_error_no_wordsets", title_key: "error_title_no_wordsets")
@@ -137,7 +137,7 @@ class LessonViewController: UIViewController,NSFetchedResultsControllerDelegate,
         animation.duration = 0.25;
         textLabel.layer.addAnimation(animation, forKey: kCATransitionFade)
         
-        _LessonPlanner.markWordViewed(word)
+        _lessonPlanner.markWordViewed(word)
         
         textLabel.text = word.text
         textLabel.setNeedsUpdateConstraints();
@@ -145,8 +145,8 @@ class LessonViewController: UIViewController,NSFetchedResultsControllerDelegate,
     }
     
     private func didCompleteLesson() {
-        let nextLessonDate = _LessonPlanner.finishLesson()
-        scheduleReminder(nextLessonDate)
+        _lessonPlanner.finishLesson()
+        scheduleReminder(_lessonPlanner.nextLessonDate)
         if let d = delegate { d.didCompleteLesson() }
         self.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
     }

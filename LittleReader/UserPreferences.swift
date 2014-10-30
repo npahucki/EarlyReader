@@ -15,7 +15,7 @@ class UserPreferences {
         }
         get {
             let interval = NSUserDefaults.standardUserDefaults().doubleForKey("lessonReminderInverval");
-            return interval > 0 ? interval : 30.0
+            return interval > 0 ? interval : 15.0 * 60.0
         }
     }
     
@@ -25,9 +25,20 @@ class UserPreferences {
         }
         get {
             let numberSets = NSUserDefaults.standardUserDefaults().integerForKey("numberOfWordSets");
-            return numberSets > 0 ? numberSets : 3
+            return numberSets > 0 ? numberSets : 1
         }
     }
+
+    class var numberOfTimesToRepeatEachWordSet : Int {
+        set(numberOfTimesToRepeatEachWordSet) {
+        NSUserDefaults.standardUserDefaults().setInteger(numberOfWordSets, forKey:"numberOfTimesToRepeatEachWordSet");
+        }
+        get {
+            let times = NSUserDefaults.standardUserDefaults().integerForKey("numberOfTimesToRepeatEachWordSet");
+            return times > 0 ? times : 3
+        }
+    }
+
     
     class var slideDisplayInverval : NSTimeInterval {
         set(slideDisplayInverval) {

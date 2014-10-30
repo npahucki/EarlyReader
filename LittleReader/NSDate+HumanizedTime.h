@@ -10,6 +10,7 @@
 
 @interface NSDate (HumanizedTime)
 
+- (NSString *)stringWithHumanizedTimeDifference: (BOOL) usePostfix;
 - (NSString *)stringWithHumanizedTimeDifference;
 
 

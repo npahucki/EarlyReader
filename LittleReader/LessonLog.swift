@@ -16,5 +16,8 @@ class LessonLog: NSManagedObject {
     @NSManaged var durationSeconds: NSTimeInterval
     @NSManaged var words: String
     @NSManaged var wordSetNumber: UInt16
+    @NSManaged var totalNumberOfWordSets : UInt16
+    @NSManaged var baby : Baby
+    
 
 }

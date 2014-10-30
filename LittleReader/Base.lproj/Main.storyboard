@@ -113,7 +113,7 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xVp-bp-gmC" id="xov-7h-mDk">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" continuous="NO" autorepeat="NO" value="3" minimumValue="3" maximumValue="7" translatesAutoresizingMaskIntoConstraints="NO" id="ZGQ-lJ-YhB">
+                                                <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" continuous="NO" autorepeat="NO" value="1" minimumValue="1" maximumValue="7" translatesAutoresizingMaskIntoConstraints="NO" id="ZGQ-lJ-YhB">
                                                     <rect key="frame" x="213" y="10" width="94" height="29"/>
                                                     <connections>
                                                         <action selector="didChangeNumberOfWordSets:" destination="45I-s5-k26" eventType="valueChanged" id="es1-4s-CDy"/>

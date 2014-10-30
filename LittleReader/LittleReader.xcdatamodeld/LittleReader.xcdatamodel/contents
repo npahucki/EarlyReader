@@ -9,8 +9,10 @@
         <attribute name="durationSeconds" optional="YES" attributeType="Double" defaultValueString="0" syncable="YES"/>
         <attribute name="lessonDate" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="numberOfWordsViewed" optional="YES" attributeType="Integer 16" syncable="YES"/>
+        <attribute name="totalNumberOfWordSets" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="words" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="wordSetNumber" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <relationship name="baby" maxCount="1" deletionRule="Cascade" destinationEntity="Baby" syncable="YES"/>
     </entity>
     <entity name="Word" representedClassName="LittleReader.Word" syncable="YES">
         <attribute name="activatedOn" optional="YES" attributeType="Date" syncable="YES"/>
@@ -29,8 +31,8 @@
     </entity>
     <elements>
         <element name="Baby" positionX="4345" positionY="-5974" width="128" height="88"/>
+        <element name="LessonLog" positionX="4491" positionY="-5823" width="128" height="150"/>
         <element name="Word" positionX="4653" positionY="-5742" width="128" height="135"/>
         <element name="WordSet" positionX="4338" positionY="-5751" width="128" height="118"/>
-        <element name="LessonLog" positionX="4491" positionY="-5823" width="128" height="118"/>
     </elements>
 </model>

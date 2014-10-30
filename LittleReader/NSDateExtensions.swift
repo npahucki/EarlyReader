@@ -44,6 +44,25 @@ extension NSDate {
         return gregorian?.dateFromComponents(components) ?? self
     }
     
+    /// Returns the day at midnight (the start of the date)
+    func startOfDay() -> NSDate {
+        let gregorian = NSCalendar(calendarIdentifier : NSGregorianCalendar)
+        let components = gregorian!.components((NSCalendarUnit.DayCalendarUnit | NSCalendarUnit.YearCalendarUnit | NSCalendarUnit.MonthCalendarUnit), fromDate: self)
+        components.hour = 0
+        components.minute = 0
+        components.second = 0
+        return gregorian?.dateFromComponents(components) ?? self
+    }
+
+    /// Returns the day at 11:59:59 (the end of the date)
+    func endOfDay() -> NSDate {
+        let gregorian = NSCalendar(calendarIdentifier : NSGregorianCalendar)
+        let components = gregorian!.components((NSCalendarUnit.DayCalendarUnit | NSCalendarUnit.YearCalendarUnit | NSCalendarUnit.MonthCalendarUnit), fromDate: self)
+        components.hour = 23
+        components.minute = 59
+        components.second = 59
+        return gregorian?.dateFromComponents(components) ?? self
+    }
     
     func isEqualToDateIgnoringTime(aDate: NSDate) -> Bool {
         let cal = NSCalendar(calendarIdentifier : NSGregorianCalendar)
@@ -53,6 +72,10 @@ extension NSDate {
             (components1?.year == components2?.year) &&
             (components1?.month == components2?.month) &&
             (components1?.day == components2?.day)
+    }
+    
+    func isPast() -> Bool {
+        return self.timeIntervalSinceNow < 0
     }
     
     func isToday() ->Bool {

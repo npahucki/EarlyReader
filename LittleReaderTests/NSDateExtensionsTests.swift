@@ -22,12 +22,8 @@ class NSDateExtensionsTests: XCTestCase {
         
         let gregorian = NSCalendar(calendarIdentifier: NSGregorianCalendar)
         let startDate = gregorian?.dateFromComponents(components)
-        NSLog("START DATE: %@", startDate!)
-
         let nextMorning = startDate?.theNextMorning()
 
-        NSLog("NEXT MORNING: %@", nextMorning!)
-        
         let nextMorningComponents = gregorian?.components((NSCalendarUnit.YearCalendarUnit | NSCalendarUnit.DayCalendarUnit | NSCalendarUnit.MonthCalendarUnit | NSCalendarUnit.HourCalendarUnit | NSCalendarUnit.MinuteCalendarUnit), fromDate: nextMorning!)
         
         XCTAssertEqual(nextMorningComponents!.year, components.year, "Expected Same Year")
@@ -38,4 +34,81 @@ class NSDateExtensionsTests: XCTestCase {
         
         
     }
+    
+    func testStartOfDay() {
+        let components = NSDateComponents()
+        components.day = 11
+        components.month = 11
+        components.year = 2011
+        components.hour = 11
+        components.minute = 11
+        components.second = 11
+        
+        
+        let gregorian = NSCalendar(calendarIdentifier: NSGregorianCalendar)
+        let startDate = gregorian!.dateFromComponents(components)
+        
+        let startOfDay = startDate!.startOfDay()
+        
+        
+        let nextMorningComponents = gregorian?.components((NSCalendarUnit.YearCalendarUnit | NSCalendarUnit.DayCalendarUnit | NSCalendarUnit.MonthCalendarUnit | NSCalendarUnit.HourCalendarUnit | NSCalendarUnit.MinuteCalendarUnit | NSCalendarUnit.SecondCalendarUnit), fromDate: startOfDay)
+        
+        XCTAssertEqual(nextMorningComponents!.year, components.year, "Expected Same Year")
+        XCTAssertEqual(nextMorningComponents!.month, components.month, "Expected Same Month")
+        XCTAssertEqual(nextMorningComponents!.day, components.day, "Expected Same Day")
+        XCTAssertEqual(nextMorningComponents!.hour, 0, "Expected Midnight")
+        XCTAssertEqual(nextMorningComponents!.minute, 0, "Expected Midnight")
+        XCTAssertEqual(nextMorningComponents!.second, 0, "Expected Midnight")
+        
+    }
+
+    func testEndOfDay() {
+        let components = NSDateComponents()
+        components.day = 11
+        components.month = 11
+        components.year = 2011
+        components.hour = 11
+        components.minute = 11
+        components.second = 11
+        
+        
+        let gregorian = NSCalendar(calendarIdentifier: NSGregorianCalendar)
+        let startDate = gregorian!.dateFromComponents(components)
+        
+        let endOfDay = startDate!.endOfDay()
+        
+        
+        let nextMorningComponents = gregorian?.components((NSCalendarUnit.YearCalendarUnit | NSCalendarUnit.DayCalendarUnit | NSCalendarUnit.MonthCalendarUnit | NSCalendarUnit.HourCalendarUnit | NSCalendarUnit.MinuteCalendarUnit | NSCalendarUnit.SecondCalendarUnit), fromDate: endOfDay)
+        
+        XCTAssertEqual(nextMorningComponents!.year, components.year, "Expected Same Year")
+        XCTAssertEqual(nextMorningComponents!.month, components.month, "Expected Same Month")
+        XCTAssertEqual(nextMorningComponents!.day, components.day, "Expected Same Day")
+        XCTAssertEqual(nextMorningComponents!.hour, 23, "Expected Midnight")
+        XCTAssertEqual(nextMorningComponents!.minute, 59, "Expected Midnight")
+        XCTAssertEqual(nextMorningComponents!.second, 59, "Expected Midnight")
+    }
+    
+    func testIsPast() {
+        let components = NSDateComponents()
+        components.day = 11
+        components.month = 11
+        components.year = 2011
+        components.hour = 11
+        components.minute = 11
+        components.second = 11
+        
+        
+        
+        let gregorian = NSCalendar(calendarIdentifier: NSGregorianCalendar)
+        XCTAssert(gregorian!.dateFromComponents(components)!.isPast(),"Date should have been past")
+
+        components.year = 2200
+        XCTAssert(!gregorian!.dateFromComponents(components)!.isPast(),"Date should NOT have been past")
+
+    }
+    
+
+    
+    
+    
 }
