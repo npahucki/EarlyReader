@@ -62,7 +62,7 @@ class Baby: NSManagedObject {
                 let entityDescripition = NSEntityDescription.entityForName("WordSet", inManagedObjectContext:ctx)
                 for(var i = 0; i<numberOfWordSetsToCreate; i++) {
                     let wordSet = WordSet(entity: entityDescripition!, insertIntoManagedObjectContext: ctx)
-                    wordSet.number = countOfWordSets + i
+                    wordSet.number = UInt16(countOfWordSets + i)
                     wordSet.baby = Baby.currentBaby!
                     setsCreated++
                 }
@@ -86,7 +86,7 @@ class Baby: NSManagedObject {
                 if wordSet.words.count < numberOfWordsPerSet && fillResult.numberOfWordsAdded < numberOfWordsPerSet {
                     // TODO: this probably means that we are running out of words
                     // we may need to send an alert, or signal an error.
-                    NSLog("WARNING: Did not completely fill word set %@. Added %d of %d words",wordSet.number,fillResult.numberOfWordsAdded,numberOfWordsPerSet)
+                    NSLog("WARNING: Did not completely fill word set %d. Added %d of %d words",wordSet.number,fillResult.numberOfWordsAdded,numberOfWordsPerSet)
                 } else if let e = fillResult.error {
                     // Stop here, report error
                     error = e; break

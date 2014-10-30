@@ -12,7 +12,7 @@ import CoreData
 
 class WordSet: NSManagedObject {
 
-    @NSManaged var number: NSNumber
+    @NSManaged var number: UInt16
     @NSManaged var lastViewedOn: NSDate?
     @NSManaged var lastWordRetiredOn: NSDate?
     @NSManaged var words: NSMutableSet

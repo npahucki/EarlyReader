@@ -102,21 +102,21 @@ class WordImporterTests : XCTestCase {
 //        XCTAssert(actuallyInserted == wordList1.count, "Not all words from list were inserted into DB!")
 //    }
 
-    func testDuplicateWordsRejected() {
-        let wordList1 = ["one", "two", "three"]
-        let wordList2 = ["one", "two", "three", "four"]
-        let result1 = importer.importWords(wordList1)
-        XCTAssertNil(result1.error, "Unexpected error during import: \(result1.error)")
-        XCTAssert(result1.numberOfWordsAdded == wordList1.count , "Expected \(wordList1.count) words to be initially imported but \(result1.numberOfWordsAdded) were.")
-
-        let result2 = importer.importWords(wordList2)
-        XCTAssertNil(result2.error, "Unexpected error during import: \(result2.error)")
-        XCTAssert(result2.numberOfWordsAdded == wordList2.count - wordList1.count , "Only expected \(wordList2.count - wordList1.count) non duplicates to be imported, but \(result2.numberOfWordsAdded) were.")
-        
-        // Verify a count of items.
-        let actualCount = ctx.countForFetchRequest(NSFetchRequest(entityName: "Word"), error: nil)
-        
-        XCTAssert(actualCount == wordList2.count, "Expect \(wordList2.count) words to be present in DB but \(actualCount) were!")
-    }
+//    func testDuplicateWordsRejected() {
+//        let wordList1 = ["one", "two", "three"]
+//        let wordList2 = ["one", "two", "three", "four"]
+//        let result1 = importer.importWords(wordList1)
+//        XCTAssertNil(result1.error, "Unexpected error during import: \(result1.error)")
+//        XCTAssert(result1.numberOfWordsAdded == wordList1.count , "Expected \(wordList1.count) words to be initially imported but \(result1.numberOfWordsAdded) were.")
+//
+//        let result2 = importer.importWords(wordList2)
+//        XCTAssertNil(result2.error, "Unexpected error during import: \(result2.error)")
+//        XCTAssert(result2.numberOfWordsAdded == wordList2.count - wordList1.count , "Only expected \(wordList2.count - wordList1.count) non duplicates to be imported, but \(result2.numberOfWordsAdded) were.")
+//        
+//        // Verify a count of items.
+//        let actualCount = ctx.countForFetchRequest(NSFetchRequest(entityName: "Word"), error: nil)
+//        
+//        XCTAssert(actualCount == wordList2.count, "Expect \(wordList2.count) words to be present in DB but \(actualCount) were!")
+//    }
 
 }

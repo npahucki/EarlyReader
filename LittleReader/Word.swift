@@ -20,7 +20,7 @@ class Word: NSManagedObject {
     
     func wordSetNumber() -> Int {
         if let set = self.wordSet {
-            return set.number.integerValue
+            return Int(set.number)
         } else {
             return -1
         }

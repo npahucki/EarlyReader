@@ -23,12 +23,12 @@ class LessonViewController: UIViewController,NSFetchedResultsControllerDelegate,
     
     @IBOutlet weak var textLabel: UILabel!
     
-    private var fetchedResultController: NSFetchedResultsController = NSFetchedResultsController()
-    private var timer : NSTimer?
-    private var currentIdx  = -1
-    private var currentWords : [Word]?
-    private var currentWordSet : WordSet?
-    private var isManualMode = false
+    private var _fetchedResultController: NSFetchedResultsController = NSFetchedResultsController()
+    private var _timer : NSTimer?
+    private var _currentIdx  = -1
+    private var _currentWords : [Word]?
+    private var _isManualMode = UserPreferences.alwaysUseManualMode
+    private let _LessonPlanner = LessonPlanner(baby: Baby.currentBaby!)
     
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var previousButton: UIButton!
@@ -40,12 +40,11 @@ class LessonViewController: UIViewController,NSFetchedResultsControllerDelegate,
         textLabel.font = UIFont.systemFontOfSize(500)
         textLabel.text = ""
         updateButtonState()
-        self.isManualMode = UserPreferences.alwaysUseManualMode
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        if currentIdx == -1 {
+        if _currentIdx == -1 {
             startNextLesson()
         }
     }
@@ -55,8 +54,8 @@ class LessonViewController: UIViewController,NSFetchedResultsControllerDelegate,
     }
 
     @IBAction func didPinchScreen(sender: UIPinchGestureRecognizer) {
-        if !isManualMode {
-            isManualMode = true
+        if !_isManualMode {
+            _isManualMode = true
             cancelTimer()
             updateButtonState()
         }
@@ -72,66 +71,62 @@ class LessonViewController: UIViewController,NSFetchedResultsControllerDelegate,
     
         
     func startNextLesson() {
-        if let wordSet = findNextWordSet() {
-            currentWordSet = wordSet
-            currentWords = (wordSet.words.allObjects as [Word])
-            currentWords!.sort {(_,_) in arc4random() % 2 == 0}
-            willStartWordSet(wordSet)
-            updateButtonState()
-            showNextWord()
-        } else {
-            // TODO: Automatically load?
+        _currentWords = _LessonPlanner.startLesson()
+        if _currentWords?.count < 1 {
+            // TODO: Automatically import?
             UIAlertView.showLocalizedErrorMessageWithOkButton("msg_error_no_wordsets", title_key: "error_title_no_wordsets")
             self.dismissViewControllerAnimated(false, completion: nil)
+        } else {
+            showNextWord()
         }
     }
     
     
     func showNextWord() {
-        if let words = currentWords {
-            currentIdx++
+        if let words = _currentWords {
+            _currentIdx++
             updateButtonState()
-            if currentIdx < words.count {
-                transitionToWord(words[currentIdx])
-                if !isManualMode {
-                    timer = NSTimer.scheduledTimerWithTimeInterval(UserPreferences.slideDisplayInverval, target: self, selector: "showNextWord", userInfo: nil, repeats: false)
+            if _currentIdx < words.count {
+                transitionToWord(words[_currentIdx])
+                if !_isManualMode {
+                    _timer = NSTimer.scheduledTimerWithTimeInterval(UserPreferences.slideDisplayInverval, target: self, selector: "showNextWord", userInfo: nil, repeats: false)
                 }
             } else {
                 cancelTimer()
-                currentIdx = -1
-                didCompleteWordSet(currentWordSet!)
+                _currentIdx = -1
+                didCompleteLesson()
             }
         }
     }
 
     private func showPreviousWord() {
-        if let words = currentWords {
-            currentIdx--
+        if let words = _currentWords {
+            _currentIdx--
             updateButtonState()
-            if currentIdx >= 0 {
-                transitionToWord(words[currentIdx])
-                if !isManualMode {
-                    timer = NSTimer.scheduledTimerWithTimeInterval(UserPreferences.slideDisplayInverval, target: self, selector: "showNextWord", userInfo: nil, repeats: false)
+            if _currentIdx >= 0 {
+                transitionToWord(words[_currentIdx])
+                if !_isManualMode {
+                    _timer = NSTimer.scheduledTimerWithTimeInterval(UserPreferences.slideDisplayInverval, target: self, selector: "showNextWord", userInfo: nil, repeats: false)
                 }
             } else {
-                didCompleteWordSet(currentWordSet!)
+                didCompleteLesson()
             }
         }
     }
    
     private func cancelTimer() {
-        if let t = timer {
+        if let t = _timer {
             t.invalidate();
-            timer = nil;
+            _timer = nil;
         }
     }
     
     private func updateButtonState() {
-        nextButton.hidden = !isManualMode
-        previousButton.hidden = !isManualMode
-        if let words = currentWords {
-            nextButton.setTitle(currentIdx + 1 < words.count ? ">" : "X", forState: UIControlState.Normal)
-            previousButton.setTitle(currentIdx > 0 ? "<" : "X", forState: UIControlState.Normal)
+        nextButton.hidden = !_isManualMode
+        previousButton.hidden = !_isManualMode
+        if let words = _currentWords {
+            nextButton.setTitle(_currentIdx + 1 < words.count ? ">" : "X", forState: UIControlState.Normal)
+            previousButton.setTitle(_currentIdx > 0 ? "<" : "X", forState: UIControlState.Normal)
         }
     }
     
@@ -142,31 +137,18 @@ class LessonViewController: UIViewController,NSFetchedResultsControllerDelegate,
         animation.duration = 0.25;
         textLabel.layer.addAnimation(animation, forKey: kCATransitionFade)
         
-        word.lastViewedOn = NSDate()
-        word.timesViewed++
+        _LessonPlanner.markWordViewed(word)
         
         textLabel.text = word.text
         textLabel.setNeedsUpdateConstraints();
         textLabel.setNeedsLayout();
     }
     
-    private func didCompleteWordSet(wordSet : WordSet) {
-        wordSet.lastViewedOn = NSDate()
-        var retireResult = wordSet.retireOldWord()
-        var fillResult = wordSet.fill()
-        NSLog("From WordSet #%@, %d words were retired and %d new words were added back in.", wordSet.number, retireResult.wasWordRetired ? 1 : 0, fillResult.numberOfWordsAdded);
-        saveUpdatedWordsAndSets()
-        UserPreferences.lastLessonTakenAt = NSDate()
-        scheduleReminder()
+    private func didCompleteLesson() {
+        let nextLessonDate = _LessonPlanner.finishLesson()
+        scheduleReminder(nextLessonDate)
         if let d = delegate { d.didCompleteLesson() }
         self.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
-        
-        if let e = retireResult.error {
-            UsageAnalytics.trackError("Could not retire words in word set", error: e)
-        }
-        if let e = fillResult.error {
-            UsageAnalytics.trackError("Could not fill words in word set", error: e)
-        }
     }
     
     private func willStartWordSet(set : WordSet) {
@@ -175,45 +157,9 @@ class LessonViewController: UIViewController,NSFetchedResultsControllerDelegate,
         if let d = delegate { d.willStartLesson() }
     }
     
-    private func findNextWordSet() -> WordSet? {
-        var set : WordSet? = nil;
-
-        
-        if let baby = Baby.currentBaby {
-            var error: NSError? = nil
-            if let ctx = managedContext {
-                let fetchRequest = NSFetchRequest(entityName: "WordSet")
-                fetchRequest.sortDescriptors = [NSSortDescriptor(key: "lastViewedOn", ascending: true)]
-                fetchRequest.fetchLimit = 1
-                fetchRequest.predicate = NSPredicate(format: "(baby == %@)",baby)
-                if let results = ctx.executeFetchRequest(fetchRequest, error: &error) as? [WordSet] {
-                    set = results.count > 0 ? results.first : nil
-                }
-            }
-            
-            if error != nil {
-                UsageAnalytics.trackError("Error trying to load word set from CoreData", error:error!);
-            }
-        } else {
-            NSLog("No Baby set!");
-        }
-        
-        return set;
-    }
-    
-    private func saveUpdatedWordsAndSets() {
-        if let ctx = managedContext {
-            var error : NSError? = nil;
-            ctx.save(&error)
-            if let err = error {
-                UsageAnalytics.trackError("Failed to save changed Words and WordSets", error: err)
-            }
-        }
-    }
-    
-    private func scheduleReminder() {
+    private func scheduleReminder(forDate: NSDate) {
         let localNotification = UILocalNotification()
-        localNotification.fireDate = NSDate(timeIntervalSinceNow:  UserPreferences.lessonReminderInverval)
+        localNotification.fireDate = forDate
         localNotification.alertBody =  NSLocalizedString("local_notification_reminder_alert_body", comment:"Main message shown in local notification");
         localNotification.timeZone = NSTimeZone.defaultTimeZone()
         localNotification.alertAction = NSLocalizedString("local_notification_reminder_alert_action", comment:"The side prompt shown in local notification");

@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, UIAlertViewDelegate {
                             
     var window: UIWindow?
 
@@ -88,9 +88,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             error = NSError(domain: "LittleReader", code: 9999, userInfo: dict)
             // Replace this with code to handle the error appropriately.
             UsageAnalytics.trackError("Failed to create the persistentStoreCoordinator", error: error!)
-            #if DEBUG
-                abort()
-            #endif
+            UIAlertView(title: "Bad News", message: "The database schema has changed in a recent update, this means that you'll have to delete the app and install it again. The app will exit now.", delegate: self, cancelButtonTitle : "Sigh, Ok").show()
         }
         
         return coordinator
@@ -114,11 +112,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             var error: NSError? = nil
             if moc.hasChanges && !moc.save(&error) {
                 UsageAnalytics.trackError("Failed to create the persistentStoreCoordinator", error: error!)
-                #if DEBUG
-                    abort()
-                #endif
+                UIAlertView(title: "Bad News", message: "The database schema has changed in a recent update, this means that you'll have to delete the app and install it again. The app will exit now.", delegate: self, cancelButtonTitle : "Sigh, Ok").show()
             }
         }
+    }
+    
+    func alertView(alertView: UIAlertView, didDismissWithButtonIndex buttonIndex: Int) {
+        abort()
     }
 
 }
