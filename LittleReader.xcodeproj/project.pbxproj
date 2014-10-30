@@ -25,6 +25,7 @@
 		E841F67219FA868700684DD6 /* WordListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E841F67119FA868700684DD6 /* WordListViewController.swift */; };
 		E841F67619FA935800684DD6 /* NSDate+HumanizedTime.m in Sources */ = {isa = PBXBuildFile; fileRef = E841F67419FA935800684DD6 /* NSDate+HumanizedTime.m */; };
 		E841F67819FA938400684DD6 /* NSDateHumanizedTime.strings in Resources */ = {isa = PBXBuildFile; fileRef = E841F67719FA938400684DD6 /* NSDateHumanizedTime.strings */; };
+		E84794FF1A01C4470065BABE /* LessonHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E84794FE1A01C4470065BABE /* LessonHistoryViewController.swift */; };
 		E84AE46119FEEC2E00910BC0 /* LittleReader.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E8CDE7EA199FD18F0036CFE8 /* LittleReader.xcdatamodeld */; };
 		E858B7EF19BA3D59003C5727 /* StreamReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E858B7EE19BA3D59003C5727 /* StreamReader.swift */; };
 		E85F39C919A6BB670004C80F /* Word.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85F39C819A6BB670004C80F /* Word.swift */; };
@@ -83,6 +84,7 @@
 		E841F67519FA935800684DD6 /* NSDate+HumanizedTime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+HumanizedTime.h"; sourceTree = "<group>"; };
 		E841F67719FA938400684DD6 /* NSDateHumanizedTime.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = NSDateHumanizedTime.strings; sourceTree = "<group>"; };
 		E841F67919FA93CB00684DD6 /* ObjCBridging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjCBridging.h; sourceTree = "<group>"; };
+		E84794FE1A01C4470065BABE /* LessonHistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LessonHistoryViewController.swift; sourceTree = "<group>"; };
 		E858B7EE19BA3D59003C5727 /* StreamReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StreamReader.swift; sourceTree = "<group>"; };
 		E85F39C819A6BB670004C80F /* Word.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Word.swift; sourceTree = "<group>"; };
 		E85F39CB19A6BB670004C80F /* WordSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordSet.swift; sourceTree = "<group>"; };
@@ -165,6 +167,7 @@
 				E8CDE7ED199FD18F0036CFE8 /* MainViewController.swift */,
 				E818296919F6FCB6007B6DC9 /* IdleScreenViewController.swift */,
 				E818296B19F6FE87007B6DC9 /* LessonViewController.swift */,
+				E84794FE1A01C4470065BABE /* LessonHistoryViewController.swift */,
 				E81846CF19F94B580012EAAF /* ChildInfoViewController.swift */,
 				E841F67119FA868700684DD6 /* WordListViewController.swift */,
 				E81846D119F9503D0012EAAF /* MangedObjectContextHolder.swift */,
@@ -355,6 +358,7 @@
 				E8A50DDA1A01645800756CC8 /* LittleReader.swift in Sources */,
 				E8FBFD441A012B6600087BE2 /* LessonPlanner.swift in Sources */,
 				E8CDE7EE199FD18F0036CFE8 /* MainViewController.swift in Sources */,
+				E84794FF1A01C4470065BABE /* LessonHistoryViewController.swift in Sources */,
 				E82DEBFD19F6AA4100EED0A8 /* UserPreferences.swift in Sources */,
 				E85F39C919A6BB670004C80F /* Word.swift in Sources */,
 				E8CDE7EC199FD18F0036CFE8 /* LittleReader.xcdatamodeld in Sources */,
