@@ -25,6 +25,12 @@ class LessonPlanner {
     /// Call to get the next bunch of words to display.
     func startLesson() -> [Word]? {
         _lessonStartTime = NSDate()
+        
+        // The date when the first lesson was taken
+        if UserPreferences.programStartedAt == nil {
+            UserPreferences.programStartedAt = _lessonStartTime
+        }
+        
         var words : [Word]? = nil
         if let wordSet = findNextWordSet() {
             _currentWordSet = wordSet

@@ -59,6 +59,16 @@ class UserPreferences {
         }
     }
 
+    class var programStartedAt : NSDate? {
+        set(programStartedAt) {
+        NSUserDefaults.standardUserDefaults().setDouble(programStartedAt!.timeIntervalSince1970, forKey:"programStartedAt");
+        }
+        get {
+            let interval = NSUserDefaults.standardUserDefaults().doubleForKey("programStartedAt");
+            return interval > 0 ? NSDate(timeIntervalSince1970: interval) : nil
+        }
+    }
+
 
     
     
