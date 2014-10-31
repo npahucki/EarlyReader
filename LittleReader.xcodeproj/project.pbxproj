@@ -10,7 +10,6 @@
 		E816042919FAD89F00B87B9D /* UsageAnalytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = E82DEC0419F6B97300EED0A8 /* UsageAnalytics.swift */; };
 		E816042D19FAE05200B87B9D /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = E816042C19FAE05200B87B9D /* Common.swift */; };
 		E818296519F6F04A007B6DC9 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E818296419F6F04A007B6DC9 /* Localizable.strings */; };
-		E818296A19F6FCB6007B6DC9 /* IdleScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E818296919F6FCB6007B6DC9 /* IdleScreenViewController.swift */; };
 		E818296C19F6FE87007B6DC9 /* LessonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E818296B19F6FE87007B6DC9 /* LessonViewController.swift */; };
 		E81846D019F94B580012EAAF /* ChildInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E81846CF19F94B580012EAAF /* ChildInfoViewController.swift */; };
 		E81846D219F9503D0012EAAF /* MangedObjectContextHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E81846D119F9503D0012EAAF /* MangedObjectContextHolder.swift */; };
@@ -46,6 +45,7 @@
 		E8D9C13A19FF247E00FAFA8F /* Baby.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8BF775C19F932DA00F1BF0A /* Baby.swift */; };
 		E8D9C13B19FF248100FAFA8F /* Word.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85F39C819A6BB670004C80F /* Word.swift */; };
 		E8D9C13C19FF248400FAFA8F /* WordSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85F39CB19A6BB670004C80F /* WordSet.swift */; };
+		E8E23E681A042785004764E9 /* IdleScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E818296919F6FCB6007B6DC9 /* IdleScreenViewController.swift */; };
 		E8FBFD441A012B6600087BE2 /* LessonPlanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8FBFD431A012B6600087BE2 /* LessonPlanner.swift */; };
 		E8FBFD451A012B6600087BE2 /* LessonPlanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8FBFD431A012B6600087BE2 /* LessonPlanner.swift */; };
 		E8FBFD461A01326400087BE2 /* UserPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = E82DEBFC19F6AA4100EED0A8 /* UserPreferences.swift */; };
@@ -356,6 +356,7 @@
 				E8FBFD441A012B6600087BE2 /* LessonPlanner.swift in Sources */,
 				E8CDE7EE199FD18F0036CFE8 /* MainViewController.swift in Sources */,
 				E84794FF1A01C4470065BABE /* LessonHistoryViewController.swift in Sources */,
+				E8E23E681A042785004764E9 /* IdleScreenViewController.swift in Sources */,
 				E82DEBFD19F6AA4100EED0A8 /* UserPreferences.swift in Sources */,
 				E85F39C919A6BB670004C80F /* Word.swift in Sources */,
 				E8CDE7EC199FD18F0036CFE8 /* LittleReader.xcdatamodeld in Sources */,
@@ -365,7 +366,6 @@
 				E81846D219F9503D0012EAAF /* MangedObjectContextHolder.swift in Sources */,
 				E82959131A00108D003575F7 /* AddWordsViewController.swift in Sources */,
 				E818296C19F6FE87007B6DC9 /* LessonViewController.swift in Sources */,
-				E818296A19F6FCB6007B6DC9 /* IdleScreenViewController.swift in Sources */,
 				E81846D019F94B580012EAAF /* ChildInfoViewController.swift in Sources */,
 				E858B7EF19BA3D59003C5727 /* StreamReader.swift in Sources */,
 				E8BF775D19F932DA00F1BF0A /* Baby.swift in Sources */,

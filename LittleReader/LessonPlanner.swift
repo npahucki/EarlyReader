@@ -182,6 +182,7 @@ class LessonPlanner {
     }
     
     private func logLesson(wordSet : WordSet) {
+        let useDay = self.dayOfProgram // NOTE: Must be done before inserting entity into context
         if let entityDescription = NSEntityDescription.entityForName("LessonLog", inManagedObjectContext:_managedObjectContext) {
             let log = LessonLog(entity: entityDescription, insertIntoManagedObjectContext: _managedObjectContext)
             log.baby = _baby
@@ -191,7 +192,7 @@ class LessonPlanner {
             log.lessonDate = _lessonStartTime!
             log.durationSeconds = -_lessonStartTime!.timeIntervalSinceNow
             log.totalNumberOfWordSets = UInt16(_baby.wordSets.count)
-            log.useDay = UInt16(dayOfProgram)
+            log.useDay = UInt16(useDay)
             
         }
     }
