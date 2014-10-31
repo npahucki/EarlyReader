@@ -18,20 +18,10 @@ class UserPreferences {
             return interval > 0 ? interval : 15.0 * 60.0
         }
     }
-    
-    class var numberOfWordSets : Int {
-        set(numberOfWordSets) {
-        NSUserDefaults.standardUserDefaults().setInteger(numberOfWordSets, forKey:"numberOfWordSets");
-        }
-        get {
-            let numberSets = NSUserDefaults.standardUserDefaults().integerForKey("numberOfWordSets");
-            return numberSets > 0 ? numberSets : 1
-        }
-    }
 
     class var numberOfTimesToRepeatEachWordSet : Int {
         set(numberOfTimesToRepeatEachWordSet) {
-        NSUserDefaults.standardUserDefaults().setInteger(numberOfWordSets, forKey:"numberOfTimesToRepeatEachWordSet");
+        NSUserDefaults.standardUserDefaults().setInteger(numberOfTimesToRepeatEachWordSet, forKey:"numberOfTimesToRepeatEachWordSet");
         }
         get {
             let times = NSUserDefaults.standardUserDefaults().integerForKey("numberOfTimesToRepeatEachWordSet");

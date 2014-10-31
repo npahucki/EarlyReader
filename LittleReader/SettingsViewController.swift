@@ -111,8 +111,6 @@ class SettingsViewController: UITableViewController, ManagedObjectContextHolder 
                     UsageAnalytics.trackError("Failed to change the word set count", error: err)
                     UIAlertView.showGenericLocalizedErrorMessage("msg_error_create_word_set")
                 }
-                
-                UserPreferences.numberOfWordSets = baby.wordSets.count
                 sender.value = Double(baby.wordSets.count)
             }
         }
@@ -142,8 +140,11 @@ class SettingsViewController: UITableViewController, ManagedObjectContextHolder 
             if let err = result.error {
                 UsageAnalytics.trackError("Failed to insertWords into CoreData", error: err)
             } else {
-                Baby.currentBaby?.populateWordSets(UserPreferences.numberOfWordSets)
-                updateWordCount()
+                if let baby = Baby.currentBaby {
+                    let numSets = baby.wordSets.count > 0 ? baby.wordSets.count : 1
+                    baby.populateWordSets(numSets)
+                    updateWordCount()
+                }
             }
         }
     }

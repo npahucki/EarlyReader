@@ -11,7 +11,7 @@ import CoreData
 
 /// Encapsulates the logic for determining which words to show and for how many times.
 class LessonPlanner {
-
+    
     private var _currentWordSet : WordSet? = nil
     private let _baby : Baby
     private let _managedObjectContext : NSManagedObjectContext
@@ -23,7 +23,7 @@ class LessonPlanner {
         self._baby = baby
         self._managedObjectContext = baby.managedObjectContext!
     }
-
+    
     var lastLessonDate : NSDate? {
         get {
             return UserPreferences.lastLessonTakenAt
@@ -32,29 +32,89 @@ class LessonPlanner {
     
     var nextLessonDate : NSDate {
         get {
-            return calcNextLessonDate()
+            let results =  calcNextLessonDate()
+            if let e = results.error {
+                UsageAnalytics.trackError("Could not calculate the next lesson date", error: e)
+            }
+            return results.date
         }
     }
-
+    
     var numberOfLessonsPerDay : Int {
         get {
-            return countOfLessonsPerDay()
+            return _baby.wordSets.count * UserPreferences.numberOfTimesToRepeatEachWordSet
         }
     }
-
+    
     var numberOfLessonsRemainingToday : Int {
         get {
-            return countLessonsRemainingForToday().count
+            let results = countLessonsRemainingForToday()
+            if let e = results.error {
+                UsageAnalytics.trackError("Error calculating count of lessons remaining today", error: e)
+            }
+            return results.count
         }
     }
-
+    
     var numberOfLessonsTakenToday : Int {
         get {
-            return countLessonsGivenOnDate(NSDate()).count
+            let results = countLessonsGivenOnDate(NSDate())
+            if let e = results.error {
+                UsageAnalytics.trackError("Error calculating count of lessons taken today", error: e)
+            }
+            return results.count
         }
     }
-
     
+    var numberOfWordSetsForToday : Int {
+        get {
+            /*
+            Day 1:
+            5 words in a single set, repeated 3 times in a day.
+            Day 2:
+            Repeat the first set 3 times, add a set of 5 words, repeat 3 times a day. (It’s not clear if you should intermingle or do all 3 repetitions of a single set)
+            Day 3-7:
+            Repeat all 3  sets 3 times a day.
+            
+            'When the system is working smoothly’ - give option to add in two mores sets?
+            
+            Day 8
+            Repeat the first 3 sets set 3 times a day, add a new set.
+            Day 9-15
+            Repeat all 4 sets set 3 times a day.
+            Day 16
+            Repeat all 4 sets set 3 times a day, add a new set
+            Day 17 onward
+            Repeat all 5 sets 3 times a day each. All the while, the retirement process is running every day.
+            */
+            
+            switch(self.dayOfProgram) {
+            case 1:
+                return 1
+            case 2:
+                return 2
+            case 3-7:
+                return 3
+            case 8-15:
+                return 4
+            default:
+                return 5
+            }
+        }
+    }
+    
+    /// Returns the day of the program. This depends on when the program was started and how many days the program has been used.
+    /// If you Start on 10/10/14 for example, then on 10/11/14 is Day 2. If you skip a day (the 12th) and come back on
+    /// 10/13/14, then this is Day 3. If you skip a week then come back on 10/20/14, this is Day 4.
+    var dayOfProgram : Int {
+        get {
+            let results = calcCurrentUseDay()
+            if let e = results.error {
+                UsageAnalytics.trackError("Error calculating day of program", error: e)
+            }
+            return results.day
+        }
+    }
     
     /// Call to get the next bunch of words to display.
     func startLesson() -> [Word]? {
@@ -74,7 +134,7 @@ class LessonPlanner {
         
         return words
     }
-
+    
     /// Call to indicate that the lesson has been completed
     /// Returns the date/time the next lesson should be done
     func finishLesson() {
@@ -106,20 +166,19 @@ class LessonPlanner {
         // TODO: Add an array of words actually viewed.
     }
     
-    private func calcNextLessonDate() -> NSDate {
+    private func calcNextLessonDate() -> (date : NSDate, error: NSError?) {
         var nextLessonDate = NSDate()
+        var error : NSError? = nil
         if let lastLessonDate = UserPreferences.lastLessonTakenAt {
             nextLessonDate = NSDate(timeInterval: UserPreferences.lessonReminderInverval, sinceDate:lastLessonDate)
             let result = countLessonsRemainingForToday()
-            if let e = result.error {
-                UsageAnalytics.trackError("Could not count the lessons remaining today", error: e)
-            } else if result.count <= 0 {
+            if error == nil && result.count <= 0 {
                 // This means that the lesson was already viewed today, and that the next lesson should be tomorrow
                 nextLessonDate =  lastLessonDate.theNextMorning()
             }
         }
         
-        return nextLessonDate
+        return (nextLessonDate, error)
     }
     
     private func logLesson(wordSet : WordSet) {
@@ -131,13 +190,15 @@ class LessonPlanner {
             log.words = ",".join((Array(wordSet.words) as [Word]).map { $0.text })
             log.lessonDate = _lessonStartTime!
             log.durationSeconds = -_lessonStartTime!.timeIntervalSinceNow
-            log.totalNumberOfWordSets = UInt16(UserPreferences.numberOfWordSets)
+            log.totalNumberOfWordSets = UInt16(_baby.wordSets.count)
+            log.useDay = UInt16(dayOfProgram)
+            
         }
     }
     
     private func findNextWordSet() -> WordSet? {
         var set : WordSet? = nil;
-
+        
         var error: NSError? = nil
         let fetchRequest = NSFetchRequest(entityName: "WordSet")
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "lastViewedOn", ascending: true)]
@@ -161,9 +222,28 @@ class LessonPlanner {
             UsageAnalytics.trackError("Failed to save changed Words and WordSets", error: err)
         }
     }
-
-    private func countOfLessonsPerDay() -> Int {
-        return UserPreferences.numberOfWordSets * UserPreferences.numberOfTimesToRepeatEachWordSet
+    
+    private func calcCurrentUseDay() -> (day:Int, error:NSError?) {
+        var error: NSError? = nil
+        var day : Int = 0
+        
+        
+        let fetchRequest = NSFetchRequest(entityName: "LessonLog")
+        fetchRequest.fetchLimit = 1
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "useDay", ascending: false)]
+        fetchRequest.predicate = NSPredicate(format: "(baby == %@)",_baby)
+        let results = _managedObjectContext.executeFetchRequest(fetchRequest, error: &error) as [LessonLog]
+        if error == nil {
+            if let lastLesson = results.first {
+                day = Int(lastLesson.lessonDate.isToday() ? lastLesson.useDay : lastLesson.useDay + 1)
+            } else {
+                day = 1 // Must be first day using since there are no records.
+            }
+        }
+        
+        return (day, error)
+        
+        
     }
     
     private func countLessonsRemainingForToday() -> (count:Int, error:NSError?) {
@@ -175,10 +255,10 @@ class LessonPlanner {
         if let err = result.error {
             error = err
         } else {
-           count = countOfLessonsPerDay() - result.count
+            count = self.numberOfLessonsPerDay - result.count
         }
         
-        return (count: count, error: error)
+        return (count, error)
     }
     
     private func countLessonsGivenOnDate(date : NSDate) -> (count:Int, error:NSError?) {
@@ -187,8 +267,8 @@ class LessonPlanner {
         let fetchRequest = NSFetchRequest(entityName: "LessonLog")
         fetchRequest.predicate = NSPredicate(format: "(baby == %@) AND (lessonDate >= %@) AND (lessonDate <= %@)",_baby, date.startOfDay(), date.endOfDay())
         count = _managedObjectContext.countForFetchRequest(fetchRequest, error: &error)
-        return (count: count, error: error)
+        return (count, error)
     }
-
+    
 }
 
