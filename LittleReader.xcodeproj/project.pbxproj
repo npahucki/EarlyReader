@@ -25,7 +25,6 @@
 		E841F67619FA935800684DD6 /* NSDate+HumanizedTime.m in Sources */ = {isa = PBXBuildFile; fileRef = E841F67419FA935800684DD6 /* NSDate+HumanizedTime.m */; };
 		E841F67819FA938400684DD6 /* NSDateHumanizedTime.strings in Resources */ = {isa = PBXBuildFile; fileRef = E841F67719FA938400684DD6 /* NSDateHumanizedTime.strings */; };
 		E84794FF1A01C4470065BABE /* LessonHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E84794FE1A01C4470065BABE /* LessonHistoryViewController.swift */; };
-		E84AE46119FEEC2E00910BC0 /* LittleReader.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E8CDE7EA199FD18F0036CFE8 /* LittleReader.xcdatamodeld */; };
 		E858B7EF19BA3D59003C5727 /* StreamReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E858B7EE19BA3D59003C5727 /* StreamReader.swift */; };
 		E85F39C919A6BB670004C80F /* Word.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85F39C819A6BB670004C80F /* Word.swift */; };
 		E85F39CC19A6BB670004C80F /* WordSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85F39CB19A6BB670004C80F /* WordSet.swift */; };
@@ -384,7 +383,6 @@
 				E88916D11A04340B002C8F13 /* CoreDataUnitTestBase.swift in Sources */,
 				E816042919FAD89F00B87B9D /* UsageAnalytics.swift in Sources */,
 				E8FBFD461A01326400087BE2 /* UserPreferences.swift in Sources */,
-				E84AE46119FEEC2E00910BC0 /* LittleReader.xcdatamodeld in Sources */,
 				E8FBFD4B1A013F2500087BE2 /* NSDateExtensionsTests.swift in Sources */,
 				E8A50DDB1A01645800756CC8 /* LittleReader.swift in Sources */,
 				E81C446219FE7794007966E5 /* WordImporterTests.swift in Sources */,
