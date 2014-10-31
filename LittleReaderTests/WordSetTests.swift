@@ -8,7 +8,7 @@
 
 import XCTest
 
-class WordSetTests: XCTestCase {
+class WordSetTests: CoreDataUnitTestBase {
 
     override func setUp() {
         super.setUp()

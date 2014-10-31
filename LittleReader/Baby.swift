@@ -11,7 +11,7 @@ import CoreData
 import UIKit
 
 
-class Baby: NSManagedObject {
+public class Baby: NSManagedObject {
 
     @NSManaged var name: String
     @NSManaged var birthDate: NSDate

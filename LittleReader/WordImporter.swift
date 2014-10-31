@@ -9,17 +9,17 @@
 import Foundation
 import CoreData
 
-class WordImporter {
+public class WordImporter {
     
     
     private let _managedContext : NSManagedObjectContext
     
-    init(managedContext : NSManagedObjectContext) {
+    public init(managedContext : NSManagedObjectContext) {
         self._managedContext = managedContext
     }
     
     
-    func importWords(wordList : [String]) -> (numberOfWordsAdded : Int, error : NSError?) {
+    public func importWords(wordList : [String]) -> (numberOfWordsAdded : Int, error : NSError?) {
         var count = 0
         var error: NSError? = nil
         

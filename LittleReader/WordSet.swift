@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 
 
-class WordSet: NSManagedObject {
+public class WordSet: NSManagedObject {
 
     @NSManaged var number: UInt16
     @NSManaged var lastViewedOn: NSDate?

@@ -9,7 +9,7 @@
 import Foundation
 import CoreData
 
-class LessonLog: NSManagedObject {
+public class LessonLog: NSManagedObject {
 
     @NSManaged var numberOfWordsViewed: UInt16
     @NSManaged var lessonDate: NSDate

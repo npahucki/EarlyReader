@@ -9,7 +9,7 @@
 import Foundation
 import CoreData
 
-class Word: NSManagedObject {
+public class Word: NSManagedObject {
 
     @NSManaged var lastViewedOn: NSDate?
     @NSManaged var activatedOn: NSDate?

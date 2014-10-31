@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 
 /// Encapsulates the logic for determining which words to show and for how many times.
-class LessonPlanner {
+public class LessonPlanner {
     
     private var _currentWordSet : WordSet? = nil
     private let _baby : Baby
