@@ -33,9 +33,39 @@ class WordSetTests: CoreDataUnitTestBase {
 
         XCTAssertEqual(wordSet.words.count, 6)
     }
+
+    func testRetireSingleOldWord() {
+        let importer = WordImporter(managedContext: ctx)
+        importer.importWords(["one","two", "three", "four", "five", "six"])
+        let wordSet = createWordSet()
+        XCTAssertEqual(wordSet.fill().numberOfWordsAdded, WORDS_PER_WORDSET)
+        let words = wordSet.words.allObjects as [NSManagedObject]
+        words[0].setValue(Int(WORD_VIEWS_BEFORE_RETIREMENT), forKey: "timesViewed")
+        words[1].setValue(Int(WORD_VIEWS_BEFORE_RETIREMENT) + 1, forKey: "timesViewed")
+        words[2].setValue(Int(WORD_VIEWS_BEFORE_RETIREMENT) + 2, forKey: "timesViewed")
+        words[3].setValue(Int(WORD_VIEWS_BEFORE_RETIREMENT) + 2, forKey: "timesViewed")
+        words[4].setValue(Int(WORD_VIEWS_BEFORE_RETIREMENT) + 2, forKey: "timesViewed")
+        words[4].setValue(Int(WORD_VIEWS_BEFORE_RETIREMENT) + 3, forKey: "timesViewed")
+
+        // At most one word per day should be retired
+        XCTAssert(wordSet.retireOldWord().wasWordRetired, "Expected a word to be retired")
+        XCTAssert(!wordSet.retireOldWord().wasWordRetired, "Expected no more words to be retired until tomorrow")
+        wordSet.lastWordRetiredOn = wordSet.lastWordRetiredOn?.dateByAddingDays(-1)
+        XCTAssert(wordSet.retireOldWord().wasWordRetired, "Expected a word to be retired")
+        XCTAssert(!wordSet.retireOldWord().wasWordRetired, "Expected no more words to be retired until tomorrow")
+        wordSet.lastWordRetiredOn = wordSet.lastWordRetiredOn?.dateByAddingDays(-1)
+        XCTAssert(wordSet.retireOldWord().wasWordRetired, "Expected a word to be retired")
+        XCTAssert(!wordSet.retireOldWord().wasWordRetired, "Expected no more words to be retired until tomorrow")
+        
+        
+        XCTAssertEqual(wordSet.words.count,WORDS_PER_WORDSET - 3)
+
+        
+
+    }
+
     
-    
-    func testRetireOldWord() {
+    func testRetireOldWords() {
         let importer = WordImporter(managedContext: ctx)
         importer.importWords(["one","two", "three", "four", "five", "six"])
         let wordSet = createWordSet()

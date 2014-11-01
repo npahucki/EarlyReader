@@ -62,7 +62,7 @@ public class WordSet: NSManagedObject {
         var error : NSError? = nil
         let now = NSDate()
         var shouldRetire = false
-        if self.lastWordRetiredOn == nil || self.lastWordRetiredOn!.timeIntervalSinceDate(now) > TIME_INTERVAL_24_HOURS {
+        if self.lastWordRetiredOn == nil || now.timeIntervalSinceDate(self.lastWordRetiredOn!) >= TIME_INTERVAL_24_HOURS {
             let result = self.retireOldWords(1)
             error = result.error
             wordRetired = result.numberOfWordsRetired > 0

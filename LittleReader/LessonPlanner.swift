@@ -18,19 +18,19 @@ public class LessonPlanner {
     private var _numberOfWordsViewed : UInt16 = 0
     private var _lessonStartTime : NSDate? = nil
     
-    init(baby : Baby) {
+    public init(baby : Baby) {
         assert(baby.managedObjectContext != nil, "Expected baby to have a managedObjectContext!")
         self._baby = baby
         self._managedObjectContext = baby.managedObjectContext!
     }
     
-    var lastLessonDate : NSDate? {
+    public var lastLessonDate : NSDate? {
         get {
             return UserPreferences.lastLessonTakenAt
         }
     }
     
-    var nextLessonDate : NSDate {
+    public var nextLessonDate : NSDate {
         get {
             let results =  calcNextLessonDate()
             if let e = results.error {
@@ -40,13 +40,13 @@ public class LessonPlanner {
         }
     }
     
-    var numberOfLessonsPerDay : Int {
+    public var numberOfLessonsPerDay : Int {
         get {
             return _baby.wordSets.count * UserPreferences.numberOfTimesToRepeatEachWordSet
         }
     }
     
-    var numberOfLessonsRemainingToday : Int {
+    public var numberOfLessonsRemainingToday : Int {
         get {
             let results = countLessonsRemainingForToday()
             if let e = results.error {
@@ -56,7 +56,7 @@ public class LessonPlanner {
         }
     }
     
-    var numberOfLessonsTakenToday : Int {
+    public var numberOfLessonsTakenToday : Int {
         get {
             let results = countLessonsGivenOnDate(NSDate())
             if let e = results.error {
@@ -66,7 +66,7 @@ public class LessonPlanner {
         }
     }
     
-    var numberOfWordSetsForToday : Int {
+    public var numberOfWordSetsForToday : Int {
         get {
             /*
             Day 1:
@@ -106,7 +106,7 @@ public class LessonPlanner {
     /// Returns the day of the program. This depends on when the program was started and how many days the program has been used.
     /// If you Start on 10/10/14 for example, then on 10/11/14 is Day 2. If you skip a day (the 12th) and come back on
     /// 10/13/14, then this is Day 3. If you skip a week then come back on 10/20/14, this is Day 4.
-    var dayOfProgram : Int {
+    public var dayOfProgram : Int {
         get {
             let results = calcCurrentUseDay()
             if let e = results.error {
@@ -117,7 +117,7 @@ public class LessonPlanner {
     }
     
     /// Call to get the next bunch of words to display.
-    func startLesson() -> [Word]? {
+    public func startLesson() -> [Word]? {
         _lessonStartTime = NSDate()
         
         // The date when the first lesson was taken
@@ -137,7 +137,7 @@ public class LessonPlanner {
     
     /// Call to indicate that the lesson has been completed
     /// Returns the date/time the next lesson should be done
-    func finishLesson() {
+    public func finishLesson() {
         assert(_lessonStartTime != nil, "Lesson was never started")
         
         let now = NSDate()
@@ -159,7 +159,7 @@ public class LessonPlanner {
     }
     
     /// Call to indicate that a word has been viewed.
-    func markWordViewed(word : Word) {
+    public func markWordViewed(word : Word) {
         word.lastViewedOn = NSDate()
         word.timesViewed++
         _numberOfWordsViewed++
@@ -270,6 +270,5 @@ public class LessonPlanner {
         count = _managedObjectContext.countForFetchRequest(fetchRequest, error: &error)
         return (count, error)
     }
-    
 }
 
