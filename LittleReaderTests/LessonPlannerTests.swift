@@ -12,25 +12,25 @@ import LittleReader
 
 class LessonPlannerTests: CoreDataUnitTestBase {
 
+    var _planner : LessonPlanner? = nil
+    var _baby : Baby? = nil
+    
     override func setUp() {
         super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        _baby = createBaby()
+        _planner = LessonPlanner(baby: _baby!)
     }
     
     override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
+        _planner = nil
+        _baby = nil
     }
+    
+    
+    
 
-    private func createBaby() -> Baby {
-        let entityDescription = NSEntityDescription.entityForName("Baby", inManagedObjectContext:ctx)
-        XCTAssert(entityDescription != nil,"entityDescription came back nil!")
-        let baby = Baby(entity: entityDescription!, insertIntoManagedObjectContext: ctx)
-        baby.name = "Test Baby"
-        baby.birthDate = NSDate()
-        ctx.save(nil)
-        return baby
-    }
+    
 
 
 }

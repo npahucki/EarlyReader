@@ -23,8 +23,7 @@ class WordSetTests: CoreDataUnitTestBase {
     }
     
     func testFill() {
-        let importer = WordImporter(managedContext: ctx)
-        importer.importWords(["one","two", "three", "four", "five", "six"])
+        importWords(["one","two", "three", "four", "five", "six"])
         let wordSet = createWordSet()
         
         XCTAssertEqual(wordSet.fill(3).numberOfWordsAdded, 3)
@@ -35,8 +34,7 @@ class WordSetTests: CoreDataUnitTestBase {
     }
 
     func testRetireSingleOldWord() {
-        let importer = WordImporter(managedContext: ctx)
-        importer.importWords(["one","two", "three", "four", "five", "six"])
+        importWords(["one","two", "three", "four", "five", "six"])
         let wordSet = createWordSet()
         XCTAssertEqual(wordSet.fill().numberOfWordsAdded, WORDS_PER_WORDSET)
         let words = wordSet.words.allObjects as [NSManagedObject]
@@ -56,18 +54,12 @@ class WordSetTests: CoreDataUnitTestBase {
         wordSet.lastWordRetiredOn = wordSet.lastWordRetiredOn?.dateByAddingDays(-1)
         XCTAssert(wordSet.retireOldWord().wasWordRetired, "Expected a word to be retired")
         XCTAssert(!wordSet.retireOldWord().wasWordRetired, "Expected no more words to be retired until tomorrow")
-        
-        
         XCTAssertEqual(wordSet.words.count,WORDS_PER_WORDSET - 3)
-
-        
-
     }
 
     
     func testRetireOldWords() {
-        let importer = WordImporter(managedContext: ctx)
-        importer.importWords(["one","two", "three", "four", "five", "six"])
+        importWords(["one","two", "three", "four", "five", "six"])
         let wordSet = createWordSet()
         XCTAssertEqual(wordSet.fill().numberOfWordsAdded, WORDS_PER_WORDSET)
         
@@ -87,11 +79,6 @@ class WordSetTests: CoreDataUnitTestBase {
         
     }
     
-    private func createWordSet() -> WordSet {
-        let entityDescription = NSEntityDescription.entityForName("WordSet", inManagedObjectContext:ctx)
-        XCTAssert(entityDescription != nil,"entityDescription came back nil!")
-        return WordSet(entity: entityDescription!, insertIntoManagedObjectContext: ctx)
-    }
     
 
 }

@@ -21,13 +21,12 @@ class BabyTests: CoreDataUnitTestBase {
     }
     
     func testPopulateWordSets() {
-        let importer = WordImporter(managedContext: ctx)
         var words = [String]()
         for(var i : Int = 0; i < 30; i++) {
             let word = String(i)
             words.append(word)
         }
-        importer.importWords(words)
+        importWords(words)
         
         let baby = createBaby()
         
@@ -52,19 +51,6 @@ class BabyTests: CoreDataUnitTestBase {
             XCTAssert(ws.number < 3, "Expected only word set 0-2 to exist now")
         }
     }
-    
-    
-    private func createBaby() -> Baby {
-        let entityDescription = NSEntityDescription.entityForName("Baby", inManagedObjectContext:ctx)
-        XCTAssert(entityDescription != nil,"entityDescription came back nil!")
-        let baby = Baby(entity: entityDescription!, insertIntoManagedObjectContext: ctx)
-        baby.name = "Test Baby"
-        baby.birthDate = NSDate()
-        ctx.save(nil)
-        return baby
-    }
-
-    
     
 
 }
