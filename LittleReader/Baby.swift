@@ -63,7 +63,7 @@ public class Baby: NSManagedObject {
                 for(var i = 0; i<numberOfWordSetsToCreate; i++) {
                     let wordSet = WordSet(entity: entityDescripition!, insertIntoManagedObjectContext: ctx)
                     wordSet.number = UInt16(countOfWordSets + i)
-                    wordSet.baby = Baby.currentBaby!
+                    wordSet.baby = self
                     setsCreated++
                 }
             } else if countOfWordSets > numberOfWordSets  {
@@ -103,25 +103,5 @@ public class Baby: NSManagedObject {
         
         return (numberOfWordSetsCreated: setsCreated, error: error)
     }
-
-    /// Finds and returns the next WordSet that should be used to show to this baby. 
-    /// May return nil and no error if there are no word sets defined for this baby.
-    public func findNextWordSetToShow() -> (wordSet: WordSet?, error : NSError?) {
-        var error: NSError? = nil
-        var set : WordSet? = nil
-        
-        if let ctx = self.managedObjectContext {
-            let fetchRequest = NSFetchRequest(entityName: "WordSet")
-            fetchRequest.sortDescriptors = [NSSortDescriptor(key: "lastViewedOn", ascending: true)]
-            fetchRequest.fetchLimit = 1
-            fetchRequest.predicate = NSPredicate(format: "(baby == %@)",self)
-            if let results = ctx.executeFetchRequest(fetchRequest, error: &error) as? [WordSet] {
-                set = results.first
-            }
-        }
-        
-        return (wordSet: set, error: error)
-    }
-    
     
 }

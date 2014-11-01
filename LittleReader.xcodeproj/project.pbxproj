@@ -29,6 +29,7 @@
 		E85F39C919A6BB670004C80F /* Word.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85F39C819A6BB670004C80F /* Word.swift */; };
 		E85F39CC19A6BB670004C80F /* WordSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85F39CB19A6BB670004C80F /* WordSet.swift */; };
 		E88916D11A04340B002C8F13 /* CoreDataUnitTestBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88916D01A04340B002C8F13 /* CoreDataUnitTestBase.swift */; };
+		E88916D31A0474AA002C8F13 /* BabyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88916D21A0474AA002C8F13 /* BabyTests.swift */; };
 		E8A50DDA1A01645800756CC8 /* LittleReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A50DD91A01645800756CC8 /* LittleReader.swift */; };
 		E8A50DDB1A01645800756CC8 /* LittleReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A50DD91A01645800756CC8 /* LittleReader.swift */; };
 		E8A50DDD1A01B7F100756CC8 /* LessonLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A50DDC1A01B7F100756CC8 /* LessonLog.swift */; };
@@ -82,6 +83,7 @@
 		E85F39C819A6BB670004C80F /* Word.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Word.swift; sourceTree = "<group>"; };
 		E85F39CB19A6BB670004C80F /* WordSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordSet.swift; sourceTree = "<group>"; };
 		E88916D01A04340B002C8F13 /* CoreDataUnitTestBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataUnitTestBase.swift; sourceTree = "<group>"; };
+		E88916D21A0474AA002C8F13 /* BabyTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BabyTests.swift; sourceTree = "<group>"; };
 		E8A50DD91A01645800756CC8 /* LittleReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LittleReader.swift; sourceTree = "<group>"; };
 		E8A50DDC1A01B7F100756CC8 /* LessonLog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LessonLog.swift; sourceTree = "<group>"; };
 		E8BA1C2319BA11DB0092974A /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
@@ -222,6 +224,7 @@
 			children = (
 				E88916D01A04340B002C8F13 /* CoreDataUnitTestBase.swift */,
 				E81C446319FE77C6007966E5 /* WordSetTests.swift */,
+				E88916D21A0474AA002C8F13 /* BabyTests.swift */,
 				E8FBFD4A1A013F2500087BE2 /* NSDateExtensionsTests.swift */,
 				E81C446119FE7794007966E5 /* WordImporterTests.swift */,
 				E8CDE7FC199FD18F0036CFE8 /* Supporting Files */,
@@ -381,6 +384,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E88916D11A04340B002C8F13 /* CoreDataUnitTestBase.swift in Sources */,
+				E88916D31A0474AA002C8F13 /* BabyTests.swift in Sources */,
 				E816042919FAD89F00B87B9D /* UsageAnalytics.swift in Sources */,
 				E8FBFD461A01326400087BE2 /* UserPreferences.swift in Sources */,
 				E8FBFD4B1A013F2500087BE2 /* NSDateExtensionsTests.swift in Sources */,
