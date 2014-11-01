@@ -11,12 +11,12 @@ import CoreData
 
 public class Word: NSManagedObject {
 
-    @NSManaged var lastViewedOn: NSDate?
-    @NSManaged var activatedOn: NSDate?
-    @NSManaged var retiredOn: NSDate?
-    @NSManaged var text: String
-    @NSManaged var timesViewed: UInt16
-    @NSManaged var wordSet: WordSet?
+    @NSManaged public var lastViewedOn: NSDate?
+    @NSManaged public var activatedOn: NSDate?
+    @NSManaged public var retiredOn: NSDate?
+    @NSManaged public var text: String
+    @NSManaged public var timesViewed: UInt16
+    @NSManaged public var wordSet: WordSet?
     
     func wordSetNumber() -> Int {
         if let set = self.wordSet {

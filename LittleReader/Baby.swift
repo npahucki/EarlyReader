@@ -13,9 +13,9 @@ import UIKit
 
 public class Baby: NSManagedObject {
 
-    @NSManaged var name: String
-    @NSManaged var birthDate: NSDate
-    @NSManaged var wordSets: NSSet
+    @NSManaged public var name: String
+    @NSManaged public var birthDate: NSDate
+    @NSManaged public var wordSets: NSSet
     
     class var currentBaby : Baby? {
         set(baby) {
@@ -51,7 +51,7 @@ public class Baby: NSManagedObject {
     /// Note, if word sets already exist, they will not be created again, but they will be filled
     /// The numberOfWordSetsCreated only returns new sets created, not any existing ones that were filled, thus a return value of zero
     /// doen't necessarily mean something when wrong. Check the value of error to see if something went wrong. 
-    func populateWordSets(numberOfWordSets : Int, numberOfWordsPerSet : Int = WORDS_PER_WORDSET) -> (numberOfWordSetsCreated: Int, error: NSError?) {
+    public func populateWordSets(numberOfWordSets : Int, numberOfWordsPerSet : Int = WORDS_PER_WORDSET) -> (numberOfWordSetsCreated: Int, error: NSError?) {
         var setsCreated = 0
         var error : NSError? = nil
         if let ctx = managedObjectContext {
@@ -106,7 +106,7 @@ public class Baby: NSManagedObject {
 
     /// Finds and returns the next WordSet that should be used to show to this baby. 
     /// May return nil and no error if there are no word sets defined for this baby.
-    func findNextWordSetToShow() -> (wordSet: WordSet?, error : NSError?) {
+    public func findNextWordSetToShow() -> (wordSet: WordSet?, error : NSError?) {
         var error: NSError? = nil
         var set : WordSet? = nil
         

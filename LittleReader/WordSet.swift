@@ -12,18 +12,18 @@ import CoreData
 
 public class WordSet: NSManagedObject {
 
-    @NSManaged var number: UInt16
-    @NSManaged var lastViewedOn: NSDate?
-    @NSManaged var lastWordRetiredOn: NSDate?
-    @NSManaged var words: NSMutableSet
-    @NSManaged var baby: Baby
+    @NSManaged public var number: UInt16
+    @NSManaged public var lastViewedOn: NSDate?
+    @NSManaged public var lastWordRetiredOn: NSDate?
+    @NSManaged public var words: NSMutableSet
+    @NSManaged public var baby: Baby
 
     
     /// Makes sure the word set is filled with the default number of words per wordset
     /// This method does NOT save the context.
     ///
     /// :returns: A tuple, with the number of words added to the set (possibly 0) and an error (if any)
-    func fill() -> (numberOfWordsAdded : Int , error: NSError?) {
+    public func fill() -> (numberOfWordsAdded : Int , error: NSError?) {
             return fill(WORDS_PER_WORDSET)
     }
     
@@ -32,7 +32,7 @@ public class WordSet: NSManagedObject {
     ///
     /// :param: numberOfWords The number of worrds to fill the word set with
     /// :returns: A tuple, with the number of words added to the set (possibly 0 or less than requested)  and an error (if any)
-    func fill(numberOfWords : Int) -> (numberOfWordsAdded : Int , error: NSError?) {
+    public func fill(numberOfWords : Int) -> (numberOfWordsAdded : Int , error: NSError?) {
         var count = 0
         var error : NSError? = nil;
 
@@ -57,7 +57,7 @@ public class WordSet: NSManagedObject {
 
 
     /// Retires at most a single word, if not words in this set have been retired in the last 24 hours.
-    func retireOldWord() -> (wasWordRetired : Bool, error : NSError?) {
+    public func retireOldWord() -> (wasWordRetired : Bool, error : NSError?) {
         var wordRetired = false
         var error : NSError? = nil
         let now = NSDate()
@@ -74,7 +74,7 @@ public class WordSet: NSManagedObject {
     /// Retires up to maximumWordsToRetire words that have been viewed at least WORD_VIEWS_BEFORE_RETIREMENT
     /// and returns the number of words actually retired. See also retireOldWord() which should be generally 
     /// prefered to this method.
-    func retireOldWords(maximumWordsToRetire:Int) -> (numberOfWordsRetired : Int, error : NSError?) {
+    public func retireOldWords(maximumWordsToRetire:Int) -> (numberOfWordsRetired : Int, error : NSError?) {
         var wordsRetired = 0
         let now = NSDate()
         let wordsInSet = self.words.count
