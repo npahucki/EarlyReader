@@ -3,7 +3,7 @@
     <entity name="Baby" representedClassName="LittleReader.Baby" syncable="YES">
         <attribute name="birthDate" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="lessonLogs" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="LessonLog" inverseName="baby" inverseEntity="LessonLog" syncable="YES"/>
+        <relationship name="lessonLogs" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="LessonLog" inverseName="baby" inverseEntity="LessonLog" syncable="YES"/>
         <relationship name="wordSets" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="WordSet" inverseName="baby" inverseEntity="WordSet" syncable="YES"/>
     </entity>
     <entity name="LessonLog" representedClassName="LittleReader.LessonLog" syncable="YES">
@@ -32,7 +32,7 @@
         <relationship name="words" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Word" inverseName="wordSet" inverseEntity="Word" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Baby" positionX="4345" positionY="-5974" width="128" height="103"/>
+        <element name="Baby" positionX="4345" positionY="-5974" width="128" height="105"/>
         <element name="LessonLog" positionX="4651" positionY="-5961" width="128" height="165"/>
         <element name="Word" positionX="4653" positionY="-5742" width="128" height="135"/>
         <element name="WordSet" positionX="4338" positionY="-5751" width="128" height="118"/>

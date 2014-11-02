@@ -9,16 +9,16 @@
 import Foundation
 import CoreData
 
-class LessonLog: NSManagedObject {
+public class LessonLog: NSManagedObject {
 
-    @NSManaged var numberOfWordsViewed: UInt16
-    @NSManaged var lessonDate: NSDate
-    @NSManaged var durationSeconds: NSTimeInterval
-    @NSManaged var words: String
-    @NSManaged var wordSetNumber: UInt16
-    @NSManaged var useDay : UInt16
-    @NSManaged var totalNumberOfWordSets : UInt16
-    @NSManaged var baby : Baby
+    @NSManaged public var numberOfWordsViewed: UInt16
+    @NSManaged public var lessonDate: NSDate
+    @NSManaged public var durationSeconds: NSTimeInterval
+    @NSManaged public var words: String
+    @NSManaged public var wordSetNumber: UInt16
+    @NSManaged public var useDay : UInt16
+    @NSManaged public var totalNumberOfWordSets : UInt16
+    @NSManaged public var baby : Baby
     
 
 }

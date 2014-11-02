@@ -48,31 +48,6 @@ class UserPreferences {
             return NSUserDefaults.standardUserDefaults().boolForKey("alwaysUseManualMode");
         }
     }
-
-    
-    class var lastLessonTakenAt : NSDate? {
-        set(lastLessonTakenAt) {
-        NSUserDefaults.standardUserDefaults().setDouble(lastLessonTakenAt!.timeIntervalSince1970, forKey:"lastLessonTakenAt");
-        }
-        get {
-            let interval = NSUserDefaults.standardUserDefaults().doubleForKey("lastLessonTakenAt");
-            return interval > 0 ? NSDate(timeIntervalSince1970: interval) : nil
-        }
-    }
-
-    class var programStartedAt : NSDate? {
-        set(programStartedAt) {
-        NSUserDefaults.standardUserDefaults().setDouble(programStartedAt!.timeIntervalSince1970, forKey:"programStartedAt");
-        }
-        get {
-            let interval = NSUserDefaults.standardUserDefaults().doubleForKey("programStartedAt");
-            return interval > 0 ? NSDate(timeIntervalSince1970: interval) : nil
-        }
-    }
-
-
-    
-    
     
     
 }

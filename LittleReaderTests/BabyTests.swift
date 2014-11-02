@@ -28,7 +28,7 @@ class BabyTests: CoreDataUnitTestBase {
         }
         importWords(words)
         
-        let baby = createBaby()
+        let baby = self.baby!
         
         XCTAssertEqual(baby.populateWordSets(1, numberOfWordsPerSet: 5).numberOfWordSetsCreated, 1)
         XCTAssertEqual(baby.wordSets.count, 1)

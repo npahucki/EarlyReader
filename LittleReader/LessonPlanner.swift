@@ -23,10 +23,25 @@ public class LessonPlanner {
         self._baby = baby
         self._managedObjectContext = baby.managedObjectContext!
     }
+
+    public var firstLessonDate : NSDate? {
+        get {
+            let results = findLessonDate(true)
+            if let e = results.error {
+                UsageAnalytics.trackError("Could not calculate the fist lesson date", error: e)
+            }
+            return results.date
+        }
+    }
+
     
     public var lastLessonDate : NSDate? {
         get {
-            return UserPreferences.lastLessonTakenAt
+            let results = findLessonDate(false)
+            if let e = results.error {
+                UsageAnalytics.trackError("Could not calculate the last lesson date", error: e)
+            }
+            return results.date
         }
     }
     
@@ -120,11 +135,6 @@ public class LessonPlanner {
     public func startLesson() -> [Word]? {
         _lessonStartTime = NSDate()
         
-        // The date when the first lesson was taken
-        if UserPreferences.programStartedAt == nil {
-            UserPreferences.programStartedAt = _lessonStartTime
-        }
-        
         var words : [Word]? = nil
         if let wordSet = findNextWordSet() {
             _currentWordSet = wordSet
@@ -148,7 +158,6 @@ public class LessonPlanner {
             var retireResult = wordSet.retireOldWord()
             var fillResult = wordSet.fill()
             saveUpdatedWordsAndSets()
-            UserPreferences.lastLessonTakenAt = now
             if let e = retireResult.error {
                 UsageAnalytics.trackError("Could not retire words in word set", error: e)
             }
@@ -169,16 +178,45 @@ public class LessonPlanner {
     private func calcNextLessonDate() -> (date : NSDate, error: NSError?) {
         var nextLessonDate = NSDate()
         var error : NSError? = nil
-        if let lastLessonDate = UserPreferences.lastLessonTakenAt {
-            nextLessonDate = NSDate(timeInterval: UserPreferences.lessonReminderInverval, sinceDate:lastLessonDate)
-            let result = countLessonsRemainingForToday()
-            if error == nil && result.count <= 0 {
-                // This means that the lesson was already viewed today, and that the next lesson should be tomorrow
-                nextLessonDate =  lastLessonDate.theNextMorning()
+        
+        let lastLessonResult = findLessonDate(false)
+        if let e = lastLessonResult.error {
+            error = e
+        } else {
+            if let lastLessonDate = lastLessonResult.date {
+                nextLessonDate = NSDate(timeInterval: UserPreferences.lessonReminderInverval, sinceDate:lastLessonDate)
+                let result = countLessonsRemainingForToday()
+                if let e = result.error {
+                    error = e
+                } else {
+                    if result.count <= 0 {
+                        // This means that the lesson was already viewed today, and that the next lesson should be tomorrow
+                        nextLessonDate =  lastLessonDate.theNextMorning()
+                    }
+                }
             }
         }
         
         return (nextLessonDate, error)
+    }
+    
+    private func findLessonDate(first : Bool) -> (date: NSDate?, error : NSError?) {
+        var lastLessonDate : NSDate? = nil
+        var error : NSError? = nil
+
+        let fetchRequest = NSFetchRequest(entityName: "LessonLog")
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "lessonDate", ascending: first)]
+        fetchRequest.fetchLimit = 1
+        fetchRequest.predicate = NSPredicate(format: "(baby == %@)",_baby)
+        if let results = _managedObjectContext.executeFetchRequest(fetchRequest, error: &error) as? [LessonLog] {
+            lastLessonDate = results.count > 0 ? results.first?.lessonDate : nil
+        }
+        
+        if error != nil {
+            UsageAnalytics.trackError("Error trying to load word set from CoreData", error:error!);
+        }
+        
+        return (lastLessonDate, error)
     }
     
     private func logLesson(wordSet : WordSet) {
@@ -199,7 +237,6 @@ public class LessonPlanner {
     
     private func findNextWordSet() -> WordSet? {
         var set : WordSet? = nil;
-        
         var error: NSError? = nil
         let fetchRequest = NSFetchRequest(entityName: "WordSet")
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "lastViewedOn", ascending: true)]
@@ -259,7 +296,7 @@ public class LessonPlanner {
             count = self.numberOfLessonsPerDay - result.count
         }
         
-        return (count, error)
+        return (count > 0 ? count : 0 , error)
     }
     
     private func countLessonsGivenOnDate(date : NSDate) -> (count:Int, error:NSError?) {
