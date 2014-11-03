@@ -133,6 +133,7 @@ public class LessonPlanner {
     
     /// Call to get the next bunch of words to display.
     public func startLesson() -> [Word]? {
+        assert(_lessonStartTime == nil, "Lesson ar=lready started")
         _lessonStartTime = NSDate()
         
         var words : [Word]? = nil
@@ -172,7 +173,6 @@ public class LessonPlanner {
         word.lastViewedOn = NSDate()
         word.timesViewed++
         _numberOfWordsViewed++
-        // TODO: Add an array of words actually viewed.
     }
     
     private func calcNextLessonDate() -> (date : NSDate, error: NSError?) {

@@ -143,15 +143,48 @@ class LessonPlannerTests: CoreDataUnitTestBase {
         XCTAssertEqual(_planner.dayOfProgram, 5)
     }
     
-    func testStartLesson() {
+    func testStartAndFinishLesson() {
+        var wordsToImport = [String]()
+        for var i = 0; i < 25; i++ {
+            wordsToImport.append("word-" + String(i))
+        }
+        importWords(wordsToImport)
+
+        let ws1 = createWordSet()
+        let ws2 = createWordSet()
+        let ws3 = createWordSet()
+
+        let date1 = NSDate()
         
+        ws1.fill()
+        ws1.lastViewedOn = date1
+        ws2.fill()
+        ws2.lastViewedOn = date1.dateTomorrow()
+        ws3.fill()
+        ws3.lastViewedOn = date1.dateYesterday()
+
+        // We excpect the words in ws3
+        let words = _planner.startLesson()!
+        XCTAssertEqual(words.count,WORDS_PER_WORDSET, "Expected an array of words with at least ")
+        var retiredWord = words.first
+        for w in words {
+            XCTAssert(ws3.words.containsObject(w), "Expected \(w) to be present in wordset ws3, perhaps the wrong Set was returned?")
+            
+            // Mark each word as viewed
+            _planner.markWordViewed(w)
+            XCTAssert(w.timesViewed == 1, "Expected timesViewed would be incremented")
+            XCTAssert(w.lastViewedOn?.timeIntervalSinceNow < 1, "Expected last viewed to be now")
+        }
+
+        retiredWord!.timesViewed = 16 // force retire
+    
         
-        
-        
+        XCTAssert(ws3.words.containsObject(retiredWord!) , "Expected \(retiredWord) to be present in wordset ws3 before")
+        _planner.finishLesson()
+        XCTAssert(!ws3.words.containsObject(retiredWord!) , "Expected '\(retiredWord!.text)' to be retired from wordset ws3")
+        XCTAssertEqual(ws3.words.count,WORDS_PER_WORDSET , "Expected that wordset would be populated after retirement")
+        XCTAssert(_planner.lastLessonDate?.timeIntervalSinceNow < 1,"Expected that last lesson date would be very close to now")
     }
-    
-    
-    
     
 
     private func createLessonLogEntry(date: NSDate, wordSetNumber: Int = 0, useDay : Int = 0) -> LessonLog {

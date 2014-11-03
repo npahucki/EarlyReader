@@ -16,8 +16,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIAlertViewDelegate {
 
     func application(application: UIApplication!, didFinishLaunchingWithOptions launchOptions: NSDictionary!) -> Bool {
         // registering for sending user various kinds of notifications
+        if application.respondsToSelector("registerUserNotificationSettings:") {
             application.registerUserNotificationSettings(UIUserNotificationSettings(forTypes: UIUserNotificationType.Sound | UIUserNotificationType.Alert | UIUserNotificationType.Badge, categories: nil))
-        
+        } // Else...ios7 doesn't need permission to use local notifications.
 
         // Inject this so it can be injected into the other view controllers.
         var rootViewController = self.window!.rootViewController as MainViewController
