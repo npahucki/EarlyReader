@@ -9,12 +9,14 @@
 import UIKit
 import CoreData
 
-class MainViewController : UINavigationController, UINavigationControllerDelegate, ManagedObjectContextHolder{
+class MainViewController : UISplitViewController, UISplitViewControllerDelegate, ManagedObjectContextHolder{
     
     var managedContext : NSManagedObjectContext? = nil
     
     override func viewDidLoad() {
         self.delegate = self
+        self.preferredDisplayMode = UISplitViewControllerDisplayMode.Automatic
+        self.preferredPrimaryColumnWidthFraction = 0.20
     }
     
     override func viewDidAppear(animated: Bool) {

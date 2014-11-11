@@ -43,11 +43,13 @@
 		E8CDE7F3199FD18F0036CFE8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E8CDE7F2199FD18F0036CFE8 /* Images.xcassets */; };
 		E8CDE80919A03AB70036CFE8 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8CDE80819A03AB70036CFE8 /* QuartzCore.framework */; };
 		E8E23E681A042785004764E9 /* IdleScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E818296919F6FCB6007B6DC9 /* IdleScreenViewController.swift */; };
+		E8F807451A12793E00FC427F /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8F807441A12793E00FC427F /* MenuViewController.swift */; };
 		E8FBFD441A012B6600087BE2 /* LessonPlanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8FBFD431A012B6600087BE2 /* LessonPlanner.swift */; };
 		E8FBFD461A01326400087BE2 /* UserPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = E82DEBFC19F6AA4100EED0A8 /* UserPreferences.swift */; };
 		E8FBFD481A013DD700087BE2 /* NSDateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8FBFD471A013DD700087BE2 /* NSDateExtensions.swift */; };
 		E8FBFD491A013DD700087BE2 /* NSDateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8FBFD471A013DD700087BE2 /* NSDateExtensions.swift */; };
 		E8FBFD4B1A013F2500087BE2 /* NSDateExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8FBFD4A1A013F2500087BE2 /* NSDateExtensionsTests.swift */; };
+		FFF00A6FEFA066EB6459A462 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CC091EE20004461E4B06612 /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +63,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1C64F8A1D804A76BA550F698 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		7CC091EE20004461E4B06612 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		E816042C19FAE05200B87B9D /* Common.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
 		E818296419F6F04A007B6DC9 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		E818296919F6FCB6007B6DC9 /* IdleScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IdleScreenViewController.swift; sourceTree = "<group>"; };
@@ -100,9 +104,11 @@
 		E8CDE7F8199FD18F0036CFE8 /* LittleReaderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LittleReaderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8CDE7FD199FD18F0036CFE8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E8CDE80819A03AB70036CFE8 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		E8F807441A12793E00FC427F /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		E8FBFD431A012B6600087BE2 /* LessonPlanner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LessonPlanner.swift; sourceTree = "<group>"; };
 		E8FBFD471A013DD700087BE2 /* NSDateExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDateExtensions.swift; sourceTree = "<group>"; };
 		E8FBFD4A1A013F2500087BE2 /* NSDateExtensionsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDateExtensionsTests.swift; sourceTree = "<group>"; };
+		F2BAC0B2E146933761897BCD /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +117,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E8CDE80919A03AB70036CFE8 /* QuartzCore.framework in Frameworks */,
+				FFF00A6FEFA066EB6459A462 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -124,6 +131,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5ECBECF1E934ED75E0CD0204 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				1C64F8A1D804A76BA550F698 /* Pods.debug.xcconfig */,
+				F2BAC0B2E146933761897BCD /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		68F75CCEB618874D9AC95EDC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7CC091EE20004461E4B06612 /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		E841F67319FA92AC00684DD6 /* Third Party ObjC */ = {
 			isa = PBXGroup;
 			children = (
@@ -169,6 +193,7 @@
 				E841F67119FA868700684DD6 /* WordListViewController.swift */,
 				E81846D119F9503D0012EAAF /* MangedObjectContextHolder.swift */,
 				E82959121A00108D003575F7 /* AddWordsViewController.swift */,
+				E8F807441A12793E00FC427F /* MenuViewController.swift */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -181,6 +206,8 @@
 				E8CDE7E5199FD18F0036CFE8 /* LittleReader */,
 				E8CDE7FB199FD18F0036CFE8 /* LittleReaderTests */,
 				E8CDE7E4199FD18F0036CFE8 /* Products */,
+				5ECBECF1E934ED75E0CD0204 /* Pods */,
+				68F75CCEB618874D9AC95EDC /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -259,9 +286,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E8CDE802199FD18F0036CFE8 /* Build configuration list for PBXNativeTarget "LittleReader" */;
 			buildPhases = (
+				A39C79402990DC42B6D9B5C8 /* Check Pods Manifest.lock */,
 				E8CDE7DF199FD18F0036CFE8 /* Sources */,
 				E8CDE7E0199FD18F0036CFE8 /* Frameworks */,
 				E8CDE7E1199FD18F0036CFE8 /* Resources */,
+				EB3ECA10D59DA118CC270ADE /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -349,6 +378,39 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		A39C79402990DC42B6D9B5C8 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		EB3ECA10D59DA118CC270ADE /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		E8CDE7DF199FD18F0036CFE8 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -361,6 +423,7 @@
 				E8E23E681A042785004764E9 /* IdleScreenViewController.swift in Sources */,
 				E82DEBFD19F6AA4100EED0A8 /* UserPreferences.swift in Sources */,
 				E85F39C919A6BB670004C80F /* Word.swift in Sources */,
+				E8F807451A12793E00FC427F /* MenuViewController.swift in Sources */,
 				E8CDE7EC199FD18F0036CFE8 /* LittleReader.xcdatamodeld in Sources */,
 				E8FBFD481A013DD700087BE2 /* NSDateExtensions.swift in Sources */,
 				E816042D19FAE05200B87B9D /* Common.swift in Sources */,
@@ -506,6 +569,7 @@
 		};
 		E8CDE803199FD18F0036CFE8 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1C64F8A1D804A76BA550F698 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -522,6 +586,7 @@
 		};
 		E8CDE804199FD18F0036CFE8 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F2BAC0B2E146933761897BCD /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
