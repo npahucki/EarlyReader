@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# Creates a zip with an App that can be run in the sumulator with the command: 
+#  ios-sim launch DataParenting.app
+export OUT_DIR=/tmp/LittleReaderBuildOutput 
+xcodebuild -arch i386 -workspace LittleReader.xcworkspace -scheme LittleReader -sdk iphonesimulator8.1 CONFIGURATION_BUILD_DIR=$OUT_DIR
+cd $OUT_DIR
+zip -9 -r ~/Dropbox/LittleReader/LittleReader.app.zip LittleReader.app
+rm -rf $OUT_DIR
+echo DONE!
