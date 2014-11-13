@@ -130,6 +130,14 @@ public class LessonPlanner {
             return results.day
         }
     }
+
+    public func wordPreviewForNextLesson() -> String? {
+        if let wordSet = findNextWordSet() {
+            return ", ".join((Array(wordSet.words) as [Word]).map { $0.text })
+        } else {
+            return nil
+        }
+    }
     
     /// Call to get the next bunch of words to display.
     public func startLesson() -> [Word]? {

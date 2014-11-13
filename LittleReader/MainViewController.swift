@@ -16,7 +16,8 @@ class MainViewController : UISplitViewController, UISplitViewControllerDelegate,
     override func viewDidLoad() {
         self.delegate = self
         self.preferredDisplayMode = UISplitViewControllerDisplayMode.Automatic
-        self.preferredPrimaryColumnWidthFraction = 0.20
+        self.preferredPrimaryColumnWidthFraction = 0.25
+        self.view.backgroundColor = UIColor.whiteColor()
     }
     
     override func viewDidAppear(animated: Bool) {
