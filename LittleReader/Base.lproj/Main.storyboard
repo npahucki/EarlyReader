@@ -915,7 +915,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="WjB-gp-FKd" kind="presentation" modalPresentationStyle="overFullScreen" modalTransitionStyle="crossDissolve" id="I8J-MG-0W0"/>
+                                    <segue destination="WjB-gp-FKd" kind="presentation" modalPresentationStyle="fullScreen" modalTransitionStyle="flipHorizontal" id="I8J-MG-0W0"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="previousLessonCell" textLabel="Fu8-w9-L4F" detailTextLabel="dna-O3-mmU" style="IBUITableViewCellStyleSubtitle" id="Vdu-3V-hxT" userLabel="previousLessonCell">

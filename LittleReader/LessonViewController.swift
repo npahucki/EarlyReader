@@ -8,6 +8,9 @@
 
 import UIKit
 import CoreData
+import AVFoundation
+
+
 
 @objc protocol LessonStateDelegate  {
     func willStartLesson()
@@ -16,7 +19,7 @@ import CoreData
 
 
 
-class LessonViewController: UIViewController {
+class LessonViewController: UIViewController,AVAudioPlayerDelegate {
 
     @IBOutlet weak var textLabel: UILabel!
 
@@ -27,7 +30,7 @@ class LessonViewController: UIViewController {
     private var _currentIdx  = -1
     private var _currentWords : [Word]?
     private var _isManualMode = UserPreferences.alwaysUseManualMode
-    
+    private var audioPlayer : AVAudioPlayer!
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var previousButton: UIButton!
     
@@ -36,6 +39,12 @@ class LessonViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         assert(lessonPlanner != nil,"LessonPlanner must be set before starting lesson!")
+
+        var cheerSound = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("applause-01", ofType: "mp3")!)
+        audioPlayer = AVAudioPlayer(contentsOfURL: cheerSound, error: nil)
+        audioPlayer.delegate = self
+        audioPlayer.prepareToPlay()
+        
         textLabel.font = UIFont.systemFontOfSize(500)
         textLabel.text = ""
         updateButtonState()
@@ -143,7 +152,7 @@ class LessonViewController: UIViewController {
         lessonPlanner.finishLesson()
         scheduleReminder(lessonPlanner.nextLessonDate)
         if let d = delegate { d.didCompleteLesson() }
-        self.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
+        presentRewardScreen()
     }
     
     private func willStartLesson() {
@@ -161,6 +170,37 @@ class LessonViewController: UIViewController {
         localNotification.soundName = UILocalNotificationDefaultSoundName
         localNotification.applicationIconBadgeNumber = 1
         UIApplication.sharedApplication().scheduleLocalNotification(localNotification)
+    }
+    
+    private func presentRewardScreen() {
+        // Create image and place off screen
+        let imageView = UIImageView(image: UIImage(named: "reward-screen-1"))
+        imageView.bounds = self.view.bounds
+        imageView.frame = CGRectMake(self.view.bounds.width, 0, self.view.bounds.width, self.view.bounds.height)
+        self.view.addSubview(imageView)
+        
+        // Need to replace old text view because it has constraints, so it can not ne animated out
+        let newTextView = UILabel()
+        newTextView.frame = self.textLabel.frame
+        newTextView.text = self.textLabel.text
+        newTextView.font = self.textLabel.font
+        newTextView.textColor = self.textLabel.textColor
+        newTextView.lineBreakMode = .ByClipping
+        self.view.addSubview(newTextView)
+        self.textLabel.hidden = true
+        
+        UIView.animateWithDuration(0.5, delay: 0.0, usingSpringWithDamping: 0.8, initialSpringVelocity: 1.0, options: UIViewAnimationOptions.allZeros, animations: {
+            imageView.frame = self.view.bounds
+            newTextView.frame = CGRectMake(-self.view.bounds.size.width, self.textLabel.frame.origin.y, self.textLabel.frame.width, self.textLabel.frame.height)
+            }, completion: { finished in
+                // Will also trigger dismissing the dialog when the audio is done playing!
+                self.audioPlayer.play()
+                newTextView.removeFromSuperview()
+            })
+    }
+    
+    func audioPlayerDidFinishPlaying(player: AVAudioPlayer!, successfully flag: Bool) {
+        self.presentingViewController?.dismissViewControllerAnimated(true, completion:nil)
     }
 
 
