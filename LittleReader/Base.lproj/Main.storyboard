@@ -363,7 +363,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="315" height="400"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Paste in or type the words.  One word per line!" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="0.0" translatesAutoresizingMaskIntoConstraints="NO" id="2Sf-Wi-jDu">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Paste in or type the words.  One word per line!" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="0.0" translatesAutoresizingMaskIntoConstraints="NO" id="2Sf-Wi-jDu">
                                 <rect key="frame" x="47" y="8" width="221" height="43"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -378,7 +378,7 @@
                                     <action selector="didClickDoneButton:" destination="gdO-A8-fQw" eventType="touchUpInside" id="9bm-3S-YRg"/>
                                 </connections>
                             </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r9s-DP-iBM">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="r9s-DP-iBM">
                                 <rect key="frame" x="16" y="67" width="283" height="287"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -865,8 +865,9 @@
                 <splitViewController id="MDV-Pk-R5t" customClass="MainViewController" customModule="LittleReader" customModuleProvider="target" sceneMemberID="viewController">
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <connections>
-                        <segue destination="72A-d6-Z3y" kind="relationship" relationship="masterViewController" id="pam-bO-EPc"/>
                         <segue destination="9NH-X2-hqh" kind="relationship" relationship="detailViewController" id="elv-aG-CEd"/>
+                        <segue destination="72A-d6-Z3y" kind="relationship" relationship="masterViewController" id="rs8-8w-tPJ"/>
+                        <segue destination="caz-NO-Bej" kind="presentation" identifier="showNewChildDialog" id="wwl-ZB-s1J"/>
                     </connections>
                 </splitViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bZS-26-HPO" userLabel="First Responder" sceneMemberID="firstResponder"/>

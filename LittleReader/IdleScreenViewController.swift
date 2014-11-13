@@ -9,11 +9,11 @@
 import UIKit
 import CoreData
 
-class IdleScreenViewController: UIViewController, ManagedObjectContextHolder, LessonStateDelegate {
+class IdleScreenViewController: UIViewController, LessonStateDelegate {
 
-    
+    var baby : Baby?
+    private var _lessonHistoryController : LessonHistoryViewController? = nil
     private var _planner : LessonPlanner? = nil
-    var managedContext : NSManagedObjectContext? = nil
     
     @IBOutlet weak var textLabel: UILabel!
     @IBOutlet weak var auxMessageLabel: UILabel!
@@ -30,7 +30,6 @@ class IdleScreenViewController: UIViewController, ManagedObjectContextHolder, Le
         super.viewWillAppear(animated)
         if let b = Baby.currentBaby {
             _planner = LessonPlanner(baby: b)
-            //updateCurrentStateMessage()
             let title = NSLocalizedString("current_baby",comment:"")
             currentBabyLabel.text = title.stringByAppendingString(b.name)
         }
@@ -38,14 +37,13 @@ class IdleScreenViewController: UIViewController, ManagedObjectContextHolder, Le
     
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if let vc = segue.destinationViewController as? ManagedObjectContextHolder {
-            vc.managedContext = self.managedContext
-        }
-        if "startLesson" == segue.identifier {
-            var lvc = segue.destinationViewController as LessonViewController
-            lvc.delegate = self;
+        if let historyController = segue.destinationViewController as? LessonHistoryViewController {
+            historyController.baby = Baby.currentBaby
+            _lessonHistoryController = historyController
         }
     }
+    
+    
 
 //    func updateCurrentStateMessage() {
 //        if let planner = _planner {
@@ -78,13 +76,12 @@ class IdleScreenViewController: UIViewController, ManagedObjectContextHolder, Le
 //
 //    }
     
+    
+    // MARK: LessonStateDeletegate methods
     func willStartLesson() {
     }
     
     func didCompleteLesson() {
-//        updateCurrentStateMessage()
-//        updateWaitBeforeNextLessonMessage()
     }
-    
 
 }

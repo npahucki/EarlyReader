@@ -9,56 +9,58 @@
 import CoreData
 import UIKit
 
-class LessonHistoryViewController: UITableViewController,ManagedObjectContextHolder, NSFetchedResultsControllerDelegate {
+class LessonHistoryViewController: UITableViewController, NSFetchedResultsControllerDelegate, LessonStateDelegate {
+    
     
     let sectionForNotifications = 0
     let sectionForNextLesson = 1
     let sectionForPreviousLessons = 2
     
+    var baby : Baby? = nil
+    private var fetchedResultsController = NSFetchedResultsController()
     private var _planner : LessonPlanner? = nil
-    var managedContext : NSManagedObjectContext? = nil
-    var fetchedResultsController = NSFetchedResultsController()
     var notifications = [String]()
     
     override func viewDidLoad() {
+        assert(baby != nil, "Baby must be set before loading the view")
         super.viewDidLoad()
-        fetchedResultsController = getFetchedResultController()
-        fetchedResultsController.delegate = self
-        
-        var error : NSError? = nil
-        fetchedResultsController.performFetch(&error)
-        if let err = error {
-            NSLog("ERROR LOADING LOGS: %@", err)
-        }
-        
         NSTimer.scheduledTimerWithTimeInterval(30.0 , target: self, selector: "updateCurrentStateMessages", userInfo: nil, repeats:true)
     }
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        if let b = Baby.currentBaby {
+        if let b = baby {
             _planner = LessonPlanner(baby: b)
+            updateTakenLessons()
             updateCurrentStateMessages()
         }
     }
     
-    func getFetchedResultController() -> NSFetchedResultsController {
-        if let ctx = managedContext {
-            fetchedResultsController = NSFetchedResultsController(fetchRequest: taskFetchRequest(), managedObjectContext: ctx, sectionNameKeyPath: nil, cacheName: nil)
+    func updateTakenLessons() {
+        if let ctx = baby?.managedObjectContext {
+            if fetchedResultsController.fetchedObjects == nil {
+                let fetchRequest = NSFetchRequest(entityName: "LessonLog")
+                fetchRequest.sortDescriptors = [NSSortDescriptor(key: "lessonDate", ascending: false)]
+                fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest,
+                    managedObjectContext: ctx, sectionNameKeyPath: nil, cacheName: nil)
+                fetchedResultsController.delegate = self
+            }
+
+            var error : NSError? = nil
+            if fetchedResultsController.performFetch(&error) {
+                tableView.reloadData()
+            }
+            
+            if let err = error {
+                UsageAnalytics.trackError("Could not load the past lessons", error: err)
+            }
         }
-        return fetchedResultsController
-    }
-    
-    func taskFetchRequest() -> NSFetchRequest {
-        let fetchRequest = NSFetchRequest(entityName: "LessonLog")
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "lessonDate", ascending: false)]
-        return fetchRequest
     }
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         assert(fetchedResultsController.sections?.count <= 1,"Unexpected number of sections")
         NSLog("results rows:%d", fetchedResultsController.sections?.count ?? 0);
-        return 3 //2 + (fetchedResultsController.sections?.count ?? 0)
+        return 3
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -69,7 +71,7 @@ class LessonHistoryViewController: UITableViewController,ManagedObjectContextHol
                 return 1
             case sectionForPreviousLessons:
                 if let sections = fetchedResultsController.sections {
-                    return sections[section].numberOfObjects
+                    return sections[0].numberOfObjects
                 } else {
                     return 0
                 }
@@ -87,7 +89,8 @@ class LessonHistoryViewController: UITableViewController,ManagedObjectContextHol
             assert(indexPath.row == 0, "Next lesson should never have more than row 0!")
             return cellForNextLessonAtIndexPath(indexPath)
         case sectionForPreviousLessons:
-            let log = fetchedResultsController.objectAtIndexPath(indexPath) as LessonLog
+            // Need to remake the index path, other wise fails because the section is wrong 
+            let log = fetchedResultsController.objectAtIndexPath(NSIndexPath(forRow: indexPath.row, inSection: 0)) as LessonLog
             return cellForPreviousLessonAtRow(log, indexPath: indexPath)
         default:
             assert(false, "Unexpected section \(indexPath.section)")
@@ -142,8 +145,10 @@ class LessonHistoryViewController: UITableViewController,ManagedObjectContextHol
     func cellForPreviousLessonAtRow(log: LessonLog, indexPath: NSIndexPath) -> UITableViewCell {
         var cell = tableView.dequeueReusableCellWithIdentifier("previousLessonCell", forIndexPath: indexPath) as UITableViewCell
         // TODO: Localize
-        let duration = NSString(format:"%.01f", log.durationSeconds)
-        cell.textLabel.text = "LESSON TAKEN \(log.lessonDate.stringWithHumanizedTimeDifference()) lasted \(log.durationSeconds) seconds"
+        let formatter = NSNumberFormatter()
+        formatter.maximumFractionDigits = 1
+        let duration = formatter.stringFromNumber(log.durationSeconds)!
+        cell.textLabel.text = "LESSON TAKEN \(log.lessonDate.stringWithHumanizedTimeDifference()) lasted \(duration) seconds"
         cell.detailTextLabel!.text = log.words
         return cell
     }
@@ -189,6 +194,30 @@ class LessonHistoryViewController: UITableViewController,ManagedObjectContextHol
 //        }
         
     }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if let lvc = segue.destinationViewController as? LessonViewController {
+            assert(Baby.currentBaby != nil, "Current Baby must be set before a lesson can be started!")
+            lvc.baby = Baby.currentBaby
+            lvc.delegate = self;
+        }
+    }
+
+    
+    func willStartLesson() {
+        if let parent = parentViewController as? LessonStateDelegate {
+            parent.willStartLesson()
+        }
+    }
+    
+    func didCompleteLesson() {
+        updateTakenLessons()
+        updateCurrentStateMessages()
+        if let parent = parentViewController as? LessonStateDelegate {
+            parent.didCompleteLesson()
+        }
+    }
+
 
 
 

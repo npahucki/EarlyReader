@@ -33,7 +33,8 @@ class MenuViewController: UIViewController {
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil);
         let vc = storyboard.instantiateViewControllerWithIdentifier(viewForMenuItem[sender.tag]!) as UIViewController;
-        showDetailViewController(vc, sender: self)
+        let splitViewController = parentViewController as MainViewController;
+        splitViewController.showDetailViewController(vc, sender: self)
     }
     
 }

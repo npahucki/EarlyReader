@@ -28,8 +28,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIAlertViewDelegate {
         _mainManagedObjectContext = self.managedObjectContext
         rootViewController.managedContext = self.managedObjectContext
         
-        
-        
         // UIAppearance Settings
         let defaultFont = UIFont(name: "OpenSans", size: 17.0)
         UIButton.appearance().titleLabel?.font = defaultFont

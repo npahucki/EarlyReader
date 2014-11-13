@@ -9,26 +9,24 @@
 import UIKit
 import CoreData
 
-protocol LessonStateDelegate  {
+@objc protocol LessonStateDelegate  {
     func willStartLesson()
     func didCompleteLesson()
 }
 
 
 
-class LessonViewController: UIViewController,NSFetchedResultsControllerDelegate, ManagedObjectContextHolder {
+class LessonViewController: UIViewController {
 
-    var managedContext : NSManagedObjectContext? = nil
-
-    
     @IBOutlet weak var textLabel: UILabel!
+
+    var baby : Baby?
     
-    private var _fetchedResultController: NSFetchedResultsController = NSFetchedResultsController()
     private var _timer : NSTimer?
     private var _currentIdx  = -1
     private var _currentWords : [Word]?
     private var _isManualMode = UserPreferences.alwaysUseManualMode
-    private let _lessonPlanner = LessonPlanner(baby: Baby.currentBaby!)
+    private var _lessonPlanner : LessonPlanner!
     
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var previousButton: UIButton!
@@ -37,6 +35,8 @@ class LessonViewController: UIViewController,NSFetchedResultsControllerDelegate,
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        assert(self.baby != nil,"Baby must be set before starting lesson!")
+        _lessonPlanner = LessonPlanner(baby: self.baby!)
         textLabel.font = UIFont.systemFontOfSize(500)
         textLabel.text = ""
         updateButtonState()
@@ -77,6 +77,7 @@ class LessonViewController: UIViewController,NSFetchedResultsControllerDelegate,
             UIAlertView.showLocalizedErrorMessageWithOkButton("msg_error_no_wordsets", title_key: "error_title_no_wordsets")
             self.dismissViewControllerAnimated(false, completion: nil)
         } else {
+            willStartLesson()
             showNextWord()
         }
     }
@@ -151,7 +152,7 @@ class LessonViewController: UIViewController,NSFetchedResultsControllerDelegate,
         self.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
     }
     
-    private func willStartWordSet(set : WordSet) {
+    private func willStartLesson() {
         // Since we have started a new lesson, we don't want a reminder until after this lesson is complete
         UIApplication.sharedApplication().cancelAllLocalNotifications()
         if let d = delegate { d.willStartLesson() }
@@ -163,7 +164,7 @@ class LessonViewController: UIViewController,NSFetchedResultsControllerDelegate,
         localNotification.alertBody =  NSLocalizedString("local_notification_reminder_alert_body", comment:"Main message shown in local notification");
         localNotification.timeZone = NSTimeZone.defaultTimeZone()
         localNotification.alertAction = NSLocalizedString("local_notification_reminder_alert_action", comment:"The side prompt shown in local notification");
-        //localNotification.soundName = // : String? // name of resource in app's bundle to play or UILocalNotificationDefaultSoundName
+        localNotification.soundName = UILocalNotificationDefaultSoundName
         localNotification.applicationIconBadgeNumber = 1
         UIApplication.sharedApplication().scheduleLocalNotification(localNotification)
     }

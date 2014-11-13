@@ -43,8 +43,6 @@
 		E88916D31A0474AA002C8F13 /* BabyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88916D21A0474AA002C8F13 /* BabyTests.swift */; };
 		E88916D51A047BCE002C8F13 /* LessonPlannerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88916D41A047BCE002C8F13 /* LessonPlannerTests.swift */; };
 		E88916D71A047CB0002C8F13 /* Baby.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8BF775C19F932DA00F1BF0A /* Baby.swift */; };
-		E8A50DDA1A01645800756CC8 /* LittleReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A50DD91A01645800756CC8 /* LittleReader.swift */; };
-		E8A50DDB1A01645800756CC8 /* LittleReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A50DD91A01645800756CC8 /* LittleReader.swift */; };
 		E8A50DDD1A01B7F100756CC8 /* LessonLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A50DDC1A01B7F100756CC8 /* LessonLog.swift */; };
 		E8BA1C2419BA11DB0092974A /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8BA1C2319BA11DB0092974A /* SettingsViewController.swift */; };
 		E8CDE7E9199FD18F0036CFE8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8CDE7E8199FD18F0036CFE8 /* AppDelegate.swift */; };
@@ -112,7 +110,6 @@
 		E88916D01A04340B002C8F13 /* CoreDataUnitTestBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataUnitTestBase.swift; sourceTree = "<group>"; };
 		E88916D21A0474AA002C8F13 /* BabyTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BabyTests.swift; sourceTree = "<group>"; };
 		E88916D41A047BCE002C8F13 /* LessonPlannerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LessonPlannerTests.swift; sourceTree = "<group>"; };
-		E8A50DD91A01645800756CC8 /* LittleReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LittleReader.swift; sourceTree = "<group>"; };
 		E8A50DDC1A01B7F100756CC8 /* LessonLog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LessonLog.swift; sourceTree = "<group>"; };
 		E8BA1C2319BA11DB0092974A /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		E8BF775C19F932DA00F1BF0A /* Baby.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Baby.swift; sourceTree = "<group>"; };
@@ -249,7 +246,6 @@
 		E8CDE7DA199FD18F0036CFE8 = {
 			isa = PBXGroup;
 			children = (
-				E8A50DD91A01645800756CC8 /* LittleReader.swift */,
 				E8CDE80819A03AB70036CFE8 /* QuartzCore.framework */,
 				E8CDE7E5199FD18F0036CFE8 /* LittleReader */,
 				E8CDE7FB199FD18F0036CFE8 /* LittleReaderTests */,
@@ -476,7 +472,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E84C8B9C1A12936D00B66B74 /* UIColorExtensions.swift in Sources */,
-				E8A50DDA1A01645800756CC8 /* LittleReader.swift in Sources */,
 				E8FBFD441A012B6600087BE2 /* LessonPlanner.swift in Sources */,
 				E8CDE7EE199FD18F0036CFE8 /* MainViewController.swift in Sources */,
 				E84794FF1A01C4470065BABE /* LessonHistoryViewController.swift in Sources */,
@@ -514,7 +509,6 @@
 				E816042919FAD89F00B87B9D /* UsageAnalytics.swift in Sources */,
 				E8FBFD461A01326400087BE2 /* UserPreferences.swift in Sources */,
 				E8FBFD4B1A013F2500087BE2 /* NSDateExtensionsTests.swift in Sources */,
-				E8A50DDB1A01645800756CC8 /* LittleReader.swift in Sources */,
 				E81C446219FE7794007966E5 /* WordImporterTests.swift in Sources */,
 				E88916D51A047BCE002C8F13 /* LessonPlannerTests.swift in Sources */,
 				E81C446419FE77C6007966E5 /* WordSetTests.swift in Sources */,
@@ -579,7 +573,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -618,7 +612,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OBJC_BRIDGING_HEADER = LIttleReader/ObjCBridging.h;
