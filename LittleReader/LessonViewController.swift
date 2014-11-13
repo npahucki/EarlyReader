@@ -20,13 +20,13 @@ class LessonViewController: UIViewController {
 
     @IBOutlet weak var textLabel: UILabel!
 
-    var baby : Baby?
+
+    var lessonPlanner : LessonPlanner!
     
     private var _timer : NSTimer?
     private var _currentIdx  = -1
     private var _currentWords : [Word]?
     private var _isManualMode = UserPreferences.alwaysUseManualMode
-    private var _lessonPlanner : LessonPlanner!
     
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var previousButton: UIButton!
@@ -35,8 +35,7 @@ class LessonViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        assert(self.baby != nil,"Baby must be set before starting lesson!")
-        _lessonPlanner = LessonPlanner(baby: self.baby!)
+        assert(lessonPlanner != nil,"LessonPlanner must be set before starting lesson!")
         textLabel.font = UIFont.systemFontOfSize(500)
         textLabel.text = ""
         updateButtonState()
@@ -71,15 +70,10 @@ class LessonViewController: UIViewController {
     
         
     func startNextLesson() {
-        _currentWords = _lessonPlanner.startLesson()
-        if _currentWords?.count < 1 {
-            // TODO: Automatically import?
-            UIAlertView.showLocalizedErrorMessageWithOkButton("msg_error_no_wordsets", title_key: "error_title_no_wordsets")
-            self.dismissViewControllerAnimated(false, completion: nil)
-        } else {
-            willStartLesson()
-            showNextWord()
-        }
+        _currentWords = lessonPlanner.startLesson()
+        assert(_currentWords?.count > 0,"LessonViewController should not be show if there are no words!")
+        willStartLesson()
+        showNextWord()
     }
     
     
@@ -138,7 +132,7 @@ class LessonViewController: UIViewController {
         animation.duration = 0.25;
         textLabel.layer.addAnimation(animation, forKey: kCATransitionFade)
         
-        _lessonPlanner.markWordViewed(word)
+        lessonPlanner.markWordViewed(word)
         
         textLabel.text = word.text
         textLabel.setNeedsUpdateConstraints();
@@ -146,8 +140,8 @@ class LessonViewController: UIViewController {
     }
     
     private func didCompleteLesson() {
-        _lessonPlanner.finishLesson()
-        scheduleReminder(_lessonPlanner.nextLessonDate)
+        lessonPlanner.finishLesson()
+        scheduleReminder(lessonPlanner.nextLessonDate)
         if let d = delegate { d.didCompleteLesson() }
         self.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
     }

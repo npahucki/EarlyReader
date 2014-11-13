@@ -425,12 +425,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You wait at least 15 minutes more before giving the next lesson" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gnm-5D-NWq">
-                                <rect key="frame" x="8" y="509" width="584" height="27"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                <color key="textColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current Baby:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PuB-Hs-Q5Q">
                                 <rect key="frame" x="8" y="571" width="107" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -455,23 +449,19 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="bottom" secondItem="ayI-bh-YkZ" secondAttribute="bottom" constant="104" id="4Ct-tZ-CJ2"/>
                             <constraint firstAttribute="trailing" secondItem="ayI-bh-YkZ" secondAttribute="trailing" constant="16" id="Aph-N3-mqZ"/>
                             <constraint firstItem="PuB-Hs-Q5Q" firstAttribute="leading" secondItem="Bmf-fz-Dou" secondAttribute="leading" constant="8" id="Gfe-hZ-RwP"/>
-                            <constraint firstItem="gnm-5D-NWq" firstAttribute="leading" secondItem="Bmf-fz-Dou" secondAttribute="leading" constant="8" id="Ohm-4V-ENo"/>
-                            <constraint firstItem="0Iz-oe-uiC" firstAttribute="top" secondItem="gnm-5D-NWq" secondAttribute="bottom" constant="64" id="RQs-d3-9IW"/>
                             <constraint firstItem="3yn-2F-k0K" firstAttribute="top" secondItem="DZY-4a-iS4" secondAttribute="bottom" id="Wxt-Hy-g05"/>
                             <constraint firstItem="3yn-2F-k0K" firstAttribute="leading" secondItem="Bmf-fz-Dou" secondAttribute="leading" constant="16" id="aLs-MP-U2A"/>
                             <constraint firstItem="0Iz-oe-uiC" firstAttribute="top" secondItem="PuB-Hs-Q5Q" secondAttribute="bottom" constant="8" id="bTV-eg-kIV"/>
                             <constraint firstAttribute="trailing" secondItem="3yn-2F-k0K" secondAttribute="trailing" constant="16" id="hfn-ZD-zHP"/>
-                            <constraint firstAttribute="trailing" secondItem="gnm-5D-NWq" secondAttribute="trailing" constant="8" id="iey-QH-kYk"/>
                             <constraint firstItem="ayI-bh-YkZ" firstAttribute="leading" secondItem="Bmf-fz-Dou" secondAttribute="leading" constant="16" id="ivy-ay-n6u"/>
-                            <constraint firstItem="gnm-5D-NWq" firstAttribute="top" secondItem="ayI-bh-YkZ" secondAttribute="bottom" constant="14" id="nYf-KN-oea"/>
                         </constraints>
                     </view>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
-                        <outlet property="auxMessageLabel" destination="gnm-5D-NWq" id="eXt-hx-FGS"/>
                         <outlet property="currentBabyLabel" destination="PuB-Hs-Q5Q" id="48Z-eC-3Wu"/>
                         <outlet property="infoMessageLabel" destination="ayI-bh-YkZ" id="xvJ-Z6-2Sw"/>
                     </connections>

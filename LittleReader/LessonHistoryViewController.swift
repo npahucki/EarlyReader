@@ -16,24 +16,24 @@ class LessonHistoryViewController: UITableViewController, NSFetchedResultsContro
     let sectionForNextLesson = 1
     let sectionForPreviousLessons = 2
     
-    var baby : Baby? = nil
+    var baby : Baby?
     private var fetchedResultsController = NSFetchedResultsController()
-    private var _planner : LessonPlanner? = nil
+    private var _planner : LessonPlanner!
     var notifications = [String]()
     
     override func viewDidLoad() {
         assert(baby != nil, "Baby must be set before loading the view")
         super.viewDidLoad()
+        _planner = LessonPlanner(baby: baby!)
         NSTimer.scheduledTimerWithTimeInterval(30.0 , target: self, selector: "updateCurrentStateMessages", userInfo: nil, repeats:true)
     }
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        if let b = baby {
-            _planner = LessonPlanner(baby: b)
-            updateTakenLessons()
-            updateCurrentStateMessages()
-        }
+        updateTakenLessons()
+        updateCurrentStateMessages()
+        // TODO: Notification if there are no words to load, or none left. Don't allow starting the lessons if not words.
+        // TODO: Use _planner.numberOfWordsLesson
     }
     
     func updateTakenLessons() {
@@ -59,7 +59,6 @@ class LessonHistoryViewController: UITableViewController, NSFetchedResultsContro
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         assert(fetchedResultsController.sections?.count <= 1,"Unexpected number of sections")
-        NSLog("results rows:%d", fetchedResultsController.sections?.count ?? 0);
         return 3
     }
     
@@ -198,11 +197,10 @@ class LessonHistoryViewController: UITableViewController, NSFetchedResultsContro
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let lvc = segue.destinationViewController as? LessonViewController {
             assert(Baby.currentBaby != nil, "Current Baby must be set before a lesson can be started!")
-            lvc.baby = Baby.currentBaby
+            lvc.lessonPlanner = _planner
             lvc.delegate = self;
         }
     }
-
     
     func willStartLesson() {
         if let parent = parentViewController as? LessonStateDelegate {

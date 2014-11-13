@@ -139,9 +139,17 @@ public class LessonPlanner {
         }
     }
     
+    public func numberOfWordsLesson() -> Int {
+        if let wordSet = findNextWordSet() {
+            return wordSet.words.count
+        } else {
+            return 0
+        }
+    }
+    
     /// Call to get the next bunch of words to display.
     public func startLesson() -> [Word]? {
-        assert(_lessonStartTime == nil, "Lesson ar=lready started")
+        assert(_lessonStartTime == nil, "Lesson already started")
         _lessonStartTime = NSDate()
         
         var words : [Word]? = nil
@@ -174,6 +182,11 @@ public class LessonPlanner {
                 UsageAnalytics.trackError("Could not fill words in word set", error: e)
             }
         }
+        
+        // Reset for resuse 
+        _currentWordSet = nil
+        _numberOfWordsViewed = 0
+        _lessonStartTime = nil
     }
     
     /// Call to indicate that a word has been viewed.
