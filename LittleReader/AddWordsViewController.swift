@@ -14,14 +14,14 @@ class AddWordsViewController: UIViewController {
     
     @IBOutlet weak var textView: UITextView!
     @IBAction func didClickDoneButton(sender: UIButton) {
-        // TODO: Much better parsing!
-        if(!self.textView.text.isEmpty) {
-            let words = self.textView.text.componentsSeparatedByString("\n") as [String]
-            if let vc = self.settingsViewController {
-                vc.insertWords(words)
-            }
-        }
-        self.dismissViewControllerAnimated(true, completion: nil)
+//        // TODO: Much better parsing!
+//        if(!self.textView.text.isEmpty) {
+//            let words = self.textView.text.componentsSeparatedByString("\n") as [String]
+//            if let vc = self.settingsViewController {
+//                vc.insertWords(words)
+//            }
+//        }
+//        self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     override func viewDidLoad() {

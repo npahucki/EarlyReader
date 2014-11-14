@@ -28,24 +28,20 @@ class UserPreferences {
             return times > 0 ? times : 3
         }
     }
-
     
     class var slideDisplayInverval : NSTimeInterval {
         set(slideDisplayInverval) {
-            NSUserDefaults.standardUserDefaults().setDouble(slideDisplayInverval, forKey:"slideDisplayInverval");
+             NSUserDefaults.standardUserDefaults().setDouble(slideDisplayInverval, forKey:"slideDisplayInverval");
         }
         get {
-            let interval = NSUserDefaults.standardUserDefaults().doubleForKey("slideDisplayInverval");
-            return interval > 0 ? interval : 1.5
+            let defs = NSUserDefaults.standardUserDefaults()
+            return defs.objectForKey("slideDisplayInverval") == nil ? 1.5 : defs.doubleForKey("slideDisplayInverval");
         }
     }
 
     class var alwaysUseManualMode : Bool {
-        set(alwaysUseManualMode) {
-            NSUserDefaults.standardUserDefaults().setBool(alwaysUseManualMode, forKey:"alwaysUseManualMode");
-        }
         get {
-            return NSUserDefaults.standardUserDefaults().boolForKey("alwaysUseManualMode");
+            return UserPreferences.slideDisplayInverval == 0.0
         }
     }
     

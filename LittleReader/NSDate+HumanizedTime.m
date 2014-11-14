@@ -49,7 +49,7 @@
         if (monthsDiff > 0) {
             diffString = [NSString stringWithFormat:@"%@%@%d%@%@", diffString, spaceBetweenWords, monthsDiff, spaceBetweenWords, NSLocalizedStringFromTable(monthsDiff == 1 ? @"MonthKey" : @"MonthsKey", NSDATE_TABLE_NAME, @"")];
         }
-        return [NSString stringWithFormat:@"%@%@%@", diffString, spaceBetweenWords, positivity];
+        return [NSString stringWithFormat:@"%@%@%@", diffString, positivity.length ? spaceBetweenWords : @"", positivity];
     } else if (daysDiff >= 30) {
         int monthsDiff = daysDiff / 30;
         int remainingDays = daysDiff % 30;
@@ -57,25 +57,25 @@
         if (remainingDays >= 1) {
             diffString = [NSString stringWithFormat:@"%@%@%d%@%@", diffString, spaceBetweenWords, remainingDays, spaceBetweenWords, NSLocalizedStringFromTable(remainingDays == 1 ? @"DayKey" : @"DaysKey", NSDATE_TABLE_NAME, @"")];
         }
-        return [NSString stringWithFormat:@"%@%@%@", diffString, spaceBetweenWords, positivity];
+        return [NSString stringWithFormat:@"%@%@%@", diffString, positivity.length ? spaceBetweenWords : @"", positivity];
     } else if (daysDiff > 0) {
         if (hoursDiff == 0 || daysDiff > 2)
-            return [NSString stringWithFormat:@"%d%@%@%@%@", daysDiff, spaceBetweenWords, daysDiff == 1 ? NSLocalizedStringFromTable(@"DayKey", NSDATE_TABLE_NAME, @"") : NSLocalizedStringFromTable(@"DaysKey", NSDATE_TABLE_NAME, @""), spaceBetweenWords, positivity];
+            return [NSString stringWithFormat:@"%d%@%@%@%@", daysDiff, spaceBetweenWords, daysDiff == 1 ? NSLocalizedStringFromTable(@"DayKey", NSDATE_TABLE_NAME, @"") : NSLocalizedStringFromTable(@"DaysKey", NSDATE_TABLE_NAME, @""), positivity.length ? spaceBetweenWords : @"", positivity];
         else
-            return [NSString stringWithFormat:@"%d%@%@%@%d%@%@%@%@", daysDiff, spaceBetweenWords, daysDiff == 1 ? NSLocalizedStringFromTable(@"DayKey", NSDATE_TABLE_NAME, @"") : NSLocalizedStringFromTable(@"DaysKey", NSDATE_TABLE_NAME, @""), spaceBetweenWords, hoursDiff, spaceBetweenWords, NSLocalizedStringFromTable(@"HoursKey", NSDATE_TABLE_NAME, @""), spaceBetweenWords, positivity];
+            return [NSString stringWithFormat:@"%d%@%@%@%d%@%@%@%@", daysDiff, spaceBetweenWords, daysDiff == 1 ? NSLocalizedStringFromTable(@"DayKey", NSDATE_TABLE_NAME, @"") : NSLocalizedStringFromTable(@"DaysKey", NSDATE_TABLE_NAME, @""), spaceBetweenWords, hoursDiff, spaceBetweenWords, NSLocalizedStringFromTable(@"HoursKey", NSDATE_TABLE_NAME, @""), positivity.length ? spaceBetweenWords : @"", positivity];
     }
     else {
         if (hoursDiff == 0) {
             if (minutesDiff == 0)
-                return [NSString stringWithFormat:@"%@%@%@", NSLocalizedStringFromTable(@"SecondKey", NSDATE_TABLE_NAME, @""), spaceBetweenWords, positivity];
+                return [NSString stringWithFormat:@"%@%@%@", NSLocalizedStringFromTable(@"SecondKey", NSDATE_TABLE_NAME, @""), positivity.length ? spaceBetweenWords : @"", positivity];
             else
-                return [NSString stringWithFormat:@"%d%@%@%@%@", minutesDiff, spaceBetweenWords, minutesDiff == 1 ? NSLocalizedStringFromTable(@"MinuteKey", NSDATE_TABLE_NAME, @"") : NSLocalizedStringFromTable(@"MinutesKey", NSDATE_TABLE_NAME, @""), spaceBetweenWords, positivity];
+                return [NSString stringWithFormat:@"%d%@%@%@%@", minutesDiff, spaceBetweenWords, minutesDiff == 1 ? NSLocalizedStringFromTable(@"MinuteKey", NSDATE_TABLE_NAME, @"") : NSLocalizedStringFromTable(@"MinutesKey", NSDATE_TABLE_NAME, @""), positivity.length ? spaceBetweenWords : @"", positivity];
         }
         else {
             if (hoursDiff == 1)
-                return [NSString stringWithFormat:@"%@%@%@%@%@", NSLocalizedStringFromTable(@"AboutKey", NSDATE_TABLE_NAME, @""), spaceBetweenWords, NSLocalizedStringFromTable(@"HourKey", NSDATE_TABLE_NAME, @""), spaceBetweenWords, positivity];
+                return [NSString stringWithFormat:@"%@%@%@%@%@", NSLocalizedStringFromTable(@"AboutKey", NSDATE_TABLE_NAME, @""), spaceBetweenWords, NSLocalizedStringFromTable(@"HourKey", NSDATE_TABLE_NAME, @""), positivity.length ? spaceBetweenWords : @"", positivity];
             else
-                return [NSString stringWithFormat:@"%d%@%@%@%@", hoursDiff, spaceBetweenWords, NSLocalizedStringFromTable(@"HoursKey", NSDATE_TABLE_NAME, @""), spaceBetweenWords, positivity];
+                return [NSString stringWithFormat:@"%d%@%@%@%@", hoursDiff, spaceBetweenWords, NSLocalizedStringFromTable(@"HoursKey", NSDATE_TABLE_NAME, @""), positivity.length ? spaceBetweenWords : @"", positivity];
         }
     }
 }
