@@ -17,8 +17,6 @@ import AVFoundation
     func didCompleteLesson()
 }
 
-
-
 class LessonViewController: UIViewController,AVAudioPlayerDelegate {
 
     @IBOutlet weak var textLabel: UILabel!

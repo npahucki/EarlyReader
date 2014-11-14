@@ -1,5 +1,5 @@
 //
-//  SettingsViewController.swift
+//  WordsViewController.swift
 //  LittleReader
 //
 //  Created by Nathan  Pahucki on 11/14/14.
@@ -9,8 +9,7 @@
 import UIKit
 import CoreData
 
-
-class SettingsViewController: UIViewController, ManagedObjectContextHolder {
+class WordsViewController: UIViewController, ManagedObjectContextHolder {
 
     var managedContext : NSManagedObjectContext? = nil
 

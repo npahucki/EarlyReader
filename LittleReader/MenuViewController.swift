@@ -10,7 +10,7 @@ import UIKit
 
 class MenuViewController: UIViewController {
 
-    let viewForMenuItem = [1 : "idleController", 2 : "wordListController",  3 : "settingsController"]
+    let viewForMenuItem = [1 : "lessonsController", 2 : "wordsController",  3 : "settingsController"]
     
     @IBOutlet weak var settingsButton: UIButton!
     @IBOutlet weak var wordsButton: UIButton!

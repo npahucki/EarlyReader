@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class MainViewController : UISplitViewController, UISplitViewControllerDelegate, ManagedObjectContextHolder{
+class MainViewController : UISplitViewController, UISplitViewControllerDelegate, ManagedObjectContextHolder {
     
     var managedContext : NSManagedObjectContext? = nil
 

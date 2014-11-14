@@ -9,7 +9,7 @@
 import CoreData
 import UIKit
 
-class LessonHistoryViewController: UITableViewController, NSFetchedResultsControllerDelegate, LessonStateDelegate {
+class LessonsListViewController: UITableViewController, NSFetchedResultsControllerDelegate, LessonStateDelegate {
     
     
     let sectionForNotifications = 0

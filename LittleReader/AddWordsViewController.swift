@@ -10,7 +10,7 @@ import UIKit
 
 class AddWordsViewController: UIViewController {
 
-    var settingsViewController : SettingsViewController? = nil
+    var settingsViewController : SettingsListViewController? = nil
     
     @IBOutlet weak var textView: UITextView!
     @IBAction func didClickDoneButton(sender: UIButton) {

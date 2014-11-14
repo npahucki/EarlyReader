@@ -9,10 +9,10 @@
 import UIKit
 import CoreData
 
-class IdleScreenViewController: UIViewController, LessonStateDelegate {
+class LessonsViewController: UIViewController, LessonStateDelegate {
 
     var baby : Baby?
-    private var _lessonHistoryController : LessonHistoryViewController? = nil
+    private var _lessonHistoryController : LessonsListViewController? = nil
     private var _planner : LessonPlanner? = nil
     
     @IBOutlet weak var textLabel: UILabel!
@@ -37,7 +37,7 @@ class IdleScreenViewController: UIViewController, LessonStateDelegate {
     
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if let historyController = segue.destinationViewController as? LessonHistoryViewController {
+        if let historyController = segue.destinationViewController as? LessonsListViewController {
             historyController.baby = Baby.currentBaby
             _lessonHistoryController = historyController
         }

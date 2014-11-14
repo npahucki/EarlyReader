@@ -24,7 +24,7 @@
 		E841F67219FA868700684DD6 /* WordListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E841F67119FA868700684DD6 /* WordListViewController.swift */; };
 		E841F67619FA935800684DD6 /* NSDate+HumanizedTime.m in Sources */ = {isa = PBXBuildFile; fileRef = E841F67419FA935800684DD6 /* NSDate+HumanizedTime.m */; };
 		E841F67819FA938400684DD6 /* NSDateHumanizedTime.strings in Resources */ = {isa = PBXBuildFile; fileRef = E841F67719FA938400684DD6 /* NSDateHumanizedTime.strings */; };
-		E84794FF1A01C4470065BABE /* LessonHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E84794FE1A01C4470065BABE /* LessonHistoryViewController.swift */; };
+		E84794FF1A01C4470065BABE /* LessonsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E84794FE1A01C4470065BABE /* LessonsListViewController.swift */; };
 		E84C8B9C1A12936D00B66B74 /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E84C8B9B1A12936D00B66B74 /* UIColorExtensions.swift */; };
 		E84C8BA91A12982600B66B74 /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E84C8B9F1A12982600B66B74 /* OpenSans-Bold.ttf */; };
 		E84C8BAA1A12982600B66B74 /* OpenSans-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E84C8BA01A12982600B66B74 /* OpenSans-BoldItalic.ttf */; };
@@ -44,16 +44,18 @@
 		E88916D51A047BCE002C8F13 /* LessonPlannerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88916D41A047BCE002C8F13 /* LessonPlannerTests.swift */; };
 		E88916D71A047CB0002C8F13 /* Baby.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8BF775C19F932DA00F1BF0A /* Baby.swift */; };
 		E8A50DDD1A01B7F100756CC8 /* LessonLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A50DDC1A01B7F100756CC8 /* LessonLog.swift */; };
-		E8BA1C2419BA11DB0092974A /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8BA1C2319BA11DB0092974A /* SettingsViewController.swift */; };
+		E8BA1C2419BA11DB0092974A /* SettingsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8BA1C2319BA11DB0092974A /* SettingsListViewController.swift */; };
 		E8BFC82D1A155FB7004929EF /* applause-01.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E8BFC82C1A155FB7004929EF /* applause-01.mp3 */; };
 		E8BFC82F1A15635A004929EF /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8BFC82E1A15635A004929EF /* AVFoundation.framework */; };
+		E8BFC8331A165075004929EF /* WordsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8BFC8321A165075004929EF /* WordsViewController.swift */; };
+		E8BFC8351A1650A6004929EF /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8BFC8341A1650A6004929EF /* SettingsViewController.swift */; };
 		E8CDE7E9199FD18F0036CFE8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8CDE7E8199FD18F0036CFE8 /* AppDelegate.swift */; };
 		E8CDE7EC199FD18F0036CFE8 /* LittleReader.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E8CDE7EA199FD18F0036CFE8 /* LittleReader.xcdatamodeld */; };
 		E8CDE7EE199FD18F0036CFE8 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8CDE7ED199FD18F0036CFE8 /* MainViewController.swift */; };
 		E8CDE7F1199FD18F0036CFE8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E8CDE7EF199FD18F0036CFE8 /* Main.storyboard */; };
 		E8CDE7F3199FD18F0036CFE8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E8CDE7F2199FD18F0036CFE8 /* Images.xcassets */; };
 		E8CDE80919A03AB70036CFE8 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8CDE80819A03AB70036CFE8 /* QuartzCore.framework */; };
-		E8E23E681A042785004764E9 /* IdleScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E818296919F6FCB6007B6DC9 /* IdleScreenViewController.swift */; };
+		E8E23E681A042785004764E9 /* LessonsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E818296919F6FCB6007B6DC9 /* LessonsViewController.swift */; };
 		E8F807451A12793E00FC427F /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8F807441A12793E00FC427F /* MenuViewController.swift */; };
 		E8FBFD441A012B6600087BE2 /* LessonPlanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8FBFD431A012B6600087BE2 /* LessonPlanner.swift */; };
 		E8FBFD461A01326400087BE2 /* UserPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = E82DEBFC19F6AA4100EED0A8 /* UserPreferences.swift */; };
@@ -78,7 +80,7 @@
 		7CC091EE20004461E4B06612 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		E816042C19FAE05200B87B9D /* Common.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
 		E818296419F6F04A007B6DC9 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
-		E818296919F6FCB6007B6DC9 /* IdleScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IdleScreenViewController.swift; sourceTree = "<group>"; };
+		E818296919F6FCB6007B6DC9 /* LessonsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LessonsViewController.swift; sourceTree = "<group>"; };
 		E818296B19F6FE87007B6DC9 /* LessonViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LessonViewController.swift; sourceTree = "<group>"; };
 		E81846CF19F94B580012EAAF /* ChildInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChildInfoViewController.swift; sourceTree = "<group>"; };
 		E81846D119F9503D0012EAAF /* MangedObjectContextHolder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MangedObjectContextHolder.swift; sourceTree = "<group>"; };
@@ -94,7 +96,7 @@
 		E841F67519FA935800684DD6 /* NSDate+HumanizedTime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+HumanizedTime.h"; sourceTree = "<group>"; };
 		E841F67719FA938400684DD6 /* NSDateHumanizedTime.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = NSDateHumanizedTime.strings; sourceTree = "<group>"; };
 		E841F67919FA93CB00684DD6 /* ObjCBridging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjCBridging.h; sourceTree = "<group>"; };
-		E84794FE1A01C4470065BABE /* LessonHistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LessonHistoryViewController.swift; sourceTree = "<group>"; };
+		E84794FE1A01C4470065BABE /* LessonsListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LessonsListViewController.swift; sourceTree = "<group>"; };
 		E84C8B9B1A12936D00B66B74 /* UIColorExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtensions.swift; sourceTree = "<group>"; };
 		E84C8B9F1A12982600B66B74 /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Bold.ttf"; sourceTree = "<group>"; };
 		E84C8BA01A12982600B66B74 /* OpenSans-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-BoldItalic.ttf"; sourceTree = "<group>"; };
@@ -113,10 +115,12 @@
 		E88916D21A0474AA002C8F13 /* BabyTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BabyTests.swift; sourceTree = "<group>"; };
 		E88916D41A047BCE002C8F13 /* LessonPlannerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LessonPlannerTests.swift; sourceTree = "<group>"; };
 		E8A50DDC1A01B7F100756CC8 /* LessonLog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LessonLog.swift; sourceTree = "<group>"; };
-		E8BA1C2319BA11DB0092974A /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		E8BA1C2319BA11DB0092974A /* SettingsListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsListViewController.swift; sourceTree = "<group>"; };
 		E8BF775C19F932DA00F1BF0A /* Baby.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Baby.swift; sourceTree = "<group>"; };
 		E8BFC82C1A155FB7004929EF /* applause-01.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "applause-01.mp3"; sourceTree = "<group>"; };
 		E8BFC82E1A15635A004929EF /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		E8BFC8321A165075004929EF /* WordsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordsViewController.swift; sourceTree = "<group>"; };
+		E8BFC8341A1650A6004929EF /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		E8CDE7E3199FD18F0036CFE8 /* LittleReader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LittleReader.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8CDE7E7199FD18F0036CFE8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E8CDE7E8199FD18F0036CFE8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -236,16 +240,18 @@
 		E85F39AF19A695610004C80F /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				E8BA1C2319BA11DB0092974A /* SettingsViewController.swift */,
 				E8CDE7ED199FD18F0036CFE8 /* MainViewController.swift */,
-				E818296919F6FCB6007B6DC9 /* IdleScreenViewController.swift */,
+				E8F807441A12793E00FC427F /* MenuViewController.swift */,
+				E818296919F6FCB6007B6DC9 /* LessonsViewController.swift */,
+				E84794FE1A01C4470065BABE /* LessonsListViewController.swift */,
+				E8BA1C2319BA11DB0092974A /* SettingsListViewController.swift */,
+				E8BFC8341A1650A6004929EF /* SettingsViewController.swift */,
 				E818296B19F6FE87007B6DC9 /* LessonViewController.swift */,
-				E84794FE1A01C4470065BABE /* LessonHistoryViewController.swift */,
 				E81846CF19F94B580012EAAF /* ChildInfoViewController.swift */,
+				E8BFC8321A165075004929EF /* WordsViewController.swift */,
 				E841F67119FA868700684DD6 /* WordListViewController.swift */,
 				E81846D119F9503D0012EAAF /* MangedObjectContextHolder.swift */,
 				E82959121A00108D003575F7 /* AddWordsViewController.swift */,
-				E8F807441A12793E00FC427F /* MenuViewController.swift */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -482,12 +488,13 @@
 				E84C8B9C1A12936D00B66B74 /* UIColorExtensions.swift in Sources */,
 				E8FBFD441A012B6600087BE2 /* LessonPlanner.swift in Sources */,
 				E8CDE7EE199FD18F0036CFE8 /* MainViewController.swift in Sources */,
-				E84794FF1A01C4470065BABE /* LessonHistoryViewController.swift in Sources */,
-				E8E23E681A042785004764E9 /* IdleScreenViewController.swift in Sources */,
+				E84794FF1A01C4470065BABE /* LessonsListViewController.swift in Sources */,
+				E8E23E681A042785004764E9 /* LessonsViewController.swift in Sources */,
 				E82DEBFD19F6AA4100EED0A8 /* UserPreferences.swift in Sources */,
 				E85F39C919A6BB670004C80F /* Word.swift in Sources */,
 				E8F807451A12793E00FC427F /* MenuViewController.swift in Sources */,
 				E8CDE7EC199FD18F0036CFE8 /* LittleReader.xcdatamodeld in Sources */,
+				E8BFC8331A165075004929EF /* WordsViewController.swift in Sources */,
 				E8FBFD481A013DD700087BE2 /* NSDateExtensions.swift in Sources */,
 				E816042D19FAE05200B87B9D /* Common.swift in Sources */,
 				E8A50DDD1A01B7F100756CC8 /* LessonLog.swift in Sources */,
@@ -501,10 +508,11 @@
 				E8CDE7E9199FD18F0036CFE8 /* AppDelegate.swift in Sources */,
 				E85F39CC19A6BB670004C80F /* WordSet.swift in Sources */,
 				E841F67619FA935800684DD6 /* NSDate+HumanizedTime.m in Sources */,
+				E8BFC8351A1650A6004929EF /* SettingsViewController.swift in Sources */,
 				E82DEC0519F6B97300EED0A8 /* UsageAnalytics.swift in Sources */,
 				E841F67219FA868700684DD6 /* WordListViewController.swift in Sources */,
 				E88916D71A047CB0002C8F13 /* Baby.swift in Sources */,
-				E8BA1C2419BA11DB0092974A /* SettingsViewController.swift in Sources */,
+				E8BA1C2419BA11DB0092974A /* SettingsListViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
