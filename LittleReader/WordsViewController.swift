@@ -70,22 +70,22 @@ class WordsViewController: UIViewController, ManagedObjectContextHolder {
 //            self.clearWordsButton.setTitle(title, forState: UIControlState.Normal)
 //        }
 //    }
-    
-    func insertWords(words : [String]) {
-        if let ctx = managedContext {
-            let importer = WordImporter(managedContext:ctx)
-            let result = importer.importWords(words)
-            if let err = result.error {
-                UsageAnalytics.trackError("Failed to insertWords into CoreData", error: err)
-            } else {
-                if let baby = Baby.currentBaby {
-                    let numSets = baby.wordSets.count > 0 ? baby.wordSets.count : 1
-                    baby.populateWordSets(numSets)
-                    //updateWordCount()
-                }
-            }
-        }
-    }
+//    
+//    func insertWords(words : [String]) {
+//        if let ctx = managedContext {
+//            let importer = WordImporter(managedContext:ctx)
+//            let result = importer.importWords(words)
+//            if let err = result.error {
+//                UsageAnalytics.trackError("Failed to insertWords into CoreData", error: err)
+//            } else {
+//                if let baby = Baby.currentBaby {
+//                    let numSets = baby.wordSets.count > 0 ? baby.wordSets.count : 1
+//                    baby.populateWordSets(numSets)
+//                    //updateWordCount()
+//                }
+//            }
+//        }
+//    }
     
 
 

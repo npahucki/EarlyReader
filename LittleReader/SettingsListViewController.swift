@@ -42,8 +42,18 @@ class SettingsListViewController: UITableViewController, ManagedObjectContextHol
         super.viewWillAppear(animated)
         // Do this here, so that it gets updated after the user changes it in the dialog.
         if let b = Baby.currentBaby {
-            let babyInfoString = NSLocalizedString("settings_baby_info", comment:"Label in the settings pane to display the current baby's info")
-            babysAgeLabel.text = NSString(format: babyInfoString,  b.name,  b.birthDate.stringWithHumanizedTimeDifference(false))
+            var babyInfoString = NSLocalizedString("settings_baby_info", comment:"Label in the settings pane to display the current baby's info")
+            babyInfoString = NSString(format: babyInfoString,  b.name,  b.birthDate.stringWithHumanizedTimeDifference(false))
+
+            
+            // TODO: We may need to do this later
+//            let options = NSDictionary(objects: [NSHTMLTextDocumentType,NSUTF8StringEncoding,UIFont(name: "OpenSans",size: 17.0)!],
+//                forKeys: [NSDocumentTypeDocumentAttribute , NSCharacterEncodingDocumentAttribute,NSFontAttributeName])
+//            babysAgeLabel.attributedText = NSAttributedString(data: babyInfoString.dataUsingEncoding(NSUTF8StringEncoding)!, options:
+//                 nil, documentAttributes: nil, error: nil)
+
+            babysAgeLabel.text = babyInfoString
+            
         }
     }
     
