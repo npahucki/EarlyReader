@@ -57,7 +57,11 @@ public class LessonPlanner {
     
     public var numberOfLessonsPerDay : Int {
         get {
-            return _baby.wordSets.count * UserPreferences.numberOfTimesToRepeatEachWordSet
+            if let wordSets = _baby.wordSets {
+                return wordSets.count * UserPreferences.numberOfTimesToRepeatEachWordSet
+            } else {
+                return 0
+            }
         }
     }
     
@@ -250,7 +254,7 @@ public class LessonPlanner {
             log.words = ",".join((Array(wordSet.words) as [Word]).map { $0.text })
             log.lessonDate = _lessonStartTime!
             log.durationSeconds = -_lessonStartTime!.timeIntervalSinceNow
-            log.totalNumberOfWordSets = UInt16(_baby.wordSets.count)
+            log.totalNumberOfWordSets = UInt16(_baby.wordSets!.count)
             log.useDay = UInt16(useDay)
             
         }

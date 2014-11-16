@@ -31,10 +31,7 @@ class MenuViewController: UIViewController {
 
         sender.selected = true
         
-        let storyboard = UIStoryboard(name: "Main", bundle: nil);
-        let vc = storyboard.instantiateViewControllerWithIdentifier(viewForMenuItem[sender.tag]!) as UIViewController;
         let splitViewController = parentViewController as MainViewController;
-        splitViewController.showDetailViewController(vc, sender: self)
+        splitViewController.showDetailViewControllerWithId(viewForMenuItem[sender.tag]!, sender: self)
     }
-    
 }

@@ -12,35 +12,23 @@ import CoreData
 
 
 
-class ChildInfoViewController: UIViewController, UITextFieldDelegate, ManagedObjectContextHolder {
-    var managedContext : NSManagedObjectContext? = nil
-    var baby : Baby? = nil
+class ChildInfoViewController: UIViewController, UITextFieldDelegate, ChildInfoBirthDatePopoverViewControllerDelegate  {
+
+    var baby : Baby!
    
-    @IBOutlet weak var doneButton: UIBarButtonItem!
+    @IBOutlet weak var doneButton: UIButton!
+    @IBOutlet weak var childBirthDateTextField: UITextField!
     @IBOutlet weak var childNameTextField: UITextField!
 
-    @IBOutlet weak var birthDatePicker: UIDatePicker!
     override func viewDidLoad() {
-        birthDatePicker.maximumDate = NSDate()
-        if let b = baby {
-            birthDatePicker.date =  b.birthDate
-            childNameTextField.text = b.name
-        } else {
-            birthDatePicker.date =  birthDatePicker.maximumDate!
-            if let ctx = managedContext {
-                if let entityDescripition = NSEntityDescription.entityForName("Baby", inManagedObjectContext:ctx) {
-                    baby = Baby(entity: entityDescripition, insertIntoManagedObjectContext: ctx)
-                }
-            }
-        }
+        assert(baby != nil, "Expected a baby would be set before view is loaded!")
+        childNameTextField.text = baby.name
+        childBirthDateTextField.text = childsDisplayAge()
         calcDoneButtonEnabled()
-        
     }
     
-    @IBAction func didClickDoneButton(sender: UIBarButtonItem) {
+    @IBAction func didClickDoneButton(sender: UIButton) {
         baby!.name = childNameTextField.text
-        baby!.birthDate = birthDatePicker.date
-
         var error : NSError? = nil
         baby!.managedObjectContext!.save(&error)
         if let e = error {
@@ -52,20 +40,53 @@ class ChildInfoViewController: UIViewController, UITextFieldDelegate, ManagedObj
         }
     }
 
+    func childsDisplayAge() ->String? {
+        if let birthDate = baby.birthDate {
+            return "\(birthDate.stringWithHumanizedTimeDifference(false)) old"
+        } else {
+            return nil
+        }
+    }
+    
     func calcDoneButtonEnabled() -> Bool {
-        doneButton.enabled = countElements(childNameTextField.text) > 1
-        return doneButton.enabled
+        let enabled = countElements(childNameTextField.text) > 1
+        childBirthDateTextField.enabled = enabled
+        doneButton.enabled = enabled
+        return enabled
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
-        if calcDoneButtonEnabled() {
-            textField.resignFirstResponder()
+        if textField == childNameTextField && calcDoneButtonEnabled() {
+            childBirthDateTextField.becomeFirstResponder()
             return true
         }
         
         return false
     }
     
+    func changedChildBirthDate(date : NSDate) {
+        baby.birthDate = date
+        childBirthDateTextField.text = childsDisplayAge()
+        calcDoneButtonEnabled()
+    }
     
+    func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
+        // Prevent keyboard, and show popup
+        if textField == childBirthDateTextField {
+            childNameTextField.resignFirstResponder()
+            performSegueWithIdentifier("showDatePickerPopover", sender: self)
+            return false;
+        }
+        
+        return true
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        baby.name = childNameTextField.text
+        if let vc = segue.destinationViewController as? ChildInfoBirthDatePopoverViewController {
+            vc.baby = baby
+            vc.delegate = self
+        }
+    }
     
 }

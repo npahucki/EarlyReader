@@ -31,7 +31,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIAlertViewDelegate {
         // UIAppearance Settings
         let defaultFont = UIFont(name: "OpenSans", size: 17.0)
         UIButton.appearance().titleLabel?.font = defaultFont
-        
+        UITextField.appearance().borderStyle = UITextBorderStyle.None
+        UITextField.appearance().backgroundColor = UIColor.whiteColor()
         return true
     }
 

@@ -11,30 +11,21 @@ import CoreData
 
 class LessonsViewController: UIViewController, LessonStateDelegate {
 
-    var baby : Baby?
     private var _lessonHistoryController : LessonsListViewController? = nil
     private var _planner : LessonPlanner? = nil
     
-    @IBOutlet weak var textLabel: UILabel!
-    @IBOutlet weak var auxMessageLabel: UILabel!
-    @IBOutlet weak var currentBabyLabel: UILabel!
     @IBOutlet weak var infoMessageLabel: UILabel!
     
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-//        NSTimer.scheduledTimerWithTimeInterval(30.0 , target: self, selector: "updateCurrentStateMessage", userInfo: nil, repeats:true)
-    }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         if let b = Baby.currentBaby {
             _planner = LessonPlanner(baby: b)
-            let title = NSLocalizedString("current_baby",comment:"")
-            currentBabyLabel.text = title.stringByAppendingString(b.name)
+            if let vc = _lessonHistoryController {
+               vc.baby = Baby.currentBaby
+            }
         }
     }
-    
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let historyController = segue.destinationViewController as? LessonsListViewController {

@@ -33,8 +33,8 @@ class MainViewController : UISplitViewController, UISplitViewControllerDelegate,
     
     override func viewDidAppear(animated: Bool) {
         if Baby.currentBaby == nil {
-            // Show the dialog to enter a baby. 
-            self.performSegueWithIdentifier("showNewChildDialog", sender: self)
+                // Show the dialog to enter a baby.
+                self.performSegueWithIdentifier("showNewChildDialog", sender: self)
         }
     }
 
@@ -42,10 +42,23 @@ class MainViewController : UISplitViewController, UISplitViewControllerDelegate,
         if let vc = segue.destinationViewController as? ManagedObjectContextHolder {
             vc.managedContext = self.managedContext
         }
+        
+        if let vc = segue.destinationViewController as? ChildInfoViewController {
+            if let ctx = managedContext {
+                if let entityDescripition = NSEntityDescription.entityForName("Baby", inManagedObjectContext:ctx) {
+                    vc.baby = Baby(entity: entityDescripition, insertIntoManagedObjectContext: ctx)
+                }
+            }
+        }
     }
-    
-    override func showDetailViewController(vc: UIViewController!, sender: AnyObject!) {
 
+    func showDetailViewControllerWithId(vcId: String, sender: AnyObject!) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil);
+        let vc = storyboard.instantiateViewControllerWithIdentifier(vcId) as UIViewController;
+        self.showDetailViewController(vc, sender: sender)
+    }
+
+    override func showDetailViewController(vc: UIViewController, sender: AnyObject!) {
         if let mochVc = vc as? ManagedObjectContextHolder {
             mochVc.managedContext = self.managedContext
         }
@@ -61,6 +74,5 @@ class MainViewController : UISplitViewController, UISplitViewControllerDelegate,
             }
         }
     }
-
 }
 

@@ -18,22 +18,23 @@ class LessonsListViewController: UITableViewController, NSFetchedResultsControll
     
     var baby : Baby?
     private var fetchedResultsController = NSFetchedResultsController()
-    private var _planner : LessonPlanner!
+    private var _planner : LessonPlanner?
     var notifications = [String]()
     
     override func viewDidLoad() {
-        assert(baby != nil, "Baby must be set before loading the view")
         super.viewDidLoad()
-        _planner = LessonPlanner(baby: baby!)
         NSTimer.scheduledTimerWithTimeInterval(30.0 , target: self, selector: "updateCurrentStateMessages", userInfo: nil, repeats:true)
     }
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        updateTakenLessons()
-        updateCurrentStateMessages()
-        // TODO: Notification if there are no words to load, or none left. Don't allow starting the lessons if not words.
-        // TODO: Use _planner.numberOfWordsLesson
+        if let b = baby {
+            _planner = LessonPlanner(baby: baby!)
+            updateTakenLessons()
+            updateCurrentStateMessages()
+            // TODO: Notification if there are no words to load, or none left. Don't allow starting the lessons if not words.
+            // TODO: Use _planner.numberOfWordsLesson
+        }
     }
     
     func updateTakenLessons() {

@@ -13,9 +13,9 @@ import UIKit
 
 public class Baby: NSManagedObject {
 
-    @NSManaged public var name: String
-    @NSManaged public var birthDate: NSDate
-    @NSManaged public var wordSets: NSSet
+    @NSManaged public var name: String!
+    @NSManaged public var birthDate: NSDate!
+    @NSManaged public var wordSets: NSSet!
     
     class var currentBaby : Baby? {
         set(baby) {
