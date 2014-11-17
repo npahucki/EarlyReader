@@ -27,6 +27,7 @@
       "idiom" : "ipad",
       "extent" : "full-screen",
       "minimum-system-version" : "7.0",
+      "filename" : "StartupImage.png",
       "scale" : "1x"
     },
     {
@@ -41,7 +42,7 @@
       "idiom" : "ipad",
       "extent" : "full-screen",
       "minimum-system-version" : "7.0",
-      "filename" : "apple-touch-startup-image.png",
+      "filename" : "StartupImage@2x.png",
       "scale" : "2x"
     }
   ],

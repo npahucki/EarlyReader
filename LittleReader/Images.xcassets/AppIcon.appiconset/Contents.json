@@ -41,14 +41,15 @@
       "scale" : "2x"
     },
     {
-      "idiom" : "ipad",
       "size" : "76x76",
+      "idiom" : "ipad",
+      "filename" : "IconAppleTouch.png",
       "scale" : "1x"
     },
     {
       "size" : "76x76",
       "idiom" : "ipad",
-      "filename" : "apple-touch-icon.png",
+      "filename" : "IconAppleTouch@2x.png",
       "scale" : "2x"
     }
   ],
