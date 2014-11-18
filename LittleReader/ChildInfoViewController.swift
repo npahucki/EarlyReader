@@ -39,17 +39,21 @@ class ChildInfoViewController: UIViewController, UITextFieldDelegate, ChildInfoB
             UIAlertView.showGenericLocalizedErrorMessage("msg_error_baby_save")
         } else {
             Baby.currentBaby = baby
-            let importer = WordImporter(managedContext: baby!.managedObjectContext!)
-            importer.importWordListNamed("basic") { (error, numberOfWordsImported) -> () in
-                self.activityIndicator.stopAnimating()
-                sender.enabled = true
-                if let err = error {
-                    UIAlertView.showLocalizedErrorMessageWithOkButton("error_msg_download_word_list", title_key : "error_title_download_word_list")
-                    UsageAnalytics.trackError("Could not load initial word list", error: err)
-                } else {
-                    self.baby.populateWordSets(1) // TODO: Maybe change depending on age?
-                    self.dismissViewControllerAnimated(true, nil)
+            if baby.wordSets.count < 1 {
+                let importer = WordImporter(managedContext: baby!.managedObjectContext!)
+                importer.importWordListNamed("basic") { (error, numberOfWordsImported) -> () in
+                    self.activityIndicator.stopAnimating()
+                    sender.enabled = true
+                    if let err = error {
+                        UIAlertView.showLocalizedErrorMessageWithOkButton("error_msg_download_word_list", title_key : "error_title_download_word_list")
+                        UsageAnalytics.trackError("Could not load initial word list", error: err)
+                    } else {
+                        self.baby.populateWordSets(1) // TODO: Maybe change depending on age?
+                        self.dismissViewControllerAnimated(true, nil)
+                    }
                 }
+            } else {
+                self.dismissViewControllerAnimated(true, nil)
             }
         }
     }

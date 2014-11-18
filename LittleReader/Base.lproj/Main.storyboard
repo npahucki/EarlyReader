@@ -495,21 +495,21 @@
                                         <rect key="frame" x="0.0" y="0.0" width="1024" height="724"/>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AgeSetupOwl" translatesAutoresizingMaskIntoConstraints="NO" id="qa5-kf-IAQ">
-                                        <rect key="frame" x="352" y="81" width="320" height="172"/>
+                                        <rect key="frame" x="352" y="81" width="320" height="198"/>
                                         <constraints>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="198" id="JUv-jo-89g"/>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="320" id="Ski-e3-mm6"/>
-                                            <constraint firstAttribute="height" constant="172" id="W44-zC-n6D"/>
                                             <constraint firstAttribute="width" constant="320" id="pta-06-cSy"/>
                                         </constraints>
                                     </imageView>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Child's Birth Date" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iv5-9o-m39">
-                                        <rect key="frame" x="352" y="299" width="320" height="30"/>
+                                        <rect key="frame" x="352" y="339" width="320" height="44"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="320" id="LRO-LH-SIr"/>
-                                            <constraint firstAttribute="height" constant="30" id="ODs-G7-jdE"/>
+                                            <constraint firstAttribute="height" constant="44" id="ODs-G7-jdE"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans" pointSize="16"/>
+                                        <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans" pointSize="18"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
                                         <connections>
                                             <outlet property="delegate" destination="caz-NO-Bej" id="hrz-rx-Ns4"/>
@@ -519,20 +519,20 @@
                                         </connections>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Child's First Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="J6J-cR-3P9">
-                                        <rect key="frame" x="352" y="261" width="320" height="30"/>
+                                        <rect key="frame" x="352" y="287" width="320" height="44"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="Gk8-py-kzr"/>
+                                            <constraint firstAttribute="height" constant="44" id="Gk8-py-kzr"/>
                                             <constraint firstAttribute="width" constant="320" id="X3Q-ea-uZQ"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans" pointSize="16"/>
+                                        <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans" pointSize="18"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no" keyboardType="namePhonePad" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
                                         <connections>
                                             <outlet property="delegate" destination="caz-NO-Bej" id="dA9-Q2-RsQ"/>
                                         </connections>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="44x-6G-Y8T">
-                                        <rect key="frame" x="352" y="337" width="320" height="43"/>
+                                        <rect key="frame" x="352" y="391" width="320" height="43"/>
                                         <color key="backgroundColor" red="0.180392161" green="0.74509805439999999" blue="0.40392160420000001" alpha="1" colorSpace="deviceRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="320" id="Ale-0d-fTP"/>
@@ -544,7 +544,7 @@
                                         </connections>
                                     </button>
                                     <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="Ig9-Nq-Vhe">
-                                        <rect key="frame" x="494" y="337" width="37" height="37"/>
+                                        <rect key="frame" x="494" y="391" width="37" height="37"/>
                                     </activityIndicatorView>
                                 </subviews>
                                 <constraints>
@@ -584,7 +584,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sOk-WM-gsK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3306.2400000000002" y="-1119.5733333333335"/>
+            <point key="canvasLocation" x="3306" y="-1120"/>
         </scene>
         <!--Child Info Birth Date Popover View Controller-->
         <scene sceneID="Pih-Qi-lyu">

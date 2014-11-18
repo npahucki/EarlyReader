@@ -172,7 +172,7 @@ class LessonViewController: UIViewController,AVAudioPlayerDelegate {
     
     private func presentRewardScreen() {
         // Create image and place off screen
-        let imageView = UIImageView(image: UIImage(named: "reward-screen-1"))
+        let imageView = UIImageView(image: UIImage(named: "RewardScreen-1"))
         imageView.bounds = self.view.bounds
         imageView.frame = CGRectMake(self.view.bounds.width, 0, self.view.bounds.width, self.view.bounds.height)
         self.view.addSubview(imageView)
