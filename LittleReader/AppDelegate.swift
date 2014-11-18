@@ -16,8 +16,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIAlertViewDelegate {
 
     func application(application: UIApplication!, didFinishLaunchingWithOptions launchOptions: NSDictionary!) -> Bool {
     
-        NSLog("%@", NSHomeDirectory());
-        
         // registering for sending user various kinds of notifications
         if application.respondsToSelector("registerUserNotificationSettings:") {
             application.registerUserNotificationSettings(UIUserNotificationSettings(forTypes: UIUserNotificationType.Sound | UIUserNotificationType.Alert | UIUserNotificationType.Badge, categories: nil))

@@ -26,9 +26,13 @@ class MainViewController : UISplitViewController, UISplitViewControllerDelegate,
     
     override func viewDidLoad() {
         delegate = self
-        preferredDisplayMode = UISplitViewControllerDisplayMode.Automatic
-        preferredPrimaryColumnWidthFraction = 0.25
+        
         view.backgroundColor = UIColor.whiteColor()
+
+//    *** NOT SUPPORTED IN IOS 7!
+//        preferredDisplayMode = UISplitViewControllerDisplayMode.Automatic
+//        preferredPrimaryColumnWidthFraction = 0.25
+    
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -55,16 +59,16 @@ class MainViewController : UISplitViewController, UISplitViewControllerDelegate,
     func showDetailViewControllerWithId(vcId: String, sender: AnyObject!) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil);
         let vc = storyboard.instantiateViewControllerWithIdentifier(vcId) as UIViewController;
-        self.showDetailViewController(vc, sender: sender)
+        showDetailViewControllerForOs(vc, sender: sender)
     }
 
-    override func showDetailViewController(vc: UIViewController, sender: AnyObject!) {
+    private func showDetailViewControllerForOs(vc: UIViewController, sender: AnyObject!) {
         if let mochVc = vc as? ManagedObjectContextHolder {
             mochVc.managedContext = self.managedContext
         }
 
         if(super.respondsToSelector("showDetailViewController:sender:")) {
-            super.showDetailViewController(vc, sender:sender)
+            showDetailViewController(vc, sender:sender)
         } else {
             // IOS 7
             if self.viewControllers.count > 1 {

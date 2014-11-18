@@ -16,6 +16,7 @@ class ChildInfoViewController: UIViewController, UITextFieldDelegate, ChildInfoB
 
     var baby : Baby!
    
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var doneButton: UIButton!
     @IBOutlet weak var childBirthDateTextField: UITextField!
     @IBOutlet weak var childNameTextField: UITextField!
@@ -28,15 +29,28 @@ class ChildInfoViewController: UIViewController, UITextFieldDelegate, ChildInfoB
     }
     
     @IBAction func didClickDoneButton(sender: UIButton) {
-        baby!.name = childNameTextField.text
+        sender.enabled = false;
+        activityIndicator.startAnimating()
+        baby.name = childNameTextField.text
         var error : NSError? = nil
-        baby!.managedObjectContext!.save(&error)
+        baby.managedObjectContext!.save(&error)
         if let e = error {
             UsageAnalytics.trackError("Could not save baby", error: e)
             UIAlertView.showGenericLocalizedErrorMessage("msg_error_baby_save")
         } else {
             Baby.currentBaby = baby
-            self.dismissViewControllerAnimated(true, nil)
+            let importer = WordImporter(managedContext: baby!.managedObjectContext!)
+            importer.importWordListNamed("basic") { (error, numberOfWordsImported) -> () in
+                self.activityIndicator.stopAnimating()
+                sender.enabled = true
+                if let err = error {
+                    UIAlertView.showLocalizedErrorMessageWithOkButton("error_msg_download_word_list", title_key : "error_title_download_word_list")
+                    UsageAnalytics.trackError("Could not load initial word list", error: err)
+                } else {
+                    self.baby.populateWordSets(1) // TODO: Maybe change depending on age?
+                    self.dismissViewControllerAnimated(true, nil)
+                }
+            }
         }
     }
 

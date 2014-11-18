@@ -22,6 +22,12 @@ public class LessonPlanner {
         assert(baby.managedObjectContext != nil, "Expected baby to have a managedObjectContext!")
         self._baby = baby
         self._managedObjectContext = baby.managedObjectContext!
+        
+        // If we have zero words, and we have never imported, then import for the first time. 
+        
+        
+        
+        
     }
 
     public var firstLessonDate : NSDate? {

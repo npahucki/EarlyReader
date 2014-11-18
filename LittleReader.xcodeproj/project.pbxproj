@@ -36,6 +36,7 @@
 		E84C8BB01A12982600B66B74 /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E84C8BA61A12982600B66B74 /* OpenSans-Regular.ttf */; };
 		E84C8BB11A12982600B66B74 /* OpenSans-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E84C8BA71A12982600B66B74 /* OpenSans-Semibold.ttf */; };
 		E84C8BB21A12982600B66B74 /* OpenSans-SemiboldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E84C8BA81A12982600B66B74 /* OpenSans-SemiboldItalic.ttf */; };
+		E852E8061A1AB0B700DE8540 /* NSErrorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E852E8051A1AB0B700DE8540 /* NSErrorExtensions.swift */; };
 		E858B7EF19BA3D59003C5727 /* StreamReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E858B7EE19BA3D59003C5727 /* StreamReader.swift */; };
 		E85F39C919A6BB670004C80F /* Word.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85F39C819A6BB670004C80F /* Word.swift */; };
 		E85F39CC19A6BB670004C80F /* WordSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85F39CB19A6BB670004C80F /* WordSet.swift */; };
@@ -109,6 +110,7 @@
 		E84C8BA61A12982600B66B74 /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Regular.ttf"; sourceTree = "<group>"; };
 		E84C8BA71A12982600B66B74 /* OpenSans-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Semibold.ttf"; sourceTree = "<group>"; };
 		E84C8BA81A12982600B66B74 /* OpenSans-SemiboldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-SemiboldItalic.ttf"; sourceTree = "<group>"; };
+		E852E8051A1AB0B700DE8540 /* NSErrorExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSErrorExtensions.swift; sourceTree = "<group>"; };
 		E858B7EE19BA3D59003C5727 /* StreamReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StreamReader.swift; sourceTree = "<group>"; };
 		E85F39C819A6BB670004C80F /* Word.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Word.swift; sourceTree = "<group>"; };
 		E85F39CB19A6BB670004C80F /* WordSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordSet.swift; sourceTree = "<group>"; };
@@ -223,6 +225,7 @@
 				E82DEC0419F6B97300EED0A8 /* UsageAnalytics.swift */,
 				E81846D319F961870012EAAF /* UIAlertViewWithError.swift */,
 				E8FBFD471A013DD700087BE2 /* NSDateExtensions.swift */,
+				E852E8051A1AB0B700DE8540 /* NSErrorExtensions.swift */,
 				E84C8B9B1A12936D00B66B74 /* UIColorExtensions.swift */,
 			);
 			name = Util;
@@ -495,6 +498,7 @@
 				E8E23E681A042785004764E9 /* LessonsViewController.swift in Sources */,
 				E82DEBFD19F6AA4100EED0A8 /* UserPreferences.swift in Sources */,
 				E85F39C919A6BB670004C80F /* Word.swift in Sources */,
+				E852E8061A1AB0B700DE8540 /* NSErrorExtensions.swift in Sources */,
 				E8F807451A12793E00FC427F /* MenuViewController.swift in Sources */,
 				E8CDE7EC199FD18F0036CFE8 /* LittleReader.xcdatamodeld in Sources */,
 				E8BFC8331A165075004929EF /* WordsViewController.swift in Sources */,

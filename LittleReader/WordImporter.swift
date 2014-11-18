@@ -19,6 +19,37 @@ public class WordImporter {
     }
     
     
+    public func importWordListNamed(name:String, completionClosure: (error : NSError?, numberOfWordsImported: Int)->()) {
+        // TODO: Get from S3, make private call, or use a signed URL that expires waaaaay in the future.
+        let url = NSURL(string: "http://s3.amazonaws.com/InfantIQLittleReader/WordSets/en/\(name).txt")
+        let task = NSURLSession.sharedSession().dataTaskWithURL(url!) {(data, response, error) in
+                // Called on background thread
+            dispatch_async(dispatch_get_main_queue(),{ () -> Void in
+                var error : NSError? = error
+                var numberOfWordsImported : Int = 0
+                if error == nil {
+                    if let wordString = NSString(data:data, encoding: NSUTF8StringEncoding) {
+                        if let wordArray = self.parseWords(wordString) {
+                            let result = self.importWords(wordArray)
+                            error = result.error
+                            numberOfWordsImported = result.numberOfWordsAdded
+                        } else {
+                            error = NSError.applicationError(.FailedToImportWords,
+                                description: "Failed to import word list named \(name)",
+                                failureReason: "Could not parse words list")
+                        }
+                    } else {
+                        error = NSError.applicationError(.FailedToImportWords,
+                            description: "Failed to import word list named \(name)",
+                            failureReason: "The remote list did could not be converted to a string, ensure it's UTF8 encoded.")
+                    }
+                }
+                completionClosure(error: error, numberOfWordsImported : numberOfWordsImported)
+            })
+        }
+        task.resume()
+    }
+    
     public func importWords(wordList : [String]) -> (numberOfWordsAdded : Int, error : NSError?) {
         var count = 0
         var error: NSError? = nil
@@ -63,5 +94,9 @@ public class WordImporter {
             }
         return (numberOfWordsAdded : count, error: error)
         
+    }
+    
+    public func parseWords(wordString : String) -> [String]? {
+        return wordString.componentsSeparatedByString("\n") as [String]
     }
 }
