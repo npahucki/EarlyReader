@@ -9,10 +9,12 @@
 import UIKit
 import CoreData
 
-class WordListViewController: UITableViewController,ManagedObjectContextHolder, NSFetchedResultsControllerDelegate {
+class WordListViewController: UITableViewController,ManagedObjectContextHolder, NSFetchedResultsControllerDelegate, WordListTableHeaderViewDelegate, STCollapseTableViewDelegate {
 
     var managedContext : NSManagedObjectContext? = nil
     var fetchedResultsController = NSFetchedResultsController()
+    
+    private var _headerViews = [Int: WordListTableHeaderView]()
     
     
     override func viewDidLoad() {
@@ -21,27 +23,86 @@ class WordListViewController: UITableViewController,ManagedObjectContextHolder, 
         fetchedResultsController = getFetchedResultController()
         fetchedResultsController.delegate = self
         fetchedResultsController.performFetch(nil)
+        
     }
 
 
     
-    func getFetchedResultController() -> NSFetchedResultsController {
+    private func getFetchedResultController() -> NSFetchedResultsController {
         if let ctx = managedContext {
-            fetchedResultsController = NSFetchedResultsController(fetchRequest: taskFetchRequest(), managedObjectContext: ctx, sectionNameKeyPath: "wordSetNumber", cacheName: nil)
+            fetchedResultsController = NSFetchedResultsController(fetchRequest: taskFetchRequest(), managedObjectContext: ctx, sectionNameKeyPath: "wordGroupingKey", cacheName: nil)
         }
         return fetchedResultsController
     }
     
-    func taskFetchRequest() -> NSFetchRequest {
+    private func taskFetchRequest() -> NSFetchRequest {
         let fetchRequest = NSFetchRequest(entityName: "Word")
         fetchRequest.sortDescriptors = [
-            NSSortDescriptor(key: "wordSet.number", ascending: false),
-            NSSortDescriptor(key: "retiredOn", ascending: false),
+            NSSortDescriptor(key: "wordSet.number", ascending: true),
+            NSSortDescriptor(key: "retiredOn", ascending: true),
             NSSortDescriptor(key: "text", ascending: true, selector: "localizedCaseInsensitiveCompare:")
         ]
         fetchRequest.propertiesToFetch = ["wordSet"]
         return fetchRequest
     }
+
+    func didClickHeaderButton(sender:WordListTableHeaderView, button: UIButton) {
+        if sender.sectionKey == Word.wordAvailableGroupKey() {
+            if button == sender.addButton {
+                self.performSegueWithIdentifier("showAddWords", sender: self)
+            } else if button == sender.editButton {
+                if tableView.editing {
+                    endEditingAvailableWords()
+                } else {
+                    startEditingAvailableWords()
+                }
+            }
+        }
+    }
+
+    func startEditingAvailableWords() {
+        if let headerView = _headerViews.values.filter( {$0.sectionKey == Word.wordAvailableGroupKey()}).array.first {
+            headerView.addButton.enabled = false
+            // TODO: localize
+            headerView.editButton.setTitle("Done", forState: UIControlState.Normal)
+            tableView.setEditing(true, animated: true)
+        }
+    }
+
+    func endEditingAvailableWords() {
+        if let headerView = _headerViews.values.filter( {$0.sectionKey == Word.wordAvailableGroupKey()}).array.first {
+            headerView.addButton.enabled = true
+            // TODO: localize
+            headerView.editButton.setTitle("Edit", forState: UIControlState.Normal)
+            tableView.setEditing(false, animated: true)
+        }
+    }
+
+    
+    
+    func didCollapseSection(section: Int) {
+        // Cancel any editing
+        if tableView.editing && _headerViews[section]?.sectionKey == Word.wordAvailableGroupKey() {
+            endEditingAvailableWords()
+        }
+
+        if let headerView = _headerViews[section] {
+            if headerView.sectionKey == Word.wordAvailableGroupKey() {
+                headerView.addButton.hidden = true
+                headerView.editButton.hidden = true
+            }
+        }
+    }
+    
+    func didExpandSection(section: Int) {
+        if let headerView = _headerViews[section] {
+            if headerView.sectionKey == Word.wordAvailableGroupKey() {
+                headerView.addButton.hidden = false
+                headerView.editButton.hidden = fetchedResultsController.sections![section].numberOfObjects < 1
+            }
+        }
+    }
+    
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         if let sections = fetchedResultsController.sections {
@@ -73,15 +134,19 @@ class WordListViewController: UITableViewController,ManagedObjectContextHolder, 
         }
     }
 
-    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if let n = fetchedResultsController.sections![section].name.toInt() {
-            if(n == -1) {
-                return NSLocalizedString("not_in_set",comment: "Title header section for words not belonging to any set")
-            } else {
-                return NSString(format:NSLocalizedString("word_set_number",comment: "Title header for words in a word set"), n + 1)
-            }
+    override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        if let view = _headerViews[section] {
+            return view
         } else {
-            return "??"
+            let headerView = NSBundle.mainBundle().loadNibNamed("WordListHeaderView", owner:nil, options:nil)[0] as WordListTableHeaderView;
+            headerView.delegate = self
+            if let sectionKey = fetchedResultsController.sections![section].name {
+                headerView.sectionKey = sectionKey
+                headerView.titleLabel.text = NSLocalizedString("word_list_" + sectionKey, comment : "")
+                headerView.detailLabel.text =  NSString(format: NSLocalizedString("word_list_section_number_of_words", comment : "In the word list table, the number of words in the section header"), fetchedResultsController.sections![section].numberOfObjects)
+            }
+            _headerViews[section] = headerView
+            return headerView
         }
     }
     
@@ -100,15 +165,41 @@ class WordListViewController: UITableViewController,ManagedObjectContextHolder, 
             if let date = word.retiredOn {
                 cell.detailTextLabel!.text = NSString(format: " Retired %@", date.stringWithHumanizedTimeDifference())
             } else {
-                cell.detailTextLabel!.text = "In reserve tank"
+                // TODO: Needed an added date.
+                cell.detailTextLabel!.text = nil; // "Added \(word.activatedOn?.stringWithHumanizedTimeDifference())"
             }
-            
         }
         return cell
     }
 
     func controllerDidChangeContent(controller: NSFetchedResultsController!) {
         tableView.reloadData()
+    }
+
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if let vc = segue.destinationViewController as? AddWordsViewController {
+            vc.wordListController = self
+        }
+    }
+    
+    func didManuallyAddWordsInString(wordString : String) {
+        let importer = WordImporter(managedContext: self.managedContext!)
+        let words = importer.parseWords(wordString)
+        if words?.count > 0 {
+            let result = importer.importWords(words!)
+            if let err = result.error {
+                UIAlertView.showGenericLocalizedErrorMessage("error_msg_words_added")
+                UsageAnalytics.trackError("Could not import manually added words", error: err)
+            } else {
+                if result.numberOfWordsAdded > 0 {
+                    let title = NSLocalizedString("success_title_generic", comment:"")
+                    let msg = NSString(format: NSLocalizedString("msg_words_added", comment:""), result.numberOfWordsAdded)
+                    let cancelTitle = NSLocalizedString("uialert_accept_button_title", comment:"")
+                    UIAlertView(title: title, message: msg, delegate: nil, cancelButtonTitle : cancelTitle).show()
+                }
+            }
+            
+        }
     }
 
     

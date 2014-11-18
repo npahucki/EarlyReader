@@ -94,6 +94,7 @@ class LessonsListViewController: UITableViewController, NSFetchedResultsControll
             return cellForPreviousLessonAtRow(log, indexPath: indexPath)
         default:
             assert(false, "Unexpected section \(indexPath.section)")
+            return UITableViewCell() // needed for compiler
         }
     }
     

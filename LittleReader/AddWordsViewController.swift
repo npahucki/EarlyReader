@@ -10,21 +10,52 @@ import UIKit
 
 class AddWordsViewController: UIViewController {
 
-    var settingsViewController : SettingsListViewController? = nil
+    var wordListController : WordListViewController!
     
+    @IBOutlet weak var textViewBottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var textView: UITextView!
     @IBAction func didClickDoneButton(sender: UIButton) {
-//        // TODO: Much better parsing!
-//        if(!self.textView.text.isEmpty) {
-//            let words = self.textView.text.componentsSeparatedByString("\n") as [String]
-//            if let vc = self.settingsViewController {
-//                vc.insertWords(words)
-//            }
-//        }
-//        self.dismissViewControllerAnimated(true, completion: nil)
+        self.view.endEditing(true)
+        dismissViewControllerAnimated(true) { () -> Void in
+            self.wordListController.didManuallyAddWordsInString(self.textView.text)
+        }
     }
     
     override func viewDidLoad() {
-        self.textView.layer.borderWidth = 1
+        assert(wordListController != nil ,"Expected wordListController to be set before viewDidLoad")
+        textView.layer.borderWidth = 1
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "didShowKeyBoard:", name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "didHideKeyBoard:", name: UIKeyboardDidHideNotification, object: nil)
     }
+
+    override func viewDidAppear(animated: Bool) {
+        // Show keyboard right away.
+        textView.becomeFirstResponder()
+    }
+    
+    func didHideKeyBoard(notification: NSNotification) {
+        view.layoutIfNeeded()
+        textViewBottomConstraint.constant = 8
+        UIView.animateWithDuration(0.5, animations: { () -> Void in
+            self.view.layoutIfNeeded()
+        })
+    }
+
+    func didShowKeyBoard(notification: NSNotification) {
+        if let keyboardInfo = notification.userInfo {
+            let keyboardFrameBegin = keyboardInfo[UIKeyboardFrameBeginUserInfoKey] as NSValue
+            let keyboardFrameBeginRect = keyboardFrameBegin.CGRectValue()
+            view.layoutIfNeeded()
+            textViewBottomConstraint.constant = keyboardFrameBeginRect.height + 8
+            UIView.animateWithDuration(0.5, animations: { () -> Void in
+                self.view.layoutIfNeeded()
+            })
+        }
+    }
+    
+    deinit {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
+    
+
 }

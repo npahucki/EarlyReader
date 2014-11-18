@@ -10,6 +10,6 @@
 #define LittleReader_ObjCBridging_h
 
 #import "NSDate+HumanizedTime.h"
-
+#import "STCollapseTableView.h"
 
 #endif

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5BAE3A455E78855364CAB419 /* libPods-LittleReader.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C0E0ABED882B3827F12E8C3 /* libPods-LittleReader.a */; };
+		CFD30BC5342284A28BFBA750 /* libPods-LittleReaderTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F75A3AF90334BFB8AA231CFD /* libPods-LittleReaderTests.a */; };
 		E816042919FAD89F00B87B9D /* UsageAnalytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = E82DEC0419F6B97300EED0A8 /* UsageAnalytics.swift */; };
 		E816042D19FAE05200B87B9D /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = E816042C19FAE05200B87B9D /* Common.swift */; };
 		E818296519F6F04A007B6DC9 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E818296419F6F04A007B6DC9 /* Localizable.strings */; };
@@ -40,6 +42,9 @@
 		E858B7EF19BA3D59003C5727 /* StreamReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E858B7EE19BA3D59003C5727 /* StreamReader.swift */; };
 		E85F39C919A6BB670004C80F /* Word.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85F39C819A6BB670004C80F /* Word.swift */; };
 		E85F39CC19A6BB670004C80F /* WordSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85F39CB19A6BB670004C80F /* WordSet.swift */; };
+		E86FF5A11A1BA38C00F71F95 /* WordListHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E86FF5A01A1BA38C00F71F95 /* WordListHeaderView.xib */; };
+		E86FF5A41A1BA8A700F71F95 /* WordListTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86FF5A31A1BA8A700F71F95 /* WordListTableHeaderView.swift */; };
+		E884F1951A1BCBFE0040AA13 /* STCollapseTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = E884F1931A1BCBFE0040AA13 /* STCollapseTableView.m */; };
 		E88916D11A04340B002C8F13 /* CoreDataUnitTestBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88916D01A04340B002C8F13 /* CoreDataUnitTestBase.swift */; };
 		E88916D31A0474AA002C8F13 /* BabyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88916D21A0474AA002C8F13 /* BabyTests.swift */; };
 		E88916D51A047BCE002C8F13 /* LessonPlannerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88916D41A047BCE002C8F13 /* LessonPlannerTests.swift */; };
@@ -64,7 +69,6 @@
 		E8FBFD481A013DD700087BE2 /* NSDateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8FBFD471A013DD700087BE2 /* NSDateExtensions.swift */; };
 		E8FBFD491A013DD700087BE2 /* NSDateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8FBFD471A013DD700087BE2 /* NSDateExtensions.swift */; };
 		E8FBFD4B1A013F2500087BE2 /* NSDateExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8FBFD4A1A013F2500087BE2 /* NSDateExtensionsTests.swift */; };
-		FFF00A6FEFA066EB6459A462 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CC091EE20004461E4B06612 /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,8 +82,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1C64F8A1D804A76BA550F698 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		1C0E0ABED882B3827F12E8C3 /* libPods-LittleReader.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LittleReader.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		65B18C27B6BB5D1AFA55EB4B /* Pods-LittleReader.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LittleReader.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LittleReader/Pods-LittleReader.debug.xcconfig"; sourceTree = "<group>"; };
 		7CC091EE20004461E4B06612 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		C20539EBE83920ACA862BCA4 /* Pods-LittleReader.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LittleReader.release.xcconfig"; path = "Pods/Target Support Files/Pods-LittleReader/Pods-LittleReader.release.xcconfig"; sourceTree = "<group>"; };
+		DD3CC555AE2AE49B8D2EB1B6 /* Pods-LittleReaderTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LittleReaderTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-LittleReaderTests/Pods-LittleReaderTests.release.xcconfig"; sourceTree = "<group>"; };
 		E816042C19FAE05200B87B9D /* Common.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
 		E818296419F6F04A007B6DC9 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		E818296919F6FCB6007B6DC9 /* LessonsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LessonsViewController.swift; sourceTree = "<group>"; };
@@ -114,6 +121,10 @@
 		E858B7EE19BA3D59003C5727 /* StreamReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StreamReader.swift; sourceTree = "<group>"; };
 		E85F39C819A6BB670004C80F /* Word.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Word.swift; sourceTree = "<group>"; };
 		E85F39CB19A6BB670004C80F /* WordSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordSet.swift; sourceTree = "<group>"; };
+		E86FF5A01A1BA38C00F71F95 /* WordListHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WordListHeaderView.xib; sourceTree = "<group>"; };
+		E86FF5A31A1BA8A700F71F95 /* WordListTableHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordListTableHeaderView.swift; sourceTree = "<group>"; };
+		E884F1931A1BCBFE0040AA13 /* STCollapseTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STCollapseTableView.m; sourceTree = "<group>"; };
+		E884F1941A1BCBFE0040AA13 /* STCollapseTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STCollapseTableView.h; sourceTree = "<group>"; };
 		E88916D01A04340B002C8F13 /* CoreDataUnitTestBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataUnitTestBase.swift; sourceTree = "<group>"; };
 		E88916D21A0474AA002C8F13 /* BabyTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BabyTests.swift; sourceTree = "<group>"; };
 		E88916D41A047BCE002C8F13 /* LessonPlannerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LessonPlannerTests.swift; sourceTree = "<group>"; };
@@ -139,7 +150,8 @@
 		E8FBFD431A012B6600087BE2 /* LessonPlanner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LessonPlanner.swift; sourceTree = "<group>"; };
 		E8FBFD471A013DD700087BE2 /* NSDateExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDateExtensions.swift; sourceTree = "<group>"; };
 		E8FBFD4A1A013F2500087BE2 /* NSDateExtensionsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDateExtensionsTests.swift; sourceTree = "<group>"; };
-		F2BAC0B2E146933761897BCD /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		F3EC5D2E2DA1EF2F907A90A7 /* Pods-LittleReaderTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LittleReaderTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LittleReaderTests/Pods-LittleReaderTests.debug.xcconfig"; sourceTree = "<group>"; };
+		F75A3AF90334BFB8AA231CFD /* libPods-LittleReaderTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LittleReaderTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,7 +161,7 @@
 			files = (
 				E8BFC82F1A15635A004929EF /* AVFoundation.framework in Frameworks */,
 				E8CDE80919A03AB70036CFE8 /* QuartzCore.framework in Frameworks */,
-				FFF00A6FEFA066EB6459A462 /* libPods.a in Frameworks */,
+				5BAE3A455E78855364CAB419 /* libPods-LittleReader.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -157,6 +169,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CFD30BC5342284A28BFBA750 /* libPods-LittleReaderTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -166,8 +179,10 @@
 		5ECBECF1E934ED75E0CD0204 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				1C64F8A1D804A76BA550F698 /* Pods.debug.xcconfig */,
-				F2BAC0B2E146933761897BCD /* Pods.release.xcconfig */,
+				F3EC5D2E2DA1EF2F907A90A7 /* Pods-LittleReaderTests.debug.xcconfig */,
+				DD3CC555AE2AE49B8D2EB1B6 /* Pods-LittleReaderTests.release.xcconfig */,
+				65B18C27B6BB5D1AFA55EB4B /* Pods-LittleReader.debug.xcconfig */,
+				C20539EBE83920ACA862BCA4 /* Pods-LittleReader.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -177,6 +192,8 @@
 			children = (
 				E8BFC82E1A15635A004929EF /* AVFoundation.framework */,
 				7CC091EE20004461E4B06612 /* libPods.a */,
+				1C0E0ABED882B3827F12E8C3 /* libPods-LittleReader.a */,
+				F75A3AF90334BFB8AA231CFD /* libPods-LittleReaderTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -184,6 +201,8 @@
 		E841F67319FA92AC00684DD6 /* Third Party ObjC */ = {
 			isa = PBXGroup;
 			children = (
+				E884F1931A1BCBFE0040AA13 /* STCollapseTableView.m */,
+				E884F1941A1BCBFE0040AA13 /* STCollapseTableView.h */,
 				E841F67719FA938400684DD6 /* NSDateHumanizedTime.strings */,
 				E841F67419FA935800684DD6 /* NSDate+HumanizedTime.m */,
 				E841F67519FA935800684DD6 /* NSDate+HumanizedTime.h */,
@@ -262,6 +281,14 @@
 			name = ViewController;
 			sourceTree = "<group>";
 		};
+		E86FF5A21A1BA87100F71F95 /* CustomViews */ = {
+			isa = PBXGroup;
+			children = (
+				E86FF5A31A1BA8A700F71F95 /* WordListTableHeaderView.swift */,
+			);
+			name = CustomViews;
+			sourceTree = "<group>";
+		};
 		E8CDE7DA199FD18F0036CFE8 = {
 			isa = PBXGroup;
 			children = (
@@ -287,9 +314,11 @@
 			isa = PBXGroup;
 			children = (
 				E8CDE7EF199FD18F0036CFE8 /* Main.storyboard */,
+				E86FF5A01A1BA38C00F71F95 /* WordListHeaderView.xib */,
 				E8CDE7E8199FD18F0036CFE8 /* AppDelegate.swift */,
 				E816042C19FAE05200B87B9D /* Common.swift */,
 				E841F67919FA93CB00684DD6 /* ObjCBridging.h */,
+				E86FF5A21A1BA87100F71F95 /* CustomViews */,
 				E85F39AF19A695610004C80F /* ViewController */,
 				E8FBFD421A012B3300087BE2 /* Logic */,
 				E85F39AE19A695500004C80F /* Model */,
@@ -369,9 +398,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E8CDE805199FD18F0036CFE8 /* Build configuration list for PBXNativeTarget "LittleReaderTests" */;
 			buildPhases = (
+				85178010D3C9D9663D4B97EE /* Check Pods Manifest.lock */,
 				E8CDE7F4199FD18F0036CFE8 /* Sources */,
 				E8CDE7F5199FD18F0036CFE8 /* Frameworks */,
 				E8CDE7F6199FD18F0036CFE8 /* Resources */,
+				88DACB4D55027607903802B4 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -429,6 +460,7 @@
 				E84C8BAD1A12982600B66B74 /* OpenSans-Italic.ttf in Resources */,
 				E84C8BAA1A12982600B66B74 /* OpenSans-BoldItalic.ttf in Resources */,
 				E8CDE7F1199FD18F0036CFE8 /* Main.storyboard in Resources */,
+				E86FF5A11A1BA38C00F71F95 /* WordListHeaderView.xib in Resources */,
 				E84C8BB11A12982600B66B74 /* OpenSans-Semibold.ttf in Resources */,
 				E84C8BAB1A12982600B66B74 /* OpenSans-ExtraBold.ttf in Resources */,
 				E818296519F6F04A007B6DC9 /* Localizable.strings in Resources */,
@@ -454,6 +486,36 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		85178010D3C9D9663D4B97EE /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		88DACB4D55027607903802B4 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LittleReaderTests/Pods-LittleReaderTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		A39C79402990DC42B6D9B5C8 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -481,7 +543,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LittleReader/Pods-LittleReader-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -500,9 +562,11 @@
 				E85F39C919A6BB670004C80F /* Word.swift in Sources */,
 				E852E8061A1AB0B700DE8540 /* NSErrorExtensions.swift in Sources */,
 				E8F807451A12793E00FC427F /* MenuViewController.swift in Sources */,
+				E86FF5A41A1BA8A700F71F95 /* WordListTableHeaderView.swift in Sources */,
 				E8CDE7EC199FD18F0036CFE8 /* LittleReader.xcdatamodeld in Sources */,
 				E8BFC8331A165075004929EF /* WordsViewController.swift in Sources */,
 				E8FBFD481A013DD700087BE2 /* NSDateExtensions.swift in Sources */,
+				E884F1951A1BCBFE0040AA13 /* STCollapseTableView.m in Sources */,
 				E816042D19FAE05200B87B9D /* Common.swift in Sources */,
 				E8A50DDD1A01B7F100756CC8 /* LessonLog.swift in Sources */,
 				E81846D219F9503D0012EAAF /* MangedObjectContextHolder.swift in Sources */,
@@ -601,7 +665,7 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
-				SWIFT_OBJC_BRIDGING_HEADER = LIttleReader/ObjCBridging.h;
+				SWIFT_OBJC_BRIDGING_HEADER = LittleReader/ObjCBridging.h;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -639,7 +703,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
-				SWIFT_OBJC_BRIDGING_HEADER = LIttleReader/ObjCBridging.h;
+				SWIFT_OBJC_BRIDGING_HEADER = LittleReader/ObjCBridging.h;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -647,16 +711,18 @@
 		};
 		E8CDE803199FD18F0036CFE8 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1C64F8A1D804A76BA550F698 /* Pods.debug.xcconfig */;
+			baseConfigurationReference = 65B18C27B6BB5D1AFA55EB4B /* Pods-LittleReader.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = LittleReader/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = 2;
 			};
@@ -664,22 +730,25 @@
 		};
 		E8CDE804199FD18F0036CFE8 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F2BAC0B2E146933761897BCD /* Pods.release.xcconfig */;
+			baseConfigurationReference = C20539EBE83920ACA862BCA4 /* Pods-LittleReader.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = LittleReader/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Release;
 		};
 		E8CDE806199FD18F0036CFE8 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F3EC5D2E2DA1EF2F907A90A7 /* Pods-LittleReaderTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_MODULES = YES;
@@ -701,6 +770,7 @@
 		};
 		E8CDE807199FD18F0036CFE8 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DD3CC555AE2AE49B8D2EB1B6 /* Pods-LittleReaderTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_MODULES = YES;

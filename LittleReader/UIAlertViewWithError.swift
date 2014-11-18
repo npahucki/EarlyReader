@@ -17,7 +17,7 @@ extension UIAlertView {
     }
 
     class func showGenericLocalizedSuccessMessage(msg_key: NSString) {
-        self.showLocalizedErrorMessageWithOkButton(msg_key, title_key: "sucess_title_generic")
+        self.showLocalizedErrorMessageWithOkButton(msg_key, title_key: "success_title_generic")
     }
 
     
