@@ -217,9 +217,10 @@ class LessonsListViewController: UITableViewController, NSFetchedResultsControll
             parent.didCompleteLesson()
         }
     }
-
-
-
+    
+    func didAbortLesson() {
+        didCompleteLesson()
+    }
 
 }
 

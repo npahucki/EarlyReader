@@ -57,14 +57,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <containerView opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Sbf-Vk-H65">
-                                <rect key="frame" x="16" y="110" width="992" height="642"/>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sbf-Vk-H65">
+                                <rect key="frame" x="16" y="114" width="992" height="638"/>
                                 <connections>
                                     <segue destination="rbc-kI-bcy" kind="embed" id="r8H-cs-3Uj"/>
                                 </connections>
                             </containerView>
-                            <view alpha="0.5" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="k7j-SS-cUM" userLabel="Separator View">
-                                <rect key="frame" x="16" y="101" width="992" height="1"/>
+                            <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k7j-SS-cUM" userLabel="Separator View">
+                                <rect key="frame" x="16" y="105" width="992" height="1"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="1" id="Tyc-eO-CPQ"/>
@@ -335,7 +335,7 @@
             <objects>
                 <tableViewController id="rbc-kI-bcy" userLabel="Word List View Controller" customClass="WordListViewController" customModule="LittleReader" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="88" sectionFooterHeight="1" id="Ery-J2-95m" customClass="STCollapseTableView">
-                        <rect key="frame" x="0.0" y="0.0" width="992" height="642"/>
+                        <rect key="frame" x="0.0" y="0.0" width="992" height="638"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -677,19 +677,18 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Text" textAlignment="center" lineBreakMode="clip" minimumFontSize="80" translatesAutoresizingMaskIntoConstraints="NO" id="6hX-9E-sYW">
-                                <rect key="frame" x="8" y="205" width="1008" height="358"/>
+                                <rect key="frame" x="16" y="205" width="992" height="358"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="300"/>
                                 <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" alpha="0.29999999999999999" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ACE-to-ljy">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ACE-to-ljy" userLabel="Next Button">
                                 <rect key="frame" x="980" y="362" width="44" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="44" id="fsi-dd-jsf"/>
                                     <constraint firstAttribute="height" constant="44" id="tyt-Yn-YPu"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="47"/>
-                                <state key="normal" title=">">
+                                <state key="normal" image="ButtonArrow">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -697,19 +696,31 @@
                                     <action selector="didPressNextButton:" destination="WjB-gp-FKd" eventType="touchUpInside" id="Apc-Fw-Xlf"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" alpha="0.29999999999999966" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5v4-LP-O9R">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5v4-LP-O9R" userLabel="Back Button">
                                 <rect key="frame" x="0.0" y="362" width="44" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="Q8R-Jd-Lhd"/>
                                     <constraint firstAttribute="width" constant="44" id="Qh5-6G-kfV"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="47"/>
-                                <state key="normal" title="&lt;">
+                                <state key="normal" image="ButtonArrowBack">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="didPressPreviousButton:" destination="WjB-gp-FKd" eventType="touchUpInside" id="ntM-B7-L0K"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cVL-00-gz9" userLabel="Abort Button">
+                                <rect key="frame" x="0.0" y="0.0" width="44" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="6XM-1M-NpR"/>
+                                    <constraint firstAttribute="width" constant="44" id="Hk5-1N-4mj"/>
+                                </constraints>
+                                <state key="normal" image="ButtonBack">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="didPressAbortButton:" destination="WjB-gp-FKd" eventType="touchUpInside" id="sVy-bb-mIY"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -718,11 +729,13 @@
                         <constraints>
                             <constraint firstAttribute="centerY" secondItem="ACE-to-ljy" secondAttribute="centerY" id="9WP-aM-RVQ"/>
                             <constraint firstAttribute="centerY" secondItem="5v4-LP-O9R" secondAttribute="centerY" id="GBk-4s-0xj"/>
-                            <constraint firstAttribute="trailing" secondItem="6hX-9E-sYW" secondAttribute="trailing" constant="8" id="Goq-Zw-F4e"/>
-                            <constraint firstItem="6hX-9E-sYW" firstAttribute="leading" secondItem="wRe-wK-mPg" secondAttribute="leading" constant="8" id="Iyx-ZF-gjX"/>
                             <constraint firstAttribute="centerY" secondItem="6hX-9E-sYW" secondAttribute="centerY" id="SdT-L2-JWn"/>
+                            <constraint firstItem="cVL-00-gz9" firstAttribute="top" secondItem="il3-LO-Bjm" secondAttribute="bottom" id="Vi7-dq-Q06"/>
                             <constraint firstAttribute="trailing" secondItem="ACE-to-ljy" secondAttribute="trailing" id="VkZ-C5-WyT"/>
+                            <constraint firstItem="6hX-9E-sYW" firstAttribute="leading" secondItem="wRe-wK-mPg" secondAttribute="leading" constant="16" id="Xdo-kn-S1E"/>
                             <constraint firstItem="5v4-LP-O9R" firstAttribute="leading" secondItem="wRe-wK-mPg" secondAttribute="leading" id="b6F-z4-bc1"/>
+                            <constraint firstItem="cVL-00-gz9" firstAttribute="leading" secondItem="wRe-wK-mPg" secondAttribute="leading" id="mQh-hf-yGS"/>
+                            <constraint firstAttribute="trailing" secondItem="6hX-9E-sYW" secondAttribute="trailing" constant="16" id="nHt-bE-YNl"/>
                         </constraints>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="qw2-ta-h6u" appends="YES" id="KAS-w8-Z7w"/>
@@ -1090,6 +1103,8 @@
         <image name="BackgroundFull" width="1024" height="768"/>
         <image name="BackgroundNavigation" width="250" height="768"/>
         <image name="ButtonArrow" width="23" height="43"/>
+        <image name="ButtonArrowBack" width="23" height="43"/>
+        <image name="ButtonBack" width="21" height="22"/>
         <image name="Logo" width="173" height="158"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

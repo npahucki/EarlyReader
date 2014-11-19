@@ -74,5 +74,8 @@ class LessonsViewController: UIViewController, LessonStateDelegate {
     
     func didCompleteLesson() {
     }
+    
+    func didAbortLesson() {
+    }
 
 }

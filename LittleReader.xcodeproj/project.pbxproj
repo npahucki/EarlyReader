@@ -15,7 +15,7 @@
 		E818296C19F6FE87007B6DC9 /* LessonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E818296B19F6FE87007B6DC9 /* LessonViewController.swift */; };
 		E81846D019F94B580012EAAF /* ChildInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E81846CF19F94B580012EAAF /* ChildInfoViewController.swift */; };
 		E81846D219F9503D0012EAAF /* MangedObjectContextHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E81846D119F9503D0012EAAF /* MangedObjectContextHolder.swift */; };
-		E81846D419F961870012EAAF /* UIAlertViewWithError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E81846D319F961870012EAAF /* UIAlertViewWithError.swift */; };
+		E81846D419F961870012EAAF /* UIAlertExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E81846D319F961870012EAAF /* UIAlertExtensions.swift */; };
 		E81C446019FBFA5C007966E5 /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = E816042C19FAE05200B87B9D /* Common.swift */; };
 		E81C446219FE7794007966E5 /* WordImporterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E81C446119FE7794007966E5 /* WordImporterTests.swift */; };
 		E81C446419FE77C6007966E5 /* WordSetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E81C446319FE77C6007966E5 /* WordSetTests.swift */; };
@@ -93,7 +93,7 @@
 		E818296B19F6FE87007B6DC9 /* LessonViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LessonViewController.swift; sourceTree = "<group>"; };
 		E81846CF19F94B580012EAAF /* ChildInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChildInfoViewController.swift; sourceTree = "<group>"; };
 		E81846D119F9503D0012EAAF /* MangedObjectContextHolder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MangedObjectContextHolder.swift; sourceTree = "<group>"; };
-		E81846D319F961870012EAAF /* UIAlertViewWithError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIAlertViewWithError.swift; sourceTree = "<group>"; };
+		E81846D319F961870012EAAF /* UIAlertExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIAlertExtensions.swift; sourceTree = "<group>"; };
 		E81C446119FE7794007966E5 /* WordImporterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WordImporterTests.swift; path = ../LittleReader/WordImporterTests.swift; sourceTree = "<group>"; };
 		E81C446319FE77C6007966E5 /* WordSetTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordSetTests.swift; sourceTree = "<group>"; };
 		E82959121A00108D003575F7 /* AddWordsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddWordsViewController.swift; sourceTree = "<group>"; };
@@ -242,7 +242,7 @@
 				E858B7EE19BA3D59003C5727 /* StreamReader.swift */,
 				E82DEBFC19F6AA4100EED0A8 /* UserPreferences.swift */,
 				E82DEC0419F6B97300EED0A8 /* UsageAnalytics.swift */,
-				E81846D319F961870012EAAF /* UIAlertViewWithError.swift */,
+				E81846D319F961870012EAAF /* UIAlertExtensions.swift */,
 				E8FBFD471A013DD700087BE2 /* NSDateExtensions.swift */,
 				E852E8051A1AB0B700DE8540 /* NSErrorExtensions.swift */,
 				E84C8B9B1A12936D00B66B74 /* UIColorExtensions.swift */,
@@ -575,7 +575,7 @@
 				E81846D019F94B580012EAAF /* ChildInfoViewController.swift in Sources */,
 				E858B7EF19BA3D59003C5727 /* StreamReader.swift in Sources */,
 				E839D8D219FE802900D0765E /* WordImporter.swift in Sources */,
-				E81846D419F961870012EAAF /* UIAlertViewWithError.swift in Sources */,
+				E81846D419F961870012EAAF /* UIAlertExtensions.swift in Sources */,
 				E8CDE7E9199FD18F0036CFE8 /* AppDelegate.swift in Sources */,
 				E85F39CC19A6BB670004C80F /* WordSet.swift in Sources */,
 				E841F67619FA935800684DD6 /* NSDate+HumanizedTime.m in Sources */,

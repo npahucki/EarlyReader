@@ -15,21 +15,21 @@ public class LessonPlanner {
     private var _currentWordSet : WordSet? = nil
     private let _baby : Baby
     private let _managedObjectContext : NSManagedObjectContext
-    private var _numberOfWordsViewed : UInt16 = 0
+    private var _wordsViewedInLesson = NSMutableSet()
     private var _lessonStartTime : NSDate? = nil
     
     public init(baby : Baby) {
         assert(baby.managedObjectContext != nil, "Expected baby to have a managedObjectContext!")
         self._baby = baby
         self._managedObjectContext = baby.managedObjectContext!
-        
-        // If we have zero words, and we have never imported, then import for the first time. 
-        
-        
-        
-        
     }
 
+    public var numberOfWordsSeenDuringCurrentLesson : Int {
+        get {
+            return _wordsViewedInLesson.count
+        }
+    }
+    
     public var firstLessonDate : NSDate? {
         get {
             let results = findLessonDate(true)
@@ -181,21 +181,26 @@ public class LessonPlanner {
         
         if let wordSet = _currentWordSet {
             logLesson(wordSet)
-            wordSet.lastViewedOn = now
-            var retireResult = wordSet.retireOldWord()
-            var fillResult = wordSet.fill()
-            saveUpdatedWordsAndSets()
-            if let e = retireResult.error {
-                UsageAnalytics.trackError("Could not retire words in word set", error: e)
-            }
-            if let e = fillResult.error {
-                UsageAnalytics.trackError("Could not fill words in word set", error: e)
+            if _wordsViewedInLesson.count < wordSet.words.count {
+                // Lesson was abandoned
+            } else {
+                // Lesson fully completed
+                wordSet.lastViewedOn = now
+                var retireResult = wordSet.retireOldWord()
+                var fillResult = wordSet.fill()
+                saveUpdatedWordsAndSets()
+                if let e = retireResult.error {
+                    UsageAnalytics.trackError("Could not retire words in word set", error: e)
+                }
+                if let e = fillResult.error {
+                    UsageAnalytics.trackError("Could not fill words in word set", error: e)
+                }
             }
         }
         
         // Reset for resuse 
         _currentWordSet = nil
-        _numberOfWordsViewed = 0
+        _wordsViewedInLesson.removeAllObjects()
         _lessonStartTime = nil
     }
     
@@ -203,7 +208,7 @@ public class LessonPlanner {
     public func markWordViewed(word : Word) {
         word.lastViewedOn = NSDate()
         word.timesViewed++
-        _numberOfWordsViewed++
+        _wordsViewedInLesson.addObject(word)
     }
     
     private func calcNextLessonDate() -> (date : NSDate, error: NSError?) {
@@ -238,7 +243,7 @@ public class LessonPlanner {
         let fetchRequest = NSFetchRequest(entityName: "LessonLog")
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "lessonDate", ascending: first)]
         fetchRequest.fetchLimit = 1
-        fetchRequest.predicate = NSPredicate(format: "(baby == %@)",_baby)
+        fetchRequest.predicate = NSPredicate(format: "(baby == %@) AND numberOfWordsViewed >=\(WORDS_PER_WORDSET)",_baby)
         if let results = _managedObjectContext.executeFetchRequest(fetchRequest, error: &error) as? [LessonLog] {
             lastLessonDate = results.count > 0 ? results.first?.lessonDate : nil
         }
@@ -255,9 +260,9 @@ public class LessonPlanner {
         if let entityDescription = NSEntityDescription.entityForName("LessonLog", inManagedObjectContext:_managedObjectContext) {
             let log = LessonLog(entity: entityDescription, insertIntoManagedObjectContext: _managedObjectContext)
             log.baby = _baby
-            log.numberOfWordsViewed = _numberOfWordsViewed
+            log.numberOfWordsViewed = UInt16(_wordsViewedInLesson.count)
             log.wordSetNumber = wordSet.number
-            log.words = ",".join((Array(wordSet.words) as [Word]).map { $0.text })
+            log.words = ",".join(_wordsViewedInLesson.allObjects.map { $0.text })
             log.lessonDate = _lessonStartTime!
             log.durationSeconds = -_lessonStartTime!.timeIntervalSinceNow
             log.totalNumberOfWordSets = UInt16(_baby.wordSets!.count)
@@ -334,7 +339,7 @@ public class LessonPlanner {
         var error: NSError? = nil
         var count : Int = 0
         let fetchRequest = NSFetchRequest(entityName: "LessonLog")
-        fetchRequest.predicate = NSPredicate(format: "(baby == %@) AND (lessonDate >= %@) AND (lessonDate <= %@)",_baby, date.startOfDay(), date.endOfDay())
+        fetchRequest.predicate = NSPredicate(format: "(baby == %@) AND (lessonDate >= %@) AND (lessonDate <= %@) AND numberOfWordsViewed >=\(WORDS_PER_WORDSET)",_baby, date.startOfDay(), date.endOfDay())
         count = _managedObjectContext.countForFetchRequest(fetchRequest, error: &error)
         return (count, error)
     }

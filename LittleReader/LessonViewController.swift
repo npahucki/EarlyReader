@@ -15,6 +15,7 @@ import AVFoundation
 @objc protocol LessonStateDelegate  {
     func willStartLesson()
     func didCompleteLesson()
+    func didAbortLesson()
 }
 
 class LessonViewController: UIViewController,AVAudioPlayerDelegate {
@@ -58,20 +59,35 @@ class LessonViewController: UIViewController,AVAudioPlayerDelegate {
     override func prefersStatusBarHidden() -> Bool {
         return true
     }
-
-    @IBAction func didPinchScreen(sender: UIPinchGestureRecognizer) {
-        if !_isManualMode {
-            _isManualMode = true
-            cancelTimer()
-            updateButtonState()
+    
+    @IBAction func didPressAbortButton(sender: AnyObject) {
+        if lessonPlanner.numberOfWordsSeenDuringCurrentLesson >= _currentWords?.count {
+            // The lesson is done, no need to prompt 
+            didCompleteLesson()
+        } else {
+            pauseAutomaticAdvance()
+            let title = NSLocalizedString("prompt_title_abort_lesson", comment:"")
+            let msg = NSLocalizedString("prompt_msg_abort_lesson", comment:"")
+            let cancelButtonTitle = NSLocalizedString("prompt_button_no", comment:"")
+            let yesButtonTitle = NSLocalizedString("prompt_button_yes", comment:"")
+            let prompt = UIAlertView(title: title, message: msg, delegate: nil, cancelButtonTitle: cancelButtonTitle, otherButtonTitles: yesButtonTitle)
+            prompt.showAlertWithButtonBlock(){
+                if $0 == 1 {
+                    self.didAbortLesson()
+                } else {
+                    self.resumeAutomaticAdvance()
+                }
+            }
         }
     }
     
     @IBAction func didPressNextButton(sender: AnyObject) {
+        pauseAutomaticAdvance()
         showNextWord()
     }
     
     @IBAction func didPressPreviousButton(sender: AnyObject) {
+        pauseAutomaticAdvance()
         showPreviousWord()
     }
     
@@ -101,6 +117,20 @@ class LessonViewController: UIViewController,AVAudioPlayerDelegate {
         }
     }
 
+    private func pauseAutomaticAdvance() {
+        if !_isManualMode {
+            _isManualMode = true
+            cancelTimer()
+        }
+    }
+
+    private func resumeAutomaticAdvance() {
+        if _isManualMode {
+            _isManualMode = false
+            showNextWord()
+        }
+    }
+    
     private func showPreviousWord() {
         if let words = _currentWords {
             _currentIdx--
@@ -124,11 +154,9 @@ class LessonViewController: UIViewController,AVAudioPlayerDelegate {
     }
     
     private func updateButtonState() {
-        nextButton.hidden = !_isManualMode
-        previousButton.hidden = !_isManualMode
         if let words = _currentWords {
-            nextButton.setTitle(_currentIdx + 1 < words.count ? ">" : "X", forState: UIControlState.Normal)
-            previousButton.setTitle(_currentIdx > 0 ? "<" : "X", forState: UIControlState.Normal)
+            nextButton.hidden = _currentIdx >= words.count
+            previousButton.hidden = _currentIdx <= 0
         }
     }
     
@@ -146,6 +174,13 @@ class LessonViewController: UIViewController,AVAudioPlayerDelegate {
         textLabel.setNeedsLayout();
     }
     
+    private func didAbortLesson() {
+        lessonPlanner.finishLesson()
+        scheduleReminder(lessonPlanner.nextLessonDate)
+        if let d = delegate { d.didAbortLesson() }
+        self.presentingViewController?.dismissViewControllerAnimated(true, completion:nil)
+    }
+
     private func didCompleteLesson() {
         lessonPlanner.finishLesson()
         scheduleReminder(lessonPlanner.nextLessonDate)
