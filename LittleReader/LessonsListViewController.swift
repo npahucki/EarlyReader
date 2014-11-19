@@ -32,7 +32,7 @@ class LessonsListViewController: UITableViewController, NSFetchedResultsControll
             _planner = LessonPlanner(baby: baby!)
             updateTakenLessons()
             updateCurrentStateMessages()
-            // TODO: Notification if there are no words to load, or none left. Don't allow starting the lessons if not words.
+            // TODO: Notification if there are no words to load, or none left. Don't allow starting the lessons if no words.
             // TODO: Use _planner.numberOfWordsLesson
         }
     }
@@ -41,6 +41,7 @@ class LessonsListViewController: UITableViewController, NSFetchedResultsControll
         if let ctx = baby?.managedObjectContext {
             if fetchedResultsController.fetchedObjects == nil {
                 let fetchRequest = NSFetchRequest(entityName: "LessonLog")
+                fetchRequest.predicate = NSPredicate(format: "(baby == %@) AND numberOfWordsViewed >=\(WORDS_PER_WORDSET)",baby!)
                 fetchRequest.sortDescriptors = [NSSortDescriptor(key: "lessonDate", ascending: false)]
                 fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest,
                     managedObjectContext: ctx, sectionNameKeyPath: nil, cacheName: nil)

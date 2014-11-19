@@ -15,8 +15,12 @@ extension UIColor {
         return colorFromRGB(0xf0045a)
     }
 
-    class func applicationTextColor() -> UIColor {
+    class func applicationLightTextColor() -> UIColor {
         return colorFromRGB(0x333333)
+    }
+
+    class func applicationTextColor() -> UIColor {
+        return colorFromRGB(0x999999)
     }
 
     class func applicationGreenColor() -> UIColor {
