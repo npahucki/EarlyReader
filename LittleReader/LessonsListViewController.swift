@@ -126,10 +126,34 @@ class LessonsListViewController: UITableViewController, NSFetchedResultsControll
         cell.detailTextLabel!.text = log.words
         return cell
     }
-    
-    // Hack to not see empty rows
+
     override func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        return UIView()
+        let footerView = UIView()
+        if sectionForNextLesson == section {
+            footerView.backgroundColor = UIColor.whiteColor()
+            // A little hackery to work around a sometimes appearing separator.
+            let separatorView = UIView(frame: (CGRect(x: tableView.separatorInset.left, y:-1, width: tableView.frame.width - tableView.separatorInset.right * 2 ,height: 1)))
+            separatorView.backgroundColor = UIColor.applicationTableCellSelectedBackgroundColor()
+            footerView.addSubview(separatorView)
+        }
+        return footerView
+    }
+
+    override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = NSBundle.mainBundle().loadNibNamed("LessonsListTableHeaderView", owner:nil, options:nil)[0] as LessonsListTableHeaderView;
+        headerView.disclosureButton.addTarget(self, action: "didClickHeaderDiscloseButton:", forControlEvents: .TouchUpInside)
+        headerView.tag = section
+        if section == sectionForNextLesson {
+            headerView.titleLabel.text = NSLocalizedString("lesson_header_next_lesson",comment: "")
+        } else {
+            headerView.titleLabel.text = NSLocalizedString("lesson_header_past_lessons",comment: "")
+        }
+        
+        return headerView
+    }
+
+    func didClickHeaderDiscloseButton(sender: LessonsListTableHeaderView) {
+            NSLog("DID CLICK HEADER DISCLOSURE:%d", sender.tag)
     }
     
     func controllerDidChangeContent(controller: NSFetchedResultsController!) {

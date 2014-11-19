@@ -15,8 +15,10 @@ class NextLessonTableViewCell : UITableViewCell {
     @IBOutlet weak var statusImageView: UIImageView!
     @IBOutlet weak var startButton: UIButton!
     
+    @IBOutlet weak var backColorView: UIView!
     override func awakeFromNib() {
         startButton.layer.cornerRadius = 5
+        self.contentView.frame = CGRectInset(contentView.frame, 15, 0)
     }
     
     func setWords(words: [Word]) {
@@ -25,7 +27,7 @@ class NextLessonTableViewCell : UITableViewCell {
     
     func setDueIn(nextLesson : NSDate) {
         if nextLesson.timeIntervalSinceNow <= 0 {
-            self.backgroundColor = UIColor.applicationTableCellSelectedBackgroundColor()
+            contentView.backgroundColor = UIColor.applicationTableCellSelectedBackgroundColor()
             statusLabel.text = NSLocalizedString("lesson_due_now",comment: "")
             statusLabel.textColor = UIColor.applicationGreenColor()
             statusImageView.image = UIImage(named: "IconTimeGreen")
@@ -35,14 +37,14 @@ class NextLessonTableViewCell : UITableViewCell {
             startButton.hidden = false
             selected = true
         } else if nextLesson.isTomorrow() {
-            self.backgroundColor = UIColor.whiteColor()
+            contentView.backgroundColor = UIColor.whiteColor()
             statusLabel.text = NSLocalizedString("lesson_due_tommorrow",comment: "")
             statusLabel.textColor = UIColor.applicationLightTextColor()
             statusImageView.image = UIImage(named: "IconTimeGrey")
             startButton.hidden = true
             selected = false
         } else {
-            self.backgroundColor = UIColor.applicationTableCellSelectedBackgroundColor()
+            contentView.backgroundColor = UIColor.applicationTableCellSelectedBackgroundColor()
             statusLabel.text = NSString(format: NSLocalizedString("lesson_due_in_time",comment: ""),
                 nextLesson.stringWithHumanizedTimeDifference(false))
             statusLabel.textColor = UIColor.applicationOrangeColor()

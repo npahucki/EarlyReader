@@ -963,19 +963,20 @@
         <scene sceneID="uWR-fQ-ZZ7">
             <objects>
                 <tableViewController id="Pnh-pn-UUa" userLabel="Lesson History View Controller" customClass="LessonsListViewController" customModule="LittleReader" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="100" sectionHeaderHeight="22" sectionFooterHeight="22" id="Is1-qI-UnE">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="100" sectionHeaderHeight="75" sectionFooterHeight="16" id="Is1-qI-UnE">
                         <rect key="frame" x="0.0" y="0.0" width="671" height="638"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
+                        <color key="separatorColor" red="0.94509803920000002" green="0.94509803920000002" blue="0.94509803920000002" alpha="1" colorSpace="deviceRGB"/>
+                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="nextLessonCell" id="yuc-Ku-um1" userLabel="nextLessonCell" customClass="NextLessonTableViewCell" customModule="LittleReader" customModuleProvider="target">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="yuc-Ku-um1" id="M2k-hC-UQ1">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Cat, Dog, Cow, Wolf, Bat" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DG8-te-rjD">
-                                            <rect key="frame" x="16" y="19" width="277" height="35"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cat, Dog, Cow, Wolf, Bat" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DG8-te-rjD">
+                                            <rect key="frame" x="16" y="21" width="254" height="33"/>
                                             <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans" pointSize="24"/>
                                             <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
@@ -1000,15 +1001,15 @@
                                                 <segue destination="WjB-gp-FKd" kind="modal" id="1uO-gl-ZM9"/>
                                             </connections>
                                         </button>
-                                        <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="IconTimeOrange" translatesAutoresizingMaskIntoConstraints="NO" id="u8p-0t-tQ9">
-                                            <rect key="frame" x="16" y="60" width="23" height="23"/>
-                                        </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Due in 15 minutes" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aUQ-Pu-1en">
                                             <rect key="frame" x="47" y="58" width="162" height="25"/>
                                             <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="18"/>
                                             <color key="textColor" red="0.98823535442352295" green="0.35686275362968445" blue="0.13333334028720856" alpha="1" colorSpace="deviceRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="IconTimeOrange" translatesAutoresizingMaskIntoConstraints="NO" id="u8p-0t-tQ9">
+                                            <rect key="frame" x="16" y="59" width="23" height="23"/>
+                                        </imageView>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="aUQ-Pu-1en" firstAttribute="top" secondItem="DG8-te-rjD" secondAttribute="bottom" constant="4" id="09Y-EI-KcH"/>
@@ -1021,7 +1022,7 @@
                                         <constraint firstAttribute="trailing" secondItem="1aQ-hJ-11q" secondAttribute="trailing" constant="16" id="zIk-Pc-XSA"/>
                                     </constraints>
                                 </tableViewCellContentView>
-                                <color key="backgroundColor" red="0.94509810209274292" green="0.94509810209274292" blue="0.94509810209274292" alpha="1" colorSpace="deviceRGB"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="startButton" destination="1aQ-hJ-11q" id="GZm-CV-jPm"/>
                                     <outlet property="statusImageView" destination="u8p-0t-tQ9" id="2CJ-vK-gFo"/>
