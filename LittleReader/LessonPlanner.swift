@@ -141,11 +141,11 @@ public class LessonPlanner {
         }
     }
 
-    public func wordPreviewForNextLesson() -> String? {
+    public func wordPreviewForNextLesson() -> [Word] {
         if let wordSet = findNextWordSet() {
-            return ", ".join((Array(wordSet.words) as [Word]).map { $0.text })
+            return (wordSet.words.allObjects as [Word])
         } else {
-            return nil
+            return [Word]()
         }
     }
     
@@ -262,7 +262,7 @@ public class LessonPlanner {
             log.baby = _baby
             log.numberOfWordsViewed = UInt16(_wordsViewedInLesson.count)
             log.wordSetNumber = wordSet.number
-            log.words = ",".join(_wordsViewedInLesson.allObjects.map { $0.text })
+            log.words = ",".join((_wordsViewedInLesson.allObjects as [Word]).map { $0.text })
             log.lessonDate = _lessonStartTime!
             log.durationSeconds = -_lessonStartTime!.timeIntervalSinceNow
             log.totalNumberOfWordSets = UInt16(_baby.wordSets!.count)

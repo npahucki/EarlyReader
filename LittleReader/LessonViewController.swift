@@ -91,6 +91,9 @@ class LessonViewController: UIViewController,AVAudioPlayerDelegate {
         showPreviousWord()
     }
     
+    @IBAction func didRequestManualMode(sender: AnyObject) {
+        pauseAutomaticAdvance()
+    }
         
     func startNextLesson() {
         _currentWords = lessonPlanner.startLesson()
@@ -106,9 +109,7 @@ class LessonViewController: UIViewController,AVAudioPlayerDelegate {
             updateButtonState()
             if _currentIdx < words.count {
                 transitionToWord(words[_currentIdx])
-                if !_isManualMode {
-                    _timer = NSTimer.scheduledTimerWithTimeInterval(UserPreferences.slideDisplayInverval, target: self, selector: "showNextWord", userInfo: nil, repeats: false)
-                }
+                startTimer()
             } else {
                 cancelTimer()
                 _currentIdx = -1
@@ -137,15 +138,19 @@ class LessonViewController: UIViewController,AVAudioPlayerDelegate {
             updateButtonState()
             if _currentIdx >= 0 {
                 transitionToWord(words[_currentIdx])
-                if !_isManualMode {
-                    _timer = NSTimer.scheduledTimerWithTimeInterval(UserPreferences.slideDisplayInverval, target: self, selector: "showNextWord", userInfo: nil, repeats: false)
-                }
+                startTimer()
             } else {
                 didCompleteLesson()
             }
         }
     }
    
+    private func startTimer() {
+        if !_isManualMode {
+            _timer = NSTimer.scheduledTimerWithTimeInterval(UserPreferences.slideDisplayInverval, target: self, selector: "showNextWord", userInfo: nil, repeats: false)
+        }
+    }
+    
     private func cancelTimer() {
         if let t = _timer {
             t.invalidate();

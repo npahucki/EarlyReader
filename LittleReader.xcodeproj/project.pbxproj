@@ -62,6 +62,7 @@
 		E8CDE7F1199FD18F0036CFE8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E8CDE7EF199FD18F0036CFE8 /* Main.storyboard */; };
 		E8CDE7F3199FD18F0036CFE8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E8CDE7F2199FD18F0036CFE8 /* Images.xcassets */; };
 		E8CDE80919A03AB70036CFE8 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8CDE80819A03AB70036CFE8 /* QuartzCore.framework */; };
+		E8CEDB5F1A1D13E400BE4ED8 /* LessonsListViewTableViewCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8CEDB5E1A1D13E400BE4ED8 /* LessonsListViewTableViewCells.swift */; };
 		E8E23E681A042785004764E9 /* LessonsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E818296919F6FCB6007B6DC9 /* LessonsViewController.swift */; };
 		E8F807451A12793E00FC427F /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8F807441A12793E00FC427F /* MenuViewController.swift */; };
 		E8FBFD441A012B6600087BE2 /* LessonPlanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8FBFD431A012B6600087BE2 /* LessonPlanner.swift */; };
@@ -146,6 +147,7 @@
 		E8CDE7F8199FD18F0036CFE8 /* LittleReaderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LittleReaderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8CDE7FD199FD18F0036CFE8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E8CDE80819A03AB70036CFE8 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		E8CEDB5E1A1D13E400BE4ED8 /* LessonsListViewTableViewCells.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LessonsListViewTableViewCells.swift; sourceTree = "<group>"; };
 		E8F807441A12793E00FC427F /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		E8FBFD431A012B6600087BE2 /* LessonPlanner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LessonPlanner.swift; sourceTree = "<group>"; };
 		E8FBFD471A013DD700087BE2 /* NSDateExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDateExtensions.swift; sourceTree = "<group>"; };
@@ -266,11 +268,11 @@
 			children = (
 				E8CDE7ED199FD18F0036CFE8 /* MainViewController.swift */,
 				E8F807441A12793E00FC427F /* MenuViewController.swift */,
+				E818296B19F6FE87007B6DC9 /* LessonViewController.swift */,
 				E818296919F6FCB6007B6DC9 /* LessonsViewController.swift */,
 				E84794FE1A01C4470065BABE /* LessonsListViewController.swift */,
 				E8BA1C2319BA11DB0092974A /* SettingsListViewController.swift */,
 				E8BFC8341A1650A6004929EF /* SettingsViewController.swift */,
-				E818296B19F6FE87007B6DC9 /* LessonViewController.swift */,
 				E81846CF19F94B580012EAAF /* ChildInfoViewController.swift */,
 				E8ACF33E1A1827D3005D6740 /* ChildInfoBirthDatePopoverViewController.swift */,
 				E8BFC8321A165075004929EF /* WordsViewController.swift */,
@@ -285,6 +287,7 @@
 			isa = PBXGroup;
 			children = (
 				E86FF5A31A1BA8A700F71F95 /* WordListTableHeaderView.swift */,
+				E8CEDB5E1A1D13E400BE4ED8 /* LessonsListViewTableViewCells.swift */,
 			);
 			name = CustomViews;
 			sourceTree = "<group>";
@@ -562,6 +565,7 @@
 				E85F39C919A6BB670004C80F /* Word.swift in Sources */,
 				E852E8061A1AB0B700DE8540 /* NSErrorExtensions.swift in Sources */,
 				E8F807451A12793E00FC427F /* MenuViewController.swift in Sources */,
+				E8CEDB5F1A1D13E400BE4ED8 /* LessonsListViewTableViewCells.swift in Sources */,
 				E86FF5A41A1BA8A700F71F95 /* WordListTableHeaderView.swift in Sources */,
 				E8CDE7EC199FD18F0036CFE8 /* LittleReader.xcdatamodeld in Sources */,
 				E8BFC8331A165075004929EF /* WordsViewController.swift in Sources */,

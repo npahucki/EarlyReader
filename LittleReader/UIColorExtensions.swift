@@ -16,17 +16,25 @@ extension UIColor {
     }
 
     class func applicationLightTextColor() -> UIColor {
-        return colorFromRGB(0x333333)
+        return colorFromRGB(0xCCCCCC)
     }
 
     class func applicationTextColor() -> UIColor {
-        return colorFromRGB(0x999999)
+        return colorFromRGB(0x333333)
     }
 
     class func applicationGreenColor() -> UIColor {
         return colorFromRGB(0x2EBF68)
     }
 
+    class func applicationOrangeColor() -> UIColor {
+        return colorFromRGB(0xFC5B22)
+    }
+
+    class func applicationTableCellSelectedBackgroundColor() -> UIColor {
+        return colorFromRGB(0xF1F1F1)
+    }
+    
     // Move to category on image!
     class func backgroundImageWithColor(color : UIColor) -> UIImage {
         var rect = CGRectMake(0.0, 0.0, 1.0, 1.0);

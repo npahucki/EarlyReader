@@ -9,18 +9,29 @@
 import CoreData
 import UIKit
 
+// TODO:
+/*
+//                let day = planner.dayOfProgram
+//                if  planner.numberOfWordSetsForToday < baby.wordSets.count {
+//                    infoMessageLabel.text = NSString(format: NSLocalizedString("idle_info_program_day_and_increase_sets",comment: ""), day, planner.numberOfWordSetsForToday)
+//                    infoMessageLabel.textColor = UIColor.redColor()
+//                } else {
+//                    infoMessageLabel.text = NSString(format: NSLocalizedString("idle_info_program_day",comment: ""), day)
+//                    infoMessageLabel.textColor = UIColor.greenColor()
+//                }
+
+*/
+
 class LessonsListViewController: UITableViewController, NSFetchedResultsControllerDelegate, LessonStateDelegate {
     
     
-    let sectionForNotifications = 0
-    let sectionForNextLesson = 1
-    let sectionForPreviousLessons = 2
+    let sectionForNextLesson = 0
+    let sectionForPreviousLessons = 1
     
     var baby : Baby?
     private var fetchedResultsController = NSFetchedResultsController()
     private var _planner : LessonPlanner?
-    var notifications = [String]()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         NSTimer.scheduledTimerWithTimeInterval(30.0 , target: self, selector: "updateCurrentStateMessages", userInfo: nil, repeats:true)
@@ -32,8 +43,6 @@ class LessonsListViewController: UITableViewController, NSFetchedResultsControll
             _planner = LessonPlanner(baby: baby!)
             updateTakenLessons()
             updateCurrentStateMessages()
-            // TODO: Notification if there are no words to load, or none left. Don't allow starting the lessons if no words.
-            // TODO: Use _planner.numberOfWordsLesson
         }
     }
     
@@ -61,13 +70,11 @@ class LessonsListViewController: UITableViewController, NSFetchedResultsControll
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         assert(fetchedResultsController.sections?.count <= 1,"Unexpected number of sections")
-        return 3
+        return 2
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch(section) {
-            case sectionForNotifications:
-                return notifications.count
             case sectionForNextLesson:
                 return 1
             case sectionForPreviousLessons:
@@ -84,8 +91,6 @@ class LessonsListViewController: UITableViewController, NSFetchedResultsControll
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         switch(indexPath.section) {
-        case sectionForNotifications:
-            return cellForNotificationAtIndexPath(indexPath)
         case sectionForNextLesson:
             assert(indexPath.row == 0, "Next lesson should never have more than row 0!")
             return cellForNextLessonAtIndexPath(indexPath)
@@ -98,48 +103,15 @@ class LessonsListViewController: UITableViewController, NSFetchedResultsControll
             return UITableViewCell() // needed for compiler
         }
     }
-    
-    func cellForNotificationAtIndexPath(indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCellWithIdentifier("notificationCell", forIndexPath: indexPath) as UITableViewCell
-        
-        
-        return cell
-    }
 
     func cellForNextLessonAtIndexPath(indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCellWithIdentifier("nextLessonCell", forIndexPath: indexPath) as UITableViewCell
+        var cell = tableView.dequeueReusableCellWithIdentifier("nextLessonCell", forIndexPath: indexPath) as NextLessonTableViewCell
         if let planner = _planner {
             if let baby = Baby.currentBaby {
-//                let day = planner.dayOfProgram
-//                if  planner.numberOfWordSetsForToday < baby.wordSets.count {
-//                    infoMessageLabel.text = NSString(format: NSLocalizedString("idle_info_program_day_and_increase_sets",comment: ""), day, planner.numberOfWordSetsForToday)
-//                    infoMessageLabel.textColor = UIColor.redColor()
-//                } else {
-//                    infoMessageLabel.text = NSString(format: NSLocalizedString("idle_info_program_day",comment: ""), day)
-//                    infoMessageLabel.textColor = UIColor.greenColor()
-//                }
-                
-                
-                let nextLesson = planner.nextLessonDate
-                if nextLesson.timeIntervalSinceNow <= 0 {
-                    cell.textLabel.text = NSLocalizedString("time_for_next_lesson",comment: "")
-                    cell.textLabel.textColor = UIColor.applicationGreenColor()
-                    cell.detailTextLabel!.text = planner.wordPreviewForNextLesson()
-                } else if nextLesson.isTomorrow() {
-                    cell.textLabel.text = NSLocalizedString("todays_lessons_completed",comment: "")
-                    cell.textLabel.textColor = UIColor.applicationPinkColor()
-                    cell.detailTextLabel!.text = NSLocalizedString("todays_lessons_completed_detail",comment: "")
-                } else {
-                    cell.textLabel.text = NSString(format: NSLocalizedString("wait_time_for_next_lesson",comment: ""),
-                        nextLesson.stringWithHumanizedTimeDifference(false))
-                    cell.textLabel.textColor = UIColor.applicationTextColor()
-                    cell.detailTextLabel!.text = planner.wordPreviewForNextLesson()
-                }
+                cell.setWords(planner.wordPreviewForNextLesson())
+                cell.setDueIn(planner.nextLessonDate ?? NSDate())
             }
         }
-
-        
-        
         
         return cell
     }
