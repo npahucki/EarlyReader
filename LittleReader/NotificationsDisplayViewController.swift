@@ -25,7 +25,6 @@ class NotificationsDisplayViewController: UIViewController, ManagedObjectContext
     
     private var dirUp = true
     private var _controllers = [NotificationViewController]()
-    private var fetchedResultsController = NSFetchedResultsController()
     
     var managedContext : NSManagedObjectContext? = nil
     var delegate : NotificationsDisplayViewControllerDelegate?
