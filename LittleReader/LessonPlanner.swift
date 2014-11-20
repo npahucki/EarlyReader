@@ -18,6 +18,12 @@ public class LessonPlanner {
     private var _wordsViewedInLesson = NSMutableSet()
     private var _lessonStartTime : NSDate? = nil
     
+    var managedContext : NSManagedObjectContext {
+        get {
+            return _managedObjectContext
+        }
+    }
+    
     public init(baby : Baby) {
         assert(baby.managedObjectContext != nil, "Expected baby to have a managedObjectContext!")
         self._baby = baby

@@ -37,26 +37,23 @@ class LessonsViewController: UIViewController, LessonStateDelegate, Notification
             historyController.baby = Baby.currentBaby
             _lessonHistoryController = historyController
         } else if let notificationsController = segue.destinationViewController as? NotificationsDisplayViewController {
-            notificationsController.delegate = self
+            if let p = _planner {
+                notificationsController.managedContext = p.managedContext
+                notificationsController.delegate = self
+            }
         }
     }
     
-    func didAddNotification(displayController : NotificationsDisplayViewController, controllerAdded : NotificationViewController) {
-//        controllerAdded.view.hidden = true // don't show until after animation
+    func didAddNotifications(displayController : NotificationsDisplayViewController) {
         view.layoutIfNeeded()
         containerHeightConstraint.constant = CGFloat(displayController.currentRequiredHeight)
         UIView.animateWithDuration(0.3, delay: 0.0, options: .CurveEaseInOut, animations: { () -> Void in
             self.view.layoutIfNeeded()
-            }) { (completed: Bool) -> Void in
-//                if completed {
-//                    controllerAdded.view.layoutIfNeeded()
-//                    controllerAdded.view.hidden = false
-//                }
-        }
+        }, completion : nil)
         
     }
 
-    func didRemoveNotification(displayController : NotificationsDisplayViewController, controllerRemoved : NotificationViewController) {
+    func didRemoveNotifications(displayController : NotificationsDisplayViewController) {
         view.layoutIfNeeded()
         containerHeightConstraint.constant = CGFloat(displayController.currentRequiredHeight)
         UIView.animateWithDuration(0.3, animations: { () -> Void in
