@@ -8,8 +8,10 @@
     <customFonts key="customFonts">
         <mutableArray key="OpenSans-Bold.ttf">
             <string>OpenSans-Bold</string>
+            <string>OpenSans-Bold</string>
         </mutableArray>
         <mutableArray key="OpenSans-Light.ttf">
+            <string>OpenSans-Light</string>
             <string>OpenSans-Light</string>
             <string>OpenSans-Light</string>
             <string>OpenSans-Light</string>
@@ -36,9 +38,9 @@
             <string>OpenSans</string>
             <string>OpenSans</string>
             <string>OpenSans</string>
-            <string>OpenSans</string>
         </mutableArray>
         <mutableArray key="OpenSans-Semibold.ttf">
+            <string>OpenSans-Semibold</string>
             <string>OpenSans-Semibold</string>
             <string>OpenSans-Semibold</string>
             <string>OpenSans-Semibold</string>
@@ -998,7 +1000,7 @@
                                                 </userDefinedRuntimeAttribute>
                                             </userDefinedRuntimeAttributes>
                                             <connections>
-                                                <segue destination="WjB-gp-FKd" kind="modal" id="1uO-gl-ZM9"/>
+                                                <segue destination="WjB-gp-FKd" kind="modal" modalTransitionStyle="flipHorizontal" id="1uO-gl-ZM9"/>
                                             </connections>
                                         </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Due in 15 minutes" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aUQ-Pu-1en">
@@ -1030,25 +1032,72 @@
                                     <outlet property="wordsLabel" destination="DG8-te-rjD" id="YFY-Rg-L5Q"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="previousLessonCell" textLabel="Fu8-w9-L4F" detailTextLabel="dna-O3-mmU" style="IBUITableViewCellStyleSubtitle" id="Vdu-3V-hxT" userLabel="pastLessonCell" customClass="PastLessonTableViewCell" customModule="LittleReader" customModuleProvider="target">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="pastLessonCell" id="K3d-48-5cG" userLabel="pastLessonCell" customClass="PastLessonTableViewCell" customModule="LittleReader" customModuleProvider="target">
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Vdu-3V-hxT" id="ymf-xH-dAh">
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="K3d-48-5cG" id="1jn-ND-PwY">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="LAST LESSON taken 10 minutes ago lasted 7 seconds" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Fu8-w9-L4F">
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="18"/>
-                                            <color key="textColor" red="0.94117647059999998" green="0.015686274510000001" blue="0.35294117650000001" alpha="1" colorSpace="deviceRGB"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cat, Dog, Cow, Wolf, Bat" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1ZR-ai-3d9">
+                                            <rect key="frame" x="16" y="21" width="254" height="33"/>
+                                            <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans" pointSize="24"/>
+                                            <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Lamp, Door, Table, Chair, Bed" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="dna-O3-mmU">
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="12"/>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Yp-D5-aCE">
+                                            <rect key="frame" x="525" y="25" width="130" height="50"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="50" id="aMW-rQ-Tvg"/>
+                                                <constraint firstAttribute="width" constant="130" id="wJp-iQ-ADz"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="18"/>
+                                            <state key="normal" title="RETAKE   >">
+                                                <color key="titleColor" red="0.94117647059999998" green="0.015686274510000001" blue="0.35294117650000001" alpha="1" colorSpace="deviceRGB"/>
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                                    <integer key="value" value="1"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                            <connections>
+                                                <segue destination="WjB-gp-FKd" kind="modal" modalTransitionStyle="flipHorizontal" id="piS-Km-ofy"/>
+                                            </connections>
+                                        </button>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Done" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ryf-GG-eVa">
+                                            <rect key="frame" x="41" y="58" width="47" height="25"/>
+                                            <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="18"/>
+                                            <color key="textColor" red="0.180392161" green="0.74901962280000001" blue="0.40784317260000003" alpha="1" colorSpace="deviceRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="IconCheckMark" translatesAutoresizingMaskIntoConstraints="NO" id="uHz-Rm-WJ0">
+                                            <rect key="frame" x="16" y="64" width="17" height="13"/>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5 minutes ago" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fbf-Wm-UzG">
+                                            <rect key="frame" x="96" y="58" width="119" height="25"/>
+                                            <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="18"/>
                                             <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="uHz-Rm-WJ0" firstAttribute="leading" secondItem="1ZR-ai-3d9" secondAttribute="leading" id="2I8-fP-W4c"/>
+                                        <constraint firstItem="uHz-Rm-WJ0" firstAttribute="centerY" secondItem="Ryf-GG-eVa" secondAttribute="centerY" id="DrH-dh-nbb"/>
+                                        <constraint firstItem="Ryf-GG-eVa" firstAttribute="leading" secondItem="uHz-Rm-WJ0" secondAttribute="trailing" constant="8" id="O5v-ft-V2s"/>
+                                        <constraint firstItem="fbf-Wm-UzG" firstAttribute="centerY" secondItem="Ryf-GG-eVa" secondAttribute="centerY" id="Ogo-lG-Zdh"/>
+                                        <constraint firstAttribute="centerY" secondItem="9Yp-D5-aCE" secondAttribute="centerY" id="WiS-2Y-7St"/>
+                                        <constraint firstItem="1ZR-ai-3d9" firstAttribute="leading" secondItem="1jn-ND-PwY" secondAttribute="leading" constant="16" id="bcM-hq-mj7"/>
+                                        <constraint firstItem="Ryf-GG-eVa" firstAttribute="top" secondItem="1ZR-ai-3d9" secondAttribute="bottom" constant="4" id="d2d-Mk-6Na"/>
+                                        <constraint firstItem="9Yp-D5-aCE" firstAttribute="top" secondItem="1ZR-ai-3d9" secondAttribute="bottom" constant="-29" id="lKu-3R-CmV"/>
+                                        <constraint firstAttribute="trailing" secondItem="9Yp-D5-aCE" secondAttribute="trailing" constant="16" id="qLU-wM-oWg"/>
+                                        <constraint firstItem="fbf-Wm-UzG" firstAttribute="leading" secondItem="Ryf-GG-eVa" secondAttribute="trailing" constant="8" id="x09-dH-xap"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="retakeButton" destination="9Yp-D5-aCE" id="hEn-vp-7Vy"/>
+                                    <outlet property="whenTakenLabel" destination="fbf-Wm-UzG" id="yhE-ub-zwY"/>
+                                    <outlet property="wordsLabel" destination="1ZR-ai-3d9" id="oS8-ga-u18"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -1125,6 +1174,7 @@
         <image name="ButtonArrow" width="23" height="43"/>
         <image name="ButtonArrowBack" width="23" height="43"/>
         <image name="ButtonBack" width="21" height="22"/>
+        <image name="IconCheckMark" width="17" height="13"/>
         <image name="IconTimeOrange" width="23" height="23"/>
         <image name="Logo" width="173" height="158"/>
     </resources>
@@ -1134,6 +1184,7 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="piS-Km-ofy"/>
         <segue reference="MAW-iu-DCN"/>
     </inferredMetricsTieBreakers>
 </document>

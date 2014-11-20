@@ -15,10 +15,8 @@ class NextLessonTableViewCell : UITableViewCell {
     @IBOutlet weak var statusImageView: UIImageView!
     @IBOutlet weak var startButton: UIButton!
     
-    @IBOutlet weak var backColorView: UIView!
     override func awakeFromNib() {
         startButton.layer.cornerRadius = 5
-        self.contentView.frame = CGRectInset(contentView.frame, 15, 0)
     }
     
     func setWords(words: [Word]) {
@@ -61,9 +59,24 @@ class NextLessonTableViewCell : UITableViewCell {
 
 class PastLessonTableViewCell : UITableViewCell {
     
-}
-
-class NotificationTableViewCell : UITableViewCell {
+    @IBOutlet weak var wordsLabel: UILabel!
+    @IBOutlet weak var whenTakenLabel: UILabel!
+    @IBOutlet weak var retakeButton: UIButton!
     
+    override func awakeFromNib() {
+        retakeButton.layer.cornerRadius = 5
+        retakeButton.layer.borderWidth = 1
+        retakeButton.layer.borderColor = UIColor.applicationPinkColor().CGColor
+    }
+    
+    func setLessonLog(log: LessonLog) {
+        let words = log.words.componentsSeparatedByString(",")
+        wordsLabel.text = ", ".join(words.map { $0.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()).capitalizedString })
+        let formatter = NSNumberFormatter()
+        formatter.maximumFractionDigits = 1
+        let duration = formatter.stringFromNumber(log.durationSeconds)!
+        whenTakenLabel.text = NSString(format:  NSLocalizedString("lesson_past_taken_at_and_duration", comment:""), log.lessonDate.stringWithHumanizedTimeDifference(), duration)
+
+    }
 }
 

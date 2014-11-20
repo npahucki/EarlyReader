@@ -117,13 +117,8 @@ class LessonsListViewController: UITableViewController, NSFetchedResultsControll
     }
 
     func cellForPreviousLessonAtRow(log: LessonLog, indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCellWithIdentifier("previousLessonCell", forIndexPath: indexPath) as UITableViewCell
-        // TODO: Localize
-        let formatter = NSNumberFormatter()
-        formatter.maximumFractionDigits = 1
-        let duration = formatter.stringFromNumber(log.durationSeconds)!
-        cell.textLabel.text = "LESSON TAKEN \(log.lessonDate.stringWithHumanizedTimeDifference()) lasted \(duration) seconds"
-        cell.detailTextLabel!.text = log.words
+        var cell = tableView.dequeueReusableCellWithIdentifier("pastLessonCell", forIndexPath: indexPath) as PastLessonTableViewCell
+        cell.setLessonLog(log)
         return cell
     }
 
