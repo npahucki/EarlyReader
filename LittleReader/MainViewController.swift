@@ -11,17 +11,19 @@ import CoreData
 
 class MainViewController : UISplitViewController, UISplitViewControllerDelegate, ManagedObjectContextHolder {
     
-    var managedContext : NSManagedObjectContext? = nil
-
-    required init(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        // Make sure all initial subviews have the context set before they appear.
-        for vc in viewControllers {
-            if let chvc = vc as? ManagedObjectContextHolder {
-                chvc.managedContext = self.managedContext
+    private var _managedContext : NSManagedObjectContext? = nil
+    var managedContext : NSManagedObjectContext? {
+        get {
+            return _managedContext
+        }
+        set {
+            _managedContext = newValue
+            for vc in viewControllers {
+                if let chvc = vc as? ManagedObjectContextHolder {
+                    chvc.managedContext = _managedContext
+                }
             }
         }
-        
     }
     
     override func viewDidLoad() {
@@ -44,7 +46,7 @@ class MainViewController : UISplitViewController, UISplitViewControllerDelegate,
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let vc = segue.destinationViewController as? ManagedObjectContextHolder {
-            vc.managedContext = self.managedContext
+            vc.managedContext = _managedContext
         }
         
         if let vc = segue.destinationViewController as? ChildInfoViewController {
@@ -64,7 +66,7 @@ class MainViewController : UISplitViewController, UISplitViewControllerDelegate,
 
     private func showDetailViewControllerForOs(vc: UIViewController, sender: AnyObject!) {
         if let mochVc = vc as? ManagedObjectContextHolder {
-            mochVc.managedContext = self.managedContext
+            mochVc.managedContext = _managedContext
         }
 
         if(super.respondsToSelector("showDetailViewController:sender:")) {

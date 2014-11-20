@@ -57,7 +57,6 @@
 		E8BFC8331A165075004929EF /* WordsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8BFC8321A165075004929EF /* WordsViewController.swift */; };
 		E8BFC8351A1650A6004929EF /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8BFC8341A1650A6004929EF /* SettingsViewController.swift */; };
 		E8CDE7E9199FD18F0036CFE8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8CDE7E8199FD18F0036CFE8 /* AppDelegate.swift */; };
-		E8CDE7EC199FD18F0036CFE8 /* LittleReader.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E8CDE7EA199FD18F0036CFE8 /* LittleReader.xcdatamodeld */; };
 		E8CDE7EE199FD18F0036CFE8 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8CDE7ED199FD18F0036CFE8 /* MainViewController.swift */; };
 		E8CDE7F1199FD18F0036CFE8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E8CDE7EF199FD18F0036CFE8 /* Main.storyboard */; };
 		E8CDE7F3199FD18F0036CFE8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E8CDE7F2199FD18F0036CFE8 /* Images.xcassets */; };
@@ -65,9 +64,11 @@
 		E8CEDB5F1A1D13E400BE4ED8 /* LessonsListViewTableViewCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8CEDB5E1A1D13E400BE4ED8 /* LessonsListViewTableViewCells.swift */; };
 		E8CEDB631A1D347F00BE4ED8 /* LessonsListTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8CEDB621A1D347F00BE4ED8 /* LessonsListTableViewHeader.swift */; };
 		E8CEDB651A1D348C00BE4ED8 /* LessonsListTableHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E8CEDB641A1D348C00BE4ED8 /* LessonsListTableHeaderView.xib */; };
-		E8CEDB691A1E37E500BE4ED8 /* NotificationsDIsplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8CEDB681A1E37E500BE4ED8 /* NotificationsDIsplayViewController.swift */; };
 		E8CEDB6F1A1E423300BE4ED8 /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8CEDB6E1A1E423300BE4ED8 /* NotificationViewController.swift */; };
+		E8DB1FBC1A1EA249001B904D /* NotificationsDisplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8DB1FB91A1EA249001B904D /* NotificationsDisplayViewController.swift */; };
+		E8DB1FBD1A1EA249001B904D /* LittleReader.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E8DB1FBA1A1EA249001B904D /* LittleReader.xcdatamodeld */; };
 		E8E23E681A042785004764E9 /* LessonsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E818296919F6FCB6007B6DC9 /* LessonsViewController.swift */; };
+		E8F4B3351A1E98BB00904C07 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8F4B3341A1E98BB00904C07 /* Notification.swift */; };
 		E8F807451A12793E00FC427F /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8F807441A12793E00FC427F /* MenuViewController.swift */; };
 		E8FBFD441A012B6600087BE2 /* LessonPlanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8FBFD431A012B6600087BE2 /* LessonPlanner.swift */; };
 		E8FBFD461A01326400087BE2 /* UserPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = E82DEBFC19F6AA4100EED0A8 /* UserPreferences.swift */; };
@@ -144,7 +145,6 @@
 		E8CDE7E3199FD18F0036CFE8 /* LittleReader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LittleReader.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8CDE7E7199FD18F0036CFE8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E8CDE7E8199FD18F0036CFE8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		E8CDE7EB199FD18F0036CFE8 /* LittleReader.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LittleReader.xcdatamodel; sourceTree = "<group>"; };
 		E8CDE7ED199FD18F0036CFE8 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		E8CDE7F0199FD18F0036CFE8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E8CDE7F2199FD18F0036CFE8 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -154,8 +154,10 @@
 		E8CEDB5E1A1D13E400BE4ED8 /* LessonsListViewTableViewCells.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LessonsListViewTableViewCells.swift; sourceTree = "<group>"; };
 		E8CEDB621A1D347F00BE4ED8 /* LessonsListTableViewHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LessonsListTableViewHeader.swift; sourceTree = "<group>"; };
 		E8CEDB641A1D348C00BE4ED8 /* LessonsListTableHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LessonsListTableHeaderView.xib; sourceTree = "<group>"; };
-		E8CEDB681A1E37E500BE4ED8 /* NotificationsDIsplayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationsDIsplayViewController.swift; sourceTree = "<group>"; };
 		E8CEDB6E1A1E423300BE4ED8 /* NotificationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
+		E8DB1FB91A1EA249001B904D /* NotificationsDisplayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationsDisplayViewController.swift; sourceTree = "<group>"; };
+		E8DB1FBB1A1EA249001B904D /* LittleReader.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LittleReader.xcdatamodel; sourceTree = "<group>"; };
+		E8F4B3341A1E98BB00904C07 /* Notification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		E8F807441A12793E00FC427F /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		E8FBFD431A012B6600087BE2 /* LessonPlanner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LessonPlanner.swift; sourceTree = "<group>"; };
 		E8FBFD471A013DD700087BE2 /* NSDateExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDateExtensions.swift; sourceTree = "<group>"; };
@@ -263,6 +265,7 @@
 		E85F39AE19A695500004C80F /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				E8F4B3341A1E98BB00904C07 /* Notification.swift */,
 				E8A50DDC1A01B7F100756CC8 /* LessonLog.swift */,
 				E85F39CB19A6BB670004C80F /* WordSet.swift */,
 				E85F39C819A6BB670004C80F /* Word.swift */,
@@ -274,6 +277,7 @@
 		E85F39AF19A695610004C80F /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				E8DB1FB91A1EA249001B904D /* NotificationsDisplayViewController.swift */,
 				E8CDE7ED199FD18F0036CFE8 /* MainViewController.swift */,
 				E8F807441A12793E00FC427F /* MenuViewController.swift */,
 				E818296B19F6FE87007B6DC9 /* LessonViewController.swift */,
@@ -288,7 +292,6 @@
 				E81846D119F9503D0012EAAF /* MangedObjectContextHolder.swift */,
 				E82959121A00108D003575F7 /* AddWordsViewController.swift */,
 				E8CEDB6E1A1E423300BE4ED8 /* NotificationViewController.swift */,
-				E8CEDB681A1E37E500BE4ED8 /* NotificationsDIsplayViewController.swift */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -339,7 +342,7 @@
 				E85F39AE19A695500004C80F /* Model */,
 				E858B7ED19BA3D3A003C5727 /* Util */,
 				E841F67319FA92AC00684DD6 /* Third Party ObjC */,
-				E8CDE7EA199FD18F0036CFE8 /* LittleReader.xcdatamodeld */,
+				E8DB1FBA1A1EA249001B904D /* LittleReader.xcdatamodeld */,
 				E8CDE7F2199FD18F0036CFE8 /* Images.xcassets */,
 				E84C8B9D1A12980900B66B74 /* Resources */,
 				E8CDE7E6199FD18F0036CFE8 /* Supporting Files */,
@@ -574,24 +577,25 @@
 				E8CDE7EE199FD18F0036CFE8 /* MainViewController.swift in Sources */,
 				E84794FF1A01C4470065BABE /* LessonsListViewController.swift in Sources */,
 				E8E23E681A042785004764E9 /* LessonsViewController.swift in Sources */,
-				E8CEDB691A1E37E500BE4ED8 /* NotificationsDIsplayViewController.swift in Sources */,
 				E82DEBFD19F6AA4100EED0A8 /* UserPreferences.swift in Sources */,
 				E85F39C919A6BB670004C80F /* Word.swift in Sources */,
 				E852E8061A1AB0B700DE8540 /* NSErrorExtensions.swift in Sources */,
 				E8F807451A12793E00FC427F /* MenuViewController.swift in Sources */,
 				E8CEDB5F1A1D13E400BE4ED8 /* LessonsListViewTableViewCells.swift in Sources */,
 				E86FF5A41A1BA8A700F71F95 /* WordListTableHeaderView.swift in Sources */,
-				E8CDE7EC199FD18F0036CFE8 /* LittleReader.xcdatamodeld in Sources */,
 				E8BFC8331A165075004929EF /* WordsViewController.swift in Sources */,
 				E8CEDB6F1A1E423300BE4ED8 /* NotificationViewController.swift in Sources */,
+				E8DB1FBC1A1EA249001B904D /* NotificationsDisplayViewController.swift in Sources */,
 				E8FBFD481A013DD700087BE2 /* NSDateExtensions.swift in Sources */,
 				E884F1951A1BCBFE0040AA13 /* STCollapseTableView.m in Sources */,
+				E8F4B3351A1E98BB00904C07 /* Notification.swift in Sources */,
 				E816042D19FAE05200B87B9D /* Common.swift in Sources */,
 				E8A50DDD1A01B7F100756CC8 /* LessonLog.swift in Sources */,
 				E81846D219F9503D0012EAAF /* MangedObjectContextHolder.swift in Sources */,
 				E82959131A00108D003575F7 /* AddWordsViewController.swift in Sources */,
 				E818296C19F6FE87007B6DC9 /* LessonViewController.swift in Sources */,
 				E8CEDB631A1D347F00BE4ED8 /* LessonsListTableViewHeader.swift in Sources */,
+				E8DB1FBD1A1EA249001B904D /* LittleReader.xcdatamodeld in Sources */,
 				E81846D019F94B580012EAAF /* ChildInfoViewController.swift in Sources */,
 				E858B7EF19BA3D59003C5727 /* StreamReader.swift in Sources */,
 				E839D8D219FE802900D0765E /* WordImporter.swift in Sources */,
@@ -838,12 +842,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		E8CDE7EA199FD18F0036CFE8 /* LittleReader.xcdatamodeld */ = {
+		E8DB1FBA1A1EA249001B904D /* LittleReader.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				E8CDE7EB199FD18F0036CFE8 /* LittleReader.xcdatamodel */,
+				E8DB1FBB1A1EA249001B904D /* LittleReader.xcdatamodel */,
 			);
-			currentVersion = E8CDE7EB199FD18F0036CFE8 /* LittleReader.xcdatamodel */;
+			currentVersion = E8DB1FBB1A1EA249001B904D /* LittleReader.xcdatamodel */;
 			path = LittleReader.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

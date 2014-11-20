@@ -9,13 +9,16 @@
 import UIKit
 import CoreData
 
-class LessonsViewController: UIViewController, LessonStateDelegate, NotificationsDisplayViewControllerDelegate {
+class LessonsViewController: UIViewController, LessonStateDelegate, NotificationsDisplayViewControllerDelegate, ManagedObjectContextHolder {
 
+    
+    
     private var _lessonHistoryController : LessonsListViewController? = nil
     private var _planner : LessonPlanner? = nil
     
     @IBOutlet weak var containerHeightConstraint: NSLayoutConstraint!
-    
+    var managedContext : NSManagedObjectContext? = nil
+
     override func viewDidLoad() {
         super.viewDidLoad()
         containerHeightConstraint.constant = 0
@@ -37,10 +40,8 @@ class LessonsViewController: UIViewController, LessonStateDelegate, Notification
             historyController.baby = Baby.currentBaby
             _lessonHistoryController = historyController
         } else if let notificationsController = segue.destinationViewController as? NotificationsDisplayViewController {
-            if let p = _planner {
-                notificationsController.managedContext = p.managedContext
-                notificationsController.delegate = self
-            }
+            notificationsController.managedContext = managedContext
+            notificationsController.delegate = self
         }
     }
     
