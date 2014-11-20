@@ -65,6 +65,8 @@
 		E8CEDB5F1A1D13E400BE4ED8 /* LessonsListViewTableViewCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8CEDB5E1A1D13E400BE4ED8 /* LessonsListViewTableViewCells.swift */; };
 		E8CEDB631A1D347F00BE4ED8 /* LessonsListTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8CEDB621A1D347F00BE4ED8 /* LessonsListTableViewHeader.swift */; };
 		E8CEDB651A1D348C00BE4ED8 /* LessonsListTableHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E8CEDB641A1D348C00BE4ED8 /* LessonsListTableHeaderView.xib */; };
+		E8CEDB691A1E37E500BE4ED8 /* NotificationsDIsplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8CEDB681A1E37E500BE4ED8 /* NotificationsDIsplayViewController.swift */; };
+		E8CEDB6F1A1E423300BE4ED8 /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8CEDB6E1A1E423300BE4ED8 /* NotificationViewController.swift */; };
 		E8E23E681A042785004764E9 /* LessonsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E818296919F6FCB6007B6DC9 /* LessonsViewController.swift */; };
 		E8F807451A12793E00FC427F /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8F807441A12793E00FC427F /* MenuViewController.swift */; };
 		E8FBFD441A012B6600087BE2 /* LessonPlanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8FBFD431A012B6600087BE2 /* LessonPlanner.swift */; };
@@ -152,6 +154,8 @@
 		E8CEDB5E1A1D13E400BE4ED8 /* LessonsListViewTableViewCells.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LessonsListViewTableViewCells.swift; sourceTree = "<group>"; };
 		E8CEDB621A1D347F00BE4ED8 /* LessonsListTableViewHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LessonsListTableViewHeader.swift; sourceTree = "<group>"; };
 		E8CEDB641A1D348C00BE4ED8 /* LessonsListTableHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LessonsListTableHeaderView.xib; sourceTree = "<group>"; };
+		E8CEDB681A1E37E500BE4ED8 /* NotificationsDIsplayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationsDIsplayViewController.swift; sourceTree = "<group>"; };
+		E8CEDB6E1A1E423300BE4ED8 /* NotificationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
 		E8F807441A12793E00FC427F /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		E8FBFD431A012B6600087BE2 /* LessonPlanner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LessonPlanner.swift; sourceTree = "<group>"; };
 		E8FBFD471A013DD700087BE2 /* NSDateExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDateExtensions.swift; sourceTree = "<group>"; };
@@ -283,6 +287,8 @@
 				E841F67119FA868700684DD6 /* WordListViewController.swift */,
 				E81846D119F9503D0012EAAF /* MangedObjectContextHolder.swift */,
 				E82959121A00108D003575F7 /* AddWordsViewController.swift */,
+				E8CEDB6E1A1E423300BE4ED8 /* NotificationViewController.swift */,
+				E8CEDB681A1E37E500BE4ED8 /* NotificationsDIsplayViewController.swift */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -568,6 +574,7 @@
 				E8CDE7EE199FD18F0036CFE8 /* MainViewController.swift in Sources */,
 				E84794FF1A01C4470065BABE /* LessonsListViewController.swift in Sources */,
 				E8E23E681A042785004764E9 /* LessonsViewController.swift in Sources */,
+				E8CEDB691A1E37E500BE4ED8 /* NotificationsDIsplayViewController.swift in Sources */,
 				E82DEBFD19F6AA4100EED0A8 /* UserPreferences.swift in Sources */,
 				E85F39C919A6BB670004C80F /* Word.swift in Sources */,
 				E852E8061A1AB0B700DE8540 /* NSErrorExtensions.swift in Sources */,
@@ -576,6 +583,7 @@
 				E86FF5A41A1BA8A700F71F95 /* WordListTableHeaderView.swift in Sources */,
 				E8CDE7EC199FD18F0036CFE8 /* LittleReader.xcdatamodeld in Sources */,
 				E8BFC8331A165075004929EF /* WordsViewController.swift in Sources */,
+				E8CEDB6F1A1E423300BE4ED8 /* NotificationViewController.swift in Sources */,
 				E8FBFD481A013DD700087BE2 /* NSDateExtensions.swift in Sources */,
 				E884F1951A1BCBFE0040AA13 /* STCollapseTableView.m in Sources */,
 				E816042D19FAE05200B87B9D /* Common.swift in Sources */,

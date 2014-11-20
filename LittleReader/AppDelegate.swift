@@ -58,12 +58,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIAlertViewDelegate {
         // Saves changes in the application's managed object context before the application terminates.
         self.saveContext()
     }
-
-    func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {
-        if application.applicationState == UIApplicationState.Active {
-            UIAlertView.showLocalizedErrorMessageWithOkButton("time_for_next_lesson2", title_key: "time_for_lesson2_title")
-        }
-    }
     
     // MARK: - Core Data stack
 

@@ -38,6 +38,8 @@
             <string>OpenSans</string>
             <string>OpenSans</string>
             <string>OpenSans</string>
+            <string>OpenSans</string>
+            <string>OpenSans</string>
         </mutableArray>
         <mutableArray key="OpenSans-Semibold.ttf">
             <string>OpenSans-Semibold</string>
@@ -443,6 +445,99 @@
             </objects>
             <point key="canvasLocation" x="1692" y="1995"/>
         </scene>
+        <!--Notifications View Controller-->
+        <scene sceneID="0dp-ue-JaT">
+            <objects>
+                <viewController id="S0e-tX-9Ht" userLabel="Notifications View Controller" customClass="NotificationsDisplayViewController" customModule="LittleReader" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="0h2-JY-sgw"/>
+                        <viewControllerLayoutGuide type="bottom" id="8Oc-Zw-eN1"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Y8F-g0-iri">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="100"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="768" height="100"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="a2Q-yZ-0N1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-13" y="863"/>
+        </scene>
+        <!--Notification View Controller-->
+        <scene sceneID="KPD-3q-d5U">
+            <objects>
+                <viewController storyboardIdentifier="notificationViewController" id="5ap-JK-AWn" userLabel="Notification View Controller" customClass="NotificationViewController" customModule="LittleReader" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="2wn-ir-1bn"/>
+                        <viewControllerLayoutGuide type="bottom" id="eff-tS-jaE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="oPT-4x-CJy" userLabel="Notification View">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="100"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="IconTips" translatesAutoresizingMaskIntoConstraints="NO" id="XP1-gI-HV3">
+                                <rect key="frame" x="8" y="33" width="41" height="34"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tip" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gbI-UP-mz9">
+                                <rect key="frame" x="65" y="21" width="29" height="28"/>
+                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="20"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Blah Blah Here" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZUn-gd-hIN">
+                                <rect key="frame" x="65" y="48" width="118" height="24"/>
+                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3w2-ZL-m9R">
+                                <rect key="frame" x="724" y="0.0" width="44" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="0aQ-KT-FRJ"/>
+                                    <constraint firstAttribute="width" constant="44" id="xCr-sy-4bU"/>
+                                </constraints>
+                                <state key="normal" image="IconClose">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="didClickCloseNotification:" destination="5ap-JK-AWn" eventType="touchUpInside" id="7rv-WG-eJb"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.180392161" green="0.74901962280000001" blue="0.40784317260000003" alpha="1" colorSpace="deviceRGB"/>
+                        <constraints>
+                            <constraint firstItem="XP1-gI-HV3" firstAttribute="leading" secondItem="oPT-4x-CJy" secondAttribute="leading" constant="8" id="5wP-ij-xKP"/>
+                            <constraint firstItem="gbI-UP-mz9" firstAttribute="leading" secondItem="ZUn-gd-hIN" secondAttribute="leading" id="8AA-V1-Yhr"/>
+                            <constraint firstItem="ZUn-gd-hIN" firstAttribute="top" secondItem="gbI-UP-mz9" secondAttribute="bottom" id="Iph-yb-pUs"/>
+                            <constraint firstAttribute="centerY" secondItem="XP1-gI-HV3" secondAttribute="centerY" id="Lq2-Cn-SDb"/>
+                            <constraint firstItem="XP1-gI-HV3" firstAttribute="centerY" secondItem="gbI-UP-mz9" secondAttribute="centerY" constant="16" id="Q5O-vq-9Vl"/>
+                            <constraint firstAttribute="trailing" secondItem="3w2-ZL-m9R" secondAttribute="trailing" id="S0L-Y5-9Ln"/>
+                            <constraint firstItem="3w2-ZL-m9R" firstAttribute="top" secondItem="2wn-ir-1bn" secondAttribute="bottom" id="eMx-JS-tVc"/>
+                            <constraint firstItem="gbI-UP-mz9" firstAttribute="leading" secondItem="XP1-gI-HV3" secondAttribute="trailing" constant="16" id="rnb-cn-xGA"/>
+                        </constraints>
+                    </view>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="768" height="100"/>
+                    <connections>
+                        <outlet property="detailtextLabel" destination="ZUn-gd-hIN" id="vbI-cy-UQH"/>
+                        <outlet property="imageView" destination="XP1-gI-HV3" id="j4v-tq-eQb"/>
+                        <outlet property="typeLabel" destination="gbI-UP-mz9" id="IRl-bF-tSE"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hKu-uC-IAs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-13" y="1039"/>
+        </scene>
         <!--Lessons View Controller-->
         <scene sceneID="zNI-qE-8Rc">
             <objects>
@@ -455,41 +550,56 @@
                         <rect key="frame" x="0.0" y="0.0" width="703" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3yn-2F-k0K">
-                                <rect key="frame" x="16" y="114" width="671" height="638"/>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3yn-2F-k0K" userLabel="Lesson LIst Container">
+                                <rect key="frame" x="16" y="206" width="671" height="546"/>
                                 <connections>
                                     <segue destination="Pnh-pn-UUa" kind="embed" id="nPZ-fz-vWn"/>
                                 </connections>
                             </containerView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lessons" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RgI-p1-OC0">
-                                <rect key="frame" x="32" y="48" width="110" height="41"/>
+                                <rect key="frame" x="32" y="140" width="110" height="41"/>
                                 <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans" pointSize="30"/>
                                 <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rND-nw-c0k" userLabel="Separator View">
-                                <rect key="frame" x="16" y="105" width="671" height="1"/>
+                                <rect key="frame" x="16" y="197" width="671" height="1"/>
                                 <color key="backgroundColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="iv7-LT-qLL"/>
                                 </constraints>
                             </view>
+                            <containerView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V1z-ag-meS" userLabel="Notifications Container">
+                                <rect key="frame" x="16" y="24" width="671" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="309-Yh-JB5"/>
+                                </constraints>
+                                <connections>
+                                    <segue destination="S0e-tX-9Ht" kind="embed" id="bqh-ZO-7Vd"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="V1z-ag-meS" secondAttribute="trailing" constant="16" id="0Jl-wc-aoD"/>
+                            <constraint firstItem="V1z-ag-meS" firstAttribute="top" secondItem="Bmf-fz-Dou" secondAttribute="top" constant="24" id="4ni-mO-5oC"/>
                             <constraint firstAttribute="trailing" secondItem="rND-nw-c0k" secondAttribute="trailing" constant="16" id="6LT-gj-EOi"/>
                             <constraint firstItem="rND-nw-c0k" firstAttribute="top" secondItem="RgI-p1-OC0" secondAttribute="bottom" constant="16" id="Iww-jY-BhX"/>
                             <constraint firstItem="3yn-2F-k0K" firstAttribute="top" secondItem="rND-nw-c0k" secondAttribute="bottom" constant="8" id="K9m-4K-O3I"/>
-                            <constraint firstItem="RgI-p1-OC0" firstAttribute="top" secondItem="Bmf-fz-Dou" secondAttribute="top" constant="48" id="KaK-La-Vo7"/>
                             <constraint firstItem="RgI-p1-OC0" firstAttribute="leading" secondItem="Bmf-fz-Dou" secondAttribute="leading" constant="32" id="NC2-AE-K0x"/>
                             <constraint firstItem="rND-nw-c0k" firstAttribute="leading" secondItem="Bmf-fz-Dou" secondAttribute="leading" constant="16" id="NNa-gd-yoV"/>
                             <constraint firstItem="3yn-2F-k0K" firstAttribute="leading" secondItem="Bmf-fz-Dou" secondAttribute="leading" constant="16" id="aLs-MP-U2A"/>
+                            <constraint firstItem="RgI-p1-OC0" firstAttribute="top" secondItem="V1z-ag-meS" secondAttribute="bottom" constant="16" id="bk9-LP-1NR"/>
                             <constraint firstItem="0Iz-oe-uiC" firstAttribute="top" secondItem="3yn-2F-k0K" secondAttribute="bottom" constant="16" id="bsK-QU-rS0"/>
                             <constraint firstAttribute="trailing" secondItem="3yn-2F-k0K" secondAttribute="trailing" constant="16" id="hfn-ZD-zHP"/>
+                            <constraint firstItem="V1z-ag-meS" firstAttribute="leading" secondItem="Bmf-fz-Dou" secondAttribute="leading" constant="16" id="sxZ-db-pz4"/>
                         </constraints>
                     </view>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                     <nil key="simulatedTopBarMetrics"/>
+                    <connections>
+                        <outlet property="containerHeightConstraint" destination="309-Yh-JB5" id="mUw-be-7m6"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SVZ-iL-UBs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -966,7 +1076,7 @@
             <objects>
                 <tableViewController id="Pnh-pn-UUa" userLabel="Lesson History View Controller" customClass="LessonsListViewController" customModule="LittleReader" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="100" sectionHeaderHeight="75" sectionFooterHeight="16" id="Is1-qI-UnE">
-                        <rect key="frame" x="0.0" y="0.0" width="671" height="638"/>
+                        <rect key="frame" x="0.0" y="0.0" width="671" height="546"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="separatorColor" red="0.94509803920000002" green="0.94509803920000002" blue="0.94509803920000002" alpha="1" colorSpace="deviceRGB"/>
@@ -1175,7 +1285,9 @@
         <image name="ButtonArrowBack" width="23" height="43"/>
         <image name="ButtonBack" width="21" height="22"/>
         <image name="IconCheckMark" width="17" height="13"/>
+        <image name="IconClose" width="12" height="12"/>
         <image name="IconTimeOrange" width="23" height="23"/>
+        <image name="IconTips" width="41" height="34"/>
         <image name="Logo" width="173" height="158"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
