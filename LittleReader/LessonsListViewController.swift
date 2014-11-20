@@ -10,7 +10,6 @@ import CoreData
 import UIKit
 
 // TODO:
-/*
 //                let day = planner.dayOfProgram
 //                if  planner.numberOfWordSetsForToday < baby.wordSets.count {
 //                    infoMessageLabel.text = NSString(format: NSLocalizedString("idle_info_program_day_and_increase_sets",comment: ""), day, planner.numberOfWordSetsForToday)
@@ -20,7 +19,7 @@ import UIKit
 //                    infoMessageLabel.textColor = UIColor.greenColor()
 //                }
 
-*/
+
 
 class LessonsListViewController: UITableViewController, NSFetchedResultsControllerDelegate, LessonStateDelegate {
     
@@ -137,7 +136,7 @@ class LessonsListViewController: UITableViewController, NSFetchedResultsControll
     override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = NSBundle.mainBundle().loadNibNamed("LessonsListTableHeaderView", owner:nil, options:nil)[0] as LessonsListTableHeaderView;
         headerView.disclosureButton.addTarget(self, action: "didClickHeaderDiscloseButton:", forControlEvents: .TouchUpInside)
-        headerView.tag = section
+        headerView.disclosureButton.tag = section
         if section == sectionForNextLesson {
             headerView.titleLabel.text = NSLocalizedString("lesson_header_next_lesson",comment: "")
         } else {
@@ -147,8 +146,13 @@ class LessonsListViewController: UITableViewController, NSFetchedResultsControll
         return headerView
     }
 
-    func didClickHeaderDiscloseButton(sender: LessonsListTableHeaderView) {
-            NSLog("DID CLICK HEADER DISCLOSURE:%d", sender.tag)
+    func didClickHeaderDiscloseButton(sender: UIButton) {
+        // TODO: WHat to show here?
+        if sender.tag == sectionForNextLesson {
+            UIAlertView(title: "TODO", message: "TODO:Next Lesson Info Clicked!", delegate: nil, cancelButtonTitle: "Ok").show()
+        } else if sender.tag == sectionForPreviousLessons {
+            UIAlertView(title: "TODO", message: "TODO:Past Lesson Info Clicked!", delegate: nil, cancelButtonTitle: "Ok").show()
+        }
     }
     
     func controllerDidChangeContent(controller: NSFetchedResultsController!) {
@@ -157,35 +161,6 @@ class LessonsListViewController: UITableViewController, NSFetchedResultsControll
     
     func updateCurrentStateMessages() {
         self.tableView.reloadData()
-        
-        //        if let planner = _planner {
-//            
-//            if let baby = Baby.currentBaby {
-//                let day = planner.dayOfProgram
-//                if  planner.numberOfWordSetsForToday < baby.wordSets.count {
-//                    infoMessageLabel.text = NSString(format: NSLocalizedString("idle_info_program_day_and_increase_sets",comment: ""), day, planner.numberOfWordSetsForToday)
-//                    infoMessageLabel.textColor = UIColor.redColor()
-//                } else {
-//                    infoMessageLabel.text = NSString(format: NSLocalizedString("idle_info_program_day",comment: ""), day)
-//                    infoMessageLabel.textColor = UIColor.greenColor()
-//                }
-//                
-//                let nextLesson = planner.nextLessonDate
-//                if nextLesson.timeIntervalSinceNow <= 0 {
-//                    auxMessageLabel.text = NSLocalizedString("time_for_next_lesson",comment: "")
-//                    auxMessageLabel.textColor = UIColor.greenColor()
-//                } else if nextLesson.isTomorrow() {
-//                    auxMessageLabel.text = NSLocalizedString("todays_lessons_completed",comment: "")
-//                    auxMessageLabel.textColor = UIColor.orangeColor()
-//                } else {
-//                    auxMessageLabel.text = NSString(format: NSLocalizedString("wait_time_for_next_lesson",comment: ""),
-//                        planner.numberOfLessonsRemainingToday,
-//                        nextLesson.stringWithHumanizedTimeDifference(false))
-//                    auxMessageLabel.textColor = UIColor.orangeColor()
-//                }
-//            }
-//        }
-        
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
