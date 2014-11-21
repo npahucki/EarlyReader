@@ -277,7 +277,6 @@
 		E85F39AF19A695610004C80F /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				E8DB1FB91A1EA249001B904D /* NotificationsDisplayViewController.swift */,
 				E8CDE7ED199FD18F0036CFE8 /* MainViewController.swift */,
 				E8F807441A12793E00FC427F /* MenuViewController.swift */,
 				E818296B19F6FE87007B6DC9 /* LessonViewController.swift */,
@@ -291,6 +290,7 @@
 				E841F67119FA868700684DD6 /* WordListViewController.swift */,
 				E81846D119F9503D0012EAAF /* MangedObjectContextHolder.swift */,
 				E82959121A00108D003575F7 /* AddWordsViewController.swift */,
+				E8DB1FB91A1EA249001B904D /* NotificationsDisplayViewController.swift */,
 				E8CEDB6E1A1E423300BE4ED8 /* NotificationViewController.swift */,
 			);
 			name = ViewController;

@@ -10,18 +10,7 @@ import UIKit
 
 class NotificationViewController: UIViewController {
 
-    private var _notification : Notification?
-    
-    var notification : Notification? {
-        get {
-            return _notification
-        }
-        set {
-            _notification = notification
-            updateStateForNotification()
-        }
-        
-    }
+    var notification : Notification!
     
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var typeLabel: UILabel!
@@ -36,11 +25,18 @@ class NotificationViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        assert(notification != nil,"Expected notification to be set before view loads!")
+        
+        switch(notification.type.integerValue) {
+        case NotificationType.Alert.rawValue:
+            imageView.image = UIImage(named: "IconAlerts")
+            view.backgroundColor = UIColor.applicationOrangeColor()
+            typeLabel.text = NSLocalizedString("notification_type_alert", comment:"")
+        default:
+            imageView.image = UIImage(named: "IconTips")
+            view.backgroundColor = UIColor.applicationGreenColor()
+            typeLabel.text = NSLocalizedString("notification_type_tip", comment:"")
+        }
+        detailtextLabel.text = notification.message
     }
-    
-    private func updateStateForNotification() {
-        // TODO: Update the UI!
-    }
-    
-    
 }

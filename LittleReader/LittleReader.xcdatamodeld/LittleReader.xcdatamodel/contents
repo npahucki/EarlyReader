@@ -16,6 +16,11 @@
         <attribute name="wordSetNumber" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <relationship name="baby" maxCount="1" deletionRule="Nullify" destinationEntity="Baby" inverseName="lessonLogs" inverseEntity="Baby" syncable="YES"/>
     </entity>
+    <entity name="Notification" representedClassName="LittleReader.Notification" syncable="YES">
+        <attribute name="deliveredOn" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="message" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+    </entity>
     <entity name="Word" representedClassName="LittleReader.Word" syncable="YES">
         <attribute name="activatedOn" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="lastViewedOn" optional="YES" attributeType="Date" syncable="YES"/>
@@ -36,5 +41,6 @@
         <element name="LessonLog" positionX="4651" positionY="-5961" width="128" height="165"/>
         <element name="Word" positionX="4653" positionY="-5742" width="128" height="135"/>
         <element name="WordSet" positionX="4338" positionY="-5751" width="128" height="118"/>
+        <element name="Notification" positionX="4491" positionY="-5823" width="128" height="88"/>
     </elements>
 </model>

@@ -13,8 +13,9 @@ class LessonsViewController: UIViewController, LessonStateDelegate, Notification
 
     
     
-    private var _lessonHistoryController : LessonsListViewController? = nil
-    private var _planner : LessonPlanner? = nil
+    private var _notificationsViewController : NotificationsDisplayViewController!
+    private var _lessonHistoryController : LessonsListViewController!
+    private var _planner : LessonPlanner?
     
     @IBOutlet weak var containerHeightConstraint: NSLayoutConstraint!
     var managedContext : NSManagedObjectContext? = nil
@@ -23,6 +24,7 @@ class LessonsViewController: UIViewController, LessonStateDelegate, Notification
         super.viewDidLoad()
         containerHeightConstraint.constant = 0
         view.setNeedsLayout()
+        _notificationsViewController.loadNotifications()
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -40,6 +42,7 @@ class LessonsViewController: UIViewController, LessonStateDelegate, Notification
             historyController.baby = Baby.currentBaby
             _lessonHistoryController = historyController
         } else if let notificationsController = segue.destinationViewController as? NotificationsDisplayViewController {
+            _notificationsViewController = notificationsController
             notificationsController.managedContext = managedContext
             notificationsController.delegate = self
         }
