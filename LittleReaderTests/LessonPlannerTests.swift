@@ -186,6 +186,13 @@ class LessonPlannerTests: CoreDataUnitTestBase {
         XCTAssert(_planner.lastLessonDate?.timeIntervalSinceNow < 1,"Expected that last lesson date would be very close to now")
     }
     
+    func testNumberOfAvailableWords() {
+        importWords(["one","two"])
+        XCTAssertEqual(_planner.numberOfAvailableWords, 2)
+        importWords (["three"," four"])
+        XCTAssertEqual(_planner.numberOfAvailableWords, 4)
+    }
+    
 
     private func createLessonLogEntry(date: NSDate, wordSetNumber: Int = 0, useDay : Int = 0) -> LessonLog {
         let entityDescription = NSEntityDescription.entityForName("LessonLog", inManagedObjectContext:ctx)
@@ -197,11 +204,14 @@ class LessonPlannerTests: CoreDataUnitTestBase {
         log.lessonDate = date
         log.useDay = UInt16(useDay)
         log.numberOfWordsViewed = 1
-        log.words = "one;two;three"
+        log.words = "one;two;three;four;five"
+        log.numberOfWordsViewed = 5
         log.wordSetNumber = UInt16(wordSetNumber)
         saveContext()
         return log
     }
+    
+    
 
 
 }

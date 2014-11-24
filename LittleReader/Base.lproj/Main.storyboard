@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="13F34" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="MDV-Pk-R5t">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6221" systemVersion="13F34" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="MDV-Pk-R5t">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6213"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -477,7 +477,7 @@
                         <viewControllerLayoutGuide type="top" id="2wn-ir-1bn"/>
                         <viewControllerLayoutGuide type="bottom" id="eff-tS-jaE"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="oPT-4x-CJy" userLabel="Notification View">
+                    <view key="view" contentMode="center" id="oPT-4x-CJy" userLabel="Notification View">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="100"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -485,13 +485,13 @@
                                 <rect key="frame" x="8" y="33" width="41" height="34"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tip" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gbI-UP-mz9">
-                                <rect key="frame" x="65" y="20.5" width="28.5" height="27.5"/>
+                                <rect key="frame" x="65" y="20" width="28.5" height="27.5"/>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="20"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Blah Blah Here" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZUn-gd-hIN">
-                                <rect key="frame" x="65" y="48" width="117.5" height="23.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Blah Blah Here" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZUn-gd-hIN">
+                                <rect key="frame" x="69" y="48" width="691" height="23.5"/>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -513,11 +513,12 @@
                         <color key="backgroundColor" red="0.180392161" green="0.74901962280000001" blue="0.40784317260000003" alpha="1" colorSpace="deviceRGB"/>
                         <constraints>
                             <constraint firstItem="XP1-gI-HV3" firstAttribute="leading" secondItem="oPT-4x-CJy" secondAttribute="leading" constant="8" id="5wP-ij-xKP"/>
-                            <constraint firstItem="gbI-UP-mz9" firstAttribute="leading" secondItem="ZUn-gd-hIN" secondAttribute="leading" id="8AA-V1-Yhr"/>
+                            <constraint firstItem="gbI-UP-mz9" firstAttribute="leading" secondItem="ZUn-gd-hIN" secondAttribute="leading" constant="-4" id="8AA-V1-Yhr"/>
                             <constraint firstItem="ZUn-gd-hIN" firstAttribute="top" secondItem="gbI-UP-mz9" secondAttribute="bottom" id="Iph-yb-pUs"/>
                             <constraint firstAttribute="centerY" secondItem="XP1-gI-HV3" secondAttribute="centerY" id="Lq2-Cn-SDb"/>
                             <constraint firstItem="XP1-gI-HV3" firstAttribute="centerY" secondItem="gbI-UP-mz9" secondAttribute="centerY" constant="16" id="Q5O-vq-9Vl"/>
                             <constraint firstAttribute="trailing" secondItem="3w2-ZL-m9R" secondAttribute="trailing" id="S0L-Y5-9Ln"/>
+                            <constraint firstAttribute="trailing" secondItem="ZUn-gd-hIN" secondAttribute="trailing" constant="8" id="dta-RT-T3E"/>
                             <constraint firstItem="3w2-ZL-m9R" firstAttribute="top" secondItem="2wn-ir-1bn" secondAttribute="bottom" id="eMx-JS-tVc"/>
                             <constraint firstItem="gbI-UP-mz9" firstAttribute="leading" secondItem="XP1-gI-HV3" secondAttribute="trailing" constant="16" id="rnb-cn-xGA"/>
                         </constraints>

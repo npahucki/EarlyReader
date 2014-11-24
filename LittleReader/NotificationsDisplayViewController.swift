@@ -11,8 +11,8 @@ import CoreData
 
 protocol NotificationsDisplayViewControllerDelegate {
     
-    func didAddNotifications(displayController : NotificationsDisplayViewController)
-    func didRemoveNotifications(displayController : NotificationsDisplayViewController)
+    // Once the delegate has set the final size of the view, it should call back containerDidFinishExpanding()
+    func needsContainerSizeAdjusted(displayController : NotificationsDisplayViewController)
     
 }
 
@@ -20,103 +20,164 @@ protocol NotificationsDisplayViewControllerDelegate {
 class NotificationsDisplayViewController: UIViewController, ManagedObjectContextHolder {
     
     
-    private let childOffsetDistance = 10
+    private let childOffsetDistance = 5
     private let notificationHeight = 100
+    private let maxControllers = 10
+    private var containerView : UIView!
     
-    private var dirUp = true
-    private var _controllers = [NotificationViewController]()
     
-    var managedContext : NSManagedObjectContext? = nil
-    var delegate : NotificationsDisplayViewControllerDelegate?
+    var managedContext : NSManagedObjectContext?
+    var delegate : NotificationsDisplayViewControllerDelegate!
     
     var currentRequiredHeight : Int {
         get {
-            return _controllers.count > 0 ? notificationHeight + (_controllers.count * childOffsetDistance) : 0
+            return self.childViewControllers.count > 0 ? notificationHeight + ((childViewControllers.count - 1) * childOffsetDistance) : 0
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadNotifications()
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "handleDataModelChange:", name: NSManagedObjectContextObjectsDidChangeNotification, object:managedContext)
+    }
+    
+    deinit {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
+    
+    func handleDataModelChange(nsNotification : NSNotification) {
+        var needsRefresh = false;
+        
+        //NSSet *deletedObjects = [[note userInfo] objectForKey:NSDeletedObjectsKey];
+        if let insertedObjects = nsNotification.userInfo?[NSInsertedObjectsKey] as? NSSet {
+            for obj in insertedObjects {
+                if let notification = obj as? Notification {
+                    addNotification(notification)
+                    needsRefresh = true
+                }
+            }
+        }
+
+        if let deletedObjects = nsNotification.userInfo?[NSDeletedObjectsKey] as? NSSet {
+            for obj in deletedObjects {
+                if let notification = obj as? Notification {
+                    needsRefresh |= removeNotification(notification)
+                }
+            }
+        }
+
+        if let updatedObjects = nsNotification.userInfo?[NSUpdatedObjectsKey] as? NSSet {
+            for obj in updatedObjects {
+                if let notification = obj as? Notification {
+                    if contains(notification.changedValuesForCurrentEvent().keys,"closedByUser") && notification.closedByUser {
+                        needsRefresh |= removeNotification(notification)
+                    }
+                }
+            }
+        }
+
+        
+        if needsRefresh {
+            if childViewControllers.count == 0 {
+                loadNotifications() // Load next batch
+            } else {
+                delegate.needsContainerSizeAdjusted(self)
+            }
+        }
     }
     
     func loadNotifications() {
-        
-        // TEMP:
-        let entityDescription = NSEntityDescription.entityForName("Notification", inManagedObjectContext:managedContext!)
-        let n1 = Notification(entity: entityDescription!, insertIntoManagedObjectContext: managedContext!)
-        n1.deliveredOn = NSDate()
-        n1.message = "This is a tip"
-        n1.type = NotificationType.Tip.rawValue
-        managedContext!.insertObject(n1)
-        
-        let n2 = Notification(entity: entityDescription!, insertIntoManagedObjectContext: managedContext!)
-        n2.deliveredOn = NSDate().dateYesterday()
-        n2.message = "This is an alert"
-        n2.type = NotificationType.Alert.rawValue
-        managedContext!.insertObject(n2)
-        
-        managedContext!.save(nil)
-        // END TEMP
-        
-        
+        if let notifications = loadSomeNotifications(maxControllers) {
+            for n in notifications.reverse() {
+                addNotification(n)
+            }
+            delegate.needsContainerSizeAdjusted(self)
+        }
+    }
+    
+    func containerDidFinishAdjusting() {
+        renderControllers()
+    }
+
+    private func loadSomeNotifications(maxCount : Int) ->[Notification]? {
         if let ctx = managedContext {
             var error : NSError? = nil
-            let fetchRequest = NSFetchRequest(entityName: "Notifications")
+            let fetchRequest = NSFetchRequest(entityName: "Notification")
+            fetchRequest.predicate = NSPredicate(format: "closedByUser = false")
             fetchRequest.sortDescriptors = [NSSortDescriptor(key: "deliveredOn", ascending: false)]
+            fetchRequest.fetchLimit = maxCount
             let results = ctx.executeFetchRequest(fetchRequest, error: &error) as [Notification]
             if let err = error {
                 UsageAnalytics.trackError("Could not load notifications", error: err)
             } else {
-                _controllers.removeAll(keepCapacity: true)
-                for n in results {
-                    let vc = self.storyboard?.instantiateViewControllerWithIdentifier("notificationViewController") as NotificationViewController
-                    vc.notification = n
-                    addNotificaitonViewController(vc)
-                    _controllers.append(vc)
-                }
-                if let d = delegate {
-                    d.didAddNotifications(self)
-                }
+                return results
+            }
+        }
+        
+        return nil
+        
+    }
+    
+    private func removeNotification(notification : Notification) -> Bool {
+        let vcs = self.childViewControllers as [NotificationViewController]
+        for vc in vcs {
+            if notification == vc.notification {
+                vc.removeFromParentViewController()
+                return true
+            }
+        }
+        return false
+    }
+    
+    private func addNotification(notification : Notification) {
+        let vc = self.storyboard?.instantiateViewControllerWithIdentifier("notificationViewController") as NotificationViewController
+        vc.notification = notification
+        addChildViewController(vc)
+        if childViewControllers.count > maxControllers {
+            if let vc = childViewControllers.first as? UIViewController {
+                vc.removeFromParentViewController()
             }
         }
     }
     
-    private func addNotificaitonViewController(vc: NotificationViewController) {
-        let offset = _controllers.count * childOffsetDistance
-        // NOTE: I don't know why, but if you set the height to something for the very first controller, it gets ADDED to the
-        // the notificationHeight, so I set it to zero and then the frame ends up with a proper height. .shrug!
-        vc.view.frame = CGRect(x: 0, y: offset, width: Int(self.view.frame.width), height: offset == 0 ? 0 : notificationHeight)
-        vc.view.layer.masksToBounds = false
-        vc.view.layer.shadowOffset = CGSizeMake(-1, -3)
-        vc.view.layer.shadowRadius = 2
-        vc.view.layer.shadowOpacity = 0.3
-        self.addChildViewController(vc)
-        self.view.addSubview(vc.view)
-        vc.didMoveToParentViewController(self)
-        _controllers.append(vc)
-        if let d = self.delegate {
-            d.didAddNotifications(self)
+    private func renderControllers() {
+        containerView?.removeFromSuperview()
+        containerView = UIView(frame: CGRect(x: 0,y: 0,width: self.view.bounds.width, height: self.view.bounds.height))
+        self.view.addSubview(containerView)
+        let controllers = self.childViewControllers as [NotificationViewController]
+        for (indexPosition, vc) in enumerate(controllers) {
+            let yOffset = indexPosition * childOffsetDistance
+            let xOffset = (controllers.count - indexPosition - 1) * childOffsetDistance
+            vc.view.frame = CGRect(x: xOffset, y: yOffset, width: Int(self.view.frame.width) - xOffset * 2, height:notificationHeight)
+            vc.view.layer.masksToBounds = false
+            vc.view.layer.shadowOffset = CGSizeMake(-1, CGFloat(childOffsetDistance) / -2.0)
+            vc.view.layer.shadowRadius = 2
+            vc.view.layer.shadowOpacity = 0.3
+            containerView.addSubview(vc.view)
+            vc.didMoveToParentViewController(self)
         }
     }
     
     func removeLastNotificaitonViewController() {
-        if _controllers.count > 0 {
-            let vc = _controllers.removeLast()
-            vc.view.removeFromSuperview()
-            vc.removeFromParentViewController()
-            if let d = self.delegate {
-                d.didRemoveNotifications(self)
-            }
-            
-            if let ctx = managedContext {
-                var error : NSError? = nil
-                ctx.deleteObject(vc.notification!)
-                ctx.save(&error)
-                if let err = error {
-                    UsageAnalytics.trackError("Could not save context after deleting notification", error: err)
+        let controllers = self.childViewControllers as [NotificationViewController]
+        if let vc = controllers.last {
+            UIView.animateWithDuration(0.3, delay: 0.0, options: UIViewAnimationOptions.CurveEaseOut, animations: { () -> Void in
+                vc.view.alpha = 0
+                for (index, vc) in enumerate(controllers) {
+                    if index + 1 < controllers.count {
+                        let vcAfter = controllers[index + 1]
+                        vc.view.frame = CGRect(x: vcAfter.view.frame.origin.x, y:vc.view.frame.origin.y , width: vcAfter.view.frame.size.width, height: CGFloat(self.notificationHeight))
+                    }
                 }
-            }
+            }, completion: { (complete :Bool) -> Void in
+                if let ctx = self.managedContext {
+                    var error : NSError? = nil
+                    vc.notification.closedByUser = true
+                    ctx.save(&error)
+                    if let err = error {
+                        UsageAnalytics.trackError("Could not save context after deleting notification", error: err)
+                    }
+                }
+            })
         }
     }
 }

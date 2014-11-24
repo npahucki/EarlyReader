@@ -9,6 +9,8 @@
 import UIKit
 import CoreData
 
+// TODO: Where to show day of program?
+
 class MainViewController : UISplitViewController, UISplitViewControllerDelegate, ManagedObjectContextHolder {
     
     private var _managedContext : NSManagedObjectContext? = nil
@@ -30,7 +32,6 @@ class MainViewController : UISplitViewController, UISplitViewControllerDelegate,
         delegate = self
         
         view.backgroundColor = UIColor.whiteColor()
-
 //    *** NOT SUPPORTED IN IOS 7!
 //        preferredDisplayMode = UISplitViewControllerDisplayMode.Automatic
 //        preferredPrimaryColumnWidthFraction = 0.25
@@ -41,8 +42,7 @@ class MainViewController : UISplitViewController, UISplitViewControllerDelegate,
         if Baby.currentBaby == nil {
                 // Show the dialog to enter a baby.
                 self.performSegueWithIdentifier("showNewChildDialog", sender: self)
-        }
-    }
+        }     }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let vc = segue.destinationViewController as? ManagedObjectContextHolder {
@@ -80,5 +80,8 @@ class MainViewController : UISplitViewController, UISplitViewControllerDelegate,
             }
         }
     }
+    
+   
+    
 }
 

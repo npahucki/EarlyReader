@@ -96,6 +96,17 @@ public class LessonPlanner {
             return results.count
         }
     }
+
+    public var numberOfAvailableWords : Int {
+        get {
+            let results = countAvailableWords()
+            if let e = results.error {
+                UsageAnalytics.trackError("Error calculating count of availble words", error: e)
+            }
+            return results.count
+        }
+    }
+
     
     public var numberOfWordSetsForToday : Int {
         get {
@@ -249,7 +260,7 @@ public class LessonPlanner {
         let fetchRequest = NSFetchRequest(entityName: "LessonLog")
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "lessonDate", ascending: first)]
         fetchRequest.fetchLimit = 1
-        fetchRequest.predicate = NSPredicate(format: "(baby == %@) AND numberOfWordsViewed >=\(WORDS_PER_WORDSET)",_baby)
+        fetchRequest.predicate = NSPredicate(format: "(baby = %@) AND numberOfWordsViewed >= %d",_baby, WORDS_PER_WORDSET)
         if let results = _managedObjectContext.executeFetchRequest(fetchRequest, error: &error) as? [LessonLog] {
             lastLessonDate = results.count > 0 ? results.first?.lessonDate : nil
         }
@@ -346,6 +357,15 @@ public class LessonPlanner {
         var count : Int = 0
         let fetchRequest = NSFetchRequest(entityName: "LessonLog")
         fetchRequest.predicate = NSPredicate(format: "(baby == %@) AND (lessonDate >= %@) AND (lessonDate <= %@) AND numberOfWordsViewed >=\(WORDS_PER_WORDSET)",_baby, date.startOfDay(), date.endOfDay())
+        count = _managedObjectContext.countForFetchRequest(fetchRequest, error: &error)
+        return (count, error)
+    }
+    
+    private func countAvailableWords() -> (count:Int, error:NSError?) {
+        var error: NSError? = nil
+        var count : Int = 0
+        let fetchRequest = NSFetchRequest(entityName: "Word")
+        fetchRequest.predicate = NSPredicate(format: "(wordSet == null) AND (retiredOn == null)")
         count = _managedObjectContext.countForFetchRequest(fetchRequest, error: &error)
         return (count, error)
     }

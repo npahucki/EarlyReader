@@ -27,16 +27,21 @@ class NotificationViewController: UIViewController {
         super.viewDidLoad()
         assert(notification != nil,"Expected notification to be set before view loads!")
         
-        switch(notification.type.integerValue) {
-        case NotificationType.Alert.rawValue:
+        typeLabel.text = NSString(format: NSLocalizedString(notification.title, comment : ""))
+        if let msg = notification.message {
+            detailtextLabel.text = NSString(format: NSLocalizedString(msg, comment : ""))
+        }
+
+        switch(NotificationType(rawValue: notification.type.integerValue)!) {
+        case NotificationType.Alert:
             imageView.image = UIImage(named: "IconAlerts")
-            view.backgroundColor = UIColor.applicationOrangeColor()
-            typeLabel.text = NSLocalizedString("notification_type_alert", comment:"")
+            view.backgroundColor = UIColor.applicationPinkColor()
+        case NotificationType.Guidance:
+            imageView.image = UIImage(named: "IconAlerts")
+            view.backgroundColor = UIColor.applicationBlueColor()
         default:
             imageView.image = UIImage(named: "IconTips")
             view.backgroundColor = UIColor.applicationGreenColor()
-            typeLabel.text = NSLocalizedString("notification_type_tip", comment:"")
         }
-        detailtextLabel.text = notification.message
     }
 }

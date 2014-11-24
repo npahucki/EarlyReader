@@ -48,55 +48,16 @@ class LessonsViewController: UIViewController, LessonStateDelegate, Notification
         }
     }
     
-    func didAddNotifications(displayController : NotificationsDisplayViewController) {
+    // Once the delegate has set the final size of the view, it should call back containerDidFinishExpanding()
+   func needsContainerSizeAdjusted(displayController: NotificationsDisplayViewController) {
         view.layoutIfNeeded()
         containerHeightConstraint.constant = CGFloat(displayController.currentRequiredHeight)
-        UIView.animateWithDuration(0.3, delay: 0.0, options: .CurveEaseInOut, animations: { () -> Void in
+        UIView.animateWithDuration(0.3, delay: 0.0, options:  .CurveEaseInOut, animations: { () -> Void in
             self.view.layoutIfNeeded()
-        }, completion : nil)
-        
+            }) { (complete : Bool) -> Void in
+                displayController.containerDidFinishAdjusting()
+        }
     }
-
-    func didRemoveNotifications(displayController : NotificationsDisplayViewController) {
-        view.layoutIfNeeded()
-        containerHeightConstraint.constant = CGFloat(displayController.currentRequiredHeight)
-        UIView.animateWithDuration(0.3, animations: { () -> Void in
-            self.view.layoutIfNeeded()
-        })
-    }
-
-    
-
-//    func updateCurrentStateMessage() {
-//        if let planner = _planner {
-//            
-//            if let baby = Baby.currentBaby {
-//                let day = planner.dayOfProgram
-//                if  planner.numberOfWordSetsForToday < baby.wordSets.count {
-//                    infoMessageLabel.text = NSString(format: NSLocalizedString("idle_info_program_day_and_increase_sets",comment: ""), day, planner.numberOfWordSetsForToday)
-//                    infoMessageLabel.textColor = UIColor.redColor()
-//                } else {
-//                    infoMessageLabel.text = NSString(format: NSLocalizedString("idle_info_program_day",comment: ""), day)
-//                    infoMessageLabel.textColor = UIColor.greenColor()
-//                }
-//            
-//                let nextLesson = planner.nextLessonDate
-//                if nextLesson.timeIntervalSinceNow <= 0 {
-//                    auxMessageLabel.text = NSLocalizedString("time_for_next_lesson",comment: "")
-//                    auxMessageLabel.textColor = UIColor.greenColor()
-//                } else if nextLesson.isTomorrow() {
-//                    auxMessageLabel.text = NSLocalizedString("todays_lessons_completed",comment: "")
-//                    auxMessageLabel.textColor = UIColor.orangeColor()
-//                } else {
-//                    auxMessageLabel.text = NSString(format: NSLocalizedString("wait_time_for_next_lesson",comment: ""),
-//                        planner.numberOfLessonsRemainingToday,
-//                        nextLesson.stringWithHumanizedTimeDifference(false))
-//                    auxMessageLabel.textColor = UIColor.orangeColor()
-//                }
-//            }
-//        }
-//
-//    }
     
     
     // MARK: LessonStateDeletegate methods

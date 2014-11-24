@@ -76,6 +76,7 @@ class WordListViewController: UITableViewController,ManagedObjectContextHolder, 
             headerView.editButton.setTitle("Edit", forState: UIControlState.Normal)
             tableView.setEditing(false, animated: true)
         }
+        updateHeaderTextForAllSections()
     }
 
     
@@ -121,11 +122,24 @@ class WordListViewController: UITableViewController,ManagedObjectContextHolder, 
             self.managedContext?.save(nil)
             if wordSet != nil {
                 wordSet!.fill()
-                self.tableView.reloadData()
             }
         }
     }
     
+    func controller(controller: NSFetchedResultsController,
+        didChangeObject anObject: AnyObject,
+        atIndexPath indexPath: NSIndexPath?,
+        forChangeType type: NSFetchedResultsChangeType,
+        newIndexPath: NSIndexPath?) {
+            
+        if (type == NSFetchedResultsChangeType.Delete) {
+            // Delete row from tableView.
+            tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: UITableViewRowAnimation.Fade)
+            updateHeaderTextForAllSections()
+        }
+    }
+    
+
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let sections = fetchedResultsController.sections {
             return sections[section].numberOfObjects
@@ -139,21 +153,34 @@ class WordListViewController: UITableViewController,ManagedObjectContextHolder, 
             return view
         } else {
             let headerView = NSBundle.mainBundle().loadNibNamed("WordListHeaderView", owner:nil, options:nil)[0] as WordListTableHeaderView;
+            _headerViews[section] = headerView
             headerView.delegate = self
             if let sectionKey = fetchedResultsController.sections![section].name {
                 headerView.sectionKey = sectionKey
-                headerView.titleLabel.text = NSLocalizedString("word_list_" + sectionKey, comment : "")
-                headerView.detailLabel.text =  NSString(format: NSLocalizedString("word_list_section_number_of_words", comment : "In the word list table, the number of words in the section header"), fetchedResultsController.sections![section].numberOfObjects)
+                updateHeaderTextForSection(section)
             }
-            _headerViews[section] = headerView
             return headerView
         }
     }
     
+    func updateHeaderTextForSection(section: Int) {
+        if let headerView = _headerViews[section] {
+            headerView.titleLabel.text = NSLocalizedString("word_list_" + headerView.sectionKey!, comment : "")
+            headerView.detailLabel.text =  NSString(format: NSLocalizedString("word_list_section_number_of_words", comment : "In the word list table, the number of words in the section header"), fetchedResultsController.sections![section].numberOfObjects)
+        }
+    }
+
+    func updateHeaderTextForAllSections() {
+        for section in 0..._headerViews.count {
+            updateHeaderTextForSection(section)
+        }
+    }
+
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell = tableView.dequeueReusableCellWithIdentifier("wordCell", forIndexPath: indexPath) as UITableViewCell
         let word = fetchedResultsController.objectAtIndexPath(indexPath) as Word
-        cell.textLabel.text = word.text
+        cell.textLabel!.text = word.text
         // TODO: Localize!
         if (word.wordSet != nil) {
             if let viewedOn = word.lastViewedOn {
@@ -173,7 +200,7 @@ class WordListViewController: UITableViewController,ManagedObjectContextHolder, 
     }
 
     func controllerDidChangeContent(controller: NSFetchedResultsController!) {
-        tableView.reloadData()
+        //tableView.reloadData()
     }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -196,6 +223,7 @@ class WordListViewController: UITableViewController,ManagedObjectContextHolder, 
                     let msg = NSString(format: NSLocalizedString("msg_words_added", comment:""), result.numberOfWordsAdded)
                     let cancelTitle = NSLocalizedString("uialert_accept_button_title", comment:"")
                     UIAlertView(title: title, message: msg, delegate: nil, cancelButtonTitle : cancelTitle).show()
+                    
                 }
             }
             
