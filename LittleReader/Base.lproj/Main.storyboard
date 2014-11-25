@@ -81,7 +81,7 @@
                                                         <segue destination="caz-NO-Bej" kind="modal" id="MAW-iu-DCN"/>
                                                     </connections>
                                                 </button>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zmm-HS-xFb" userLabel="Spacer">
+                                                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zmm-HS-xFb" userLabel="Spacer">
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" id="GdW-Lg-ICe"/>
@@ -838,23 +838,24 @@
                             <constraint firstAttribute="trailing" secondItem="6hX-9E-sYW" secondAttribute="trailing" constant="16" id="nHt-bE-YNl"/>
                         </constraints>
                         <connections>
-                            <outletCollection property="gestureRecognizers" destination="qw2-ta-h6u" appends="YES" id="KAS-w8-Z7w"/>
+                            <outletCollection property="gestureRecognizers" destination="9Nj-5J-0CL" appends="YES" id="uLN-R2-JiD"/>
                         </connections>
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
+                        <outlet property="abortButton" destination="cVL-00-gz9" id="rmT-H7-luB"/>
                         <outlet property="nextButton" destination="ACE-to-ljy" id="4tQ-Rh-UuM"/>
                         <outlet property="previousButton" destination="5v4-LP-O9R" id="wlJ-Wn-R4R"/>
                         <outlet property="textLabel" destination="6hX-9E-sYW" id="wt4-rY-qKD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="34c-CJ-dh3" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <pinchGestureRecognizer id="qw2-ta-h6u">
+                <tapGestureRecognizer numberOfTapsRequired="2" id="9Nj-5J-0CL">
                     <connections>
-                        <action selector="didRequestManualMode:" destination="WjB-gp-FKd" id="ahp-vh-hbg"/>
+                        <action selector="didRequestShowButtons:" destination="WjB-gp-FKd" id="e1h-ok-J9A"/>
                     </connections>
-                </pinchGestureRecognizer>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="586" y="2439"/>
         </scene>

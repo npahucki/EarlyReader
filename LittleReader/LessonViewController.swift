@@ -32,6 +32,7 @@ class LessonViewController: UIViewController,AVAudioPlayerDelegate {
     private var audioPlayer : AVAudioPlayer!
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var previousButton: UIButton!
+    @IBOutlet weak var abortButton: UIButton!
     
     var delegate : LessonStateDelegate?
     
@@ -46,6 +47,11 @@ class LessonViewController: UIViewController,AVAudioPlayerDelegate {
         
         textLabel.font = UIFont.systemFontOfSize(500)
         textLabel.text = ""
+        
+        nextButton.alpha = 0
+        previousButton.alpha = 0
+        abortButton.alpha = 0
+        
         updateButtonState()
     }
     
@@ -90,11 +96,29 @@ class LessonViewController: UIViewController,AVAudioPlayerDelegate {
         pauseAutomaticAdvance()
         showPreviousWord()
     }
-    
-    @IBAction func didRequestManualMode(sender: AnyObject) {
-        pauseAutomaticAdvance()
+
+    @IBAction func didRequestShowButtons(sender: AnyObject) {
+        if _isManualMode {
+            UIView.animateWithDuration(1.0, animations: { () -> Void in
+                self.nextButton.alpha = 0
+                self.previousButton.alpha = 0
+                self.abortButton.alpha = 0
+                }, completion: { (complete : Bool) -> Void in
+                    if complete {
+                        self.resumeAutomaticAdvance()
+                    }
+            })
+        } else {
+            pauseAutomaticAdvance()
+            UIView.animateWithDuration(1.0, animations: { () -> Void in
+                self.nextButton.alpha = 1
+                self.previousButton.alpha = 1
+                self.abortButton.alpha = 1
+            })
+        }
     }
-        
+
+    
     func startNextLesson() {
         _currentWords = lessonPlanner.startLesson()
         assert(_currentWords?.count > 0,"LessonViewController should not be show if there are no words!")
