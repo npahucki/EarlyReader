@@ -161,6 +161,11 @@ class WordListViewController: UITableViewController,ManagedObjectContextHolder, 
             return headerView
         }
     }
+
+    override func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        return UIView()
+    }
+
     
     func updateHeaderTextForSection(section: Int) {
         if let headerView = _headerViews[section] {

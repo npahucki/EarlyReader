@@ -14,6 +14,7 @@ import CoreData
 class MainViewController : UISplitViewController, UISplitViewControllerDelegate, ManagedObjectContextHolder {
     
     private var _managedContext : NSManagedObjectContext? = nil
+    
     var managedContext : NSManagedObjectContext? {
         get {
             return _managedContext
@@ -30,12 +31,12 @@ class MainViewController : UISplitViewController, UISplitViewControllerDelegate,
     
     override func viewDidLoad() {
         delegate = self
-        
         view.backgroundColor = UIColor.whiteColor()
 //    *** NOT SUPPORTED IN IOS 7!
 //        preferredDisplayMode = UISplitViewControllerDisplayMode.Automatic
 //        preferredPrimaryColumnWidthFraction = 0.25
-    
+        // Initial Screen
+        showDetailViewControllerWithId("lessonsController", sender: self)
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -61,27 +62,12 @@ class MainViewController : UISplitViewController, UISplitViewControllerDelegate,
     func showDetailViewControllerWithId(vcId: String, sender: AnyObject!) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil);
         let vc = storyboard.instantiateViewControllerWithIdentifier(vcId) as UIViewController;
-        showDetailViewControllerForOs(vc, sender: sender)
-    }
-
-    private func showDetailViewControllerForOs(vc: UIViewController, sender: AnyObject!) {
         if let mochVc = vc as? ManagedObjectContextHolder {
-            mochVc.managedContext = _managedContext
+            mochVc.managedContext = managedContext
         }
-
-        if(super.respondsToSelector("showDetailViewController:sender:")) {
-            showDetailViewController(vc, sender:sender)
-        } else {
-            // IOS 7
-            if self.viewControllers.count > 1 {
-                self.viewControllers = [self.viewControllers[0],vc]
-            } else {
-                self.viewControllers = [vc]
-            }
+        if let detailController = viewControllers.last as? DetailViewController {
+            detailController.currentDetailViewController = vc
         }
     }
-    
-   
-    
 }
 

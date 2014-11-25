@@ -49,13 +49,12 @@
 		E88916D31A0474AA002C8F13 /* BabyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88916D21A0474AA002C8F13 /* BabyTests.swift */; };
 		E88916D51A047BCE002C8F13 /* LessonPlannerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88916D41A047BCE002C8F13 /* LessonPlannerTests.swift */; };
 		E88916D71A047CB0002C8F13 /* Baby.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8BF775C19F932DA00F1BF0A /* Baby.swift */; };
+		E8998BF01A24079E00BD1761 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8998BEF1A24079E00BD1761 /* DetailViewController.swift */; };
 		E8A50DDD1A01B7F100756CC8 /* LessonLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A50DDC1A01B7F100756CC8 /* LessonLog.swift */; };
 		E8ACF33F1A1827D3005D6740 /* ChildInfoBirthDatePopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8ACF33E1A1827D3005D6740 /* ChildInfoBirthDatePopoverViewController.swift */; };
 		E8BA1C2419BA11DB0092974A /* SettingsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8BA1C2319BA11DB0092974A /* SettingsListViewController.swift */; };
 		E8BFC82D1A155FB7004929EF /* applause-01.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E8BFC82C1A155FB7004929EF /* applause-01.mp3 */; };
 		E8BFC82F1A15635A004929EF /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8BFC82E1A15635A004929EF /* AVFoundation.framework */; };
-		E8BFC8331A165075004929EF /* WordsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8BFC8321A165075004929EF /* WordsViewController.swift */; };
-		E8BFC8351A1650A6004929EF /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8BFC8341A1650A6004929EF /* SettingsViewController.swift */; };
 		E8CDE7E9199FD18F0036CFE8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8CDE7E8199FD18F0036CFE8 /* AppDelegate.swift */; };
 		E8CDE7EE199FD18F0036CFE8 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8CDE7ED199FD18F0036CFE8 /* MainViewController.swift */; };
 		E8CDE7F1199FD18F0036CFE8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E8CDE7EF199FD18F0036CFE8 /* Main.storyboard */; };
@@ -67,7 +66,6 @@
 		E8CEDB6F1A1E423300BE4ED8 /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8CEDB6E1A1E423300BE4ED8 /* NotificationViewController.swift */; };
 		E8DB1FBC1A1EA249001B904D /* NotificationsDisplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8DB1FB91A1EA249001B904D /* NotificationsDisplayViewController.swift */; };
 		E8DB1FBD1A1EA249001B904D /* LittleReader.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E8DB1FBA1A1EA249001B904D /* LittleReader.xcdatamodeld */; };
-		E8E23E681A042785004764E9 /* LessonsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E818296919F6FCB6007B6DC9 /* LessonsViewController.swift */; };
 		E8F4B3351A1E98BB00904C07 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8F4B3341A1E98BB00904C07 /* Notification.swift */; };
 		E8F807451A12793E00FC427F /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8F807441A12793E00FC427F /* MenuViewController.swift */; };
 		E8FBFD441A012B6600087BE2 /* LessonPlanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8FBFD431A012B6600087BE2 /* LessonPlanner.swift */; };
@@ -95,7 +93,6 @@
 		DD3CC555AE2AE49B8D2EB1B6 /* Pods-LittleReaderTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LittleReaderTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-LittleReaderTests/Pods-LittleReaderTests.release.xcconfig"; sourceTree = "<group>"; };
 		E816042C19FAE05200B87B9D /* Common.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
 		E818296419F6F04A007B6DC9 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
-		E818296919F6FCB6007B6DC9 /* LessonsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LessonsViewController.swift; sourceTree = "<group>"; };
 		E818296B19F6FE87007B6DC9 /* LessonViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LessonViewController.swift; sourceTree = "<group>"; };
 		E81846CF19F94B580012EAAF /* ChildInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChildInfoViewController.swift; sourceTree = "<group>"; };
 		E81846D119F9503D0012EAAF /* MangedObjectContextHolder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MangedObjectContextHolder.swift; sourceTree = "<group>"; };
@@ -134,14 +131,13 @@
 		E88916D01A04340B002C8F13 /* CoreDataUnitTestBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataUnitTestBase.swift; sourceTree = "<group>"; };
 		E88916D21A0474AA002C8F13 /* BabyTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BabyTests.swift; sourceTree = "<group>"; };
 		E88916D41A047BCE002C8F13 /* LessonPlannerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LessonPlannerTests.swift; sourceTree = "<group>"; };
+		E8998BEF1A24079E00BD1761 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		E8A50DDC1A01B7F100756CC8 /* LessonLog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LessonLog.swift; sourceTree = "<group>"; };
 		E8ACF33E1A1827D3005D6740 /* ChildInfoBirthDatePopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChildInfoBirthDatePopoverViewController.swift; sourceTree = "<group>"; };
 		E8BA1C2319BA11DB0092974A /* SettingsListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsListViewController.swift; sourceTree = "<group>"; };
 		E8BF775C19F932DA00F1BF0A /* Baby.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Baby.swift; sourceTree = "<group>"; };
 		E8BFC82C1A155FB7004929EF /* applause-01.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "applause-01.mp3"; sourceTree = "<group>"; };
 		E8BFC82E1A15635A004929EF /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
-		E8BFC8321A165075004929EF /* WordsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordsViewController.swift; sourceTree = "<group>"; };
-		E8BFC8341A1650A6004929EF /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		E8CDE7E3199FD18F0036CFE8 /* LittleReader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LittleReader.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8CDE7E7199FD18F0036CFE8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E8CDE7E8199FD18F0036CFE8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -279,14 +275,12 @@
 			children = (
 				E8CDE7ED199FD18F0036CFE8 /* MainViewController.swift */,
 				E8F807441A12793E00FC427F /* MenuViewController.swift */,
+				E8998BEF1A24079E00BD1761 /* DetailViewController.swift */,
 				E818296B19F6FE87007B6DC9 /* LessonViewController.swift */,
-				E818296919F6FCB6007B6DC9 /* LessonsViewController.swift */,
 				E84794FE1A01C4470065BABE /* LessonsListViewController.swift */,
 				E8BA1C2319BA11DB0092974A /* SettingsListViewController.swift */,
-				E8BFC8341A1650A6004929EF /* SettingsViewController.swift */,
 				E81846CF19F94B580012EAAF /* ChildInfoViewController.swift */,
 				E8ACF33E1A1827D3005D6740 /* ChildInfoBirthDatePopoverViewController.swift */,
-				E8BFC8321A165075004929EF /* WordsViewController.swift */,
 				E841F67119FA868700684DD6 /* WordListViewController.swift */,
 				E81846D119F9503D0012EAAF /* MangedObjectContextHolder.swift */,
 				E82959121A00108D003575F7 /* AddWordsViewController.swift */,
@@ -576,14 +570,12 @@
 				E8FBFD441A012B6600087BE2 /* LessonPlanner.swift in Sources */,
 				E8CDE7EE199FD18F0036CFE8 /* MainViewController.swift in Sources */,
 				E84794FF1A01C4470065BABE /* LessonsListViewController.swift in Sources */,
-				E8E23E681A042785004764E9 /* LessonsViewController.swift in Sources */,
 				E82DEBFD19F6AA4100EED0A8 /* UserPreferences.swift in Sources */,
 				E85F39C919A6BB670004C80F /* Word.swift in Sources */,
 				E852E8061A1AB0B700DE8540 /* NSErrorExtensions.swift in Sources */,
 				E8F807451A12793E00FC427F /* MenuViewController.swift in Sources */,
 				E8CEDB5F1A1D13E400BE4ED8 /* LessonsListViewTableViewCells.swift in Sources */,
 				E86FF5A41A1BA8A700F71F95 /* WordListTableHeaderView.swift in Sources */,
-				E8BFC8331A165075004929EF /* WordsViewController.swift in Sources */,
 				E8CEDB6F1A1E423300BE4ED8 /* NotificationViewController.swift in Sources */,
 				E8DB1FBC1A1EA249001B904D /* NotificationsDisplayViewController.swift in Sources */,
 				E8FBFD481A013DD700087BE2 /* NSDateExtensions.swift in Sources */,
@@ -601,10 +593,10 @@
 				E839D8D219FE802900D0765E /* WordImporter.swift in Sources */,
 				E81846D419F961870012EAAF /* UIAlertExtensions.swift in Sources */,
 				E8CDE7E9199FD18F0036CFE8 /* AppDelegate.swift in Sources */,
+				E8998BF01A24079E00BD1761 /* DetailViewController.swift in Sources */,
 				E85F39CC19A6BB670004C80F /* WordSet.swift in Sources */,
 				E841F67619FA935800684DD6 /* NSDate+HumanizedTime.m in Sources */,
 				E8ACF33F1A1827D3005D6740 /* ChildInfoBirthDatePopoverViewController.swift in Sources */,
-				E8BFC8351A1650A6004929EF /* SettingsViewController.swift in Sources */,
 				E82DEC0519F6B97300EED0A8 /* UsageAnalytics.swift in Sources */,
 				E841F67219FA868700684DD6 /* WordListViewController.swift in Sources */,
 				E88916D71A047CB0002C8F13 /* Baby.swift in Sources */,

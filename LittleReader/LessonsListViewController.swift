@@ -27,29 +27,27 @@ class LessonsListViewController: UITableViewController, NSFetchedResultsControll
     let sectionForNextLesson = 0
     let sectionForPreviousLessons = 1
     
-    var baby : Baby?
     private var fetchedResultsController = NSFetchedResultsController()
     private var _planner : LessonPlanner?
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewDidLoad() {        super.viewDidLoad()
         NSTimer.scheduledTimerWithTimeInterval(30.0 , target: self, selector: "updateCurrentStateMessages", userInfo: nil, repeats:true)
     }
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        if let b = baby {
-            _planner = LessonPlanner(baby: baby!)
+        if let b = Baby.currentBaby {
+            _planner = LessonPlanner(baby: b)
             updateTakenLessons()
             updateCurrentStateMessages()
         }
     }
     
     func updateTakenLessons() {
-        if let ctx = baby?.managedObjectContext {
+        if let ctx = Baby.currentBaby?.managedObjectContext {
             if fetchedResultsController.fetchedObjects == nil {
                 let fetchRequest = NSFetchRequest(entityName: "LessonLog")
-                fetchRequest.predicate = NSPredicate(format: "(baby == %@) AND numberOfWordsViewed >=\(WORDS_PER_WORDSET)",baby!)
+                fetchRequest.predicate = NSPredicate(format: "(baby == %@) AND numberOfWordsViewed >=\(WORDS_PER_WORDSET)",Baby.currentBaby!)
                 fetchRequest.sortDescriptors = [NSSortDescriptor(key: "lessonDate", ascending: false)]
                 fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest,
                     managedObjectContext: ctx, sectionNameKeyPath: nil, cacheName: nil)

@@ -147,7 +147,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     }
                 }
                 
-                if planner.numberOfAvailableWords < 1 {
+                if planner.numberOfAvailableWords < 300 {
                     let key = "number_of_words_out_\(NSDate().startOfDay())"  // Make the alert come back everyday
                     if let notification = Notification.newUniqueNotification(.Alert, key: key, title: "alert_words_out_title", context: ctx) {
                         notification.message = "alert_words_out_msg"

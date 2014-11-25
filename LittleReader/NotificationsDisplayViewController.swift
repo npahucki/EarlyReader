@@ -38,6 +38,7 @@ class NotificationsDisplayViewController: UIViewController, ManagedObjectContext
     override func viewDidLoad() {
         super.viewDidLoad()
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "handleDataModelChange:", name: NSManagedObjectContextObjectsDidChangeNotification, object:managedContext)
+        self.view.layer.borderWidth = 1
     }
     
     deinit {
