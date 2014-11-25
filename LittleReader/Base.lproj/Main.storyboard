@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6221" systemVersion="13F34" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="MDV-Pk-R5t">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="13F34" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="MDV-Pk-R5t">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6213"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -82,7 +82,7 @@
                                                         <segue destination="caz-NO-Bej" kind="modal" id="MAW-iu-DCN"/>
                                                     </connections>
                                                 </button>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zmm-HS-xFb" userLabel="Spacer">
+                                                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zmm-HS-xFb" userLabel="Spacer">
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" id="GdW-Lg-ICe"/>
@@ -113,7 +113,7 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5bh-kZ-bbo" id="98k-2L-9pn">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rdf-pt-UGA" userLabel="Spacer">
+                                                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rdf-pt-UGA" userLabel="Spacer">
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" id="Fyi-yx-2Ov"/>
@@ -162,7 +162,7 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5Pt-Og-PLs" id="j8r-fO-kAT">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s7q-KU-xuz" userLabel="Spacer">
+                                                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="s7q-KU-xuz" userLabel="Spacer">
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" id="gPn-Co-O4d"/>
@@ -211,7 +211,7 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xGq-uH-0km" id="Z9E-ze-BhJ">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6pH-aP-Xx1" userLabel="Spacer">
+                                                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6pH-aP-Xx1" userLabel="Spacer">
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" id="qhH-xk-Lwk"/>
@@ -391,10 +391,10 @@
             </objects>
             <point key="canvasLocation" x="1692" y="1995"/>
         </scene>
-        <!--Notifications View Controller-->
+        <!--Notifications Display View Controller-->
         <scene sceneID="0dp-ue-JaT">
             <objects>
-                <viewController id="S0e-tX-9Ht" userLabel="Notifications View Controller" customClass="NotificationsDisplayViewController" customModule="LittleReader" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="S0e-tX-9Ht" customClass="NotificationsDisplayViewController" customModule="LittleReader" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="0h2-JY-sgw"/>
                         <viewControllerLayoutGuide type="bottom" id="8Oc-Zw-eN1"/>
@@ -402,7 +402,7 @@
                     <view key="view" contentMode="scaleToFill" id="Y8F-g0-iri">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="100"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
                     <nil key="simulatedTopBarMetrics"/>
@@ -497,10 +497,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="703" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3yn-2F-k0K" userLabel="Lesson LIst Container">
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3yn-2F-k0K" userLabel="Child Container">
                                 <rect key="frame" x="16" y="206" width="671" height="546"/>
                             </containerView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lessons" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RgI-p1-OC0">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lessons" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RgI-p1-OC0" userLabel="Header">
                                 <rect key="frame" x="32" y="140" width="110" height="41"/>
                                 <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans" pointSize="30"/>
                                 <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -519,7 +519,7 @@
                                     <constraint firstAttribute="height" constant="100" id="309-Yh-JB5"/>
                                 </constraints>
                                 <connections>
-                                    <segue destination="S0e-tX-9Ht" kind="embed" id="bqh-ZO-7Vd"/>
+                                    <segue destination="S0e-tX-9Ht" kind="embed" id="Suo-Xc-Xqy"/>
                                 </connections>
                             </containerView>
                         </subviews>

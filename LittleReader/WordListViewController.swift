@@ -184,7 +184,7 @@ class WordListViewController: UITableViewController,ManagedObjectContextHolder, 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell = tableView.dequeueReusableCellWithIdentifier("wordCell", forIndexPath: indexPath) as UITableViewCell
         let word = fetchedResultsController.objectAtIndexPath(indexPath) as Word
-        cell.textLabel!.text = word.text
+        cell.textLabel.text = word.text
         // TODO: Localize!
         if (word.wordSet != nil) {
             if let viewedOn = word.lastViewedOn {

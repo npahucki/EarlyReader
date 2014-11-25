@@ -26,17 +26,18 @@ class DetailViewController: UIViewController,NotificationsDisplayViewControllerD
         set(newVc) {
             // Out with the old...
             if let oldVc = childViewControllers.last as? UIViewController {
-                oldVc.removeFromParentViewController()
-                oldVc.view?.removeFromSuperview()
+                if oldVc != _notificationsViewController {
+                    oldVc.removeFromParentViewController()
+                    oldVc.view.removeFromSuperview()
+                }
             }
 
             // In with the new...
             if let vc = newVc {
                 titleLabel.text = vc.title
-                if let childView = vc.view {
-                    childView.frame = CGRect(x: 0.0, y: 0.0, width: containerView.bounds.width, height: containerView.bounds.height)
-                    containerView.addSubview(childView)
-                }
+                let childView = vc.view
+                childView.frame = CGRect(x: 0.0, y: 0.0, width: containerView.bounds.width, height: containerView.bounds.height)
+                containerView.addSubview(childView)
                 addChildViewController(vc)
                 vc.didMoveToParentViewController(self)
             }
@@ -47,7 +48,8 @@ class DetailViewController: UIViewController,NotificationsDisplayViewControllerD
         super.viewDidLoad()
         containerHeightConstraint.constant = 0
         view.layoutIfNeeded()
-        _notificationsViewController.loadNotifications()
+        //_notificationsViewController.loadNotifications()
+        NSTimer.scheduledTimerWithTimeInterval(1.0, target: _notificationsViewController, selector: "loadNotifications", userInfo: nil, repeats: false)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
