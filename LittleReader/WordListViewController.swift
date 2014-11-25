@@ -61,16 +61,16 @@ class WordListViewController: UITableViewController,ManagedObjectContextHolder, 
 
     func startEditingAvailableWords() {
         if let headerView = _headerViews.values.filter( {$0.sectionKey == Word.wordAvailableGroupKey()}).array.first {
-            headerView.addButton.enabled = false
             // TODO: localize
             headerView.editButton.setTitle("Done", forState: UIControlState.Normal)
+            headerView.addButton.hidden = true
             tableView.setEditing(true, animated: true)
         }
     }
 
     func endEditingAvailableWords() {
         if let headerView = _headerViews.values.filter( {$0.sectionKey == Word.wordAvailableGroupKey()}).array.first {
-            headerView.addButton.enabled = true
+            headerView.addButton.hidden = false
             // TODO: localize
             headerView.editButton.setTitle("Edit", forState: UIControlState.Normal)
             tableView.setEditing(false, animated: true)
