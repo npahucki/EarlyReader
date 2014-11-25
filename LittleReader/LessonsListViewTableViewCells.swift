@@ -61,13 +61,6 @@ class PastLessonTableViewCell : UITableViewCell {
     
     @IBOutlet weak var wordsLabel: UILabel!
     @IBOutlet weak var whenTakenLabel: UILabel!
-    @IBOutlet weak var retakeButton: UIButton!
-    
-    override func awakeFromNib() {
-        retakeButton.layer.cornerRadius = 5
-        retakeButton.layer.borderWidth = 1
-        retakeButton.layer.borderColor = UIColor.applicationPinkColor().CGColor
-    }
     
     func setLessonLog(log: LessonLog) {
         let words = log.words.componentsSeparatedByString(",")

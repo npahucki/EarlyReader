@@ -162,11 +162,6 @@ class WordListViewController: UITableViewController,ManagedObjectContextHolder, 
         }
     }
 
-    override func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        return UIView()
-    }
-
-    
     func updateHeaderTextForSection(section: Int) {
         if let headerView = _headerViews[section] {
             headerView.titleLabel.text = NSLocalizedString("word_list_" + headerView.sectionKey!, comment : "")
@@ -203,6 +198,17 @@ class WordListViewController: UITableViewController,ManagedObjectContextHolder, 
         return cell
     }
 
+    override func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let footerView = UIView()
+        footerView.backgroundColor = UIColor.whiteColor()
+        // A little hackery to work around a sometimes appearing separator.
+        let separatorView = UIView(frame: (CGRect(x: tableView.separatorInset.left, y:-1, width: tableView.frame.width - tableView.separatorInset.right * 2 ,height: 1)))
+        separatorView.backgroundColor = UIColor.applicationTableCellSelectedBackgroundColor()
+        footerView.addSubview(separatorView)
+        return footerView
+    }
+
+    
     func controllerDidChangeContent(controller: NSFetchedResultsController!) {
         //tableView.reloadData()
     }

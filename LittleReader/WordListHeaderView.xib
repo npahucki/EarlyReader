@@ -34,9 +34,9 @@
                         <constraint firstAttribute="height" constant="1" id="575-wZ-487"/>
                     </constraints>
                 </view>
-                <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zCY-GY-6jk" userLabel="Divider View">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zCY-GY-6jk" userLabel="Divider View">
                     <rect key="frame" x="0.0" y="127" width="768" height="1"/>
-                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="1" id="3xu-Jq-2Am"/>
                     </constraints>
