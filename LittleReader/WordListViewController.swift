@@ -25,26 +25,25 @@ class WordListViewController: UITableViewController,ManagedObjectContextHolder, 
         fetchedResultsController.performFetch(nil)
         
     }
-
-
     
     private func getFetchedResultController() -> NSFetchedResultsController {
-        if let ctx = managedContext {
-            fetchedResultsController = NSFetchedResultsController(fetchRequest: taskFetchRequest(), managedObjectContext: ctx, sectionNameKeyPath: "wordGroupingKey", cacheName: nil)
+        if let baby = Baby.currentBaby {
+            let fetchRequest = NSFetchRequest(entityName: "Word")
+            fetchRequest.predicate = NSPredicate(format: "baby = %@",baby)
+            fetchRequest.sortDescriptors = [
+                NSSortDescriptor(key: "wordSet.number", ascending: true),
+                NSSortDescriptor(key: "retiredOn", ascending: true),
+                NSSortDescriptor(key: "text", ascending: true, selector: "localizedCaseInsensitiveCompare:")
+            ]
+            fetchRequest.propertiesToFetch = ["wordSet"]
+            if let ctx = managedContext {
+                return NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: ctx, sectionNameKeyPath: "wordGroupingKey", cacheName: nil)
+            }
         }
+        
         return fetchedResultsController
     }
     
-    private func taskFetchRequest() -> NSFetchRequest {
-        let fetchRequest = NSFetchRequest(entityName: "Word")
-        fetchRequest.sortDescriptors = [
-            NSSortDescriptor(key: "wordSet.number", ascending: true),
-            NSSortDescriptor(key: "retiredOn", ascending: true),
-            NSSortDescriptor(key: "text", ascending: true, selector: "localizedCaseInsensitiveCompare:")
-        ]
-        fetchRequest.propertiesToFetch = ["wordSet"]
-        return fetchRequest
-    }
 
     func didClickHeaderButton(sender:WordListTableHeaderView, button: UIButton) {
         if sender.sectionKey == Word.wordAvailableGroupKey() {
@@ -210,26 +209,27 @@ class WordListViewController: UITableViewController,ManagedObjectContextHolder, 
     }
     
     func didManuallyAddWordsInString(wordString : String) {
-        let importer = WordImporter(managedContext: self.managedContext!)
-        let words = importer.parseWords(wordString)
-        if words?.count > 0 {
-            let result = importer.importWords(words!)
-            if let err = result.error {
-                UIAlertView.showGenericLocalizedErrorMessage("error_msg_words_added")
-                UsageAnalytics.trackError("Could not import manually added words", error: err)
-            } else {
-                if result.numberOfWordsAdded > 0 {
-                    let title = NSLocalizedString("success_title_generic", comment:"")
-                    let msg = NSString(format: NSLocalizedString("msg_words_added", comment:""), result.numberOfWordsAdded)
-                    let cancelTitle = NSLocalizedString("uialert_accept_button_title", comment:"")
-                    UIAlertView(title: title, message: msg, delegate: nil, cancelButtonTitle : cancelTitle).show()
-                    
+        if let baby = Baby.currentBaby {
+            let importer = WordImporter(baby : baby)
+            let words = importer.parseWords(wordString)
+            if words?.count > 0 {
+                let result = importer.importWords(words!)
+                if let err = result.error {
+                    UIAlertView.showGenericLocalizedErrorMessage("error_msg_words_added")
+                    UsageAnalytics.trackError("Could not import manually added words", error: err)
+                } else {
+                    if result.numberOfWordsAdded > 0 {
+                        let title = NSLocalizedString("success_title_generic", comment:"")
+                        let msg = NSString(format: NSLocalizedString("msg_words_added", comment:""), result.numberOfWordsAdded)
+                        let cancelTitle = NSLocalizedString("uialert_accept_button_title", comment:"")
+                        UIAlertView(title: title, message: msg, delegate: nil, cancelButtonTitle : cancelTitle).show()
+                        
+                    }
                 }
+                
             }
-            
         }
     }
-
-    
+   
     
 }

@@ -11,11 +11,14 @@ import CoreData
 
 public class WordImporter {
     
+    private let _baby : Baby!
+    private let _managedContext : NSManagedObjectContext!
     
-    private let _managedContext : NSManagedObjectContext
     
-    public init(managedContext : NSManagedObjectContext) {
-        self._managedContext = managedContext
+    public init(baby : Baby) {
+        assert(baby.managedObjectContext != nil,"Expected Baby to have managed object context")
+        _baby = baby
+        _managedContext = baby.managedObjectContext!
     }
     
     
@@ -62,7 +65,7 @@ public class WordImporter {
         
             // First get a list of existing words
              let fetchRequest = NSFetchRequest(entityName: "Word")
-            fetchRequest.predicate = NSPredicate(format:"(text IN %@)", words);
+            fetchRequest.predicate = NSPredicate(format:"(text IN %@) and baby = %@", words, _baby);
             fetchRequest.sortDescriptors = [NSSortDescriptor(key: "text", ascending: true, selector: "localizedCaseInsensitiveCompare:")]
             fetchRequest.propertiesToFetch = ["text"]
             var wordsThatAlreadyExist = NSMutableSet()
@@ -82,6 +85,7 @@ public class WordImporter {
                             count++
                             let word = Word(entity: entityDescription, insertIntoManagedObjectContext: _managedContext)
                             word.text = w
+                            word.baby = _baby
                             wordsThatAlreadyExist.addObject(w.lowercaseString)
                         }
                     }

@@ -35,12 +35,14 @@ class ChildInfoViewController: UIViewController, UITextFieldDelegate, ChildInfoB
         var error : NSError? = nil
         baby.managedObjectContext!.save(&error)
         if let e = error {
+            sender.enabled = true
+            self.activityIndicator.stopAnimating()
             UsageAnalytics.trackError("Could not save baby", error: e)
             UIAlertView.showGenericLocalizedErrorMessage("msg_error_baby_save")
         } else {
             Baby.currentBaby = baby
             if baby.wordSets.count < 1 {
-                let importer = WordImporter(managedContext: baby!.managedObjectContext!)
+                let importer = WordImporter(baby : baby)
                 importer.importWordListNamed("basic") { (error, numberOfWordsImported) -> () in
                     self.activityIndicator.stopAnimating()
                     sender.enabled = true

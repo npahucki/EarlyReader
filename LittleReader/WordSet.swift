@@ -40,7 +40,7 @@ public class WordSet: NSManagedObject {
         if numberOfWordsNeeded > 0 {
             let fetchRequest = NSFetchRequest(entityName: "Word")
             fetchRequest.sortDescriptors = [NSSortDescriptor(key: "lastViewedOn", ascending: true)]
-            fetchRequest.predicate = NSPredicate(format: "wordSet = NULL AND retiredOn = NULL", argumentArray: nil)
+            fetchRequest.predicate = NSPredicate(format: "wordSet = NULL AND retiredOn = NULL AND baby=%@", baby)
             fetchRequest.fetchLimit = numberOfWordsNeeded
             if let words = managedObjectContext?.executeFetchRequest(fetchRequest, error: &error) as? [Word] {
                 for word in words {

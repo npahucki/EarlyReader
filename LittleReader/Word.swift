@@ -30,6 +30,8 @@ public class Word: NSManagedObject {
     @NSManaged public var text: String
     @NSManaged public var timesViewed: UInt16
     @NSManaged public var wordSet: WordSet?
+    @NSManaged public var baby: Baby
+
     
     func wordGroupingKey() -> String {
         if let set = self.wordSet {

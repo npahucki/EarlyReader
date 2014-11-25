@@ -13,10 +13,10 @@ import LittleReader
 class WordImporterTests : CoreDataUnitTestBase {
 
     var importer : WordImporter! = nil
-
+    
     override func setUp() {
         super.setUp()
-        importer = WordImporter(managedContext: ctx)
+        importer = WordImporter(baby : baby)
     }
     
     override func tearDown() {

@@ -13,9 +13,6 @@ class WordsViewController: UIViewController, ManagedObjectContextHolder {
 
     var managedContext : NSManagedObjectContext? = nil
 
-//    @IBAction func didClickLoadWords(sender: AnyObject) {
-//    }
-//    
 //    @IBAction func didClickClearWords(sender: AnyObject) {
 //        if let ctx = managedContext {
 //            let fetchRequest = NSFetchRequest(entityName: "Word")
@@ -41,33 +38,6 @@ class WordsViewController: UIViewController, ManagedObjectContextHolder {
 //    
 //    
 //    
-//    func updateWordCount() {
-//        if let ctx = managedContext {
-//            let fetchRequest = NSFetchRequest(entityName: "Word")
-//            let count = ctx.countForFetchRequest(fetchRequest, error: nil)
-//            let title = NSString(format: NSLocalizedString("settings_menu_clear_words",comment : "Settings menu text"), count)
-//            self.clearWordsButton.setTitle(title, forState: UIControlState.Normal)
-//        }
-//    }
-//    
-//    func insertWords(words : [String]) {
-//        if let ctx = managedContext {
-//            let importer = WordImporter(managedContext:ctx)
-//            let result = importer.importWords(words)
-//            if let err = result.error {
-//                UsageAnalytics.trackError("Failed to insertWords into CoreData", error: err)
-//            } else {
-//                if let baby = Baby.currentBaby {
-//                    let numSets = baby.wordSets.count > 0 ? baby.wordSets.count : 1
-//                    baby.populateWordSets(numSets)
-//                    //updateWordCount()
-//                }
-//            }
-//        }
-//    }
-    
-
-
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let vc = segue.destinationViewController as? ManagedObjectContextHolder {

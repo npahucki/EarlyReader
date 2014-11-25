@@ -15,7 +15,7 @@ import LittleReader
 class CoreDataUnitTestBase : XCTestCase {
 
     var ctx : NSManagedObjectContext!
-    var baby : Baby? = nil
+    var baby : Baby!
 
     private var _wordSetNumber = 0
     
@@ -55,13 +55,13 @@ class CoreDataUnitTestBase : XCTestCase {
         let entityDescription = NSEntityDescription.entityForName("WordSet", inManagedObjectContext:ctx)
         XCTAssert(entityDescription != nil,"entityDescription came back nil!")
         let ws = WordSet(entity: entityDescription!, insertIntoManagedObjectContext: ctx)
-        ws.baby = baby!
+        ws.baby = baby
         ws.number = UInt16(_wordSetNumber++)
         return ws
     }
     
     func importWords(words : [String]) -> Int {
-        return WordImporter(managedContext: ctx).importWords(words).numberOfWordsAdded
+        return WordImporter(baby: baby).importWords(words).numberOfWordsAdded
     }
     
     func saveContext() {
