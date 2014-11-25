@@ -51,6 +51,8 @@
 		E88916D71A047CB0002C8F13 /* Baby.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8BF775C19F932DA00F1BF0A /* Baby.swift */; };
 		E8998BF01A24079E00BD1761 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8998BEF1A24079E00BD1761 /* DetailViewController.swift */; };
 		E8A50DDD1A01B7F100756CC8 /* LessonLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A50DDC1A01B7F100756CC8 /* LessonLog.swift */; };
+		E8AC79D91A24D6E1005E74D3 /* HeartsProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AC79D81A24D6E1005E74D3 /* HeartsProgressView.swift */; };
+		E8AC79DB1A250D23005E74D3 /* NSStringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AC79DA1A250D23005E74D3 /* NSStringExtensions.swift */; };
 		E8ACF33F1A1827D3005D6740 /* ChildInfoBirthDatePopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8ACF33E1A1827D3005D6740 /* ChildInfoBirthDatePopoverViewController.swift */; };
 		E8BA1C2419BA11DB0092974A /* SettingsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8BA1C2319BA11DB0092974A /* SettingsListViewController.swift */; };
 		E8BFC82D1A155FB7004929EF /* applause-01.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E8BFC82C1A155FB7004929EF /* applause-01.mp3 */; };
@@ -133,6 +135,8 @@
 		E88916D41A047BCE002C8F13 /* LessonPlannerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LessonPlannerTests.swift; sourceTree = "<group>"; };
 		E8998BEF1A24079E00BD1761 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		E8A50DDC1A01B7F100756CC8 /* LessonLog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LessonLog.swift; sourceTree = "<group>"; };
+		E8AC79D81A24D6E1005E74D3 /* HeartsProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeartsProgressView.swift; sourceTree = "<group>"; };
+		E8AC79DA1A250D23005E74D3 /* NSStringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSStringExtensions.swift; sourceTree = "<group>"; };
 		E8ACF33E1A1827D3005D6740 /* ChildInfoBirthDatePopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChildInfoBirthDatePopoverViewController.swift; sourceTree = "<group>"; };
 		E8BA1C2319BA11DB0092974A /* SettingsListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsListViewController.swift; sourceTree = "<group>"; };
 		E8BF775C19F932DA00F1BF0A /* Baby.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Baby.swift; sourceTree = "<group>"; };
@@ -254,6 +258,7 @@
 				E8FBFD471A013DD700087BE2 /* NSDateExtensions.swift */,
 				E852E8051A1AB0B700DE8540 /* NSErrorExtensions.swift */,
 				E84C8B9B1A12936D00B66B74 /* UIColorExtensions.swift */,
+				E8AC79DA1A250D23005E74D3 /* NSStringExtensions.swift */,
 			);
 			name = Util;
 			sourceTree = "<group>";
@@ -298,6 +303,7 @@
 				E8CEDB621A1D347F00BE4ED8 /* LessonsListTableViewHeader.swift */,
 				E86FF5A31A1BA8A700F71F95 /* WordListTableHeaderView.swift */,
 				E8CEDB5E1A1D13E400BE4ED8 /* LessonsListViewTableViewCells.swift */,
+				E8AC79D81A24D6E1005E74D3 /* HeartsProgressView.swift */,
 			);
 			name = CustomViews;
 			sourceTree = "<group>";
@@ -568,10 +574,12 @@
 			files = (
 				E84C8B9C1A12936D00B66B74 /* UIColorExtensions.swift in Sources */,
 				E8FBFD441A012B6600087BE2 /* LessonPlanner.swift in Sources */,
+				E8AC79DB1A250D23005E74D3 /* NSStringExtensions.swift in Sources */,
 				E8CDE7EE199FD18F0036CFE8 /* MainViewController.swift in Sources */,
 				E84794FF1A01C4470065BABE /* LessonsListViewController.swift in Sources */,
 				E82DEBFD19F6AA4100EED0A8 /* UserPreferences.swift in Sources */,
 				E85F39C919A6BB670004C80F /* Word.swift in Sources */,
+				E8AC79D91A24D6E1005E74D3 /* HeartsProgressView.swift in Sources */,
 				E852E8061A1AB0B700DE8540 /* NSErrorExtensions.swift in Sources */,
 				E8F807451A12793E00FC427F /* MenuViewController.swift in Sources */,
 				E8CEDB5F1A1D13E400BE4ED8 /* LessonsListViewTableViewCells.swift in Sources */,

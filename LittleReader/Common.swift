@@ -16,6 +16,8 @@ let WORD_VIEWS_BEFORE_RETIREMENT : UInt16 = 15
 let TIME_INTERVAL_24_HOURS = NSTimeInterval(60 * 60 * 24)
 
 
+let NS_NOTIFICATION_NUMBER_OF_WORD_SETS_CHANGED = "numberOfWordSetsChanged"
+
 // Icky Global, but no other good way to get the context to Baby class.
 var _mainManagedObjectContext : NSManagedObjectContext? = nil
 

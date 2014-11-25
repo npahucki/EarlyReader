@@ -131,8 +131,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 // Checking that the number of word sets is correct
                 if planner.numberOfWordSetsForToday < baby.wordSets.count {
                     let key = "increase_sets_for_program_day_" + String(day)
-                    if let notification = Notification.newUniqueNotification(.Guidance, key: key, title: "increase_sets_for_program_day_title", context: ctx) {
-                        notification.message = NSString(format : NSLocalizedString("increase_sets_for_program_day_msg", comment:""),planner.numberOfWordSetsForToday)
+                    if let notification = Notification.newUniqueNotification(.Guidance, key: key, title: "notification_increase_sets_for_program_day_title", context: ctx) {
+                        notification.message = NSString(format : NSLocalizedString("notification_increase_sets_for_program_day_msg", comment:""),planner.numberOfWordSetsForToday)
                         saveContext()
                     }
                 }
@@ -147,7 +147,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     }
                 }
                 
-                if planner.numberOfAvailableWords < 300 {
+                if planner.numberOfAvailableWords < 1 {
                     let key = "number_of_words_out_\(NSDate().startOfDay())"  // Make the alert come back everyday
                     if let notification = Notification.newUniqueNotification(.Alert, key: key, title: "alert_words_out_title", context: ctx) {
                         notification.message = "alert_words_out_msg"

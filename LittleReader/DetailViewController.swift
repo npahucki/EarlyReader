@@ -12,27 +12,30 @@ import CoreData
 class DetailViewController: UIViewController,NotificationsDisplayViewControllerDelegate, ManagedObjectContextHolder {
 
     private var _notificationsViewController : NotificationsDisplayViewController!
-
+    private var _currentDetailViewController : UIViewController?
+    
     var managedContext : NSManagedObjectContext? = nil
     
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var lessonsCompletedLabel: UILabel!
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var containerHeightConstraint: NSLayoutConstraint!
-    
+    @IBOutlet weak var rewardBirdImageView: UIImageView!
+    @IBOutlet weak var heartsProgressView: HeartsProgressView!
+
     var currentDetailViewController : UIViewController? {
         get {
-            return childViewControllers.last as? UIViewController
+            return _currentDetailViewController
         }
         set(newVc) {
             // Out with the old...
-            if let oldVc = childViewControllers.last as? UIViewController {
-                if oldVc != _notificationsViewController {
-                    oldVc.removeFromParentViewController()
-                    oldVc.view.removeFromSuperview()
-                }
+            if let oldVc = _currentDetailViewController {
+                oldVc.removeFromParentViewController()
+                oldVc.view.removeFromSuperview()
             }
 
             // In with the new...
+            _currentDetailViewController = newVc
             if let vc = newVc {
                 titleLabel.text = vc.title
                 let childView = vc.view
@@ -50,6 +53,16 @@ class DetailViewController: UIViewController,NotificationsDisplayViewControllerD
         view.layoutIfNeeded()
         //_notificationsViewController.loadNotifications()
         NSTimer.scheduledTimerWithTimeInterval(1.0, target: _notificationsViewController, selector: "loadNotifications", userInfo: nil, repeats: false)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateLessonProgress", name: NS_NOTIFICATION_NUMBER_OF_WORD_SETS_CHANGED, object: nil)
+    }
+    
+    deinit {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        updateLessonProgress()
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -59,7 +72,6 @@ class DetailViewController: UIViewController,NotificationsDisplayViewControllerD
             notificationsController.delegate = self
         }
     }
-    
     
     // Once the delegate has set the final size of the view, it should call back containerDidFinishExpanding()
     func needsContainerSizeAdjusted(displayController: NotificationsDisplayViewController) {
@@ -71,6 +83,30 @@ class DetailViewController: UIViewController,NotificationsDisplayViewControllerD
                 displayController.containerDidFinishAdjusting()
         }
     }
-
+    
+    func updateLessonProgress() {
+        //                NSForegroundColorAttributeName : UIColor.applicationTextColor(),
+        if let baby = Baby.currentBaby {
+            let lessonPlanner = LessonPlanner(baby: baby)
+            let completedText = NSString(format: NSLocalizedString("msg_lessons_completed_today", comment:"Text shown in main detail view for how many lessons for today have been completed"),lessonPlanner.numberOfLessonsTakenToday,lessonPlanner.numberOfLessonsPerDay)
+            let attrString  = NSMutableAttributedString(string: completedText, attributes: [
+                NSForegroundColorAttributeName : UIColor.applicationTextColor(),
+                NSFontAttributeName : UIFont(name: "OpenSans-Light", size: 17.0)!
+                ])
+            // Now fish out the numbers and make them bold - PITA!!!
+            let numberOfLessonsTakenTodayRange = completedText.rangeOfString(String(lessonPlanner.numberOfLessonsTakenToday))
+            let numberOfLessonsPerDayRange = completedText.rangeOfString(String(lessonPlanner.numberOfLessonsPerDay), options: NSStringCompareOptions.BackwardsSearch)
+            let boldFont = UIFont(name: "OpenSans-Semibold", size: 17.0)!
+            attrString.setAttributes([NSFontAttributeName : boldFont], range: numberOfLessonsPerDayRange)
+            attrString.setAttributes([NSFontAttributeName : boldFont], range: numberOfLessonsTakenTodayRange)
+            lessonsCompletedLabel.attributedText = attrString
+            heartsProgressView.setLesson(lessonPlanner.numberOfLessonsTakenToday, totalLessons: lessonPlanner.numberOfLessonsPerDay,wordSets:baby.wordSets.count)
+            if lessonPlanner.numberOfLessonsRemainingToday == 0 {
+                rewardBirdImageView.image = UIImage(named:   "RewardBirdCrown")
+            } else {
+                rewardBirdImageView.image = UIImage(named:   "RewardBird")
+            }
+        }
+    }
     
 }

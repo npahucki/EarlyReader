@@ -67,6 +67,8 @@ class SettingsListViewController: UITableViewController, ManagedObjectContextHol
                     UsageAnalytics.trackError("Failed to change the word set count", error: err)
                     UIAlertView.showGenericLocalizedErrorMessage("msg_error_create_word_set")
                     sender.value = Float(baby.wordSets.count)
+                } else {
+                    NSNotificationCenter.defaultCenter().postNotificationName(NS_NOTIFICATION_NUMBER_OF_WORD_SETS_CHANGED, object: nil)
                 }
             }
         }
