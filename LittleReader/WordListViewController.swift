@@ -230,11 +230,11 @@ class WordListViewController: UITableViewController,ManagedObjectContextHolder, 
                     UsageAnalytics.trackError("Could not import manually added words", error: err)
                 } else {
                     if result.numberOfWordsAdded > 0 {
+                        updateHeaderTextForAllSections()
                         let title = NSLocalizedString("success_title_generic", comment:"")
                         let msg = NSString(format: NSLocalizedString("msg_words_added", comment:""), result.numberOfWordsAdded)
                         let cancelTitle = NSLocalizedString("uialert_accept_button_title", comment:"")
                         UIAlertView(title: title, message: msg, delegate: nil, cancelButtonTitle : cancelTitle).show()
-                        
                     }
                 }
                 
