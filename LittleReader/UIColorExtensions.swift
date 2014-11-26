@@ -16,7 +16,7 @@ extension UIColor {
     }
 
     class func applicationBlueColor() -> UIColor {
-        return UIColor.blueColor()  // TODO: colorFromRGB(0xf0045a)
+        return colorFromRGB(0x178DC8)
     }
     
     class func applicationLightTextColor() -> UIColor {
@@ -29,10 +29,6 @@ extension UIColor {
 
     class func applicationGreenColor() -> UIColor {
         return colorFromRGB(0x2EBF68)
-    }
-
-    class func applicationOrangeColor() -> UIColor {
-        return colorFromRGB(0xFC5B22)
     }
 
     class func applicationTableCellSelectedBackgroundColor() -> UIColor {
