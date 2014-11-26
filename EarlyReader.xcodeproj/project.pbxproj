@@ -85,22 +85,22 @@
 			containerPortal = E8CDE7DB199FD18F0036CFE8 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = E8CDE7E2199FD18F0036CFE8;
-			remoteInfo = LittleReader;
+			remoteInfo = EarlyReader;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		13D04F13B70FEA420DA97D48 /* Pods-EarlyReader.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EarlyReader.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EarlyReader/Pods-EarlyReader.debug.xcconfig"; sourceTree = "<group>"; };
-		1C0E0ABED882B3827F12E8C3 /* libPods-LittleReader.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LittleReader.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1C0E0ABED882B3827F12E8C3 /* libPods-EarlyReader.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-EarlyReader.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		24D3907D8EABE16209002B78 /* libPods-EarlyReaderTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-EarlyReaderTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B4CF2EC25DBCE89BAF68E9D /* Pods-EarlyReaderTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EarlyReaderTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-EarlyReaderTests/Pods-EarlyReaderTests.release.xcconfig"; sourceTree = "<group>"; };
 		3EADA38CD0B50B5F61DAECF5 /* libPods-EarlyReader.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-EarlyReader.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		65B18C27B6BB5D1AFA55EB4B /* Pods-LittleReader.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LittleReader.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LittleReader/Pods-LittleReader.debug.xcconfig"; sourceTree = "<group>"; };
+		65B18C27B6BB5D1AFA55EB4B /* Pods-EarlyReader.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EarlyReader.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EarlyReader/Pods-EarlyReader.debug.xcconfig"; sourceTree = "<group>"; };
 		7CC091EE20004461E4B06612 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D60A5F7FFB74D6E5B3DE8FC /* Pods-EarlyReader.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EarlyReader.release.xcconfig"; path = "Pods/Target Support Files/Pods-EarlyReader/Pods-EarlyReader.release.xcconfig"; sourceTree = "<group>"; };
-		C20539EBE83920ACA862BCA4 /* Pods-LittleReader.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LittleReader.release.xcconfig"; path = "Pods/Target Support Files/Pods-LittleReader/Pods-LittleReader.release.xcconfig"; sourceTree = "<group>"; };
+		C20539EBE83920ACA862BCA4 /* Pods-EarlyReader.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EarlyReader.release.xcconfig"; path = "Pods/Target Support Files/Pods-EarlyReader/Pods-EarlyReader.release.xcconfig"; sourceTree = "<group>"; };
 		DA4D1E8EDB3A35D64BBEC8CE /* Pods-EarlyReaderTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EarlyReaderTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EarlyReaderTests/Pods-EarlyReaderTests.debug.xcconfig"; sourceTree = "<group>"; };
-		DD3CC555AE2AE49B8D2EB1B6 /* Pods-LittleReaderTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LittleReaderTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-LittleReaderTests/Pods-LittleReaderTests.release.xcconfig"; sourceTree = "<group>"; };
+		DD3CC555AE2AE49B8D2EB1B6 /* Pods-EarlyReaderTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EarlyReaderTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-EarlyReaderTests/Pods-EarlyReaderTests.release.xcconfig"; sourceTree = "<group>"; };
 		E80630A91A2652D400BF89C4 /* ImportJSONViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ImportJSONViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		E816042C19FAE05200B87B9D /* Common.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = Common.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		E818296419F6F04A007B6DC9 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; lineEnding = 0; path = Localizable.strings; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.simpleColoring; };
@@ -108,7 +108,7 @@
 		E81846CF19F94B580012EAAF /* ChildInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ChildInfoViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		E81846D119F9503D0012EAAF /* MangedObjectContextHolder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = MangedObjectContextHolder.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		E81846D319F961870012EAAF /* UIAlertExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = UIAlertExtensions.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
-		E81C446119FE7794007966E5 /* WordImporterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; name = WordImporterTests.swift; path = ../LittleReader/WordImporterTests.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		E81C446119FE7794007966E5 /* WordImporterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; name = WordImporterTests.swift; path = ../EarlyReader/WordImporterTests.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		E81C446319FE77C6007966E5 /* WordSetTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = WordSetTests.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		E82959121A00108D003575F7 /* AddWordsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = AddWordsViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		E82DEBFC19F6AA4100EED0A8 /* UserPreferences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = UserPreferences.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -172,8 +172,8 @@
 		E8FBFD431A012B6600087BE2 /* LessonPlanner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = LessonPlanner.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		E8FBFD471A013DD700087BE2 /* NSDateExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = NSDateExtensions.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		E8FBFD4A1A013F2500087BE2 /* NSDateExtensionsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = NSDateExtensionsTests.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
-		F3EC5D2E2DA1EF2F907A90A7 /* Pods-LittleReaderTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LittleReaderTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LittleReaderTests/Pods-LittleReaderTests.debug.xcconfig"; sourceTree = "<group>"; };
-		F75A3AF90334BFB8AA231CFD /* libPods-LittleReaderTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LittleReaderTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F3EC5D2E2DA1EF2F907A90A7 /* Pods-EarlyReaderTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EarlyReaderTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EarlyReaderTests/Pods-EarlyReaderTests.debug.xcconfig"; sourceTree = "<group>"; };
+		F75A3AF90334BFB8AA231CFD /* libPods-EarlyReaderTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-EarlyReaderTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -201,10 +201,10 @@
 		5ECBECF1E934ED75E0CD0204 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				F3EC5D2E2DA1EF2F907A90A7 /* Pods-LittleReaderTests.debug.xcconfig */,
-				DD3CC555AE2AE49B8D2EB1B6 /* Pods-LittleReaderTests.release.xcconfig */,
-				65B18C27B6BB5D1AFA55EB4B /* Pods-LittleReader.debug.xcconfig */,
-				C20539EBE83920ACA862BCA4 /* Pods-LittleReader.release.xcconfig */,
+				F3EC5D2E2DA1EF2F907A90A7 /* Pods-EarlyReaderTests.debug.xcconfig */,
+				DD3CC555AE2AE49B8D2EB1B6 /* Pods-EarlyReaderTests.release.xcconfig */,
+				65B18C27B6BB5D1AFA55EB4B /* Pods-EarlyReader.debug.xcconfig */,
+				C20539EBE83920ACA862BCA4 /* Pods-EarlyReader.release.xcconfig */,
 				13D04F13B70FEA420DA97D48 /* Pods-EarlyReader.debug.xcconfig */,
 				DA4D1E8EDB3A35D64BBEC8CE /* Pods-EarlyReaderTests.debug.xcconfig */,
 				8D60A5F7FFB74D6E5B3DE8FC /* Pods-EarlyReader.release.xcconfig */,
@@ -218,8 +218,8 @@
 			children = (
 				E8BFC82E1A15635A004929EF /* AVFoundation.framework */,
 				7CC091EE20004461E4B06612 /* libPods.a */,
-				1C0E0ABED882B3827F12E8C3 /* libPods-LittleReader.a */,
-				F75A3AF90334BFB8AA231CFD /* libPods-LittleReaderTests.a */,
+				1C0E0ABED882B3827F12E8C3 /* libPods-EarlyReader.a */,
+				F75A3AF90334BFB8AA231CFD /* libPods-EarlyReaderTests.a */,
 				3EADA38CD0B50B5F61DAECF5 /* libPods-EarlyReader.a */,
 				24D3907D8EABE16209002B78 /* libPods-EarlyReaderTests.a */,
 			);
@@ -330,8 +330,8 @@
 			isa = PBXGroup;
 			children = (
 				E8CDE80819A03AB70036CFE8 /* QuartzCore.framework */,
-				E8CDE7E5199FD18F0036CFE8 /* LittleReader */,
-				E8CDE7FB199FD18F0036CFE8 /* LittleReaderTests */,
+				E8CDE7E5199FD18F0036CFE8 /* EarlyReader */,
+				E8CDE7FB199FD18F0036CFE8 /* EarlyReaderTests */,
 				E8CDE7E4199FD18F0036CFE8 /* Products */,
 				5ECBECF1E934ED75E0CD0204 /* Pods */,
 				68F75CCEB618874D9AC95EDC /* Frameworks */,
@@ -347,7 +347,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		E8CDE7E5199FD18F0036CFE8 /* LittleReader */ = {
+		E8CDE7E5199FD18F0036CFE8 /* EarlyReader */ = {
 			isa = PBXGroup;
 			children = (
 				E8CDE7EF199FD18F0036CFE8 /* Main.storyboard */,
@@ -366,7 +366,7 @@
 				E8CDE7E6199FD18F0036CFE8 /* Supporting Files */,
 				E818296419F6F04A007B6DC9 /* Localizable.strings */,
 			);
-			path = LittleReader;
+			path = EarlyReader;
 			sourceTree = "<group>";
 		};
 		E8CDE7E6199FD18F0036CFE8 /* Supporting Files */ = {
@@ -377,7 +377,7 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		E8CDE7FB199FD18F0036CFE8 /* LittleReaderTests */ = {
+		E8CDE7FB199FD18F0036CFE8 /* EarlyReaderTests */ = {
 			isa = PBXGroup;
 			children = (
 				E88916D01A04340B002C8F13 /* CoreDataUnitTestBase.swift */,
@@ -388,7 +388,7 @@
 				E88916D41A047BCE002C8F13 /* LessonPlannerTests.swift */,
 				E8CDE7FC199FD18F0036CFE8 /* Supporting Files */,
 			);
-			path = LittleReaderTests;
+			path = EarlyReaderTests;
 			sourceTree = "<group>";
 		};
 		E8CDE7FC199FD18F0036CFE8 /* Supporting Files */ = {
@@ -426,7 +426,7 @@
 			dependencies = (
 			);
 			name = EarlyReader;
-			productName = LittleReader;
+			productName = EarlyReader;
 			productReference = E8CDE7E3199FD18F0036CFE8 /* EarlyReader.app */;
 			productType = "com.apple.product-type.application";
 		};
@@ -446,7 +446,7 @@
 				E8CDE7FA199FD18F0036CFE8 /* PBXTargetDependency */,
 			);
 			name = EarlyReaderTests;
-			productName = LittleReaderTests;
+			productName = EarlyReaderTests;
 			productReference = E8CDE7F8199FD18F0036CFE8 /* EarlyReaderTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
@@ -709,7 +709,7 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
-				SWIFT_OBJC_BRIDGING_HEADER = LittleReader/ObjCBridging.h;
+				SWIFT_OBJC_BRIDGING_HEADER = EarlyReader/ObjCBridging.h;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -747,7 +747,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
-				SWIFT_OBJC_BRIDGING_HEADER = LittleReader/ObjCBridging.h;
+				SWIFT_OBJC_BRIDGING_HEADER = EarlyReader/ObjCBridging.h;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -762,7 +762,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				INFOPLIST_FILE = LittleReader/Info.plist;
+				INFOPLIST_FILE = EarlyReader/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				"OTHER_SWIFT_FLAGS[arch=*]" = "-D DEBUG";
@@ -782,7 +782,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				INFOPLIST_FILE = LittleReader/Info.plist;
+				INFOPLIST_FILE = EarlyReader/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = EarlyReader;
@@ -805,7 +805,7 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = LittleReaderTests/Info.plist;
+				INFOPLIST_FILE = EarlyReaderTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = EarlyReaderTests;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -823,7 +823,7 @@
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = LittleReaderTests/Info.plist;
+				INFOPLIST_FILE = EarlyReaderTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = EarlyReaderTests;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EarlyReader.app/EarlyReader";
