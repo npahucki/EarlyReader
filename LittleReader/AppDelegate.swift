@@ -1,6 +1,6 @@
 //
 //  AppDelegate.swift
-//  LittleReader
+//  EarlyReader
 //
 //  Created by Nathan  Pahucki on 8/16/14.
 //  Copyright (c) 2014 Nathan Pahucki. All rights reserved.
@@ -63,7 +63,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: - Core Data stack
     
     lazy var applicationDocumentsDirectory: NSURL = {
-        // The directory the application uses to store the Core Data store file. This code uses a directory named "com.dataparenting.LittleReader" in the application's documents Application Support directory.
         let urls = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)
         return urls[urls.count-1] as NSURL
         }()
@@ -89,7 +88,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             dict[NSLocalizedDescriptionKey] = "Failed to initialize the application's saved data"
             dict[NSLocalizedFailureReasonErrorKey] = failureReason
             dict[NSUnderlyingErrorKey] = error
-            error = NSError(domain: "LittleReader", code: 9999, userInfo: dict)
+            error = NSError(domain: "EarlyReader", code: 9999, userInfo: dict)
             // Replace this with code to handle the error appropriately.
             UsageAnalytics.trackError("Failed to create the persistentStoreCoordinator", error: error!)
             UIAlertView(title: "Bad News", message: "The database schema has changed in a recent update, this means that you'll have to delete the app and install it again. The app will exit now.", delegate: nil, cancelButtonTitle : "Sigh, Ok").showAlertWithButtonBlock(){ $0; abort() }

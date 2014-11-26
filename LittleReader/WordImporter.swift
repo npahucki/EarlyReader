@@ -1,6 +1,6 @@
 //
 //  WordImporter.swift
-//  LittleReader
+//  EarlyReader
 //
 //  Created by Nathan  Pahucki on 10/27/14.
 //  Copyright (c) 2014 Nathan Pahucki. All rights reserved.
@@ -24,7 +24,7 @@ public class WordImporter {
     
     public func importWordListNamed(name:String, completionClosure: (error : NSError?, numberOfWordsImported: Int)->()) {
         // TODO: Get from S3, make private call, or use a signed URL that expires waaaaay in the future.
-        let url = NSURL(string: "http://s3.amazonaws.com/InfantIQLittleReader/WordSets/en/\(name).txt")
+        let url = NSURL(string: "http://infantiq-earlyreader.s3.amazonaws.com/word-sets/en/\(name).txt")
         let task = NSURLSession.sharedSession().dataTaskWithURL(url!) {(data, response, error) in
                 // Called on background thread
             dispatch_async(dispatch_get_main_queue(),{ () -> Void in

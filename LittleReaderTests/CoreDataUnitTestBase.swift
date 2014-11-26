@@ -1,6 +1,6 @@
 //
 //  CoreDataUnitTest.swift
-//  LittleReader
+//  EarlyReader
 //
 //  Created by Nathan  Pahucki on 10/31/14.
 //  Copyright (c) 2014 Nathan Pahucki. All rights reserved.
@@ -23,7 +23,7 @@ class CoreDataUnitTestBase : XCTestCase {
         super.setUp()
         NSUserDefaults.resetStandardUserDefaults()
         _wordSetNumber = 0
-        let modelURL = NSBundle.mainBundle().URLForResource("LittleReader", withExtension: "momd")!
+        let modelURL = NSBundle.mainBundle().URLForResource("EarlyReader", withExtension: "momd")!
         let managedObjectModel = NSManagedObjectModel(contentsOfURL: modelURL)!
         let testManagedObjectModel = managedObjectModel.copy() as NSManagedObjectModel
         let coordinator = NSPersistentStoreCoordinator(managedObjectModel:testManagedObjectModel)

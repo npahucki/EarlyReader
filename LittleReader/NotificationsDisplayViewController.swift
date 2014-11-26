@@ -1,6 +1,6 @@
 //
 //  NotificationsViewController.swift
-//  LittleReader
+//  EarlyReader
 //
 //  Created by Nathan  Pahucki on 11/20/14.
 //  Copyright (c) 2014 Nathan Pahucki. All rights reserved.

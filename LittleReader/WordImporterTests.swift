@@ -1,6 +1,6 @@
 //
 //  WordTest.swift
-//  LittleReader
+//  EarlyReader
 //
 //  Created by Nathan  Pahucki on 10/27/14.
 //  Copyright (c) 2014 Nathan Pahucki. All rights reserved.
