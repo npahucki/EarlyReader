@@ -55,7 +55,7 @@
         <!--Settings-->
         <scene sceneID="fKL-vk-kAA">
             <objects>
-                <tableViewController storyboardIdentifier="settingsController" title="Settings" id="45I-s5-k26" userLabel="Settings" customClass="SettingsListViewController" customModule="LittleReader" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="settingsController" title="Settings" id="45I-s5-k26" userLabel="Settings" customClass="SettingsListViewController" customModule="EarlyReader" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" rowHeight="120" sectionHeaderHeight="22" sectionFooterHeight="22" id="ZTw-LB-aby">
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="550"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -334,7 +334,7 @@
         <!--Word List View Controller-->
         <scene sceneID="NrU-f7-Dfw">
             <objects>
-                <tableViewController storyboardIdentifier="wordsController" title="Words" id="rbc-kI-bcy" userLabel="Word List View Controller" customClass="WordListViewController" customModule="LittleReader" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="wordsController" title="Words" id="rbc-kI-bcy" userLabel="Word List View Controller" customClass="WordListViewController" customModule="EarlyReader" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="88" sectionFooterHeight="1" id="Ery-J2-95m" customClass="STCollapseTableView">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -381,7 +381,7 @@
         <!--Add Words View Controller-->
         <scene sceneID="BhV-g1-aBK">
             <objects>
-                <viewController id="gdO-A8-fQw" customClass="AddWordsViewController" customModule="LittleReader" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="gdO-A8-fQw" customClass="AddWordsViewController" customModule="EarlyReader" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="eTo-vz-PJU"/>
                         <viewControllerLayoutGuide type="bottom" id="Qni-Ps-okl"/>
@@ -445,7 +445,7 @@
         <!--Import JSON View Controller-->
         <scene sceneID="34C-no-EJq">
             <objects>
-                <viewController id="utE-O3-HCM" userLabel="Import JSON View Controller" customClass="ImportJSONViewController" customModule="LittleReader" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="utE-O3-HCM" userLabel="Import JSON View Controller" customClass="ImportJSONViewController" customModule="EarlyReader" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="FTc-12-RhX"/>
                         <viewControllerLayoutGuide type="bottom" id="B1r-aK-NYq"/>
@@ -522,7 +522,7 @@
         <!--Notifications Display View Controller-->
         <scene sceneID="0dp-ue-JaT">
             <objects>
-                <viewController id="S0e-tX-9Ht" customClass="NotificationsDisplayViewController" customModule="LittleReader" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="S0e-tX-9Ht" customClass="NotificationsDisplayViewController" customModule="EarlyReader" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="0h2-JY-sgw"/>
                         <viewControllerLayoutGuide type="bottom" id="8Oc-Zw-eN1"/>
@@ -546,7 +546,7 @@
         <!--Notification View Controller-->
         <scene sceneID="KPD-3q-d5U">
             <objects>
-                <viewController storyboardIdentifier="notificationViewController" id="5ap-JK-AWn" userLabel="Notification View Controller" customClass="NotificationViewController" customModule="LittleReader" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="notificationViewController" id="5ap-JK-AWn" userLabel="Notification View Controller" customClass="NotificationViewController" customModule="EarlyReader" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="2wn-ir-1bn"/>
                         <viewControllerLayoutGuide type="bottom" id="eff-tS-jaE"/>
@@ -616,7 +616,7 @@
         <!--Detail View Controller-->
         <scene sceneID="zNI-qE-8Rc">
             <objects>
-                <viewController id="9NH-X2-hqh" userLabel="Detail View Controller" customClass="DetailViewController" customModule="LittleReader" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="9NH-X2-hqh" userLabel="Detail View Controller" customClass="DetailViewController" customModule="EarlyReader" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="DZY-4a-iS4"/>
                         <viewControllerLayoutGuide type="bottom" id="0Iz-oe-uiC"/>
@@ -660,7 +660,7 @@
                                             <constraint firstAttribute="width" constant="67" id="njh-zT-zEX"/>
                                         </constraints>
                                     </imageView>
-                                    <view contentMode="scaleToFill" placeholderIntrinsicWidth="128" placeholderIntrinsicHeight="17" translatesAutoresizingMaskIntoConstraints="NO" id="KwX-4P-EPG" userLabel="Hearts View" customClass="HeartsProgressView" customModule="LittleReader" customModuleProvider="target">
+                                    <view contentMode="scaleToFill" placeholderIntrinsicWidth="128" placeholderIntrinsicHeight="17" translatesAutoresizingMaskIntoConstraints="NO" id="KwX-4P-EPG" userLabel="Hearts View" customClass="HeartsProgressView" customModule="EarlyReader" customModuleProvider="target">
                                         <rect key="frame" x="289" y="13" width="128" height="17"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                     </view>
@@ -721,7 +721,7 @@
         <!--Child Info View Controller-->
         <scene sceneID="BaA-Qm-kOr">
             <objects>
-                <viewController id="caz-NO-Bej" userLabel="Child Info View Controller" customClass="ChildInfoViewController" customModule="LittleReader" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="caz-NO-Bej" userLabel="Child Info View Controller" customClass="ChildInfoViewController" customModule="EarlyReader" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="HUJ-19-ji0"/>
                         <viewControllerLayoutGuide type="bottom" id="dvt-1J-CeU"/>
@@ -833,7 +833,7 @@
         <!--Child Info Birth Date Popover View Controller-->
         <scene sceneID="Pih-Qi-lyu">
             <objects>
-                <viewController id="nPL-HQ-bbE" customClass="ChildInfoBirthDatePopoverViewController" customModule="LittleReader" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="nPL-HQ-bbE" customClass="ChildInfoBirthDatePopoverViewController" customModule="EarlyReader" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ZY0-C8-IwW"/>
                         <viewControllerLayoutGuide type="bottom" id="vJc-gS-EUb"/>
@@ -895,7 +895,7 @@
         <!--Lesson View Controller-->
         <scene sceneID="Tik-cX-eCw">
             <objects>
-                <viewController id="WjB-gp-FKd" userLabel="Lesson View Controller" customClass="LessonViewController" customModule="LittleReader" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="WjB-gp-FKd" userLabel="Lesson View Controller" customClass="LessonViewController" customModule="EarlyReader" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="il3-LO-Bjm"/>
                         <viewControllerLayoutGuide type="bottom" id="g1f-K0-FmA"/>
@@ -990,7 +990,7 @@
         <!--Menu View Controller-->
         <scene sceneID="3eK-w7-Rbt">
             <objects>
-                <viewController extendedLayoutIncludesOpaqueBars="YES" id="72A-d6-Z3y" userLabel="Menu View Controller" customClass="MenuViewController" customModule="LittleReader" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController extendedLayoutIncludesOpaqueBars="YES" id="72A-d6-Z3y" userLabel="Menu View Controller" customClass="MenuViewController" customModule="EarlyReader" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="hAR-Hz-Y6E"/>
                         <viewControllerLayoutGuide type="bottom" id="IAA-i6-19p"/>
@@ -1173,7 +1173,7 @@
         <!--Main View Controller-->
         <scene sceneID="o2Z-87-wje">
             <objects>
-                <splitViewController id="MDV-Pk-R5t" customClass="MainViewController" customModule="LittleReader" customModuleProvider="target" sceneMemberID="viewController">
+                <splitViewController id="MDV-Pk-R5t" customClass="MainViewController" customModule="EarlyReader" customModuleProvider="target" sceneMemberID="viewController">
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <connections>
                         <segue destination="9NH-X2-hqh" kind="relationship" relationship="detailViewController" id="elv-aG-CEd"/>
@@ -1188,7 +1188,7 @@
         <!--Lesson History View Controller-->
         <scene sceneID="uWR-fQ-ZZ7">
             <objects>
-                <tableViewController storyboardIdentifier="lessonsController" title="Lessons" id="Pnh-pn-UUa" userLabel="Lesson History View Controller" customClass="LessonsListViewController" customModule="LittleReader" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="lessonsController" title="Lessons" id="Pnh-pn-UUa" userLabel="Lesson History View Controller" customClass="LessonsListViewController" customModule="EarlyReader" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="100" sectionHeaderHeight="75" sectionFooterHeight="16" id="Is1-qI-UnE">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1196,7 +1196,7 @@
                         <color key="separatorColor" red="0.94509803920000002" green="0.94509803920000002" blue="0.94509803920000002" alpha="1" colorSpace="deviceRGB"/>
                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="nextLessonCell" id="yuc-Ku-um1" userLabel="nextLessonCell" customClass="NextLessonTableViewCell" customModule="LittleReader" customModuleProvider="target">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="nextLessonCell" id="yuc-Ku-um1" userLabel="nextLessonCell" customClass="NextLessonTableViewCell" customModule="EarlyReader" customModuleProvider="target">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="yuc-Ku-um1" id="M2k-hC-UQ1">
                                     <autoresizingMask key="autoresizingMask"/>
@@ -1257,7 +1257,7 @@
                                     <outlet property="wordsLabel" destination="DG8-te-rjD" id="YFY-Rg-L5Q"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="pastLessonCell" id="K3d-48-5cG" userLabel="pastLessonCell" customClass="PastLessonTableViewCell" customModule="LittleReader" customModuleProvider="target">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="pastLessonCell" id="K3d-48-5cG" userLabel="pastLessonCell" customClass="PastLessonTableViewCell" customModule="EarlyReader" customModuleProvider="target">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="K3d-48-5cG" id="1jn-ND-PwY">
                                     <autoresizingMask key="autoresizingMask"/>
