@@ -31,6 +31,10 @@ extension UIColor {
         return colorFromRGB(0x2EBF68)
     }
 
+    class func applicationOrangeColor() -> UIColor {
+        return colorFromRGB(0xFC5B22)
+    }
+
     class func applicationTableCellSelectedBackgroundColor() -> UIColor {
         return colorFromRGB(0xF1F1F1)
     }

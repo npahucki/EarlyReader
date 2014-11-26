@@ -24,7 +24,8 @@ class SettingsListViewController: UITableViewController, ManagedObjectContextHol
     @IBOutlet weak var numberOfWordSetsLabel: UILabel!
     @IBOutlet weak var slideDurationSlider: UISlider!
     @IBOutlet weak var slideDurationLabel: UILabel!
-
+    @IBOutlet weak var importExportTableViewCell: UITableViewCell!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         reminderIntervalSlider.value = Float(UserPreferences.lessonReminderInverval / 60.0)
@@ -35,7 +36,12 @@ class SettingsListViewController: UITableViewController, ManagedObjectContextHol
         didChangeNumberOfWordSets(numberOfWordSetsSlider)
         didChangeReminderInterval(reminderIntervalSlider)
         didChangeSlideDuration(slideDurationSlider)
-
+        
+        #if DEBUG
+            importExportTableViewCell.hidden = false
+        #else
+            importExportTableViewCell.hidden = true
+        #endif
     }
 
     override func viewWillAppear(animated: Bool) {
@@ -101,6 +107,9 @@ class SettingsListViewController: UITableViewController, ManagedObjectContextHol
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if let movc = segue.destinationViewController as? ManagedObjectContextHolder {
+            movc.managedContext = self.managedContext
+        }
         if let childInfoVc = segue.destinationViewController as? ChildInfoViewController {
             childInfoVc.baby = Baby.currentBaby
         }

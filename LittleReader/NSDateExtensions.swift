@@ -9,7 +9,7 @@
 import Foundation
 
 private let componentFlags = (NSCalendarUnit.YearCalendarUnit | NSCalendarUnit.MonthCalendarUnit | NSCalendarUnit.DayCalendarUnit | NSCalendarUnit.WeekCalendarUnit |  NSCalendarUnit.HourCalendarUnit | NSCalendarUnit.MinuteCalendarUnit | NSCalendarUnit.SecondCalendarUnit | NSCalendarUnit.WeekdayCalendarUnit | NSCalendarUnit.WeekdayOrdinalCalendarUnit);
-
+private let iso8601FormatString = "yyyy-MM-dd'T'HHmmssZ"
 
 extension NSDate {
     
@@ -24,6 +24,17 @@ extension NSDate {
     
     class func dateWithDaysBeforeNow(days : Int) ->NSDate  {
         return NSDate().dateByAddingDays(-days)
+    }
+    
+    class func dateFromISO8601String(dateString : NSString) -> NSDate? {
+        var dateString2 = dateString
+        if dateString2.hasSuffix("Z") {
+            dateString2 = dateString2.substringToIndex(dateString2.length-1).stringByAppendingString("-0000")
+        }
+        dateString2 = dateString2.stringByReplacingOccurrencesOfString(":", withString:"")
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = iso8601FormatString
+        return dateFormatter.dateFromString(dateString2)
     }
     
     func dateByAddingDays(days: Int) -> NSDate {
@@ -96,6 +107,12 @@ extension NSDate {
     
     func isYesterday() -> Bool {
         return self.isEqualToDateIgnoringTime(NSDate.now().dateYesterday())
+    }
+    
+    func toISO8601String() -> NSString {
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = iso8601FormatString
+        return dateFormatter.stringFromDate(self)
     }
     
 }

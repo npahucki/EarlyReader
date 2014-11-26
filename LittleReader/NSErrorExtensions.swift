@@ -12,6 +12,7 @@ extension NSError {
     
     enum ErrorCode : Int {
         case FailedToImportWords = 1000
+        case FailedToImportEntites = 1010
     }
     
     class func applicationError(code: ErrorCode, description : String? = nil, failureReason : String? = nil, cause:NSError? = nil) -> NSError {

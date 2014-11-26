@@ -29,25 +29,27 @@ class HeartsProgressView: UIView {
             v.removeFromSuperview()
         }
 
-        let lessonsPerWordSet = totalLessons / wordSets
-        // Create one heart for each wordset
-        for idx in 1...wordSets {
-            
-            let remaining = idx * lessonsPerWordSet - current
-            var imageName = "IconHeartSmallEmpty"
-            if remaining < 1 {
-                imageName = "IconHeartSmallFull"
-            } else if remaining < lessonsPerWordSet {
-                let full = lessonsPerWordSet - remaining
-                assert(full<=2, "Only expecting to deal with 3 repitions of a word set")
-                imageName = "IconHeartSmall\(full)"
-            } // Else use empty
-            
-            
-            let imageView = UIImageView(image: UIImage(named: imageName))
-            let origin = CGPoint(x:(idx - 1) * Int(heartImageSize.width + padSpacing), y:0)
-            imageView.frame = CGRect(origin: origin, size: heartImageSize)
-            addSubview(imageView)
+        if wordSets > 0 { // could be zero in some rare cases
+            let lessonsPerWordSet = totalLessons / wordSets
+            // Create one heart for each wordset
+            for idx in 1...wordSets {
+                
+                let remaining = idx * lessonsPerWordSet - current
+                var imageName = "IconHeartSmallEmpty"
+                if remaining < 1 {
+                    imageName = "IconHeartSmallFull"
+                } else if remaining < lessonsPerWordSet {
+                    let full = lessonsPerWordSet - remaining
+                    assert(full<=2, "Only expecting to deal with 3 repitions of a word set")
+                    imageName = "IconHeartSmall\(full)"
+                } // Else use empty
+                
+                
+                let imageView = UIImageView(image: UIImage(named: imageName))
+                let origin = CGPoint(x:(idx - 1) * Int(heartImageSize.width + padSpacing), y:0)
+                imageView.frame = CGRect(origin: origin, size: heartImageSize)
+                addSubview(imageView)
+            }
         }
         invalidateIntrinsicContentSize()
         setNeedsLayout()

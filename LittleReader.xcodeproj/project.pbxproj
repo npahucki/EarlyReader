@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		5BAE3A455E78855364CAB419 /* libPods-LittleReader.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C0E0ABED882B3827F12E8C3 /* libPods-LittleReader.a */; };
 		CFD30BC5342284A28BFBA750 /* libPods-LittleReaderTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F75A3AF90334BFB8AA231CFD /* libPods-LittleReaderTests.a */; };
+		E80630AA1A2652D400BF89C4 /* ImportJSONViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E80630A91A2652D400BF89C4 /* ImportJSONViewController.swift */; };
 		E816042919FAD89F00B87B9D /* UsageAnalytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = E82DEC0419F6B97300EED0A8 /* UsageAnalytics.swift */; };
 		E816042D19FAE05200B87B9D /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = E816042C19FAE05200B87B9D /* Common.swift */; };
 		E818296519F6F04A007B6DC9 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E818296419F6F04A007B6DC9 /* Localizable.strings */; };
@@ -38,6 +39,7 @@
 		E84C8BB01A12982600B66B74 /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E84C8BA61A12982600B66B74 /* OpenSans-Regular.ttf */; };
 		E84C8BB11A12982600B66B74 /* OpenSans-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E84C8BA71A12982600B66B74 /* OpenSans-Semibold.ttf */; };
 		E84C8BB21A12982600B66B74 /* OpenSans-SemiboldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E84C8BA81A12982600B66B74 /* OpenSans-SemiboldItalic.ttf */; };
+		E851FF4C1A2636EA00DCC578 /* NSManagedObjectExportImport.swift in Sources */ = {isa = PBXBuildFile; fileRef = E851FF4B1A2636EA00DCC578 /* NSManagedObjectExportImport.swift */; };
 		E852E8061A1AB0B700DE8540 /* NSErrorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E852E8051A1AB0B700DE8540 /* NSErrorExtensions.swift */; };
 		E858B7EF19BA3D59003C5727 /* StreamReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E858B7EE19BA3D59003C5727 /* StreamReader.swift */; };
 		E85F39C919A6BB670004C80F /* Word.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85F39C819A6BB670004C80F /* Word.swift */; };
@@ -93,6 +95,7 @@
 		7CC091EE20004461E4B06612 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		C20539EBE83920ACA862BCA4 /* Pods-LittleReader.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LittleReader.release.xcconfig"; path = "Pods/Target Support Files/Pods-LittleReader/Pods-LittleReader.release.xcconfig"; sourceTree = "<group>"; };
 		DD3CC555AE2AE49B8D2EB1B6 /* Pods-LittleReaderTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LittleReaderTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-LittleReaderTests/Pods-LittleReaderTests.release.xcconfig"; sourceTree = "<group>"; };
+		E80630A91A2652D400BF89C4 /* ImportJSONViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImportJSONViewController.swift; sourceTree = "<group>"; };
 		E816042C19FAE05200B87B9D /* Common.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
 		E818296419F6F04A007B6DC9 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		E818296B19F6FE87007B6DC9 /* LessonViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LessonViewController.swift; sourceTree = "<group>"; };
@@ -122,6 +125,7 @@
 		E84C8BA61A12982600B66B74 /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Regular.ttf"; sourceTree = "<group>"; };
 		E84C8BA71A12982600B66B74 /* OpenSans-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Semibold.ttf"; sourceTree = "<group>"; };
 		E84C8BA81A12982600B66B74 /* OpenSans-SemiboldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-SemiboldItalic.ttf"; sourceTree = "<group>"; };
+		E851FF4B1A2636EA00DCC578 /* NSManagedObjectExportImport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSManagedObjectExportImport.swift; sourceTree = "<group>"; };
 		E852E8051A1AB0B700DE8540 /* NSErrorExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSErrorExtensions.swift; sourceTree = "<group>"; };
 		E858B7EE19BA3D59003C5727 /* StreamReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StreamReader.swift; sourceTree = "<group>"; };
 		E85F39C819A6BB670004C80F /* Word.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Word.swift; sourceTree = "<group>"; };
@@ -259,6 +263,7 @@
 				E852E8051A1AB0B700DE8540 /* NSErrorExtensions.swift */,
 				E84C8B9B1A12936D00B66B74 /* UIColorExtensions.swift */,
 				E8AC79DA1A250D23005E74D3 /* NSStringExtensions.swift */,
+				E851FF4B1A2636EA00DCC578 /* NSManagedObjectExportImport.swift */,
 			);
 			name = Util;
 			sourceTree = "<group>";
@@ -289,6 +294,7 @@
 				E841F67119FA868700684DD6 /* WordListViewController.swift */,
 				E81846D119F9503D0012EAAF /* MangedObjectContextHolder.swift */,
 				E82959121A00108D003575F7 /* AddWordsViewController.swift */,
+				E80630A91A2652D400BF89C4 /* ImportJSONViewController.swift */,
 				E8DB1FB91A1EA249001B904D /* NotificationsDisplayViewController.swift */,
 				E8CEDB6E1A1E423300BE4ED8 /* NotificationViewController.swift */,
 			);
@@ -578,12 +584,14 @@
 				E8CDE7EE199FD18F0036CFE8 /* MainViewController.swift in Sources */,
 				E84794FF1A01C4470065BABE /* LessonsListViewController.swift in Sources */,
 				E82DEBFD19F6AA4100EED0A8 /* UserPreferences.swift in Sources */,
+				E80630AA1A2652D400BF89C4 /* ImportJSONViewController.swift in Sources */,
 				E85F39C919A6BB670004C80F /* Word.swift in Sources */,
 				E8AC79D91A24D6E1005E74D3 /* HeartsProgressView.swift in Sources */,
 				E852E8061A1AB0B700DE8540 /* NSErrorExtensions.swift in Sources */,
 				E8F807451A12793E00FC427F /* MenuViewController.swift in Sources */,
 				E8CEDB5F1A1D13E400BE4ED8 /* LessonsListViewTableViewCells.swift in Sources */,
 				E86FF5A41A1BA8A700F71F95 /* WordListTableHeaderView.swift in Sources */,
+				E851FF4C1A2636EA00DCC578 /* NSManagedObjectExportImport.swift in Sources */,
 				E8CEDB6F1A1E423300BE4ED8 /* NotificationViewController.swift in Sources */,
 				E8DB1FBC1A1EA249001B904D /* NotificationsDisplayViewController.swift in Sources */,
 				E8FBFD481A013DD700087BE2 /* NSDateExtensions.swift in Sources */,
@@ -745,6 +753,7 @@
 				INFOPLIST_FILE = LittleReader/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				"OTHER_SWIFT_FLAGS[arch=*]" = "-D DEBUG";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
