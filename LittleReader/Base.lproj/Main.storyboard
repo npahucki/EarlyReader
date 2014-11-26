@@ -1202,7 +1202,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cat, Dog, Cow, Wolf, Bat" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DG8-te-rjD">
-                                            <rect key="frame" x="16" y="21" width="254" height="33"/>
+                                            <rect key="frame" x="16" y="21" width="606" height="33"/>
                                             <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans" pointSize="24"/>
                                             <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
@@ -1240,6 +1240,7 @@
                                     <constraints>
                                         <constraint firstItem="aUQ-Pu-1en" firstAttribute="top" secondItem="DG8-te-rjD" secondAttribute="bottom" constant="4" id="09Y-EI-KcH"/>
                                         <constraint firstItem="u8p-0t-tQ9" firstAttribute="leading" secondItem="DG8-te-rjD" secondAttribute="leading" id="9d6-Tc-K5S"/>
+                                        <constraint firstItem="1aQ-hJ-11q" firstAttribute="leading" secondItem="DG8-te-rjD" secondAttribute="trailing" id="J2Y-EC-xUO"/>
                                         <constraint firstItem="u8p-0t-tQ9" firstAttribute="centerY" secondItem="aUQ-Pu-1en" secondAttribute="centerY" id="Lo9-eN-AOJ"/>
                                         <constraint firstItem="DG8-te-rjD" firstAttribute="leading" secondItem="M2k-hC-UQ1" secondAttribute="leading" constant="16" id="Txo-WJ-Yyg"/>
                                         <constraint firstItem="1aQ-hJ-11q" firstAttribute="top" secondItem="DG8-te-rjD" secondAttribute="bottom" constant="-29" id="auL-ZI-6q4"/>
