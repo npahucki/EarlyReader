@@ -7,8 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5BAE3A455E78855364CAB419 /* libPods-LittleReader.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C0E0ABED882B3827F12E8C3 /* libPods-LittleReader.a */; };
-		CFD30BC5342284A28BFBA750 /* libPods-LittleReaderTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F75A3AF90334BFB8AA231CFD /* libPods-LittleReaderTests.a */; };
+		7870581DA7433B4250EC5463 /* libPods-EarlyReader.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EADA38CD0B50B5F61DAECF5 /* libPods-EarlyReader.a */; };
 		E80630AA1A2652D400BF89C4 /* ImportJSONViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E80630A91A2652D400BF89C4 /* ImportJSONViewController.swift */; };
 		E816042919FAD89F00B87B9D /* UsageAnalytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = E82DEC0419F6B97300EED0A8 /* UsageAnalytics.swift */; };
 		E816042D19FAE05200B87B9D /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = E816042C19FAE05200B87B9D /* Common.swift */; };
@@ -69,7 +68,7 @@
 		E8CEDB651A1D348C00BE4ED8 /* LessonsListTableHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E8CEDB641A1D348C00BE4ED8 /* LessonsListTableHeaderView.xib */; };
 		E8CEDB6F1A1E423300BE4ED8 /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8CEDB6E1A1E423300BE4ED8 /* NotificationViewController.swift */; };
 		E8DB1FBC1A1EA249001B904D /* NotificationsDisplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8DB1FB91A1EA249001B904D /* NotificationsDisplayViewController.swift */; };
-		E8DB1FBD1A1EA249001B904D /* LittleReader.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E8DB1FBA1A1EA249001B904D /* LittleReader.xcdatamodeld */; };
+		E8DB1FBD1A1EA249001B904D /* EarlyReader.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E8DB1FBA1A1EA249001B904D /* EarlyReader.xcdatamodeld */; };
 		E8F4B3351A1E98BB00904C07 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8F4B3341A1E98BB00904C07 /* Notification.swift */; };
 		E8F807451A12793E00FC427F /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8F807441A12793E00FC427F /* MenuViewController.swift */; };
 		E8FBFD441A012B6600087BE2 /* LessonPlanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8FBFD431A012B6600087BE2 /* LessonPlanner.swift */; };
@@ -77,6 +76,7 @@
 		E8FBFD481A013DD700087BE2 /* NSDateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8FBFD471A013DD700087BE2 /* NSDateExtensions.swift */; };
 		E8FBFD491A013DD700087BE2 /* NSDateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8FBFD471A013DD700087BE2 /* NSDateExtensions.swift */; };
 		E8FBFD4B1A013F2500087BE2 /* NSDateExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8FBFD4A1A013F2500087BE2 /* NSDateExtensionsTests.swift */; };
+		EB40F9920E1148ED49858EDA /* libPods-EarlyReaderTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 24D3907D8EABE16209002B78 /* libPods-EarlyReaderTests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,10 +90,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		13D04F13B70FEA420DA97D48 /* Pods-EarlyReader.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EarlyReader.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EarlyReader/Pods-EarlyReader.debug.xcconfig"; sourceTree = "<group>"; };
 		1C0E0ABED882B3827F12E8C3 /* libPods-LittleReader.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LittleReader.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		24D3907D8EABE16209002B78 /* libPods-EarlyReaderTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-EarlyReaderTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2B4CF2EC25DBCE89BAF68E9D /* Pods-EarlyReaderTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EarlyReaderTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-EarlyReaderTests/Pods-EarlyReaderTests.release.xcconfig"; sourceTree = "<group>"; };
+		3EADA38CD0B50B5F61DAECF5 /* libPods-EarlyReader.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-EarlyReader.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		65B18C27B6BB5D1AFA55EB4B /* Pods-LittleReader.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LittleReader.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LittleReader/Pods-LittleReader.debug.xcconfig"; sourceTree = "<group>"; };
 		7CC091EE20004461E4B06612 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		8D60A5F7FFB74D6E5B3DE8FC /* Pods-EarlyReader.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EarlyReader.release.xcconfig"; path = "Pods/Target Support Files/Pods-EarlyReader/Pods-EarlyReader.release.xcconfig"; sourceTree = "<group>"; };
 		C20539EBE83920ACA862BCA4 /* Pods-LittleReader.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LittleReader.release.xcconfig"; path = "Pods/Target Support Files/Pods-LittleReader/Pods-LittleReader.release.xcconfig"; sourceTree = "<group>"; };
+		DA4D1E8EDB3A35D64BBEC8CE /* Pods-EarlyReaderTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EarlyReaderTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EarlyReaderTests/Pods-EarlyReaderTests.debug.xcconfig"; sourceTree = "<group>"; };
 		DD3CC555AE2AE49B8D2EB1B6 /* Pods-LittleReaderTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LittleReaderTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-LittleReaderTests/Pods-LittleReaderTests.release.xcconfig"; sourceTree = "<group>"; };
 		E80630A91A2652D400BF89C4 /* ImportJSONViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImportJSONViewController.swift; sourceTree = "<group>"; };
 		E816042C19FAE05200B87B9D /* Common.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
@@ -146,13 +152,13 @@
 		E8BF775C19F932DA00F1BF0A /* Baby.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Baby.swift; sourceTree = "<group>"; };
 		E8BFC82C1A155FB7004929EF /* applause-01.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "applause-01.mp3"; sourceTree = "<group>"; };
 		E8BFC82E1A15635A004929EF /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
-		E8CDE7E3199FD18F0036CFE8 /* LittleReader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LittleReader.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E8CDE7E3199FD18F0036CFE8 /* EarlyReader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EarlyReader.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8CDE7E7199FD18F0036CFE8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E8CDE7E8199FD18F0036CFE8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E8CDE7ED199FD18F0036CFE8 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		E8CDE7F0199FD18F0036CFE8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E8CDE7F2199FD18F0036CFE8 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		E8CDE7F8199FD18F0036CFE8 /* LittleReaderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LittleReaderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E8CDE7F8199FD18F0036CFE8 /* EarlyReaderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EarlyReaderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8CDE7FD199FD18F0036CFE8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E8CDE80819A03AB70036CFE8 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		E8CEDB5E1A1D13E400BE4ED8 /* LessonsListViewTableViewCells.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LessonsListViewTableViewCells.swift; sourceTree = "<group>"; };
@@ -160,7 +166,7 @@
 		E8CEDB641A1D348C00BE4ED8 /* LessonsListTableHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LessonsListTableHeaderView.xib; sourceTree = "<group>"; };
 		E8CEDB6E1A1E423300BE4ED8 /* NotificationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
 		E8DB1FB91A1EA249001B904D /* NotificationsDisplayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationsDisplayViewController.swift; sourceTree = "<group>"; };
-		E8DB1FBB1A1EA249001B904D /* LittleReader.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LittleReader.xcdatamodel; sourceTree = "<group>"; };
+		E8DB1FBB1A1EA249001B904D /* EarlyReader.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = EarlyReader.xcdatamodel; sourceTree = "<group>"; };
 		E8F4B3341A1E98BB00904C07 /* Notification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		E8F807441A12793E00FC427F /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		E8FBFD431A012B6600087BE2 /* LessonPlanner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LessonPlanner.swift; sourceTree = "<group>"; };
@@ -177,7 +183,7 @@
 			files = (
 				E8BFC82F1A15635A004929EF /* AVFoundation.framework in Frameworks */,
 				E8CDE80919A03AB70036CFE8 /* QuartzCore.framework in Frameworks */,
-				5BAE3A455E78855364CAB419 /* libPods-LittleReader.a in Frameworks */,
+				7870581DA7433B4250EC5463 /* libPods-EarlyReader.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -185,7 +191,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CFD30BC5342284A28BFBA750 /* libPods-LittleReaderTests.a in Frameworks */,
+				EB40F9920E1148ED49858EDA /* libPods-EarlyReaderTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -199,6 +205,10 @@
 				DD3CC555AE2AE49B8D2EB1B6 /* Pods-LittleReaderTests.release.xcconfig */,
 				65B18C27B6BB5D1AFA55EB4B /* Pods-LittleReader.debug.xcconfig */,
 				C20539EBE83920ACA862BCA4 /* Pods-LittleReader.release.xcconfig */,
+				13D04F13B70FEA420DA97D48 /* Pods-EarlyReader.debug.xcconfig */,
+				DA4D1E8EDB3A35D64BBEC8CE /* Pods-EarlyReaderTests.debug.xcconfig */,
+				8D60A5F7FFB74D6E5B3DE8FC /* Pods-EarlyReader.release.xcconfig */,
+				2B4CF2EC25DBCE89BAF68E9D /* Pods-EarlyReaderTests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -210,6 +220,8 @@
 				7CC091EE20004461E4B06612 /* libPods.a */,
 				1C0E0ABED882B3827F12E8C3 /* libPods-LittleReader.a */,
 				F75A3AF90334BFB8AA231CFD /* libPods-LittleReaderTests.a */,
+				3EADA38CD0B50B5F61DAECF5 /* libPods-EarlyReader.a */,
+				24D3907D8EABE16209002B78 /* libPods-EarlyReaderTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -329,8 +341,8 @@
 		E8CDE7E4199FD18F0036CFE8 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				E8CDE7E3199FD18F0036CFE8 /* LittleReader.app */,
-				E8CDE7F8199FD18F0036CFE8 /* LittleReaderTests.xctest */,
+				E8CDE7E3199FD18F0036CFE8 /* EarlyReader.app */,
+				E8CDE7F8199FD18F0036CFE8 /* EarlyReaderTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -348,7 +360,7 @@
 				E85F39AE19A695500004C80F /* Model */,
 				E858B7ED19BA3D3A003C5727 /* Util */,
 				E841F67319FA92AC00684DD6 /* Third Party ObjC */,
-				E8DB1FBA1A1EA249001B904D /* LittleReader.xcdatamodeld */,
+				E8DB1FBA1A1EA249001B904D /* EarlyReader.xcdatamodeld */,
 				E8CDE7F2199FD18F0036CFE8 /* Images.xcassets */,
 				E84C8B9D1A12980900B66B74 /* Resources */,
 				E8CDE7E6199FD18F0036CFE8 /* Supporting Files */,
@@ -399,9 +411,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		E8CDE7E2199FD18F0036CFE8 /* LittleReader */ = {
+		E8CDE7E2199FD18F0036CFE8 /* EarlyReader */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E8CDE802199FD18F0036CFE8 /* Build configuration list for PBXNativeTarget "LittleReader" */;
+			buildConfigurationList = E8CDE802199FD18F0036CFE8 /* Build configuration list for PBXNativeTarget "EarlyReader" */;
 			buildPhases = (
 				A39C79402990DC42B6D9B5C8 /* Check Pods Manifest.lock */,
 				E8CDE7DF199FD18F0036CFE8 /* Sources */,
@@ -413,14 +425,14 @@
 			);
 			dependencies = (
 			);
-			name = LittleReader;
+			name = EarlyReader;
 			productName = LittleReader;
-			productReference = E8CDE7E3199FD18F0036CFE8 /* LittleReader.app */;
+			productReference = E8CDE7E3199FD18F0036CFE8 /* EarlyReader.app */;
 			productType = "com.apple.product-type.application";
 		};
-		E8CDE7F7199FD18F0036CFE8 /* LittleReaderTests */ = {
+		E8CDE7F7199FD18F0036CFE8 /* EarlyReaderTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E8CDE805199FD18F0036CFE8 /* Build configuration list for PBXNativeTarget "LittleReaderTests" */;
+			buildConfigurationList = E8CDE805199FD18F0036CFE8 /* Build configuration list for PBXNativeTarget "EarlyReaderTests" */;
 			buildPhases = (
 				85178010D3C9D9663D4B97EE /* Check Pods Manifest.lock */,
 				E8CDE7F4199FD18F0036CFE8 /* Sources */,
@@ -433,9 +445,9 @@
 			dependencies = (
 				E8CDE7FA199FD18F0036CFE8 /* PBXTargetDependency */,
 			);
-			name = LittleReaderTests;
+			name = EarlyReaderTests;
 			productName = LittleReaderTests;
-			productReference = E8CDE7F8199FD18F0036CFE8 /* LittleReaderTests.xctest */;
+			productReference = E8CDE7F8199FD18F0036CFE8 /* EarlyReaderTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -457,7 +469,7 @@
 					};
 				};
 			};
-			buildConfigurationList = E8CDE7DE199FD18F0036CFE8 /* Build configuration list for PBXProject "LittleReader" */;
+			buildConfigurationList = E8CDE7DE199FD18F0036CFE8 /* Build configuration list for PBXProject "EarlyReader" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -470,8 +482,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				E8CDE7E2199FD18F0036CFE8 /* LittleReader */,
-				E8CDE7F7199FD18F0036CFE8 /* LittleReaderTests */,
+				E8CDE7E2199FD18F0036CFE8 /* EarlyReader */,
+				E8CDE7F7199FD18F0036CFE8 /* EarlyReaderTests */,
 			);
 		};
 /* End PBXProject section */
@@ -538,7 +550,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LittleReaderTests/Pods-LittleReaderTests-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-EarlyReaderTests/Pods-EarlyReaderTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		A39C79402990DC42B6D9B5C8 /* Check Pods Manifest.lock */ = {
@@ -568,7 +580,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LittleReader/Pods-LittleReader-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-EarlyReader/Pods-EarlyReader-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -603,7 +615,7 @@
 				E82959131A00108D003575F7 /* AddWordsViewController.swift in Sources */,
 				E818296C19F6FE87007B6DC9 /* LessonViewController.swift in Sources */,
 				E8CEDB631A1D347F00BE4ED8 /* LessonsListTableViewHeader.swift in Sources */,
-				E8DB1FBD1A1EA249001B904D /* LittleReader.xcdatamodeld in Sources */,
+				E8DB1FBD1A1EA249001B904D /* EarlyReader.xcdatamodeld in Sources */,
 				E81846D019F94B580012EAAF /* ChildInfoViewController.swift in Sources */,
 				E858B7EF19BA3D59003C5727 /* StreamReader.swift in Sources */,
 				E839D8D219FE802900D0765E /* WordImporter.swift in Sources */,
@@ -642,7 +654,7 @@
 /* Begin PBXTargetDependency section */
 		E8CDE7FA199FD18F0036CFE8 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = E8CDE7E2199FD18F0036CFE8 /* LittleReader */;
+			target = E8CDE7E2199FD18F0036CFE8 /* EarlyReader */;
 			targetProxy = E8CDE7F9199FD18F0036CFE8 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -743,7 +755,7 @@
 		};
 		E8CDE803199FD18F0036CFE8 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 65B18C27B6BB5D1AFA55EB4B /* Pods-LittleReader.debug.xcconfig */;
+			baseConfigurationReference = 13D04F13B70FEA420DA97D48 /* Pods-EarlyReader.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -754,7 +766,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				"OTHER_SWIFT_FLAGS[arch=*]" = "-D DEBUG";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = EarlyReader;
 				PROVISIONING_PROFILE = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = 2;
@@ -763,7 +775,7 @@
 		};
 		E8CDE804199FD18F0036CFE8 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C20539EBE83920ACA862BCA4 /* Pods-LittleReader.release.xcconfig */;
+			baseConfigurationReference = 8D60A5F7FFB74D6E5B3DE8FC /* Pods-EarlyReader.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -773,7 +785,7 @@
 				INFOPLIST_FILE = LittleReader/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = EarlyReader;
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 2;
 			};
@@ -781,7 +793,7 @@
 		};
 		E8CDE806199FD18F0036CFE8 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F3EC5D2E2DA1EF2F907A90A7 /* Pods-LittleReaderTests.debug.xcconfig */;
+			baseConfigurationReference = DA4D1E8EDB3A35D64BBEC8CE /* Pods-EarlyReaderTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_MODULES = YES;
@@ -795,15 +807,15 @@
 				);
 				INFOPLIST_FILE = LittleReaderTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = EarlyReaderTests;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LittleReader.app/LittleReader";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EarlyReader.app/EarlyReader";
 			};
 			name = Debug;
 		};
 		E8CDE807199FD18F0036CFE8 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DD3CC555AE2AE49B8D2EB1B6 /* Pods-LittleReaderTests.release.xcconfig */;
+			baseConfigurationReference = 2B4CF2EC25DBCE89BAF68E9D /* Pods-EarlyReaderTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_MODULES = YES;
@@ -813,15 +825,15 @@
 				);
 				INFOPLIST_FILE = LittleReaderTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LittleReader.app/LittleReader";
+				PRODUCT_NAME = EarlyReaderTests;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EarlyReader.app/EarlyReader";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		E8CDE7DE199FD18F0036CFE8 /* Build configuration list for PBXProject "LittleReader" */ = {
+		E8CDE7DE199FD18F0036CFE8 /* Build configuration list for PBXProject "EarlyReader" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E8CDE800199FD18F0036CFE8 /* Debug */,
@@ -830,7 +842,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E8CDE802199FD18F0036CFE8 /* Build configuration list for PBXNativeTarget "LittleReader" */ = {
+		E8CDE802199FD18F0036CFE8 /* Build configuration list for PBXNativeTarget "EarlyReader" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E8CDE803199FD18F0036CFE8 /* Debug */,
@@ -839,7 +851,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E8CDE805199FD18F0036CFE8 /* Build configuration list for PBXNativeTarget "LittleReaderTests" */ = {
+		E8CDE805199FD18F0036CFE8 /* Build configuration list for PBXNativeTarget "EarlyReaderTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E8CDE806199FD18F0036CFE8 /* Debug */,
@@ -851,13 +863,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		E8DB1FBA1A1EA249001B904D /* LittleReader.xcdatamodeld */ = {
+		E8DB1FBA1A1EA249001B904D /* EarlyReader.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				E8DB1FBB1A1EA249001B904D /* LittleReader.xcdatamodel */,
+				E8DB1FBB1A1EA249001B904D /* EarlyReader.xcdatamodel */,
 			);
-			currentVersion = E8DB1FBB1A1EA249001B904D /* LittleReader.xcdatamodel */;
-			path = LittleReader.xcdatamodeld;
+			currentVersion = E8DB1FBB1A1EA249001B904D /* EarlyReader.xcdatamodel */;
+			path = EarlyReader.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

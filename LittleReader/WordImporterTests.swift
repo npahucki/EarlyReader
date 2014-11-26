@@ -8,7 +8,7 @@
 
 import XCTest
 import CoreData
-import LittleReader
+import EarlyReader
 
 class WordImporterTests : CoreDataUnitTestBase {
 

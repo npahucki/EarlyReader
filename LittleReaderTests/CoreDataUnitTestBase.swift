@@ -9,7 +9,7 @@
 import Foundation
 import CoreData
 import XCTest
-import LittleReader
+import EarlyReader
 
 
 class CoreDataUnitTestBase : XCTestCase {
