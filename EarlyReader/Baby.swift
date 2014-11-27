@@ -35,7 +35,7 @@ public class Baby: NSManagedObject {
                         if let objectId = coordinator.managedObjectIDForURIRepresentation(currentBabyUrl) {
                             var error : NSError? = nil
                             if let err = error {
-                                UsageAnalytics.trackError("Error trying to find current baby", error: err)
+                                UsageAnalytics.instance.trackError("Error trying to find current baby", error: err)
                             } else {
                                 baby = ctx.existingObjectWithID(objectId, error: &error) as Baby?
                             }

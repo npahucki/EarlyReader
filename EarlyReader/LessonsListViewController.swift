@@ -60,7 +60,7 @@ class LessonsListViewController: UITableViewController, NSFetchedResultsControll
             }
             
             if let err = error {
-                UsageAnalytics.trackError("Could not load the past lessons", error: err)
+                UsageAnalytics.instance.trackError("Could not load the past lessons", error: err)
             }
         }
     }

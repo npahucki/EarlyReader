@@ -207,7 +207,8 @@ class LessonViewController: UIViewController,AVAudioPlayerDelegate {
         lessonPlanner.finishLesson()
         scheduleReminder(lessonPlanner.nextLessonDate)
         if let d = delegate { d.didAbortLesson() }
-        self.presentingViewController?.dismissViewControllerAnimated(true, completion:nil)
+        presentingViewController?.dismissViewControllerAnimated(true, completion:nil)
+        UsageAnalytics.instance.trackLessonAborted(lessonPlanner)
     }
 
     private func didCompleteLesson() {
@@ -215,12 +216,14 @@ class LessonViewController: UIViewController,AVAudioPlayerDelegate {
         scheduleReminder(lessonPlanner.nextLessonDate)
         if let d = delegate { d.didCompleteLesson() }
         presentRewardScreen()
+        UsageAnalytics.instance.trackLessonFinished(lessonPlanner)
     }
     
     private func willStartLesson() {
         // Since we have started a new lesson, we don't want a reminder until after this lesson is complete
         UIApplication.sharedApplication().cancelAllLocalNotifications()
         if let d = delegate { d.willStartLesson() }
+        UsageAnalytics.instance.trackLessonStarted(lessonPlanner)
     }
     
     private func scheduleReminder(forDate: NSDate) {

@@ -37,7 +37,7 @@ class ChildInfoViewController: UIViewController, UITextFieldDelegate, ChildInfoB
         if let e = error {
             sender.enabled = true
             self.activityIndicator.stopAnimating()
-            UsageAnalytics.trackError("Could not save baby", error: e)
+            UsageAnalytics.instance.trackError("Could not save baby", error: e)
             UIAlertView.showGenericLocalizedErrorMessage("msg_error_baby_save")
         } else {
             Baby.currentBaby = baby
@@ -48,7 +48,7 @@ class ChildInfoViewController: UIViewController, UITextFieldDelegate, ChildInfoB
                     sender.enabled = true
                     if let err = error {
                         UIAlertView.showLocalizedErrorMessageWithOkButton("error_msg_download_word_list", title_key : "error_title_download_word_list")
-                        UsageAnalytics.trackError("Could not load initial word list", error: err)
+                        UsageAnalytics.instance.trackError("Could not load initial word list", error: err)
                     } else {
                         self.baby.populateWordSets(1) // TODO: Maybe change depending on age?
                         self.dismissViewControllerAnimated(true, nil)

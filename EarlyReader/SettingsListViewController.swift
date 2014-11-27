@@ -70,7 +70,7 @@ class SettingsListViewController: UITableViewController, ManagedObjectContextHol
             if baby.wordSets.count != newNumberOfWordSets {
                 let result = baby.populateWordSets(newNumberOfWordSets)
                 if let err = result.error {
-                    UsageAnalytics.trackError("Failed to change the word set count", error: err)
+                    UsageAnalytics.instance.trackError("Failed to change the word set count", error: err)
                     UIAlertView.showGenericLocalizedErrorMessage("msg_error_create_word_set")
                     sender.value = Float(baby.wordSets.count)
                 } else {

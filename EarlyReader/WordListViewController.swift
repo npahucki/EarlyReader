@@ -135,6 +135,9 @@ class WordListViewController: UITableViewController,ManagedObjectContextHolder, 
             // Delete row from tableView.
             tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: UITableViewRowAnimation.Fade)
             updateHeaderTextForAllSections()
+            if let word = anObject as? Word {
+                UsageAnalytics.instance.trackWordsDeleted([word])
+            }
         }
     }
     
@@ -227,9 +230,10 @@ class WordListViewController: UITableViewController,ManagedObjectContextHolder, 
                 let result = importer.importWords(words!)
                 if let err = result.error {
                     UIAlertView.showGenericLocalizedErrorMessage("error_msg_words_added")
-                    UsageAnalytics.trackError("Could not import manually added words", error: err)
+                    UsageAnalytics.instance.trackError("Could not import manually added words", error: err)
                 } else {
                     if result.numberOfWordsAdded > 0 {
+                        UsageAnalytics.instance.trackWordsAdded(words!)
                         updateHeaderTextForAllSections()
                         let title = NSLocalizedString("success_title_generic", comment:"")
                         let msg = NSString(format: NSLocalizedString("msg_words_added", comment:""), result.numberOfWordsAdded)

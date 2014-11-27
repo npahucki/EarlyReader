@@ -107,7 +107,7 @@ class NotificationsDisplayViewController: UIViewController, ManagedObjectContext
             fetchRequest.fetchLimit = maxCount
             let results = ctx.executeFetchRequest(fetchRequest, error: &error) as [Notification]
             if let err = error {
-                UsageAnalytics.trackError("Could not load notifications", error: err)
+                UsageAnalytics.instance.trackError("Could not load notifications", error: err)
             } else {
                 return results
             }
@@ -174,7 +174,7 @@ class NotificationsDisplayViewController: UIViewController, ManagedObjectContext
                     vc.notification.closedByUser = true
                     ctx.save(&error)
                     if let err = error {
-                        UsageAnalytics.trackError("Could not save context after deleting notification", error: err)
+                        UsageAnalytics.instance.trackError("Could not save context after deleting notification", error: err)
                     }
                 }
             })

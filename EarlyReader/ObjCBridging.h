@@ -11,5 +11,7 @@
 
 #import "NSDate+HumanizedTime.h"
 #import "STCollapseTableView.h"
+#import <Heap/Heap.h>
+#import <Mixpanel/Mixpanel.h>
 
 #endif

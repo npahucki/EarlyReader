@@ -31,6 +31,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UIButton.appearance().titleLabel?.font = defaultFont
         UITextField.appearance().borderStyle = UITextBorderStyle.None
         UITextField.appearance().backgroundColor = UIColor.whiteColor()
+        
+        UsageAnalytics.instance.identify()
+        
+        
         return true
     }
     
@@ -52,6 +56,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
         application.applicationIconBadgeNumber = 0
         processNotifiations()
+        UsageAnalytics.instance.trackAppActivated()
     }
     
     func applicationWillTerminate(application: UIApplication!) {
@@ -90,7 +95,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             dict[NSUnderlyingErrorKey] = error
             error = NSError(domain: "EarlyReader", code: 9999, userInfo: dict)
             // Replace this with code to handle the error appropriately.
-            UsageAnalytics.trackError("Failed to create the persistentStoreCoordinator", error: error!)
+            UsageAnalytics.instance.trackError("Failed to create the persistentStoreCoordinator", error: error!)
             UIAlertView(title: "Bad News", message: "The database schema has changed in a recent update, this means that you'll have to delete the app and install it again. The app will exit now.", delegate: nil, cancelButtonTitle : "Sigh, Ok").showAlertWithButtonBlock(){ $0; abort() }
         }
         
@@ -114,7 +119,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if let moc = self.managedObjectContext {
             var error: NSError? = nil
             if moc.hasChanges && !moc.save(&error) {
-                UsageAnalytics.trackError("Failed to create the persistentStoreCoordinator", error: error!)
+                UsageAnalytics.instance.trackError("Failed to create the persistentStoreCoordinator", error: error!)
                 UIAlertView(title: "Bad News", message: "The database schema has changed in a recent update, this means that you'll have to delete the app and install it again. The app will exit now.", delegate: nil, cancelButtonTitle : "Sigh, Ok").showAlertWithButtonBlock(){ $0; abort() }
             }
         }
@@ -132,6 +137,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     let key = "increase_sets_for_program_day_" + String(day)
                     if let notification = Notification.newUniqueNotification(.Guidance, key: key, title: "notification_increase_sets_for_program_day_title", context: ctx) {
                         notification.message = NSString(format : NSLocalizedString("notification_increase_sets_for_program_day_msg", comment:""),planner.numberOfWordSetsForToday)
+                        UsageAnalytics.instance.trackNotificationCreated(notification)
                         saveContext()
                     }
                 }
@@ -142,6 +148,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     let key = "number_of_words_low_25"
                     if let notification = Notification.newUniqueNotification(.Alert, key: key, title: "alert_words_low_25_title", context: ctx) {
                         notification.message = "alert_words_low_25_msg"
+                        UsageAnalytics.instance.trackNotificationCreated(notification)
                         saveContext()
                     }
                 }
@@ -150,6 +157,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     let key = "number_of_words_out_\(NSDate().startOfDay())"  // Make the alert come back everyday
                     if let notification = Notification.newUniqueNotification(.Alert, key: key, title: "alert_words_out_title", context: ctx) {
                         notification.message = "alert_words_out_msg"
+                        UsageAnalytics.instance.trackNotificationCreated(notification)
                         saveContext()
                     }
                 }

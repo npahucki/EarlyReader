@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		7870581DA7433B4250EC5463 /* libPods-EarlyReader.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EADA38CD0B50B5F61DAECF5 /* libPods-EarlyReader.a */; };
 		E80630AA1A2652D400BF89C4 /* ImportJSONViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E80630A91A2652D400BF89C4 /* ImportJSONViewController.swift */; };
-		E816042919FAD89F00B87B9D /* UsageAnalytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = E82DEC0419F6B97300EED0A8 /* UsageAnalytics.swift */; };
 		E816042D19FAE05200B87B9D /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = E816042C19FAE05200B87B9D /* Common.swift */; };
 		E818296519F6F04A007B6DC9 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E818296419F6F04A007B6DC9 /* Localizable.strings */; };
 		E818296C19F6FE87007B6DC9 /* LessonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E818296B19F6FE87007B6DC9 /* LessonViewController.swift */; };
@@ -638,7 +637,6 @@
 			files = (
 				E88916D11A04340B002C8F13 /* CoreDataUnitTestBase.swift in Sources */,
 				E88916D31A0474AA002C8F13 /* BabyTests.swift in Sources */,
-				E816042919FAD89F00B87B9D /* UsageAnalytics.swift in Sources */,
 				E8FBFD461A01326400087BE2 /* UserPreferences.swift in Sources */,
 				E8FBFD4B1A013F2500087BE2 /* NSDateExtensionsTests.swift in Sources */,
 				E81C446219FE7794007966E5 /* WordImporterTests.swift in Sources */,

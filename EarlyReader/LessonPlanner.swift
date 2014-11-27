@@ -23,6 +23,12 @@ public class LessonPlanner {
             return _managedObjectContext
         }
     }
+
+    var baby : Baby {
+        get {
+            return _baby
+        }
+    }
     
     public init(baby : Baby) {
         assert(baby.managedObjectContext != nil, "Expected baby to have a managedObjectContext!")
@@ -38,22 +44,32 @@ public class LessonPlanner {
     
     public var firstLessonDate : NSDate? {
         get {
-            let results = findLessonDate(true)
+            let results = findLessonLog(true)
             if let e = results.error {
-                UsageAnalytics.trackError("Could not calculate the fist lesson date", error: e)
+                UsageAnalytics.instance.trackError("Could not calculate the fist lesson date", error: e)
             }
-            return results.date
+            return results.lessonLog?.lessonDate
         }
     }
 
     
     public var lastLessonDate : NSDate? {
         get {
-            let results = findLessonDate(false)
+            let results = findLessonLog(false)
             if let e = results.error {
-                UsageAnalytics.trackError("Could not calculate the last lesson date", error: e)
+                UsageAnalytics.instance.trackError("Could not calculate the last lesson date", error: e)
             }
-            return results.date
+            return results.lessonLog?.lessonDate
+        }
+    }
+
+    public var lastLessonDurationSeconds : NSTimeInterval {
+        get {
+            let results = findLessonLog(false)
+            if let e = results.error {
+                UsageAnalytics.instance.trackError("Could not calculate the last lesson duration", error: e)
+            }
+            return results.lessonLog?.durationSeconds ?? 0.0
         }
     }
     
@@ -61,7 +77,7 @@ public class LessonPlanner {
         get {
             let results =  calcNextLessonDate()
             if let e = results.error {
-                UsageAnalytics.trackError("Could not calculate the next lesson date", error: e)
+                UsageAnalytics.instance.trackError("Could not calculate the next lesson date", error: e)
             }
             return results.date
         }
@@ -81,7 +97,7 @@ public class LessonPlanner {
         get {
             let results = countLessonsRemainingForToday()
             if let e = results.error {
-                UsageAnalytics.trackError("Error calculating count of lessons remaining today", error: e)
+                UsageAnalytics.instance.trackError("Error calculating count of lessons remaining today", error: e)
             }
             return results.count
         }
@@ -91,7 +107,7 @@ public class LessonPlanner {
         get {
             let results = countLessonsGivenOnDate(NSDate())
             if let e = results.error {
-                UsageAnalytics.trackError("Error calculating count of lessons taken today", error: e)
+                UsageAnalytics.instance.trackError("Error calculating count of lessons taken today", error: e)
             }
             return results.count
         }
@@ -101,7 +117,7 @@ public class LessonPlanner {
         get {
             let results = countAvailableWords()
             if let e = results.error {
-                UsageAnalytics.trackError("Error calculating count of availble words", error: e)
+                UsageAnalytics.instance.trackError("Error calculating count of availble words", error: e)
             }
             return results.count
         }
@@ -152,7 +168,7 @@ public class LessonPlanner {
         get {
             let results = calcCurrentUseDay()
             if let e = results.error {
-                UsageAnalytics.trackError("Error calculating day of program", error: e)
+                UsageAnalytics.instance.trackError("Error calculating day of program", error: e)
             }
             return results.day
         }
@@ -193,7 +209,6 @@ public class LessonPlanner {
     /// Returns the date/time the next lesson should be done
     public func finishLesson() {
         assert(_lessonStartTime != nil, "Lesson was never started")
-        
         let now = NSDate()
         
         if let wordSet = _currentWordSet {
@@ -207,10 +222,10 @@ public class LessonPlanner {
                 var fillResult = wordSet.fill()
                 saveUpdatedWordsAndSets()
                 if let e = retireResult.error {
-                    UsageAnalytics.trackError("Could not retire words in word set", error: e)
+                    UsageAnalytics.instance.trackError("Could not retire words in word set", error: e)
                 }
                 if let e = fillResult.error {
-                    UsageAnalytics.trackError("Could not fill words in word set", error: e)
+                    UsageAnalytics.instance.trackError("Could not fill words in word set", error: e)
                 }
             }
         }
@@ -232,11 +247,11 @@ public class LessonPlanner {
         var nextLessonDate = NSDate()
         var error : NSError? = nil
         
-        let lastLessonResult = findLessonDate(false)
+        let lastLessonResult =  findLessonLog(false)
         if let e = lastLessonResult.error {
             error = e
         } else {
-            if let lastLessonDate = lastLessonResult.date {
+            if let lastLessonDate = lastLessonResult.lessonLog?.lessonDate {
                 nextLessonDate = NSDate(timeInterval: UserPreferences.lessonReminderInverval, sinceDate:lastLessonDate)
                 let result = countLessonsRemainingForToday()
                 if let e = result.error {
@@ -253,24 +268,22 @@ public class LessonPlanner {
         return (nextLessonDate, error)
     }
     
-    private func findLessonDate(first : Bool) -> (date: NSDate?, error : NSError?) {
-        var lastLessonDate : NSDate? = nil
+    // Returns the first of last lesson log
+    private func findLessonLog(first : Bool) -> (lessonLog: LessonLog?, error : NSError?) {
+        var lessonLog : LessonLog? = nil
         var error : NSError? = nil
-
+        
         let fetchRequest = NSFetchRequest(entityName: "LessonLog")
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "lessonDate", ascending: first)]
         fetchRequest.fetchLimit = 1
         fetchRequest.predicate = NSPredicate(format: "(baby = %@) AND numberOfWordsViewed >= %d",_baby, WORDS_PER_WORDSET)
-        if let results = _managedObjectContext.executeFetchRequest(fetchRequest, error: &error) as? [LessonLog] {
-            lastLessonDate = results.count > 0 ? results.first?.lessonDate : nil
-        }
-        
+        let results = _managedObjectContext.executeFetchRequest(fetchRequest, error: &error) as? [LessonLog]
         if error != nil {
-            UsageAnalytics.trackError("Error trying to load word set from CoreData", error:error!);
+            UsageAnalytics.instance.trackError("Error trying to load lesson logs from CoreData", error:error!);
         }
-        
-        return (lastLessonDate, error)
+        return (results?.first, error)
     }
+
     
     private func logLesson(wordSet : WordSet) {
         let useDay = self.dayOfProgram // NOTE: Must be done before inserting entity into context
@@ -284,7 +297,6 @@ public class LessonPlanner {
             log.durationSeconds = -_lessonStartTime!.timeIntervalSinceNow
             log.totalNumberOfWordSets = UInt16(_baby.wordSets!.count)
             log.useDay = UInt16(useDay)
-            
         }
     }
     
@@ -300,7 +312,7 @@ public class LessonPlanner {
         }
         
         if error != nil {
-            UsageAnalytics.trackError("Error trying to load word set from CoreData", error:error!);
+            UsageAnalytics.instance.trackError("Error trying to load word set from CoreData", error:error!);
         }
         
         return set;
@@ -310,7 +322,7 @@ public class LessonPlanner {
         var error : NSError? = nil;
         _managedObjectContext.save(&error)
         if let err = error {
-            UsageAnalytics.trackError("Failed to save changed Words and WordSets", error: err)
+            UsageAnalytics.instance.trackError("Failed to save changed Words and WordSets", error: err)
         }
     }
     
