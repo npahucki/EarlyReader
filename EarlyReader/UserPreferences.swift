@@ -35,7 +35,7 @@ class UserPreferences {
         }
         get {
             let defs = NSUserDefaults.standardUserDefaults()
-            return defs.objectForKey("slideDisplayInverval") == nil ? 1.5 : defs.doubleForKey("slideDisplayInverval");
+            return defs.objectForKey("slideDisplayInverval") == nil ? 2.0 : defs.doubleForKey("slideDisplayInverval");
         }
     }
 
