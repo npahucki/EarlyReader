@@ -41,6 +41,7 @@ class ChildInfoViewController: UIViewController, UITextFieldDelegate, ChildInfoB
             UIAlertView.showGenericLocalizedErrorMessage("msg_error_baby_save")
         } else {
             Baby.currentBaby = baby
+            UsageAnalytics.instance.identify() // Reidentify with Baby Info this time.
             if baby.wordSets.count < 1 {
                 let importer = WordImporter(baby : baby)
                 importer.importWordListNamed("basic") { (error, numberOfWordsImported) -> () in

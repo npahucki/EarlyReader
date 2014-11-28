@@ -13,5 +13,9 @@
 #import "STCollapseTableView.h"
 #import <Heap/Heap.h>
 #import <Mixpanel/Mixpanel.h>
+#import <AppsFlyer-SDK/AppsFlyerTracker.h>
+#import <UXCam/UXCam.h>
+#import <FacebookSDK/FacebookSDK.h>
+
 
 #endif

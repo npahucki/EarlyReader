@@ -235,6 +235,7 @@ class WordListViewController: UITableViewController,ManagedObjectContextHolder, 
                     if result.numberOfWordsAdded > 0 {
                         UsageAnalytics.instance.trackWordsAdded(words!)
                         updateHeaderTextForAllSections()
+                        tableView.reloadData()
                         let title = NSLocalizedString("success_title_generic", comment:"")
                         let msg = NSString(format: NSLocalizedString("msg_words_added", comment:""), result.numberOfWordsAdded)
                         let cancelTitle = NSLocalizedString("uialert_accept_button_title", comment:"")

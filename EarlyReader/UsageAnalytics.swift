@@ -8,20 +8,26 @@
 
 import CoreData
 
-// TODO: EMail on
+private var _instance : UsageAnalytics!
 
-#if DEBUG
-    private let _instance = UsageAnalytics()
-#else
-    private let _instance = UsageAnalyticsProd()
-#endif
 
 
 @objc(UsageAnalytics)
 class UsageAnalytics {
+
+    class func initWithOptions(options : [NSObject:AnyObject]?) {
+        assert(_instance == nil,"Can only intiialize once per app launch")
+        #if DEBUG
+            _instance = UsageAnalyticsProd(options: options)
+        #else
+            _instance = UsageAnalyticsProd(options :options)
+        #endif
+        _instance.identify()
+    }
     
     class var instance : UsageAnalytics {
         get {
+            assert(_instance != nil, "You must call initWithOptions before accessing the instance variable")
             return _instance
         }
     }
@@ -133,41 +139,62 @@ class UsageAnalytics {
     
 }
 
-private class UsageAnalyticsProd: UsageAnalytics {
+class UsageAnalyticsProd: UsageAnalytics {
     
+    init(options : [NSObject : AnyObject]?) {
+        let mixPanelKey = NSBundle.mainBundle().objectForInfoDictionaryKey("ER.MixpanelKey") as String
+        Mixpanel.sharedInstanceWithToken(mixPanelKey, launchOptions: options)
+        
+        Heap.setAppId(NSBundle.mainBundle().objectForInfoDictionaryKey("ER.HeapAppId") as String)
+        Heap.changeInterval(30)
+        
+        AppsFlyerTracker.sharedTracker().appsFlyerDevKey = NSBundle.mainBundle().objectForInfoDictionaryKey("ER.AppsFlyerDevKey") as String
+        AppsFlyerTracker.sharedTracker().appleAppID = NSBundle.mainBundle().objectForInfoDictionaryKey("ER.AppleStoreId") as String
+        AppsFlyerTracker.sharedTracker().isHTTPS = true
+        
+        UXCam.startApplicationWithKey(NSBundle.mainBundle().objectForInfoDictionaryKey("ER.UXCamKey") as String)
+    }
     
-    
-    
-    // TO BE OVERRIDDEN BY SUBCLASSES
     override func trackEvent(eventName : String, eventProperties : Dictionary<String, AnyObject>?) {
+        AppsFlyerTracker.sharedTracker().trackEvent(eventName, withValue: nil)
         if let props = eventProperties {
             Heap.track(eventName, withProperties: eventProperties)
             Mixpanel.sharedInstance().track(eventName, properties: eventProperties)
+            FBAppEvents.logEvent(eventName, parameters:props)
         } else {
             Heap.track(eventName)
             Mixpanel.sharedInstance().track(eventName)
-            // AppsFlyer
+            FBAppEvents.logEvent(eventName)
         }
     }
     
-    // TO BE OVERRIDDEN BY SUBCLASSES
     override func identify() {
-        var props : [String:AnyObject]? = nil
+        var props = [String:AnyObject]()
         if let baby = Baby.currentBaby {
-            props = ["babyName" : baby.name, "babyDOB" : baby.birthDate]
+            props["babyName"] = baby.name
+            props["babyDOB"] = baby.birthDate
         }
+
+        // Mixpanel
+        let mp = Mixpanel.sharedInstance()
+        mp.identify(mp.distinctId)
+        mp.people.set(props)
         
-//            [AppsFlyerTracker sharedTracker].customerUserID = user.objectId;
-//            [Heap identify:props];
-//            [UXCam tagUsersName:user.objectId additionalData:user.email];
-//            [UXCam addTag:user.isMale ? @"male" : @"female"];
-//            [UXCam addTag:user.email ? @"anonymous" : @"signedup"];
-//            //if (user.screenName) [UXCam tagScreenName:user.screenName]; // this causes the screenname to be used instead of the user id...not what we want.
-//            [mixpanel identify:mixpanel.distinctId];
-//            if (user.email) props[@"$email"] = user.email;
-//            [mixpanel.people set:props];
+        // Heap
+        props["handle"] = mp.distinctId
+        Heap.identify(props)
+
+        // UXCam
+        UXCam.tagUsersName(mp.distinctId, additionalData: nil)
         
-        
+        // AppsFlyer
+        AppsFlyerTracker.sharedTracker().customerUserID = mp.distinctId
+    }
+    
+    override func trackAppActivated() {
+        super.trackAppActivated()
+        AppsFlyerTracker.sharedTracker().trackAppLaunch()
+        FBAppEvents.activateApp()
     }
     
 

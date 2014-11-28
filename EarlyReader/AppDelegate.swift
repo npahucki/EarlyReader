@@ -32,8 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UITextField.appearance().borderStyle = UITextBorderStyle.None
         UITextField.appearance().backgroundColor = UIColor.whiteColor()
         
-        UsageAnalytics.instance.identify()
-        
+        UsageAnalytics.initWithOptions(launchOptions)
         
         return true
     }

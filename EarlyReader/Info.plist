@@ -24,8 +24,31 @@
 	<string>1.0</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>fb1588660344696640</string>
+			</array>
+		</dict>
+	</array>
 	<key>CFBundleVersion</key>
 	<string>1.0</string>
+	<key>ER.AppleStoreId</key>
+	<string>946204982</string>
+	<key>ER.AppsFlyerDevKey</key>
+	<string>rb2piyfLLw8aNdxK8nVrh8</string>
+	<key>ER.HeapAppId</key>
+	<string>453477904</string>
+	<key>ER.MixpanelKey</key>
+	<string>da6349573b9224a0fa59c5b4b7aa1204</string>
+	<key>ER.UXCamKey</key>
+	<string>04d3376aa513d66</string>
+	<key>FacebookAppID</key>
+	<string>1588660344696640</string>
+	<key>FacebookDisplayName</key>
+	<string>Early Reader</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>UIMainStoryboardFile</key>
