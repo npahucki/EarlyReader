@@ -18,7 +18,7 @@ class UsageAnalytics {
     class func initWithOptions(options : [NSObject:AnyObject]?) {
         assert(_instance == nil,"Can only intiialize once per app launch")
         #if DEBUG
-            _instance = UsageAnalyticsProd(options: options)
+            _instance = UsageAnalytics()
         #else
             _instance = UsageAnalyticsProd(options :options)
         #endif
