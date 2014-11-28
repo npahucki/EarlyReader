@@ -371,7 +371,7 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <segue destination="gdO-A8-fQw" kind="modal" identifier="showAddWords" modalTransitionStyle="partialCurl" id="bbv-At-c0Q"/>
+                        <segue destination="gdO-A8-fQw" kind="modal" identifier="showAddWords" id="bbv-At-c0Q"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="y9M-nI-f0G" userLabel="First Responder" sceneMemberID="firstResponder"/>
