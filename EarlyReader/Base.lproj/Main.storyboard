@@ -43,6 +43,8 @@
             <string>OpenSans</string>
             <string>OpenSans</string>
             <string>OpenSans</string>
+            <string>OpenSans</string>
+            <string>OpenSans</string>
         </mutableArray>
         <mutableArray key="OpenSans-Semibold.ttf">
             <string>OpenSans-Semibold</string>
@@ -744,6 +746,42 @@
                                             <constraint firstAttribute="width" constant="320" id="pta-06-cSy"/>
                                         </constraints>
                                     </imageView>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Child's First Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="J6J-cR-3P9">
+                                        <rect key="frame" x="224" y="287" width="320" height="44"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="Gk8-py-kzr"/>
+                                            <constraint firstAttribute="width" constant="320" id="X3Q-ea-uZQ"/>
+                                        </constraints>
+                                        <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans" pointSize="18"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no" keyboardType="namePhonePad" returnKeyType="next"/>
+                                        <connections>
+                                            <action selector="didChangeNameField:" destination="caz-NO-Bej" eventType="editingChanged" id="wul-mv-bad"/>
+                                            <outlet property="delegate" destination="caz-NO-Bej" id="dA9-Q2-RsQ"/>
+                                        </connections>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="44x-6G-Y8T">
+                                        <rect key="frame" x="224" y="391" width="320" height="44"/>
+                                        <color key="backgroundColor" red="0.180392161" green="0.74509805439999999" blue="0.40392160420000001" alpha="1" colorSpace="deviceRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="320" id="Ale-0d-fTP"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="23"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <state key="normal" title="Save"/>
+                                        <state key="disabled">
+                                            <color key="titleColor" red="0.25882352939999997" green="0.82352941180000006" blue="0.4823529412" alpha="1" colorSpace="deviceRGB"/>
+                                            <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="selected" title=" "/>
+                                        <connections>
+                                            <action selector="didClickDoneButton:" destination="caz-NO-Bej" eventType="touchUpInside" id="Xz7-cc-lpm"/>
+                                        </connections>
+                                    </button>
+                                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="Ig9-Nq-Vhe">
+                                        <rect key="frame" x="366" y="391" width="37" height="37"/>
+                                    </activityIndicatorView>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Child's Birth Date" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iv5-9o-m39">
                                         <rect key="frame" x="224" y="339" width="320" height="44"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -761,35 +799,6 @@
                                             </segue>
                                         </connections>
                                     </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Child's First Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="J6J-cR-3P9">
-                                        <rect key="frame" x="224" y="287" width="320" height="44"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="44" id="Gk8-py-kzr"/>
-                                            <constraint firstAttribute="width" constant="320" id="X3Q-ea-uZQ"/>
-                                        </constraints>
-                                        <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
-                                        <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans" pointSize="18"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no" keyboardType="namePhonePad" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
-                                        <connections>
-                                            <outlet property="delegate" destination="caz-NO-Bej" id="dA9-Q2-RsQ"/>
-                                        </connections>
-                                    </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="44x-6G-Y8T">
-                                        <rect key="frame" x="224" y="391" width="320" height="43"/>
-                                        <color key="backgroundColor" red="0.180392161" green="0.74509805439999999" blue="0.40392160420000001" alpha="1" colorSpace="deviceRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="320" id="Ale-0d-fTP"/>
-                                        </constraints>
-                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <state key="normal" image="ButtonArrow"/>
-                                        <connections>
-                                            <action selector="didClickDoneButton:" destination="caz-NO-Bej" eventType="touchUpInside" id="Xz7-cc-lpm"/>
-                                        </connections>
-                                    </button>
-                                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="Ig9-Nq-Vhe">
-                                        <rect key="frame" x="366" y="391" width="37" height="37"/>
-                                    </activityIndicatorView>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="Ig9-Nq-Vhe" firstAttribute="top" secondItem="44x-6G-Y8T" secondAttribute="top" id="3Gs-m2-59H"/>
@@ -839,11 +848,11 @@
                         <viewControllerLayoutGuide type="bottom" id="vJc-gS-EUb"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="igK-Gc-fMF">
-                        <rect key="frame" x="0.0" y="0.0" width="325" height="275"/>
+                        <rect key="frame" x="0.0" y="0.0" width="325" height="310"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="${name} was born on:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7hZ-Ii-eHd">
-                                <rect key="frame" x="8" y="8" width="189" height="26"/>
+                                <rect key="frame" x="8" y="8" width="188.5" height="26"/>
                                 <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans" pointSize="19"/>
                                 <color key="textColor" red="0.94117647059999998" green="0.015686274510000001" blue="0.35294117650000001" alpha="1" colorSpace="deviceRGB"/>
                                 <nil key="highlightedColor"/>
@@ -865,27 +874,47 @@
                                     <action selector="datePickerDidChange:" destination="nPL-HQ-bbE" eventType="valueChanged" id="p4P-DS-CJH"/>
                                 </connections>
                             </datePicker>
+                            <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k90-l4-cqI">
+                                <rect key="frame" x="0.0" y="255" width="325" height="55"/>
+                                <color key="backgroundColor" red="0.180392161" green="0.74509805439999999" blue="0.40392160420000001" alpha="1" colorSpace="deviceRGB"/>
+                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="23"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="Done"/>
+                                <state key="disabled">
+                                    <color key="titleColor" red="0.25882352939999997" green="0.82352941180000006" blue="0.4823529412" alpha="1" colorSpace="deviceRGB"/>
+                                    <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="selected" title=" "/>
+                                <connections>
+                                    <action selector="didClickDoneButton:" destination="nPL-HQ-bbE" eventType="touchUpInside" id="B2l-KG-y9L"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="vJc-gS-EUb" firstAttribute="top" secondItem="k90-l4-cqI" secondAttribute="bottom" id="3bI-Fv-fUB"/>
+                            <constraint firstAttribute="trailing" secondItem="k90-l4-cqI" secondAttribute="trailing" id="Jfe-m7-qkU"/>
                             <constraint firstItem="7hZ-Ii-eHd" firstAttribute="leading" secondItem="igK-Gc-fMF" secondAttribute="leading" constant="8" id="KLD-1x-HkJ"/>
                             <constraint firstAttribute="centerX" secondItem="tQl-dX-V0t" secondAttribute="centerX" id="RV3-uY-riH"/>
+                            <constraint firstItem="k90-l4-cqI" firstAttribute="leading" secondItem="igK-Gc-fMF" secondAttribute="leading" id="RnI-V4-63z"/>
                             <constraint firstAttribute="trailing" secondItem="7dx-DG-Nii" secondAttribute="trailing" constant="8" id="Z0f-aj-hTf"/>
                             <constraint firstItem="7dx-DG-Nii" firstAttribute="top" secondItem="7hZ-Ii-eHd" secondAttribute="bottom" constant="4" id="b3t-DE-gGl"/>
                             <constraint firstItem="7hZ-Ii-eHd" firstAttribute="top" secondItem="ZY0-C8-IwW" secondAttribute="bottom" constant="8" id="fBh-3N-kcu"/>
+                            <constraint firstItem="k90-l4-cqI" firstAttribute="top" secondItem="tQl-dX-V0t" secondAttribute="bottom" id="s4p-zp-HhG"/>
                             <constraint firstItem="tQl-dX-V0t" firstAttribute="top" secondItem="7dx-DG-Nii" secondAttribute="bottom" id="wPV-yY-JhH"/>
                             <constraint firstItem="7dx-DG-Nii" firstAttribute="leading" secondItem="igK-Gc-fMF" secondAttribute="leading" constant="8" id="x54-qn-AUf"/>
                         </constraints>
                     </view>
-                    <value key="contentSizeForViewInPopover" type="size" width="320" height="250"/>
+                    <value key="contentSizeForViewInPopover" type="size" width="320" height="310"/>
                     <nil key="simulatedStatusBarMetrics"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="325" height="275"/>
+                    <size key="freeformSize" width="325" height="310"/>
                     <connections>
                         <outlet property="birthDate" destination="tQl-dX-V0t" id="43V-tV-Zkm"/>
                         <outlet property="bornOnLabel" destination="7hZ-Ii-eHd" id="5HX-jr-IIs"/>
+                        <outlet property="doneButton" destination="k90-l4-cqI" id="Owb-Xy-f3e"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8fs-u1-fFI" userLabel="First Responder" sceneMemberID="firstResponder"/>

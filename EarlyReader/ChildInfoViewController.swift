@@ -15,7 +15,8 @@ import CoreData
 class ChildInfoViewController: UIViewController, UITextFieldDelegate, ChildInfoBirthDatePopoverViewControllerDelegate  {
 
     var baby : Baby!
-   
+    private var popover : UIPopoverController?
+
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var doneButton: UIButton!
     @IBOutlet weak var childBirthDateTextField: UITextField!
@@ -25,6 +26,10 @@ class ChildInfoViewController: UIViewController, UITextFieldDelegate, ChildInfoB
         assert(baby != nil, "Expected a baby would be set before view is loaded!")
         childNameTextField.text = baby.name
         childBirthDateTextField.text = childsDisplayAge()
+        calcDoneButtonEnabled()
+    }
+    
+    @IBAction func didChangeNameField(sender: AnyObject) {
         calcDoneButtonEnabled()
     }
     
@@ -70,10 +75,9 @@ class ChildInfoViewController: UIViewController, UITextFieldDelegate, ChildInfoB
     }
     
     func calcDoneButtonEnabled() -> Bool {
-        let enabled = countElements(childNameTextField.text) > 1
-        childBirthDateTextField.enabled = enabled
-        doneButton.enabled = enabled
-        return enabled
+        childBirthDateTextField.enabled = !childNameTextField.text.isEmpty
+        doneButton.enabled = childBirthDateTextField.enabled && !childBirthDateTextField.text.isEmpty
+        return doneButton.enabled
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
@@ -88,8 +92,15 @@ class ChildInfoViewController: UIViewController, UITextFieldDelegate, ChildInfoB
     func changedChildBirthDate(date : NSDate) {
         baby.birthDate = date
         childBirthDateTextField.text = childsDisplayAge()
-        calcDoneButtonEnabled()
     }
+    
+    func selectedChildBirthDate(date : NSDate) {
+        baby.birthDate = date
+        childBirthDateTextField.text = childsDisplayAge()
+        calcDoneButtonEnabled()
+        popover?.dismissPopoverAnimated(true)
+    }
+    
     
     func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
         // Prevent keyboard, and show popup
@@ -102,11 +113,16 @@ class ChildInfoViewController: UIViewController, UITextFieldDelegate, ChildInfoB
         return true
     }
     
+
+
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         baby.name = childNameTextField.text
         if let vc = segue.destinationViewController as? ChildInfoBirthDatePopoverViewController {
             vc.baby = baby
             vc.delegate = self
+            if let popOverSegue = segue as? UIStoryboardPopoverSegue {
+                popover = popOverSegue.popoverController
+            }
         }
     }
     

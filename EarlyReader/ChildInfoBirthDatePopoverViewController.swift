@@ -10,17 +10,17 @@ import UIKit
 
 protocol ChildInfoBirthDatePopoverViewControllerDelegate {
     func changedChildBirthDate(date : NSDate)
+    func selectedChildBirthDate(date : NSDate)
 }
 
 class ChildInfoBirthDatePopoverViewController: UIViewController {
-
-
     
     var baby : Baby!
     var delegate : ChildInfoBirthDatePopoverViewControllerDelegate!
     
     @IBOutlet weak var bornOnLabel: UILabel!
     @IBOutlet weak var birthDate: UIDatePicker!
+    @IBOutlet weak var doneButton: UIButton!
    
     
     override func viewDidLoad() {
@@ -31,9 +31,15 @@ class ChildInfoBirthDatePopoverViewController: UIViewController {
             birthDate.date = bd
         }
         bornOnLabel.text = bornOnLabel.text?.stringByReplacingOccurrencesOfString("${name}", withString: baby.name)
+        self.modalInPopover = true // Don't allow touch outside to dismiss
+    }
+    
+    @IBAction func didClickDoneButton(sender: UIButton) {
+        delegate.selectedChildBirthDate(birthDate.date)
     }
     
     @IBAction func datePickerDidChange(sender: UIDatePicker) {
         delegate.changedChildBirthDate(sender.date)
     }
+    
 }
