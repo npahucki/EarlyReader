@@ -132,7 +132,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 let day = planner.dayOfProgram
                 
                 // Checking that the number of word sets is correct
-                if planner.numberOfWordSetsForToday < baby.wordSets.count {
+                if baby.wordSets.count < planner.numberOfWordSetsForToday {
                     let key = "increase_sets_for_program_day_" + String(day)
                     if let notification = Notification.newUniqueNotification(.Guidance, key: key, title: "notification_increase_sets_for_program_day_title", context: ctx) {
                         notification.message = NSString(format : NSLocalizedString("notification_increase_sets_for_program_day_msg", comment:""),planner.numberOfWordSetsForToday)
