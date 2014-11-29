@@ -29,6 +29,13 @@ class MainViewController : UISplitViewController, UISplitViewControllerDelegate,
         }
     }
     
+    private var detailViewController : DetailViewController? {
+        get {
+            return viewControllers.last as? DetailViewController
+        }
+    }
+    
+    
     override func viewDidLoad() {
         delegate = self
         view.backgroundColor = UIColor.whiteColor()
@@ -36,7 +43,7 @@ class MainViewController : UISplitViewController, UISplitViewControllerDelegate,
 //        preferredDisplayMode = UISplitViewControllerDisplayMode.Automatic
 //        preferredPrimaryColumnWidthFraction = 0.25
         // Initial Screen
-        showDetailViewControllerWithId("lessonsController", sender: self)
+        showDetailViewControllerWithId("lessonsController")
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -59,15 +66,26 @@ class MainViewController : UISplitViewController, UISplitViewControllerDelegate,
         }
     }
 
-    func showDetailViewControllerWithId(vcId: String, sender: AnyObject!) {
+    func showDetailWebViewController(url: String, title: String) {
+        if let vc = loadViewControllerWithId("webViewerController") as? WebViewController {
+            vc.title = title
+            vc.url = url
+            detailViewController?.currentDetailViewController = vc
+        }
+    }
+
+    func showDetailViewControllerWithId(vcId: String) {
+        detailViewController?.currentDetailViewController = loadViewControllerWithId(vcId)
+    }
+    
+    private func loadViewControllerWithId(vcId : String) -> UIViewController? {
         let storyboard = UIStoryboard(name: "Main", bundle: nil);
         let vc = storyboard.instantiateViewControllerWithIdentifier(vcId) as UIViewController;
         if let mochVc = vc as? ManagedObjectContextHolder {
             mochVc.managedContext = managedContext
         }
-        if let detailController = viewControllers.last as? DetailViewController {
-            detailController.currentDetailViewController = vc
-        }
+        return vc
     }
+    
 }
 

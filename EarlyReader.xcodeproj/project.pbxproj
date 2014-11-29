@@ -49,6 +49,7 @@
 		E88916D31A0474AA002C8F13 /* BabyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88916D21A0474AA002C8F13 /* BabyTests.swift */; };
 		E88916D51A047BCE002C8F13 /* LessonPlannerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88916D41A047BCE002C8F13 /* LessonPlannerTests.swift */; };
 		E88916D71A047CB0002C8F13 /* Baby.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8BF775C19F932DA00F1BF0A /* Baby.swift */; };
+		E88CB79D1A29506700299542 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88CB79C1A29506700299542 /* WebViewController.swift */; };
 		E8998BF01A24079E00BD1761 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8998BEF1A24079E00BD1761 /* DetailViewController.swift */; };
 		E8A50DDD1A01B7F100756CC8 /* LessonLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A50DDC1A01B7F100756CC8 /* LessonLog.swift */; };
 		E8AC79D91A24D6E1005E74D3 /* HeartsProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AC79D81A24D6E1005E74D3 /* HeartsProgressView.swift */; };
@@ -142,6 +143,7 @@
 		E88916D01A04340B002C8F13 /* CoreDataUnitTestBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = CoreDataUnitTestBase.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		E88916D21A0474AA002C8F13 /* BabyTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = BabyTests.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		E88916D41A047BCE002C8F13 /* LessonPlannerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = LessonPlannerTests.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		E88CB79C1A29506700299542 /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		E8998BEF1A24079E00BD1761 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = DetailViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		E8A50DDC1A01B7F100756CC8 /* LessonLog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = LessonLog.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		E8AC79D81A24D6E1005E74D3 /* HeartsProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = HeartsProgressView.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -308,6 +310,7 @@
 				E80630A91A2652D400BF89C4 /* ImportJSONViewController.swift */,
 				E8DB1FB91A1EA249001B904D /* NotificationsDisplayViewController.swift */,
 				E8CEDB6E1A1E423300BE4ED8 /* NotificationViewController.swift */,
+				E88CB79C1A29506700299542 /* WebViewController.swift */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -612,6 +615,7 @@
 				E8A50DDD1A01B7F100756CC8 /* LessonLog.swift in Sources */,
 				E81846D219F9503D0012EAAF /* MangedObjectContextHolder.swift in Sources */,
 				E82959131A00108D003575F7 /* AddWordsViewController.swift in Sources */,
+				E88CB79D1A29506700299542 /* WebViewController.swift in Sources */,
 				E818296C19F6FE87007B6DC9 /* LessonViewController.swift in Sources */,
 				E8CEDB631A1D347F00BE4ED8 /* LessonsListTableViewHeader.swift in Sources */,
 				E8DB1FBD1A1EA249001B904D /* EarlyReader.xcdatamodeld in Sources */,

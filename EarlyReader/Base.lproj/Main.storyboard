@@ -45,6 +45,7 @@
             <string>OpenSans</string>
             <string>OpenSans</string>
             <string>OpenSans</string>
+            <string>OpenSans</string>
         </mutableArray>
         <mutableArray key="OpenSans-Semibold.ttf">
             <string>OpenSans-Semibold</string>
@@ -521,6 +522,46 @@
             </objects>
             <point key="canvasLocation" x="2227" y="1806"/>
         </scene>
+        <!--Web View Controller-->
+        <scene sceneID="OsW-1q-pDQ">
+            <objects>
+                <viewController storyboardIdentifier="webViewerController" id="Aoa-Us-ZYe" customClass="WebViewController" customModule="EarlyReader" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="vgt-kM-tvR"/>
+                        <viewControllerLayoutGuide type="bottom" id="HnX-I6-Kus"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Zd9-bd-a54">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="idt-CZ-atd">
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </webView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="A9A-zm-mw6">
+                                <rect key="frame" x="365.5" y="493.5" width="37" height="37"/>
+                                <color key="color" red="0.94117647059999998" green="0.015686274510000001" blue="0.35294117650000001" alpha="1" colorSpace="deviceRGB"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="idt-CZ-atd" secondAttribute="trailing" id="B1R-uY-igz"/>
+                            <constraint firstItem="HnX-I6-Kus" firstAttribute="top" secondItem="idt-CZ-atd" secondAttribute="bottom" id="Fks-S0-z5W"/>
+                            <constraint firstItem="idt-CZ-atd" firstAttribute="top" secondItem="Zd9-bd-a54" secondAttribute="top" id="JWy-60-a7U"/>
+                            <constraint firstAttribute="centerY" secondItem="A9A-zm-mw6" secondAttribute="centerY" id="N5Q-cq-gDj"/>
+                            <constraint firstItem="idt-CZ-atd" firstAttribute="leading" secondItem="Zd9-bd-a54" secondAttribute="leading" id="fUu-wD-Js9"/>
+                            <constraint firstAttribute="centerX" secondItem="A9A-zm-mw6" secondAttribute="centerX" id="gsJ-qp-MxS"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="activityIndicator" destination="A9A-zm-mw6" id="2tb-kS-8CD"/>
+                        <outlet property="webView" destination="idt-CZ-atd" id="3GV-tJ-l4M"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7XT-FX-AT0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2462" y="2875"/>
+        </scene>
         <!--Notifications Display View Controller-->
         <scene sceneID="0dp-ue-JaT">
             <objects>
@@ -630,8 +671,8 @@
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3yn-2F-k0K" userLabel="Child Container">
                                 <rect key="frame" x="16" y="229" width="671" height="523"/>
                             </containerView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lessons" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RgI-p1-OC0" userLabel="Header">
-                                <rect key="frame" x="32" y="148" width="139" height="48"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="About Us" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RgI-p1-OC0" userLabel="Header">
+                                <rect key="frame" x="32" y="148" width="164" height="48"/>
                                 <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans" pointSize="35"/>
                                 <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -653,22 +694,22 @@
                                 </connections>
                             </containerView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QAa-hL-od9">
-                                <rect key="frame" x="187" y="154" width="500" height="66"/>
+                                <rect key="frame" x="212" y="154" width="475" height="66"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="bottom" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="RewardBird" translatesAutoresizingMaskIntoConstraints="NO" id="N8g-Xg-ZD9">
-                                        <rect key="frame" x="425" y="-7" width="67" height="73"/>
+                                        <rect key="frame" x="400" y="-7" width="67" height="73"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="73" id="IA0-13-wMM"/>
                                             <constraint firstAttribute="width" constant="67" id="njh-zT-zEX"/>
                                         </constraints>
                                     </imageView>
                                     <view contentMode="scaleToFill" placeholderIntrinsicWidth="128" placeholderIntrinsicHeight="17" translatesAutoresizingMaskIntoConstraints="NO" id="KwX-4P-EPG" userLabel="Hearts View" customClass="HeartsProgressView" customModule="EarlyReader" customModuleProvider="target">
-                                        <rect key="frame" x="289" y="13" width="128" height="17"/>
+                                        <rect key="frame" x="264" y="13" width="128" height="17"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5 of 9 lessons completed today!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="huG-zm-KO0">
-                                        <rect key="frame" x="36" y="10" width="246" height="21"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" horizontalCompressionResistancePriority="500" text="5 of 9 lessons completed today!" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="huG-zm-KO0">
+                                        <rect key="frame" x="5" y="7" width="250.5" height="23.5"/>
+                                        <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -679,7 +720,7 @@
                                     <constraint firstItem="N8g-Xg-ZD9" firstAttribute="centerY" secondItem="KwX-4P-EPG" secondAttribute="centerY" constant="8" id="LPX-yi-5IK"/>
                                     <constraint firstAttribute="trailing" secondItem="N8g-Xg-ZD9" secondAttribute="trailing" constant="8" id="Smr-0X-8tE"/>
                                     <constraint firstAttribute="bottom" secondItem="N8g-Xg-ZD9" secondAttribute="bottom" id="WBy-k8-6NL"/>
-                                    <constraint firstAttribute="width" priority="750" constant="500" id="Y2y-QZ-IvQ"/>
+                                    <constraint firstAttribute="width" priority="750" constant="475" id="Y2y-QZ-IvQ"/>
                                     <constraint firstItem="KwX-4P-EPG" firstAttribute="leading" secondItem="huG-zm-KO0" secondAttribute="trailing" constant="8" id="bVB-EL-AmM"/>
                                     <constraint firstItem="N8g-Xg-ZD9" firstAttribute="leading" secondItem="KwX-4P-EPG" secondAttribute="trailing" constant="8" id="hC4-yN-OxI"/>
                                     <constraint firstItem="huG-zm-KO0" firstAttribute="centerY" secondItem="KwX-4P-EPG" secondAttribute="centerY" constant="-2" id="oHJ-kc-FjI"/>
@@ -1048,34 +1089,43 @@
                                 <rect key="frame" x="0.0" y="704" width="320" height="64"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="© 2014 InfantIQ" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bk3-ro-inF">
-                                        <rect key="frame" x="123" y="44" width="75" height="12"/>
+                                        <rect key="frame" x="123" y="44" width="74.5" height="12"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                         <color key="textColor" red="0.66248588100000005" green="0.66287415289999996" blue="0.69270048949999996" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YP3-OZ-p8h">
-                                        <rect key="frame" x="30" y="6" width="48" height="30"/>
+                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YP3-OZ-p8h">
+                                        <rect key="frame" x="29" y="6" width="48" height="30"/>
                                         <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="13"/>
                                         <state key="normal" title="Method">
                                             <color key="titleColor" red="0.66274509800000003" green="0.66274509800000003" blue="0.69411764710000001" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="didClickWebViewerButton:" destination="72A-d6-Z3y" eventType="touchUpInside" id="vbI-33-CUc"/>
+                                        </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w7P-CY-oGx">
+                                    <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w7P-CY-oGx">
                                         <rect key="frame" x="251" y="6" width="30" height="30"/>
                                         <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="13"/>
                                         <state key="normal" title="Help">
                                             <color key="titleColor" red="0.66274509800000003" green="0.66274509800000003" blue="0.69411764710000001" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="didClickWebViewerButton:" destination="72A-d6-Z3y" eventType="touchUpInside" id="HfS-4C-I8P"/>
+                                        </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kgd-xy-zNN">
+                                    <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kgd-xy-zNN">
                                         <rect key="frame" x="132" y="6" width="56" height="30"/>
                                         <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="13"/>
                                         <state key="normal" title="About Us">
                                             <color key="titleColor" red="0.66274509800000003" green="0.66274509800000003" blue="0.69411764710000001" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="didClickWebViewerButton:" destination="72A-d6-Z3y" eventType="touchUpInside" id="Exe-YL-8fy"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
