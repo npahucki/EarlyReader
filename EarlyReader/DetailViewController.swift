@@ -51,7 +51,6 @@ class DetailViewController: UIViewController,NotificationsDisplayViewControllerD
         super.viewDidLoad()
         containerHeightConstraint.constant = 0
         view.layoutIfNeeded()
-        //_notificationsViewController.loadNotifications()
         NSTimer.scheduledTimerWithTimeInterval(1.0, target: _notificationsViewController, selector: "loadNotifications", userInfo: nil, repeats: false)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateLessonProgress", name: NS_NOTIFICATION_NUMBER_OF_WORD_SETS_CHANGED, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateLessonProgress", name: UIApplicationDidBecomeActiveNotification, object: nil)
