@@ -102,7 +102,7 @@ class LessonsListViewController: UITableViewController, NSFetchedResultsControll
     }
 
     func cellForNextLessonAtIndexPath(indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCellWithIdentifier("nextLessonCell", forIndexPath: indexPath) as NextLessonTableViewCell
+        var cell = self.dequeueReusableCellWithIdentifier("nextLessonCell", forIndexPath: indexPath) as NextLessonTableViewCell
         if let planner = _planner {
             if let baby = Baby.currentBaby {
                 cell.setWords(planner.wordPreviewForNextLesson())
@@ -114,11 +114,26 @@ class LessonsListViewController: UITableViewController, NSFetchedResultsControll
     }
 
     func cellForPreviousLessonAtRow(log: LessonLog, indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCellWithIdentifier("pastLessonCell", forIndexPath: indexPath) as PastLessonTableViewCell
+        var cell = self.dequeueReusableCellWithIdentifier("pastLessonCell", forIndexPath: indexPath) as PastLessonTableViewCell
         cell.setLessonLog(log)
         return cell
     }
 
+    // Hack to work around bug. See http://stackoverflow.com/questions/19132908/auto-layout-constraints-issue-on-ios7-in-uitableviewcell
+    private func dequeueReusableCellWithIdentifier(cellIdentifier : String, forIndexPath: NSIndexPath) -> UITableViewCell {
+        var cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: forIndexPath) as UITableViewCell
+        
+        switch UIDevice.currentDevice().systemVersion.compare("8.0.0", options: NSStringCompareOptions.NumericSearch) {
+        case .OrderedAscending: // Less than ios 8
+            cell.contentView.frame = cell.bounds;
+            cell.contentView.autoresizingMask = UIViewAutoresizing.FlexibleLeftMargin | UIViewAutoresizing.FlexibleWidth | UIViewAutoresizing.FlexibleRightMargin | UIViewAutoresizing.FlexibleTopMargin | UIViewAutoresizing.FlexibleHeight | UIViewAutoresizing.FlexibleBottomMargin
+        default:
+            break // NOOP
+        }
+        return cell
+    }
+    
+    
     override func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         let footerView = UIView()
         if sectionForNextLesson == section {

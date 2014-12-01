@@ -539,7 +539,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </webView>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="A9A-zm-mw6">
-                                <rect key="frame" x="365.5" y="493.5" width="37" height="37"/>
+                                <rect key="frame" x="366" y="494" width="37" height="37"/>
                                 <color key="color" red="0.94117647059999998" green="0.015686274510000001" blue="0.35294117650000001" alpha="1" colorSpace="deviceRGB"/>
                             </activityIndicatorView>
                         </subviews>
@@ -708,7 +708,7 @@
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" horizontalCompressionResistancePriority="500" text="5 of 9 lessons completed today!" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="huG-zm-KO0">
-                                        <rect key="frame" x="5" y="7" width="250.5" height="23.5"/>
+                                        <rect key="frame" x="5" y="7" width="251" height="24"/>
                                         <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
@@ -893,7 +893,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="${name} was born on:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7hZ-Ii-eHd">
-                                <rect key="frame" x="8" y="8" width="188.5" height="26"/>
+                                <rect key="frame" x="8" y="8" width="189" height="26"/>
                                 <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans" pointSize="19"/>
                                 <color key="textColor" red="0.94117647059999998" green="0.015686274510000001" blue="0.35294117650000001" alpha="1" colorSpace="deviceRGB"/>
                                 <nil key="highlightedColor"/>
@@ -1089,7 +1089,7 @@
                                 <rect key="frame" x="0.0" y="704" width="320" height="64"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="© 2014 InfantIQ" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bk3-ro-inF">
-                                        <rect key="frame" x="123" y="44" width="74.5" height="12"/>
+                                        <rect key="frame" x="123" y="44" width="75" height="12"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                         <color key="textColor" red="0.66248588100000005" green="0.66287415289999996" blue="0.69270048949999996" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -1281,7 +1281,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cat, Dog, Cow, Wolf, Bat" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DG8-te-rjD">
-                                            <rect key="frame" x="16" y="21" width="606" height="33"/>
+                                            <rect key="frame" x="16" y="21" width="598" height="33"/>
                                             <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans" pointSize="24"/>
                                             <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
@@ -1319,7 +1319,7 @@
                                     <constraints>
                                         <constraint firstItem="aUQ-Pu-1en" firstAttribute="top" secondItem="DG8-te-rjD" secondAttribute="bottom" constant="4" id="09Y-EI-KcH"/>
                                         <constraint firstItem="u8p-0t-tQ9" firstAttribute="leading" secondItem="DG8-te-rjD" secondAttribute="leading" id="9d6-Tc-K5S"/>
-                                        <constraint firstItem="1aQ-hJ-11q" firstAttribute="leading" secondItem="DG8-te-rjD" secondAttribute="trailing" id="J2Y-EC-xUO"/>
+                                        <constraint firstItem="1aQ-hJ-11q" firstAttribute="leading" secondItem="DG8-te-rjD" secondAttribute="trailing" constant="8" id="J2Y-EC-xUO"/>
                                         <constraint firstItem="u8p-0t-tQ9" firstAttribute="centerY" secondItem="aUQ-Pu-1en" secondAttribute="centerY" id="Lo9-eN-AOJ"/>
                                         <constraint firstItem="DG8-te-rjD" firstAttribute="leading" secondItem="M2k-hC-UQ1" secondAttribute="leading" constant="16" id="Txo-WJ-Yyg"/>
                                         <constraint firstItem="1aQ-hJ-11q" firstAttribute="top" secondItem="DG8-te-rjD" secondAttribute="bottom" constant="-29" id="auL-ZI-6q4"/>
