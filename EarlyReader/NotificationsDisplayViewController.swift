@@ -24,7 +24,8 @@ class NotificationsDisplayViewController: UIViewController, ManagedObjectContext
     private let notificationHeight = 100
     private let maxControllers = 10
     private var containerView : UIView!
-    private var _needsSizeAdjustment : Bool = false
+    private var _needsSizeAdjustment = false
+    private var _didInitialLoad = false
     
     
     var managedContext : NSManagedObjectContext?
@@ -47,35 +48,38 @@ class NotificationsDisplayViewController: UIViewController, ManagedObjectContext
     }
     
     func handleDataModelChange(nsNotification : NSNotification) {
+        
         var needsRefresh = false;
         
-        if let insertedObjects = nsNotification.userInfo?[NSInsertedObjectsKey] as? NSSet {
-            for obj in insertedObjects {
-                if let notification = obj as? Notification {
-                    addNotification(notification)
-                    needsRefresh = true
+        if _didInitialLoad { // Don't try to process any of this until the initial load completes 
+        
+            if let insertedObjects = nsNotification.userInfo?[NSInsertedObjectsKey] as? NSSet {
+                for obj in insertedObjects {
+                    if let notification = obj as? Notification {
+                        addNotification(notification)
+                        needsRefresh = true
+                    }
                 }
             }
-        }
 
-        if let deletedObjects = nsNotification.userInfo?[NSDeletedObjectsKey] as? NSSet {
-            for obj in deletedObjects {
-                if let notification = obj as? Notification {
-                    needsRefresh |= removeNotification(notification)
-                }
-            }
-        }
-
-        if let updatedObjects = nsNotification.userInfo?[NSUpdatedObjectsKey] as? NSSet {
-            for obj in updatedObjects {
-                if let notification = obj as? Notification {
-                    if contains(notification.changedValuesForCurrentEvent().keys,"closedByUser") && notification.closedByUser {
+            if let deletedObjects = nsNotification.userInfo?[NSDeletedObjectsKey] as? NSSet {
+                for obj in deletedObjects {
+                    if let notification = obj as? Notification {
                         needsRefresh |= removeNotification(notification)
                     }
                 }
             }
-        }
 
+            if let updatedObjects = nsNotification.userInfo?[NSUpdatedObjectsKey] as? NSSet {
+                for obj in updatedObjects {
+                    if let notification = obj as? Notification {
+                        if contains(notification.changedValuesForCurrentEvent().keys,"closedByUser") && notification.closedByUser {
+                            needsRefresh |= removeNotification(notification)
+                        }
+                    }
+                }
+            }
+        }
         
         if needsRefresh {
             if childViewControllers.count == 0 {
@@ -101,6 +105,7 @@ class NotificationsDisplayViewController: UIViewController, ManagedObjectContext
                 addNotification(n)
             }
             _needsSizeAdjustment = true
+            _didInitialLoad = true
         }
     }
     
@@ -143,8 +148,10 @@ class NotificationsDisplayViewController: UIViewController, ManagedObjectContext
         let vc = self.storyboard?.instantiateViewControllerWithIdentifier("notificationViewController") as NotificationViewController
         vc.notification = notification
         addChildViewController(vc)
+        vc.didMoveToParentViewController(self)
         if childViewControllers.count > maxControllers {
             if let vc = childViewControllers.first as? UIViewController {
+                vc.view.removeFromSuperview()
                 vc.removeFromParentViewController()
             }
         }
@@ -164,7 +171,6 @@ class NotificationsDisplayViewController: UIViewController, ManagedObjectContext
             vc.view.layer.shadowRadius = 2
             vc.view.layer.shadowOpacity = 0.3
             containerView.addSubview(vc.view)
-            vc.didMoveToParentViewController(self)
         }
     }
     

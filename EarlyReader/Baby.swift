@@ -22,6 +22,7 @@ public class Baby: NSManagedObject {
             if let b = baby {
                 assert(!b.objectID.temporaryID, "You should only set babies that have already been saved as current baby")
                 NSUserDefaults.standardUserDefaults().setURL(b.objectID.URIRepresentation(), forKey: "currentBabyUrl")
+                NSNotificationCenter.defaultCenter().postNotificationName(NS_NOTIFICATION_CURRENT_BABY_CHANGED, object: b)
             } else {
                 NSUserDefaults.standardUserDefaults().removeObjectForKey("currentBabyUrl")
             }

@@ -17,6 +17,7 @@ let TIME_INTERVAL_24_HOURS = NSTimeInterval(60 * 60 * 24)
 
 
 let NS_NOTIFICATION_NUMBER_OF_WORD_SETS_CHANGED = "numberOfWordSetsChanged"
+let NS_NOTIFICATION_CURRENT_BABY_CHANGED = "currentBabyChanged"
 
 // Icky Global, but no other good way to get the context to Baby class.
 var _mainManagedObjectContext : NSManagedObjectContext? = nil

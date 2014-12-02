@@ -10,13 +10,17 @@ import UIKit
 import CoreData
 
 /// Generates notifications based on time or or data events
-@objc class NotificationGenerator {
+@objc
+public class NotificationGenerator {
 
+
+    private let maximumTipNumber = 12
+    
     init() {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "handleDataModelChange:", name: NSManagedObjectContextObjectsDidChangeNotification, object:nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "handleApplicationWakeup", name: UIApplicationDidBecomeActiveNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "handleBabyChange", name: NS_NOTIFICATION_CURRENT_BABY_CHANGED, object: nil)
     }
-    
     
     deinit {
         NSNotificationCenter.defaultCenter().removeObserver(self)
@@ -25,6 +29,7 @@ import CoreData
     func handleApplicationWakeup() {
         checkAndGenerateWordSetGuidanceNotification()
         checkAndGenerateLowWordCountNotification()
+        checkAndGenerateTipIfNeeded()
     }
 
     func handleDataModelChange(note : NSNotification) {
@@ -59,6 +64,10 @@ import CoreData
             
         }
         
+    }
+
+    func handleBabyChange() {
+        checkAndGenerateTipIfNeeded()
     }
 
     private func checkAndGenerateWordSetGuidanceNotification() {
@@ -101,7 +110,44 @@ import CoreData
         }
     }
     
-
+    private func checkAndGenerateTipIfNeeded() {
+        // Deliver no more than one tip per day, until they are all used.
+        if let baby = Baby.currentBaby {
+            let ctx = baby.managedObjectContext!
+            let date = NSDate()
+            let fetchRequest = NSFetchRequest()
+            fetchRequest.entity = NSEntityDescription.entityForName("Notification", inManagedObjectContext:ctx)
+            fetchRequest.sortDescriptors = [NSSortDescriptor(key: "deliveredOn", ascending: false)]
+            fetchRequest.predicate = NSPredicate(format: "key LIKE 'tip-*' AND baby = %@",baby)
+            fetchRequest.fetchLimit = 1
+            var newTipKey : String = "tip-1"
+            if let results = ctx.executeFetchRequest(fetchRequest, error: nil) as? [Notification] {
+                if let last = results.last {
+                    if last.deliveredOn.isToday() {
+                        return // Already delivered for today
+                    } else {
+                        // Extract the key and add one to it.
+                        if let numberPart = last.key.componentsSeparatedByString("-").last {
+                            if let lastNumber = numberPart.toInt() {
+                                if lastNumber >= maximumTipNumber {
+                                    return // No more tips to show
+                                }
+                                newTipKey = "tip-\(lastNumber + 1)"
+                            }
+                        }
+                    }
+                }
+            }
+            
+            if let notification = Notification.newUniqueNotification(.Tip, key: newTipKey,
+                title: "\(newTipKey)_title", context:baby.managedObjectContext!) {
+                    notification.message = "\(newTipKey)_msg"
+                    save(notification)
+            }
+        }
+    }
+    
+    
     private func save(notification : Notification) {
         var error : NSError?
         notification.managedObjectContext!.save(&error)
