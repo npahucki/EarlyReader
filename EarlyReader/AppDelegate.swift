@@ -13,6 +13,7 @@ import CoreData
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
+    var notificationGenerator : NotificationGenerator? // Keep ref so it doesn't get collected
     
     func application(application: UIApplication!, didFinishLaunchingWithOptions launchOptions: NSDictionary!) -> Bool {
         
@@ -25,6 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         var rootViewController = self.window!.rootViewController as MainViewController
         _mainManagedObjectContext = self.managedObjectContext
         rootViewController.managedContext = self.managedObjectContext
+        notificationGenerator = NotificationGenerator()
         
         // UIAppearance Settings
         let defaultFont = UIFont(name: "OpenSans", size: 17.0)
@@ -54,7 +56,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidBecomeActive(application: UIApplication!) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
         application.applicationIconBadgeNumber = 0
-        processNotifiations()
         UsageAnalytics.instance.trackAppActivated()
     }
     
@@ -120,47 +121,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             if moc.hasChanges && !moc.save(&error) {
                 UsageAnalytics.instance.trackError("Failed to create the persistentStoreCoordinator", error: error!)
                 UIAlertView(title: "Bad News", message: "The database schema has changed in a recent update, this means that you'll have to delete the app and install it again. The app will exit now.", delegate: nil, cancelButtonTitle : "Sigh, Ok").showAlertWithButtonBlock(){ $0; abort() }
-            }
-        }
-    }
-    
-    private func processNotifiations() {
-        if let baby = Baby.currentBaby {
-            if let ctx = managedObjectContext {
-                // TODO: Tips
-                let planner = LessonPlanner(baby: baby)
-                let day = planner.dayOfProgram
-                
-                // Checking that the number of word sets is correct
-                if baby.wordSets.count < planner.numberOfWordSetsForToday {
-                    let key = "increase_sets_for_program_day_" + String(day)
-                    if let notification = Notification.newUniqueNotification(.Guidance, key: key, title: "notification_increase_sets_for_program_day_title", context: ctx) {
-                        notification.message = NSString(format : NSLocalizedString("notification_increase_sets_for_program_day_msg", comment:""),planner.numberOfWordSetsForToday)
-                        UsageAnalytics.instance.trackNotificationCreated(notification)
-                        saveContext()
-                    }
-                }
-                
-                // TODO: Move to a listener for changes in the context.
-                // Checking that we have enough words
-                if planner.numberOfAvailableWords < 25 {
-                    let key = "number_of_words_low_25"
-                    if let notification = Notification.newUniqueNotification(.Alert, key: key, title: "alert_words_low_25_title", context: ctx) {
-                        notification.message = "alert_words_low_25_msg"
-                        UsageAnalytics.instance.trackNotificationCreated(notification)
-                        saveContext()
-                    }
-                }
-                
-                if planner.numberOfAvailableWords < 1 {
-                    let key = "number_of_words_out_\(NSDate().startOfDay())"  // Make the alert come back everyday
-                    if let notification = Notification.newUniqueNotification(.Alert, key: key, title: "alert_words_out_title", context: ctx) {
-                        notification.message = "alert_words_out_msg"
-                        UsageAnalytics.instance.trackNotificationCreated(notification)
-                        saveContext()
-                    }
-                }
-
             }
         }
     }

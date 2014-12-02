@@ -42,17 +42,42 @@ public class Notification: NSManagedObject {
 
     /// Creates and returns a new Notification only if one with the same key does not already exist
     class func newUniqueNotification(type : NotificationType, key : String, title : String, context : NSManagedObjectContext) -> Notification? {
-        if !existsNotificaitonWithKey(key, context: context) {
+        if !existsNotificaitonWithKey(key, includeClosed : true, context: context) {
            return newNotification(type, key : key, title : title, context : context)
         }
         return nil
     }
 
-    
-    class func existsNotificaitonWithKey(key: String, context : NSManagedObjectContext) -> Bool {
+    class func newNotificationIfNotOpen(type : NotificationType, key : String, title : String, context : NSManagedObjectContext) -> Notification? {
+        if !existsNotificaitonWithKey(key, includeClosed : false, context: context) {
+            return newNotification(type, key : key, title : title, context : context)
+        }
+        return nil
+    }
+
+    class func removeAllNotificaitonsWithKey(key: String, context : NSManagedObjectContext) {
         let fetchRequest = NSFetchRequest()
         fetchRequest.entity = NSEntityDescription.entityForName("Notification", inManagedObjectContext:context)
         fetchRequest.predicate = NSPredicate(format: "key = %@", key)
+        
+        if let results  = context.executeFetchRequest(fetchRequest, error: nil) as? [NSManagedObject] {
+            for obj in results {
+                context.deleteObject(obj)
+            }
+            context.save(nil)
+        }
+    }
+    
+    
+    
+    class func existsNotificaitonWithKey(key: String, includeClosed : Bool, context : NSManagedObjectContext) -> Bool {
+        let fetchRequest = NSFetchRequest()
+        fetchRequest.entity = NSEntityDescription.entityForName("Notification", inManagedObjectContext:context)
+        if includeClosed {
+            fetchRequest.predicate = NSPredicate(format: "key = %@", key)
+        } else {
+            fetchRequest.predicate = NSPredicate(format: "key = %@ AND closedByUser = false", key)
+        }
         return context.countForFetchRequest(fetchRequest, error: nil) > 0
     }
     

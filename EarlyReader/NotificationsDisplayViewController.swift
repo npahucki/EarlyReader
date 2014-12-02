@@ -24,6 +24,7 @@ class NotificationsDisplayViewController: UIViewController, ManagedObjectContext
     private let notificationHeight = 100
     private let maxControllers = 10
     private var containerView : UIView!
+    private var _needsSizeAdjustment : Bool = false
     
     
     var managedContext : NSManagedObjectContext?
@@ -38,6 +39,7 @@ class NotificationsDisplayViewController: UIViewController, ManagedObjectContext
     override func viewDidLoad() {
         super.viewDidLoad()
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "handleDataModelChange:", name: NSManagedObjectContextObjectsDidChangeNotification, object:managedContext)
+        NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: "checkNeedsSizeAdjustment", userInfo: nil, repeats: true)
     }
     
     deinit {
@@ -47,7 +49,6 @@ class NotificationsDisplayViewController: UIViewController, ManagedObjectContext
     func handleDataModelChange(nsNotification : NSNotification) {
         var needsRefresh = false;
         
-        //NSSet *deletedObjects = [[note userInfo] objectForKey:NSDeletedObjectsKey];
         if let insertedObjects = nsNotification.userInfo?[NSInsertedObjectsKey] as? NSSet {
             for obj in insertedObjects {
                 if let notification = obj as? Notification {
@@ -80,8 +81,17 @@ class NotificationsDisplayViewController: UIViewController, ManagedObjectContext
             if childViewControllers.count == 0 {
                 loadNotifications() // Load next batch
             } else {
-                delegate.needsContainerSizeAdjusted(self)
+                _needsSizeAdjustment = true
             }
+        }
+    }
+    
+    // Only adjust the container once every few seconds to keep it from jumping all other the place
+    // when there are many updates happening.
+    func checkNeedsSizeAdjustment() {
+        if _needsSizeAdjustment {
+            _needsSizeAdjustment = false
+            delegate.needsContainerSizeAdjusted(self)
         }
     }
     
@@ -90,7 +100,7 @@ class NotificationsDisplayViewController: UIViewController, ManagedObjectContext
             for n in notifications.reverse() {
                 addNotification(n)
             }
-            delegate.needsContainerSizeAdjusted(self)
+            _needsSizeAdjustment = true
         }
     }
     
@@ -103,7 +113,7 @@ class NotificationsDisplayViewController: UIViewController, ManagedObjectContext
             var error : NSError? = nil
             let fetchRequest = NSFetchRequest(entityName: "Notification")
             fetchRequest.predicate = NSPredicate(format: "closedByUser = false")
-            fetchRequest.sortDescriptors = [NSSortDescriptor(key: "deliveredOn", ascending: false)]
+            fetchRequest.sortDescriptors = [NSSortDescriptor(key: "type", ascending: true), NSSortDescriptor(key: "deliveredOn", ascending: false)]
             fetchRequest.fetchLimit = maxCount
             let results = ctx.executeFetchRequest(fetchRequest, error: &error) as [Notification]
             if let err = error {
@@ -121,6 +131,7 @@ class NotificationsDisplayViewController: UIViewController, ManagedObjectContext
         let vcs = self.childViewControllers as [NotificationViewController]
         for vc in vcs {
             if notification == vc.notification {
+                vc.view.removeFromSuperview()
                 vc.removeFromParentViewController()
                 return true
             }

@@ -42,6 +42,7 @@
 		E858B7EF19BA3D59003C5727 /* StreamReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E858B7EE19BA3D59003C5727 /* StreamReader.swift */; };
 		E85F39C919A6BB670004C80F /* Word.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85F39C819A6BB670004C80F /* Word.swift */; };
 		E85F39CC19A6BB670004C80F /* WordSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85F39CB19A6BB670004C80F /* WordSet.swift */; };
+		E862AB551A2E17D500E97196 /* NotificationGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E862AB541A2E17D500E97196 /* NotificationGenerator.swift */; };
 		E86FF5A11A1BA38C00F71F95 /* WordListHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E86FF5A01A1BA38C00F71F95 /* WordListHeaderView.xib */; };
 		E86FF5A41A1BA8A700F71F95 /* WordListTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86FF5A31A1BA8A700F71F95 /* WordListTableHeaderView.swift */; };
 		E884F1951A1BCBFE0040AA13 /* STCollapseTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = E884F1931A1BCBFE0040AA13 /* STCollapseTableView.m */; };
@@ -136,6 +137,7 @@
 		E858B7EE19BA3D59003C5727 /* StreamReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = StreamReader.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		E85F39C819A6BB670004C80F /* Word.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = Word.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		E85F39CB19A6BB670004C80F /* WordSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = WordSet.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		E862AB541A2E17D500E97196 /* NotificationGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationGenerator.swift; sourceTree = "<group>"; };
 		E86FF5A01A1BA38C00F71F95 /* WordListHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WordListHeaderView.xib; sourceTree = "<group>"; };
 		E86FF5A31A1BA8A700F71F95 /* WordListTableHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = WordListTableHeaderView.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		E884F1931A1BCBFE0040AA13 /* STCollapseTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STCollapseTableView.m; sourceTree = "<group>"; };
@@ -406,6 +408,7 @@
 			children = (
 				E839D8D119FE802900D0765E /* WordImporter.swift */,
 				E8FBFD431A012B6600087BE2 /* LessonPlanner.swift */,
+				E862AB541A2E17D500E97196 /* NotificationGenerator.swift */,
 			);
 			name = Logic;
 			sourceTree = "<group>";
@@ -608,6 +611,7 @@
 				E851FF4C1A2636EA00DCC578 /* NSManagedObjectExportImport.swift in Sources */,
 				E8CEDB6F1A1E423300BE4ED8 /* NotificationViewController.swift in Sources */,
 				E8DB1FBC1A1EA249001B904D /* NotificationsDisplayViewController.swift in Sources */,
+				E862AB551A2E17D500E97196 /* NotificationGenerator.swift in Sources */,
 				E8FBFD481A013DD700087BE2 /* NSDateExtensions.swift in Sources */,
 				E884F1951A1BCBFE0040AA13 /* STCollapseTableView.m in Sources */,
 				E8F4B3351A1E98BB00904C07 /* Notification.swift in Sources */,
