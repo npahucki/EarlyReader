@@ -16,7 +16,7 @@ protocol WordListTableHeaderViewDelegate {
 class WordListTableHeaderView: UIView {
 
     var delegate : WordListTableHeaderViewDelegate?
-    var sectionKey : String?
+    var wordSection : WordListViewController.WordSection = .AvailableWords
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var detailLabel: UILabel!

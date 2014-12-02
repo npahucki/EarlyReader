@@ -54,6 +54,7 @@ public class Baby: NSManagedObject {
     public func populateWordSets(numberOfWordSets : Int, numberOfWordsPerSet : Int = WORDS_PER_WORDSET) -> (numberOfWordSetsCreated: Int, error: NSError?) {
         var setsCreated = 0
         var error : NSError? = nil
+
         if let ctx = managedObjectContext {
             // If any word sets are missing, populate them
             var countOfWordSets = self.wordSets.count
@@ -71,6 +72,7 @@ public class Baby: NSManagedObject {
                 let sortedWordSets = self.wordSets.sortedArrayUsingDescriptors([NSSortDescriptor(key: "number", ascending:false)]) as [WordSet]
                 var setsToRemove = countOfWordSets - numberOfWordSets
                 for set in sortedWordSets {
+                    
                     self.managedObjectContext?.deleteObject(set)
                     setsCreated--
                     if --setsToRemove <= 0 {
@@ -78,18 +80,25 @@ public class Baby: NSManagedObject {
                     }
                 }
             }
-            
-            let sortedWordSets = self.wordSets.sortedArrayUsingDescriptors([NSSortDescriptor(key: "number", ascending:true)]) as [WordSet]
-            // Iterate sorted, so that we fill number 1 first, then 2, 3, etc....
-            for wordSet in sortedWordSets {
-                var fillResult = wordSet.fill(numberOfWordsPerSet)
-                if wordSet.words.count < numberOfWordsPerSet && fillResult.numberOfWordsAdded < numberOfWordsPerSet {
-                    // TODO: this probably means that we are running out of words
-                    // we may need to send an alert, or signal an error.
-                    NSLog("WARNING: Did not completely fill word set %d. Added %d of %d words",wordSet.number,fillResult.numberOfWordsAdded,numberOfWordsPerSet)
-                } else if let e = fillResult.error {
-                    // Stop here, report error
-                    error = e; break
+            // Need t save for the words property to be updated, which is used just below.
+            ctx.save(&error)
+
+            if error == nil {
+                let sortedWordSets = self.wordSets.sortedArrayUsingDescriptors([NSSortDescriptor(key: "number", ascending:true)]) as [WordSet]
+                // Iterate sorted, so that we fill number 1 first, then 2, 3, etc....
+                for wordSet in sortedWordSets {
+                    if wordSet.words.count < numberOfWordsPerSet {
+                        var fillResult = wordSet.fill(numberOfWordsPerSet)
+                        if wordSet.words.count < numberOfWordsPerSet && fillResult.numberOfWordsAdded < numberOfWordsPerSet {
+                            // TODO: this probably means that we are running out of words
+                            // we may need to send an alert, or signal an error.
+                            NSLog("WARNING: Did not completely fill word set %d. Added %d of %d words",wordSet.number,fillResult.numberOfWordsAdded,numberOfWordsPerSet)
+                            break // No point to keep trying the rest
+                        } else if let e = fillResult.error {
+                            // Stop here, report error
+                            error = e; break
+                        }
+                    }
                 }
             }
             

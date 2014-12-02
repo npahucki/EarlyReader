@@ -143,6 +143,44 @@ class LessonPlannerTests: CoreDataUnitTestBase {
         XCTAssertEqual(_planner.dayOfProgram, 5)
     }
     
+    func testWordPreviewForNextLessonShowsOldestFirst() {
+        var wordsToImport = [String]()
+        for var i = 0; i < 7; i++ {
+            wordsToImport.append("word-" + String(i))
+        }
+        importWords(wordsToImport)
+        
+        let ws1 = createWordSet()
+        let ws2 = createWordSet()
+        let ws3 = createWordSet()
+        
+        let date1 = NSDate()
+        
+        XCTAssertEqual(ws1.fill().numberOfWordsAdded, 5)
+        ws1.lastViewedOn = date1.dateByAddingDays(-1)
+        XCTAssertEqual(ws2.fill().numberOfWordsAdded, 2)
+        ws2.lastViewedOn = date1.dateByAddingDays(-2)
+        XCTAssertEqual(ws3.fill().numberOfWordsAdded, 0)
+        ws3.lastViewedOn = date1.dateByAddingDays(-3)
+  
+        // Normally ws3 would be seen, but since it has no words, we should get the next inline (ws2)
+        XCTAssertEqual(_planner.wordPreviewForNextLesson().count, 2)
+        
+        // Then, lets mark that one seen
+        ws2.lastViewedOn = NSDate()
+        saveContext()
+        
+        // And the next one shoulh have full 5 words
+        XCTAssertEqual(_planner.wordPreviewForNextLesson().count, 5)
+        
+        // And mark this one viewed after wc2
+        ws1.lastViewedOn =  ws2.lastViewedOn?.dateByAddingTimeInterval(5.0)
+        saveContext()
+
+        // And now we should get wc2 again
+        XCTAssertEqual(_planner.wordPreviewForNextLesson().count, 2)
+    }
+    
     func testStartAndFinishLesson() {
         var wordsToImport = [String]()
         for var i = 0; i < 25; i++ {

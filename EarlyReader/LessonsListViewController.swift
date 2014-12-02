@@ -105,8 +105,13 @@ class LessonsListViewController: UITableViewController, NSFetchedResultsControll
         var cell = self.dequeueReusableCellWithIdentifier("nextLessonCell", forIndexPath: indexPath) as NextLessonTableViewCell
         if let planner = _planner {
             if let baby = Baby.currentBaby {
-                cell.setWords(planner.wordPreviewForNextLesson())
-                cell.setDueIn(planner.nextLessonDate ?? NSDate())
+                let previewText = planner.wordPreviewForNextLesson()
+                if previewText.isEmpty {
+                    cell.indicateNoMoreWords()
+                } else {
+                    cell.setWords(previewText)
+                    cell.setDueIn(planner.nextLessonDate ?? NSDate())
+                }
             }
         }
         

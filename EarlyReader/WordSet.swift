@@ -36,7 +36,7 @@ public class WordSet: NSManagedObject {
         var count = 0
         var error : NSError? = nil;
 
-        let numberOfWordsNeeded = numberOfWords - words.count;
+        let numberOfWordsNeeded = numberOfWords - words.count
         if numberOfWordsNeeded > 0 {
             let fetchRequest = NSFetchRequest(entityName: "Word")
             fetchRequest.sortDescriptors = [NSSortDescriptor(key: "lastViewedOn", ascending: true)]

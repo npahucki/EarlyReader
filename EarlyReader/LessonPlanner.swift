@@ -301,21 +301,23 @@ public class LessonPlanner {
     }
     
     private func findNextWordSet() -> WordSet? {
-        var set : WordSet? = nil;
         var error: NSError? = nil
         let fetchRequest = NSFetchRequest(entityName: "WordSet")
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "lastViewedOn", ascending: true)]
-        fetchRequest.fetchLimit = 1
         fetchRequest.predicate = NSPredicate(format: "(baby == %@)",_baby)
         if let results = _managedObjectContext.executeFetchRequest(fetchRequest, error: &error) as? [WordSet] {
-            set = results.count > 0 ? results.first : nil
+            for wordSet in results {
+                if wordSet.words.count > 0 {
+                    return wordSet
+                }
+            }
         }
         
         if error != nil {
             UsageAnalytics.instance.trackError("Error trying to load word set from CoreData", error:error!);
         }
         
-        return set;
+        return nil;
     }
     
     private func saveUpdatedWordsAndSets() {

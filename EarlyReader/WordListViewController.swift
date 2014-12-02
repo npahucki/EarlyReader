@@ -14,39 +14,132 @@ class WordListViewController: UITableViewController,ManagedObjectContextHolder, 
     var managedContext : NSManagedObjectContext? = nil
     var fetchedResultsController = NSFetchedResultsController()
     
-    private var _headerViews = [Int: WordListTableHeaderView]()
     
+
+    enum WordSection : Int {
+        case AvailableWords = 0
+        case InSetWords = 1
+        case RetiredWords = 2
+    }
+    
+    private var _sectionHeaderViews = [WordSection : WordListTableHeaderView]()
+    private var _sectionObjects = [WordSection:[Word]]()
+    private var _deletedIndexPath : NSIndexPath?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        fetchedResultsController = getFetchedResultController()
-        fetchedResultsController.delegate = self
-        fetchedResultsController.performFetch(nil)
-        
+    }
+
+    private func reloadTable() {
+        _sectionObjects.removeAll(keepCapacity: true)
+        tableView.reloadData()
+        updateHeaderTextForAllSections()
     }
     
-    private func getFetchedResultController() -> NSFetchedResultsController {
-        if let baby = Baby.currentBaby {
-            let fetchRequest = NSFetchRequest(entityName: "Word")
-            fetchRequest.predicate = NSPredicate(format: "baby = %@",baby)
-            fetchRequest.sortDescriptors = [
-                NSSortDescriptor(key: "wordSet.number", ascending: true),
-                NSSortDescriptor(key: "retiredOn", ascending: true),
-                NSSortDescriptor(key: "text", ascending: true, selector: "localizedCaseInsensitiveCompare:")
-            ]
-            fetchRequest.propertiesToFetch = ["wordSet"]
-            if let ctx = managedContext {
-                return NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: ctx, sectionNameKeyPath: "wordGroupingKey", cacheName: nil)
+    private func wordAtIndexPath(indexPath : NSIndexPath) -> Word {
+        let wordsInSection = wordsInSectionNumber(indexPath.section)
+        return wordsInSection[indexPath.row]
+    }
+    
+    private func wordsInSectionNumber(sectionNumber : Int) -> [Word] {
+        let wordSection = WordSection(rawValue: sectionNumber)!
+        if let words = _sectionObjects[wordSection] {
+            return words
+        } else {
+            let words = fetchResultsForSection(wordSection)
+            _sectionObjects[wordSection] = words
+            return words
+        }
+    }
+    
+    private func fetchResultsForSection(section : WordSection) -> [Word] {
+        var words : [Word] = [Word]()
+        if let ctx = managedContext {
+            var error : NSError?
+            if let ws = ctx.executeFetchRequest(fetchRequestForSection(section), error: &error) as? [Word] {
+                words = ws
+            }
+            if let e = error {
+                UsageAnalytics.instance.trackError("Failed to load words in section \(section)", error: e)
             }
         }
-        
-        return fetchedResultsController
+        return words
     }
     
+    private func fetchRequestForSection(section : WordSection) -> NSFetchRequest {
+        if let baby = Baby.currentBaby {
+            let fetchRequest = NSFetchRequest(entityName: "Word")
+            switch(section) {
+            case .AvailableWords:
+                fetchRequest.predicate = NSPredicate(format: "baby = %@ AND retiredOn = NULL && wordSet = NULL",baby)
+                fetchRequest.sortDescriptors = [NSSortDescriptor(key: "text", ascending: true, selector: "localizedCaseInsensitiveCompare:")]
+            case .InSetWords:
+                fetchRequest.predicate = NSPredicate(format: "baby = %@ AND wordSet != NULL",baby)
+                fetchRequest.propertiesToFetch = ["wordSet"]
+                fetchRequest.sortDescriptors = [
+                    NSSortDescriptor(key: "wordSet.number", ascending: true),
+                    NSSortDescriptor(key: "text", ascending: true, selector: "localizedCaseInsensitiveCompare:")
+                ]
+            case .RetiredWords:
+                fetchRequest.predicate = NSPredicate(format: "baby = %@ AND retiredOn != NULL",baby)
+                fetchRequest.sortDescriptors = [
+                    NSSortDescriptor(key: "retiredOn", ascending: true),
+                    NSSortDescriptor(key: "text", ascending: true, selector: "localizedCaseInsensitiveCompare:")
+                ]
+            }
+            return fetchRequest
+        } else {
+            return NSFetchRequest()
+        }
+    }
+  
+    private func sectionKeyForSection(wordSection : WordSection) -> String {
+        switch (wordSection) {
+        case .AvailableWords:
+            return Word.wordAvailableGroupKey()
+        case .InSetWords:
+            return Word.wordInSetGroupKey()
+        case .RetiredWords:
+            return Word.wordRetiredGroupKey()
+        }
+    }
 
+    private func updateHeaderTextInSectionNumber(section: Int) {
+        let wordSection = WordSection(rawValue: section)!
+        if let headerView = _sectionHeaderViews[wordSection] {
+            let key = sectionKeyForSection(wordSection)
+            headerView.titleLabel.text = NSLocalizedString("word_list_" + key, comment : "")
+            headerView.detailLabel.text =  NSString(format: NSLocalizedString("word_list_section_number_of_words", comment : "In the word list table, the number of words in the section header"), self.tableView(tableView, numberOfRowsInSection: section))
+        }
+    }
+    
+    private func updateHeaderTextForAllSections() {
+        for section in 0..._sectionHeaderViews.count - 1 {
+            updateHeaderTextInSectionNumber(section)
+        }
+    }
+
+    private func startEditingAvailableWords() {
+        if let headerView = _sectionHeaderViews[.AvailableWords] {
+            // TODO: localize
+            headerView.editButton.setTitle("Done", forState: UIControlState.Normal)
+            headerView.addButton.hidden = true
+            tableView.setEditing(true, animated: true)
+        }
+    }
+    
+    private func endEditingAvailableWords() {
+        if let headerView = _sectionHeaderViews[.AvailableWords] {
+            headerView.addButton.hidden = false
+            // TODO: localize
+            headerView.editButton.setTitle("Edit", forState: UIControlState.Normal)
+            tableView.setEditing(false, animated: true)
+        }
+        updateHeaderTextForAllSections()
+    }
+    
     func didClickHeaderButton(sender:WordListTableHeaderView, button: UIButton) {
-        if sender.sectionKey == Word.wordAvailableGroupKey() {
+        if sender.wordSection == WordSection.AvailableWords {
             if button == sender.addButton {
                 self.performSegueWithIdentifier("showAddWords", sender: self)
             } else if button == sender.editButton {
@@ -59,129 +152,89 @@ class WordListViewController: UITableViewController,ManagedObjectContextHolder, 
         }
     }
 
-    func startEditingAvailableWords() {
-        if let headerView = _headerViews.values.filter( {$0.sectionKey == Word.wordAvailableGroupKey()}).array.first {
-            // TODO: localize
-            headerView.editButton.setTitle("Done", forState: UIControlState.Normal)
-            headerView.addButton.hidden = true
-            tableView.setEditing(true, animated: true)
-        }
-    }
-
-    func endEditingAvailableWords() {
-        if let headerView = _headerViews.values.filter( {$0.sectionKey == Word.wordAvailableGroupKey()}).array.first {
-            headerView.addButton.hidden = false
-            // TODO: localize
-            headerView.editButton.setTitle("Edit", forState: UIControlState.Normal)
-            tableView.setEditing(false, animated: true)
-        }
-        updateHeaderTextForAllSections()
-    }
-
-    
+    /// MARK: STCollapseTableViewDelegate
     
     func didCollapseSection(section: Int) {
         // Cancel any editing
-        if tableView.editing && _headerViews[section]?.sectionKey == Word.wordAvailableGroupKey() {
+        if tableView.editing {
             endEditingAvailableWords()
         }
-
-        if let headerView = _headerViews[section] {
-            if headerView.sectionKey == Word.wordAvailableGroupKey() {
-                headerView.addButton.hidden = true
+        if let headerView = _sectionHeaderViews[WordSection(rawValue: section)!] {
+            if headerView.wordSection == .AvailableWords {
                 headerView.editButton.hidden = true
             }
         }
     }
     
     func didExpandSection(section: Int) {
-        if let headerView = _headerViews[section] {
-            if headerView.sectionKey == Word.wordAvailableGroupKey() {
+        if let headerView = _sectionHeaderViews[WordSection(rawValue: section)!] {
+            if headerView.wordSection == .AvailableWords {
                 headerView.addButton.hidden = false
-                headerView.editButton.hidden = fetchedResultsController.sections![section].numberOfObjects < 1
+                headerView.editButton.hidden = tableView(tableView, numberOfRowsInSection: section) < 1
             }
         }
     }
     
-    
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        if let sections = fetchedResultsController.sections {
-                return sections.count
-        } else {
-            return 0
+    /// MARK: UITableViewDelegate methods
+
+    override func tableView(tableView: UITableView, didEndDisplayingCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        // When the deletion animaiton is complete..this will get fired. 
+        if _deletedIndexPath == indexPath {
+            _deletedIndexPath = nil
+            reloadTable()
         }
     }
-
     
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == UITableViewCellEditingStyle.Delete {
-            let word = self.fetchedResultsController.objectAtIndexPath(indexPath) as Word
+            let word = wordAtIndexPath(indexPath)
+            UsageAnalytics.instance.trackWordsDeleted([word])
             var wordSet = word.wordSet
             self.managedContext?.deleteObject(word)
             self.managedContext?.save(nil)
             if wordSet != nil {
                 wordSet!.fill()
             }
+            
+            _sectionObjects[WordSection(rawValue: indexPath.section)!]?.removeAtIndex(indexPath.row)
+            _deletedIndexPath = indexPath
+            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
         }
     }
+
+    /// MARK: UITableViewDataSource methods
     
-    func controller(controller: NSFetchedResultsController,
-        didChangeObject anObject: AnyObject,
-        atIndexPath indexPath: NSIndexPath?,
-        forChangeType type: NSFetchedResultsChangeType,
-        newIndexPath: NSIndexPath?) {
-            
-        if (type == NSFetchedResultsChangeType.Delete) {
-            // Delete row from tableView.
-            tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: UITableViewRowAnimation.Fade)
-            updateHeaderTextForAllSections()
-            if let word = anObject as? Word {
-                UsageAnalytics.instance.trackWordsDeleted([word])
-            }
-        }
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 3
     }
     
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if let sections = fetchedResultsController.sections {
-            return sections[section].numberOfObjects
-        } else {
-            return 0
-        }
+        return wordsInSectionNumber(section).count
     }
-
+    
     override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        if let view = _headerViews[section] {
+        let wordSection = WordSection(rawValue: section)!
+        if let view = _sectionHeaderViews[wordSection] {
             return view
         } else {
             let headerView = NSBundle.mainBundle().loadNibNamed("WordListHeaderView", owner:nil, options:nil)[0] as WordListTableHeaderView;
-            _headerViews[section] = headerView
+            _sectionHeaderViews[wordSection] = headerView
             headerView.delegate = self
-            if let sectionKey = fetchedResultsController.sections![section].name {
-                headerView.sectionKey = sectionKey
-                updateHeaderTextForSection(section)
+            headerView.wordSection = wordSection
+            updateHeaderTextInSectionNumber(section)
+            
+            if wordSection == .AvailableWords {
+                headerView.addButton.hidden = false
             }
+            
             return headerView
         }
     }
-
-    func updateHeaderTextForSection(section: Int) {
-        if let headerView = _headerViews[section] {
-            headerView.titleLabel.text = NSLocalizedString("word_list_" + headerView.sectionKey!, comment : "")
-            headerView.detailLabel.text =  NSString(format: NSLocalizedString("word_list_section_number_of_words", comment : "In the word list table, the number of words in the section header"), fetchedResultsController.sections![section].numberOfObjects)
-        }
-    }
-
-    func updateHeaderTextForAllSections() {
-        for section in 0..._headerViews.count {
-            updateHeaderTextForSection(section)
-        }
-    }
-
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell = tableView.dequeueReusableCellWithIdentifier("wordCell", forIndexPath: indexPath) as UITableViewCell
-        let word = fetchedResultsController.objectAtIndexPath(indexPath) as Word
+        let word = wordAtIndexPath(indexPath)
         cell.textLabel.text = word.text
         // TODO: Localize!
         if (word.wordSet != nil) {
@@ -210,12 +263,7 @@ class WordListViewController: UITableViewController,ManagedObjectContextHolder, 
         footerView.addSubview(separatorView)
         return footerView
     }
-
     
-    func controllerDidChangeContent(controller: NSFetchedResultsController!) {
-        //tableView.reloadData()
-    }
-
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let vc = segue.destinationViewController as? AddWordsViewController {
             vc.wordListController = self
@@ -234,8 +282,8 @@ class WordListViewController: UITableViewController,ManagedObjectContextHolder, 
                 } else {
                     if result.numberOfWordsAdded > 0 {
                         UsageAnalytics.instance.trackWordsAdded(words!)
-                        updateHeaderTextForAllSections()
-                        tableView.reloadData()
+                        baby.populateWordSets(baby.wordSets.count,numberOfWordsPerSet: WORDS_PER_WORDSET)
+                        reloadTable()
                         let title = NSLocalizedString("success_title_generic", comment:"")
                         let msg = NSString(format: NSLocalizedString("msg_words_added", comment:""), result.numberOfWordsAdded)
                         let cancelTitle = NSLocalizedString("uialert_accept_button_title", comment:"")
@@ -246,6 +294,4 @@ class WordListViewController: UITableViewController,ManagedObjectContextHolder, 
             }
         }
     }
-   
-    
 }

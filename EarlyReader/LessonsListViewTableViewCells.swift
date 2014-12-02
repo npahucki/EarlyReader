@@ -19,8 +19,20 @@ class NextLessonTableViewCell : UITableViewCell {
         startButton.layer.cornerRadius = 5
     }
     
+    func indicateNoMoreWords() {
+        contentView.backgroundColor = UIColor.applicationPinkColor()
+        wordsLabel.text = NSLocalizedString("lesson_no_more_words_title",comment: "")
+        wordsLabel.textColor = UIColor.whiteColor()
+        statusLabel.text = NSLocalizedString("lesson_no_more_words",comment: "")
+        statusLabel.textColor = UIColor.whiteColor()
+        statusImageView.image = UIImage(named: "IconAlerts")
+        startButton.hidden = true
+        selected = false
+    }
+    
     func setWords(words: [Word]) {
-       wordsLabel.text = ", ".join(words.map { $0.text.capitalizedString })
+        contentView.backgroundColor = UIColor.whiteColor()
+        wordsLabel.text = ", ".join(words.map { $0.text.capitalizedString })
     }
     
     func setDueIn(nextLesson : NSDate) {
