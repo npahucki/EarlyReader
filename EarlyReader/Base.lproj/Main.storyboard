@@ -55,6 +55,9 @@
             <string>OpenSans-Semibold</string>
             <string>OpenSans-Semibold</string>
         </mutableArray>
+        <mutableArray key="market-regular.ttf">
+            <string>Market-Regular</string>
+        </mutableArray>
     </customFonts>
     <scenes>
         <!--Settings-->
@@ -601,20 +604,20 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="IconTips" translatesAutoresizingMaskIntoConstraints="NO" id="XP1-gI-HV3">
-                                <rect key="frame" x="16" y="29.5" width="41" height="41"/>
+                                <rect key="frame" x="16" y="30" width="41" height="41"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="41" id="bTp-5G-2pL"/>
                                     <constraint firstAttribute="height" constant="41" id="fA6-6I-Uvc"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tip" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gbI-UP-mz9">
-                                <rect key="frame" x="73" y="20.5" width="28.5" height="27.5"/>
+                                <rect key="frame" x="73" y="21" width="29" height="28"/>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="20"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Blah Blah Here" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZUn-gd-hIN">
-                                <rect key="frame" x="77" y="48" width="683" height="22"/>
+                                <rect key="frame" x="77" y="49" width="683" height="22"/>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="16"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -977,11 +980,11 @@
                         <viewControllerLayoutGuide type="bottom" id="g1f-K0-FmA"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="wRe-wK-mPg">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ACE-to-ljy" userLabel="Next Button">
-                                <rect key="frame" x="724" y="490" width="44" height="44"/>
+                                <rect key="frame" x="980" y="362" width="44" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="44" id="fsi-dd-jsf"/>
                                     <constraint firstAttribute="height" constant="44" id="tyt-Yn-YPu"/>
@@ -995,7 +998,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5v4-LP-O9R" userLabel="Back Button">
-                                <rect key="frame" x="0.0" y="490" width="44" height="44"/>
+                                <rect key="frame" x="0.0" y="362" width="44" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="Q8R-Jd-Lhd"/>
                                     <constraint firstAttribute="width" constant="44" id="Qh5-6G-kfV"/>
@@ -1022,7 +1025,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Text" textAlignment="center" lineBreakMode="clip" minimumFontSize="80" translatesAutoresizingMaskIntoConstraints="NO" id="6hX-9E-sYW">
-                                <rect key="frame" x="16" y="333" width="736" height="358"/>
+                                <rect key="frame" x="16" y="205" width="992" height="358"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="300"/>
                                 <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -1047,11 +1050,15 @@
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
                     <nil key="simulatedTopBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <connections>
                         <outlet property="abortButton" destination="cVL-00-gz9" id="rmT-H7-luB"/>
                         <outlet property="nextButton" destination="ACE-to-ljy" id="4tQ-Rh-UuM"/>
                         <outlet property="previousButton" destination="5v4-LP-O9R" id="wlJ-Wn-R4R"/>
                         <outlet property="textLabel" destination="6hX-9E-sYW" id="wt4-rY-qKD"/>
+                        <segue destination="aef-gC-rsZ" kind="custom" identifier="presentRewardScreen" customClass="RewardScreenSegue" customModule="EarlyReader" customModuleProvider="target" id="qP8-4H-jaj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="34c-CJ-dh3" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1061,7 +1068,62 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="586" y="2439"/>
+            <point key="canvasLocation" x="533" y="2311"/>
+        </scene>
+        <!--Reward Screen-->
+        <scene sceneID="5gg-pw-kNo">
+            <objects>
+                <viewController id="aef-gC-rsZ" userLabel="Reward Screen" customClass="RewardScreenViewController" customModule="EarlyReader" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="bzw-vQ-PcZ"/>
+                        <viewControllerLayoutGuide type="bottom" id="x55-YZ-OdI"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Qaa-RZ-r5v">
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BackgroundFull" translatesAutoresizingMaskIntoConstraints="NO" id="6L8-21-G90">
+                                <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="RewardScreen12" translatesAutoresizingMaskIntoConstraints="NO" id="Pa1-Iu-kYl">
+                                <rect key="frame" x="289" y="96" width="447" height="360"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="447" id="Iqs-Da-Y9p"/>
+                                    <constraint firstAttribute="height" constant="360" id="cxy-l5-SXS"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Awesome Job!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VO6-So-Kib">
+                                <rect key="frame" x="338" y="472" width="350" height="114"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="114" id="d5S-BQ-xJH"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Market-Regular" family="Market-Regular" pointSize="72"/>
+                                <color key="textColor" red="0.94117647059999998" green="0.015686274510000001" blue="0.35294117650000001" alpha="1" colorSpace="deviceRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="6L8-21-G90" firstAttribute="leading" secondItem="Qaa-RZ-r5v" secondAttribute="leading" id="Dq4-wZ-O56"/>
+                            <constraint firstAttribute="centerX" secondItem="VO6-So-Kib" secondAttribute="centerX" id="Fop-6Y-QNP"/>
+                            <constraint firstAttribute="centerX" secondItem="Pa1-Iu-kYl" secondAttribute="centerX" id="IHh-an-gBD"/>
+                            <constraint firstItem="6L8-21-G90" firstAttribute="top" secondItem="Qaa-RZ-r5v" secondAttribute="top" id="YI4-Ev-6ts"/>
+                            <constraint firstItem="VO6-So-Kib" firstAttribute="top" secondItem="Pa1-Iu-kYl" secondAttribute="bottom" constant="16" id="fFF-WK-sWh"/>
+                            <constraint firstItem="Pa1-Iu-kYl" firstAttribute="top" secondItem="bzw-vQ-PcZ" secondAttribute="bottom" constant="96" id="gGm-0a-7wV"/>
+                            <constraint firstAttribute="trailing" secondItem="6L8-21-G90" secondAttribute="trailing" id="mI5-QV-EJN"/>
+                            <constraint firstItem="x55-YZ-OdI" firstAttribute="top" secondItem="6L8-21-G90" secondAttribute="bottom" id="y5x-kD-qfh"/>
+                        </constraints>
+                    </view>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+                    <connections>
+                        <outlet property="animalImageView" destination="Pa1-Iu-kYl" id="fCp-IT-rNd"/>
+                        <outlet property="rewardPhraseLabel" destination="VO6-So-Kib" id="X0H-cu-QqR"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TBU-4i-f82" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-577" y="2316"/>
         </scene>
         <!--Menu View Controller-->
         <scene sceneID="3eK-w7-Rbt">
@@ -1111,8 +1173,8 @@
                                             <action selector="didClickWebViewerButton:" destination="72A-d6-Z3y" eventType="touchUpInside" id="vbI-33-CUc"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="100" horizontalCompressionResistancePriority="500" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L1u-Gr-1wZ">
-                                        <rect key="frame" x="81" y="6" width="47" height="30"/>
+                                    <button opaque="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="100" horizontalCompressionResistancePriority="500" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L1u-Gr-1wZ">
+                                        <rect key="frame" x="81" y="6" width="30" height="30"/>
                                         <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="13"/>
                                         <state key="normal" title="|">
                                             <color key="titleColor" red="0.66274509800000003" green="0.66274509800000003" blue="0.69411764710000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -1133,8 +1195,8 @@
                                             <action selector="didClickWebViewerButton:" destination="72A-d6-Z3y" eventType="touchUpInside" id="HfS-4C-I8P"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kgd-xy-zNN">
-                                        <rect key="frame" x="132" y="6" width="56" height="30"/>
+                                    <button opaque="NO" tag="2" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kgd-xy-zNN">
+                                        <rect key="frame" x="116" y="6" width="89" height="30"/>
                                         <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="13"/>
                                         <state key="normal" title="About Us">
                                             <color key="titleColor" red="0.66274509800000003" green="0.66274509800000003" blue="0.69411764710000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -1144,8 +1206,8 @@
                                             <action selector="didClickWebViewerButton:" destination="72A-d6-Z3y" eventType="touchUpInside" id="Exe-YL-8fy"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="100" horizontalCompressionResistancePriority="500" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hUe-lS-uif">
-                                        <rect key="frame" x="192" y="6" width="55" height="30"/>
+                                    <button opaque="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="100" horizontalCompressionResistancePriority="500" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hUe-lS-uif">
+                                        <rect key="frame" x="208" y="6" width="39" height="30"/>
                                         <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="13"/>
                                         <state key="normal" title="|">
                                             <color key="titleColor" red="0.66274509800000003" green="0.66274509800000003" blue="0.69411764710000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -1455,6 +1517,7 @@
         <image name="IconTips" width="41" height="34"/>
         <image name="Logo" width="173" height="158"/>
         <image name="RewardBird" width="67" height="57"/>
+        <image name="RewardScreen12" width="447" height="360"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

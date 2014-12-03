@@ -22,6 +22,8 @@
 		E82DEBFD19F6AA4100EED0A8 /* UserPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = E82DEBFC19F6AA4100EED0A8 /* UserPreferences.swift */; };
 		E82DEC0519F6B97300EED0A8 /* UsageAnalytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = E82DEC0419F6B97300EED0A8 /* UsageAnalytics.swift */; };
 		E839D8D219FE802900D0765E /* WordImporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E839D8D119FE802900D0765E /* WordImporter.swift */; };
+		E83B19721A2F3AB100FB85F3 /* market-regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E83B19711A2F3AB100FB85F3 /* market-regular.ttf */; };
+		E83B19741A2F3DB500FB85F3 /* RewardScreenSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = E83B19731A2F3DB500FB85F3 /* RewardScreenSegue.swift */; };
 		E841F67219FA868700684DD6 /* WordListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E841F67119FA868700684DD6 /* WordListViewController.swift */; };
 		E841F67619FA935800684DD6 /* NSDate+HumanizedTime.m in Sources */ = {isa = PBXBuildFile; fileRef = E841F67419FA935800684DD6 /* NSDate+HumanizedTime.m */; };
 		E841F67819FA938400684DD6 /* NSDateHumanizedTime.strings in Resources */ = {isa = PBXBuildFile; fileRef = E841F67719FA938400684DD6 /* NSDateHumanizedTime.strings */; };
@@ -45,6 +47,7 @@
 		E862AB551A2E17D500E97196 /* NotificationGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E862AB541A2E17D500E97196 /* NotificationGenerator.swift */; };
 		E86FF5A11A1BA38C00F71F95 /* WordListHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E86FF5A01A1BA38C00F71F95 /* WordListHeaderView.xib */; };
 		E86FF5A41A1BA8A700F71F95 /* WordListTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86FF5A31A1BA8A700F71F95 /* WordListTableHeaderView.swift */; };
+		E873B8061A2F356F00877DC8 /* RewardScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E873B8051A2F356F00877DC8 /* RewardScreenViewController.swift */; };
 		E884F1951A1BCBFE0040AA13 /* STCollapseTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = E884F1931A1BCBFE0040AA13 /* STCollapseTableView.m */; };
 		E88916D11A04340B002C8F13 /* CoreDataUnitTestBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88916D01A04340B002C8F13 /* CoreDataUnitTestBase.swift */; };
 		E88916D31A0474AA002C8F13 /* BabyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88916D21A0474AA002C8F13 /* BabyTests.swift */; };
@@ -115,6 +118,8 @@
 		E82DEBFC19F6AA4100EED0A8 /* UserPreferences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = UserPreferences.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		E82DEC0419F6B97300EED0A8 /* UsageAnalytics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = UsageAnalytics.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		E839D8D119FE802900D0765E /* WordImporter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = WordImporter.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		E83B19711A2F3AB100FB85F3 /* market-regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "market-regular.ttf"; sourceTree = "<group>"; };
+		E83B19731A2F3DB500FB85F3 /* RewardScreenSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RewardScreenSegue.swift; sourceTree = "<group>"; };
 		E841F67119FA868700684DD6 /* WordListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = WordListViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		E841F67419FA935800684DD6 /* NSDate+HumanizedTime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+HumanizedTime.m"; sourceTree = "<group>"; };
 		E841F67519FA935800684DD6 /* NSDate+HumanizedTime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+HumanizedTime.h"; sourceTree = "<group>"; };
@@ -140,6 +145,7 @@
 		E862AB541A2E17D500E97196 /* NotificationGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationGenerator.swift; sourceTree = "<group>"; };
 		E86FF5A01A1BA38C00F71F95 /* WordListHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WordListHeaderView.xib; sourceTree = "<group>"; };
 		E86FF5A31A1BA8A700F71F95 /* WordListTableHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = WordListTableHeaderView.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		E873B8051A2F356F00877DC8 /* RewardScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RewardScreenViewController.swift; sourceTree = "<group>"; };
 		E884F1931A1BCBFE0040AA13 /* STCollapseTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STCollapseTableView.m; sourceTree = "<group>"; };
 		E884F1941A1BCBFE0040AA13 /* STCollapseTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STCollapseTableView.h; sourceTree = "<group>"; };
 		E88916D01A04340B002C8F13 /* CoreDataUnitTestBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = CoreDataUnitTestBase.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -253,6 +259,7 @@
 		E84C8B9E1A12982600B66B74 /* fonts */ = {
 			isa = PBXGroup;
 			children = (
+				E83B19711A2F3AB100FB85F3 /* market-regular.ttf */,
 				E84C8B9F1A12982600B66B74 /* OpenSans-Bold.ttf */,
 				E84C8BA01A12982600B66B74 /* OpenSans-BoldItalic.ttf */,
 				E84C8BA11A12982600B66B74 /* OpenSans-ExtraBold.ttf */,
@@ -313,6 +320,8 @@
 				E8DB1FB91A1EA249001B904D /* NotificationsDisplayViewController.swift */,
 				E8CEDB6E1A1E423300BE4ED8 /* NotificationViewController.swift */,
 				E88CB79C1A29506700299542 /* WebViewController.swift */,
+				E873B8051A2F356F00877DC8 /* RewardScreenViewController.swift */,
+				E83B19731A2F3DB500FB85F3 /* RewardScreenSegue.swift */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -503,6 +512,7 @@
 				E8CDE7F1199FD18F0036CFE8 /* Main.storyboard in Resources */,
 				E86FF5A11A1BA38C00F71F95 /* WordListHeaderView.xib in Resources */,
 				E84C8BB11A12982600B66B74 /* OpenSans-Semibold.ttf in Resources */,
+				E83B19721A2F3AB100FB85F3 /* market-regular.ttf in Resources */,
 				E84C8BAB1A12982600B66B74 /* OpenSans-ExtraBold.ttf in Resources */,
 				E818296519F6F04A007B6DC9 /* Localizable.strings in Resources */,
 				E84C8BAF1A12982600B66B74 /* OpenSans-LightItalic.ttf in Resources */,
@@ -624,7 +634,9 @@
 				E8CEDB631A1D347F00BE4ED8 /* LessonsListTableViewHeader.swift in Sources */,
 				E8DB1FBD1A1EA249001B904D /* EarlyReader.xcdatamodeld in Sources */,
 				E81846D019F94B580012EAAF /* ChildInfoViewController.swift in Sources */,
+				E83B19741A2F3DB500FB85F3 /* RewardScreenSegue.swift in Sources */,
 				E858B7EF19BA3D59003C5727 /* StreamReader.swift in Sources */,
+				E873B8061A2F356F00877DC8 /* RewardScreenViewController.swift in Sources */,
 				E839D8D219FE802900D0765E /* WordImporter.swift in Sources */,
 				E81846D419F961870012EAAF /* UIAlertExtensions.swift in Sources */,
 				E8CDE7E9199FD18F0036CFE8 /* AppDelegate.swift in Sources */,

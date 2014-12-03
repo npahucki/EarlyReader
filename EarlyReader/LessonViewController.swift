@@ -8,7 +8,6 @@
 
 import UIKit
 import CoreData
-import AVFoundation
 
 
 
@@ -18,7 +17,7 @@ import AVFoundation
     func didAbortLesson()
 }
 
-class LessonViewController: UIViewController,AVAudioPlayerDelegate {
+class LessonViewController: UIViewController {
 
     @IBOutlet weak var textLabel: UILabel!
 
@@ -29,7 +28,6 @@ class LessonViewController: UIViewController,AVAudioPlayerDelegate {
     private var _currentIdx  = -1
     private var _currentWords : [Word]?
     private var _isManualMode = UserPreferences.alwaysUseManualMode
-    private var audioPlayer : AVAudioPlayer!
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var previousButton: UIButton!
     @IBOutlet weak var abortButton: UIButton!
@@ -40,10 +38,6 @@ class LessonViewController: UIViewController,AVAudioPlayerDelegate {
         super.viewDidLoad()
         assert(lessonPlanner != nil,"LessonPlanner must be set before starting lesson!")
 
-        var cheerSound = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("applause-01", ofType: "mp3")!)
-        audioPlayer = AVAudioPlayer(contentsOfURL: cheerSound, error: nil)
-        audioPlayer.delegate = self
-        audioPlayer.prepareToPlay()
         
         textLabel.font = UIFont.systemFontOfSize(500)
         textLabel.text = ""
@@ -238,35 +232,7 @@ class LessonViewController: UIViewController,AVAudioPlayerDelegate {
     }
     
     private func presentRewardScreen() {
-        // Create image and place off screen
-        let imageView = UIImageView(image: UIImage(named: "RewardScreen-1"))
-        imageView.bounds = self.view.bounds
-        imageView.frame = CGRectMake(self.view.bounds.width, 0, self.view.bounds.width, self.view.bounds.height)
-        self.view.addSubview(imageView)
-        
-        // Need to replace old text view because it has constraints, so it can not ne animated out
-        let newTextView = UILabel()
-        newTextView.frame = self.textLabel.frame
-        newTextView.text = self.textLabel.text
-        newTextView.font = self.textLabel.font
-        newTextView.textColor = self.textLabel.textColor
-        newTextView.lineBreakMode = .ByClipping
-        self.view.addSubview(newTextView)
-        self.textLabel.hidden = true
-        
-        UIView.animateWithDuration(0.5, delay: 0.0, usingSpringWithDamping: 0.8, initialSpringVelocity: 1.0, options: UIViewAnimationOptions.allZeros, animations: {
-            imageView.frame = self.view.bounds
-            newTextView.frame = CGRectMake(-self.view.bounds.size.width, self.textLabel.frame.origin.y, self.textLabel.frame.width, self.textLabel.frame.height)
-            }, completion: { finished in
-                // Will also trigger dismissing the dialog when the audio is done playing!
-                self.audioPlayer.play()
-                newTextView.removeFromSuperview()
-            })
+        performSegueWithIdentifier("presentRewardScreen", sender: self)
     }
-    
-    func audioPlayerDidFinishPlaying(player: AVAudioPlayer!, successfully flag: Bool) {
-        self.presentingViewController?.dismissViewControllerAnimated(true, completion:nil)
-    }
-
 
 }
