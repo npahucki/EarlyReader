@@ -9,19 +9,7 @@
 import CoreData
 import UIKit
 
-// TODO:
-//                let day = planner.dayOfProgram
-//                if  planner.numberOfWordSetsForToday < baby.wordSets.count {
-//                    infoMessageLabel.text = NSString(format: NSLocalizedString("idle_info_program_day_and_increase_sets",comment: ""), day, planner.numberOfWordSetsForToday)
-//                    infoMessageLabel.textColor = UIColor.redColor()
-//                } else {
-//                    infoMessageLabel.text = NSString(format: NSLocalizedString("idle_info_program_day",comment: ""), day)
-//                    infoMessageLabel.textColor = UIColor.greenColor()
-//                }
-
-
-
-class LessonsListViewController: UITableViewController, NSFetchedResultsControllerDelegate, LessonStateDelegate {
+class LessonsListViewController: UITableViewController, NSFetchedResultsControllerDelegate, LessonStateDelegate,UIPopoverControllerDelegate {
     
     
     let sectionForNextLesson = 0
@@ -29,7 +17,8 @@ class LessonsListViewController: UITableViewController, NSFetchedResultsControll
     
     private var fetchedResultsController = NSFetchedResultsController()
     private var _planner : LessonPlanner?
-
+    private var infoPopover : UIPopoverController?
+    
     override func viewDidLoad() {        super.viewDidLoad()
         NSTimer.scheduledTimerWithTimeInterval(30.0 , target: self, selector: "updateCurrentStateMessages", userInfo: nil, repeats:true)
     }
@@ -165,12 +154,49 @@ class LessonsListViewController: UITableViewController, NSFetchedResultsControll
     }
 
     func didClickHeaderDiscloseButton(sender: UIButton) {
-        // TODO: WHat to show here?
-        if sender.tag == sectionForNextLesson {
-            UIAlertView(title: "TODO", message: "TODO:Next Lesson Info Clicked!", delegate: nil, cancelButtonTitle: "Ok").show()
-        } else if sender.tag == sectionForPreviousLessons {
-            UIAlertView(title: "TODO", message: "TODO:Past Lesson Info Clicked!", delegate: nil, cancelButtonTitle: "Ok").show()
+
+        if let planner = _planner {
+            var key = "previous_lesson_info_bubble_normal" // default previous lesson
+            if sender.tag == sectionForNextLesson {
+                let nextLessonDue = planner.nextLessonDate ?? NSDate()
+                if planner.wordPreviewForNextLesson().isEmpty {
+                    key = "next_lesson_info_bubble_no_words"
+                } else if nextLessonDue.timeIntervalSinceNow <= 0 {
+                    key = "next_lesson_info_bubble_ready"
+                } else if nextLessonDue.isTomorrow() {
+                    key = "next_lesson_info_bubble_tomorrow"
+                } else {
+                    key = "next_lesson_info_bubble_waiting"
+                }
+            }
+            
+            var popoverContentView = UIView()
+            popoverContentView.setTranslatesAutoresizingMaskIntoConstraints(false)
+            
+            var label = UILabel()
+            label.font = UIFont(name: "OpenSans-Light", size : 17.0)
+            label.textColor = UIColor.applicationTextColor()
+            label.numberOfLines = 0
+            label.text = NSLocalizedString(key, comment: "")
+            let labelSize = label.sizeThatFits(CGSize(width: 500 - 40, height: CGFloat.max))
+            let size = CGSize(width: 500, height: labelSize.height + 40)
+            popoverContentView.addSubview(label)
+            label.center = CGPoint(x: size.width / 2.0, y: size.height / 2.0)
+            label.bounds = CGRect(x:0,y:0,width:labelSize.width, height: labelSize.height)
+
+            let presentationPoint = sender.convertRect(sender.frame, toView: self.view)
+            let popoverContentViewController = UIViewController()
+            popoverContentViewController.view = popoverContentView
+            popoverContentViewController.preferredContentSize = size
+            infoPopover = UIPopoverController(contentViewController: popoverContentViewController)
+            infoPopover!.popoverContentSize = size
+            infoPopover!.delegate = self
+            infoPopover!.presentPopoverFromRect(sender.frame, inView: sender.superview!, permittedArrowDirections: UIPopoverArrowDirection.Up, animated: true)
         }
+    }
+    
+    func popoverControllerDidDismissPopover(popoverController: UIPopoverController) {
+        infoPopover = nil // let it go
     }
     
     func controllerDidChangeContent(controller: NSFetchedResultsController!) {
