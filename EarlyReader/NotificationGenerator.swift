@@ -14,8 +14,6 @@ import CoreData
 public class NotificationGenerator {
 
 
-    private let maximumTipNumber = 12
-    
     init() {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "handleDataModelChange:", name: NSManagedObjectContextObjectsDidChangeNotification, object:nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "handleApplicationWakeup", name: UIApplicationDidBecomeActiveNotification, object: nil)
@@ -129,10 +127,12 @@ public class NotificationGenerator {
                         // Extract the key and add one to it.
                         if let numberPart = last.key.componentsSeparatedByString("-").last {
                             if let lastNumber = numberPart.toInt() {
-                                if lastNumber >= maximumTipNumber {
-                                    return // No more tips to show
-                                }
                                 newTipKey = "tip-\(lastNumber + 1)"
+                                let titleKey = "\(newTipKey)_title"
+                                if NSLocalizedString(titleKey,comment:"") == titleKey {
+                                    // If the key was returned, it means there are no more tips.
+                                    return
+                                }
                             }
                         }
                     }

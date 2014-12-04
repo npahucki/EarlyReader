@@ -600,11 +600,11 @@
                         <viewControllerLayoutGuide type="bottom" id="eff-tS-jaE"/>
                     </layoutGuides>
                     <view key="view" contentMode="center" id="oPT-4x-CJy" userLabel="Notification View">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="100"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="125"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="IconTips" translatesAutoresizingMaskIntoConstraints="NO" id="XP1-gI-HV3">
-                                <rect key="frame" x="16" y="30" width="41" height="41"/>
+                                <rect key="frame" x="16" y="42" width="41" height="41"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="41" id="bTp-5G-2pL"/>
                                     <constraint firstAttribute="height" constant="41" id="fA6-6I-Uvc"/>
@@ -616,9 +616,10 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Blah Blah Here" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZUn-gd-hIN">
-                                <rect key="frame" x="77" y="49" width="683" height="22"/>
-                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="16"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZUn-gd-hIN">
+                                <rect key="frame" x="77" y="48" width="683" height="62"/>
+                                <string key="text">Blah Blah Here asdkdafsh dfs fkjsdh sdf sd fkjsdhf sdfs f skjdfhsjdkfhk  fsdfkjsdkfh  sd fkjshdf sd f skjdhfkjsdhf sf skfjhs fd adsjhadshjd as dkjashd  asd kajhd asdkasjkdh a d asdkjha ds a dkashd khasd adkjashd kjd </string>
+                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -638,11 +639,11 @@
                         </subviews>
                         <color key="backgroundColor" red="0.090196080505847931" green="0.55294120311737061" blue="0.78431379795074463" alpha="1" colorSpace="deviceRGB"/>
                         <constraints>
+                            <constraint firstItem="ZUn-gd-hIN" firstAttribute="centerY" secondItem="XP1-gI-HV3" secondAttribute="centerY" constant="16" id="2PF-RD-lG2"/>
                             <constraint firstItem="XP1-gI-HV3" firstAttribute="leading" secondItem="oPT-4x-CJy" secondAttribute="leading" constant="16" id="5wP-ij-xKP"/>
                             <constraint firstItem="gbI-UP-mz9" firstAttribute="leading" secondItem="ZUn-gd-hIN" secondAttribute="leading" constant="-4" id="8AA-V1-Yhr"/>
                             <constraint firstItem="ZUn-gd-hIN" firstAttribute="top" secondItem="gbI-UP-mz9" secondAttribute="bottom" id="Iph-yb-pUs"/>
                             <constraint firstAttribute="centerY" secondItem="XP1-gI-HV3" secondAttribute="centerY" id="Lq2-Cn-SDb"/>
-                            <constraint firstItem="XP1-gI-HV3" firstAttribute="centerY" secondItem="gbI-UP-mz9" secondAttribute="centerY" constant="16" id="Q5O-vq-9Vl"/>
                             <constraint firstAttribute="trailing" secondItem="3w2-ZL-m9R" secondAttribute="trailing" id="S0L-Y5-9Ln"/>
                             <constraint firstAttribute="trailing" secondItem="ZUn-gd-hIN" secondAttribute="trailing" constant="8" id="dta-RT-T3E"/>
                             <constraint firstItem="3w2-ZL-m9R" firstAttribute="top" secondItem="2wn-ir-1bn" secondAttribute="bottom" id="eMx-JS-tVc"/>
@@ -654,7 +655,7 @@
                     <nil key="simulatedBottomBarMetrics"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="768" height="100"/>
+                    <size key="freeformSize" width="768" height="125"/>
                     <connections>
                         <outlet property="detailtextLabel" destination="ZUn-gd-hIN" id="vbI-cy-UQH"/>
                         <outlet property="imageView" destination="XP1-gI-HV3" id="j4v-tq-eQb"/>
@@ -1173,7 +1174,7 @@
                                             <action selector="didClickWebViewerButton:" destination="72A-d6-Z3y" eventType="touchUpInside" id="vbI-33-CUc"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="100" horizontalCompressionResistancePriority="500" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L1u-Gr-1wZ">
+                                    <button opaque="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="100" horizontalCompressionResistancePriority="500" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L1u-Gr-1wZ">
                                         <rect key="frame" x="81" y="6" width="30" height="30"/>
                                         <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="13"/>
                                         <state key="normal" title="|">

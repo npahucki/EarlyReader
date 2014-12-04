@@ -21,7 +21,7 @@ class NotificationsDisplayViewController: UIViewController, ManagedObjectContext
     
     
     private let childOffsetDistance = 5
-    private let notificationHeight = 100
+    private let notificationHeight = 125
     private let maxControllers = 10
     private var containerView : UIView!
     private var _needsSizeAdjustment = false
