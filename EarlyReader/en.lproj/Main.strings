@@ -1,0 +1,164 @@
+
+/* Class = "IBUILabel"; text = "Cat, Dog, Cow, Wolf, Bat"; ObjectID = "1ZR-ai-3d9"; */
+"1ZR-ai-3d9.text" = "Cat, Dog, Cow, Wolf, Bat";
+
+/* Class = "IBUIButton"; normalTitle = "START   >"; ObjectID = "1aQ-hJ-11q"; */
+"1aQ-hJ-11q.normalTitle" = "START   >";
+
+/* Class = "IBUILabel"; text = "Paste in or type the words.  One word per line."; ObjectID = "2Sf-Wi-jDu"; */
+"2Sf-Wi-jDu.text" = "Paste in or type the words.  One word per line.";
+
+/* Class = "IBUIButton"; normalTitle = "Save"; ObjectID = "44x-6G-Y8T"; */
+"44x-6G-Y8T.normalTitle" = "Save";
+
+/* Class = "IBUIButton"; selectedTitle = " "; ObjectID = "44x-6G-Y8T"; */
+"44x-6G-Y8T.selectedTitle" = " ";
+
+/* Class = "IBUITableViewController"; title = "Settings"; ObjectID = "45I-s5-k26"; */
+"45I-s5-k26.title" = "Settings";
+
+/* Class = "IBUILabel"; text = "Text"; ObjectID = "6hX-9E-sYW"; */
+"6hX-9E-sYW.text" = "Text";
+
+/* Class = "IBUILabel"; text = "Title"; ObjectID = "75i-aQ-nUs"; */
+"75i-aQ-nUs.text" = "Title";
+
+/* Class = "IBUIButton"; normalTitle = "Done"; ObjectID = "7JX-od-Sqn"; */
+"7JX-od-Sqn.normalTitle" = "Done";
+
+/* Class = "IBUILabel"; text = "${name} was born on:"; ObjectID = "7hZ-Ii-eHd"; */
+"7hZ-Ii-eHd.text" = "${name} was born on:";
+
+/* Class = "IBUIButton"; normalTitle = "Settings"; ObjectID = "831-DE-uNq"; */
+"831-DE-uNq.normalTitle" = "Settings";
+
+/* Class = "IBUILabel"; text = "© 2014 InfantIQ"; ObjectID = "Bk3-ro-inF"; */
+"Bk3-ro-inF.text" = "© 2014 InfantIQ";
+
+/* Class = "IBUILabel"; text = "Cat, Dog, Cow, Wolf, Bat"; ObjectID = "DG8-te-rjD"; */
+"DG8-te-rjD.text" = "Cat, Dog, Cow, Wolf, Bat";
+
+/* Class = "IBUILabel"; text = "9 Months and 12 Days old."; ObjectID = "EcG-yf-1fi"; */
+"EcG-yf-1fi.text" = "9 Months and 12 Days old.";
+
+/* Class = "IBUILabel"; text = "(Hidden in production)"; ObjectID = "HZc-gN-bnY"; */
+"HZc-gN-bnY.text" = "(Hidden in production)";
+
+/* Class = "IBUITextField"; placeholder = "Child's First Name"; ObjectID = "J6J-cR-3P9"; */
+"J6J-cR-3P9.placeholder" = "Child's First Name";
+
+/* Class = "IBUIButton"; normalTitle = "Close"; ObjectID = "JWI-XU-YRp"; */
+"JWI-XU-YRp.normalTitle" = "Close";
+
+/* Class = "IBUIButton"; normalTitle = "|"; ObjectID = "L1u-Gr-1wZ"; */
+"L1u-Gr-1wZ.normalTitle" = "|";
+
+/* Class = "IBUIButton"; normalTitle = "Do It!"; ObjectID = "MLX-jC-mkM"; */
+"MLX-jC-mkM.normalTitle" = "Do It!";
+
+/* Class = "IBUILabel"; text = "To Begin"; ObjectID = "NVJ-cu-sOZ"; */
+"NVJ-cu-sOZ.text" = "To Begin";
+
+/* Class = "IBUIButton"; normalTitle = "Words"; ObjectID = "ORn-BN-PK1"; */
+"ORn-BN-PK1.normalTitle" = "Words";
+
+/* Class = "IBUILabel"; text = "1 hour 30 mins"; ObjectID = "PjJ-Lm-27l"; */
+"PjJ-Lm-27l.text" = "1 hour 30 mins";
+
+/* Class = "IBUITableViewController"; title = "Lessons"; ObjectID = "Pnh-pn-UUa"; */
+"Pnh-pn-UUa.title" = "Lessons";
+
+/* Class = "IBUILabel"; text = "Time bewteen lessons"; ObjectID = "Pv5-oV-623"; */
+"Pv5-oV-623.text" = "Time bewteen lessons";
+
+/* Class = "IBUILabel"; text = "About Us"; ObjectID = "RgI-p1-OC0"; */
+"RgI-p1-OC0.text" = "About Us";
+
+/* Class = "IBUILabel"; text = "Done"; ObjectID = "Ryf-GG-eVa"; */
+"Ryf-GG-eVa.text" = "Done";
+
+/* Class = "IBUILabel"; text = "Slide advance delay"; ObjectID = "Swd-g1-nD5"; */
+"Swd-g1-nD5.text" = "Slide advance delay";
+
+/* Class = "IBUILabel"; text = "Awesome Job!"; ObjectID = "VO6-So-Kib"; */
+"VO6-So-Kib.text" = "Awesome Job!";
+
+/* Class = "IBUILabel"; text = "4 seconds"; ObjectID = "VR2-ij-quN"; */
+"VR2-ij-quN.text" = "4 seconds";
+
+/* Class = "IBUIButton"; normalTitle = "Method"; ObjectID = "YP3-OZ-p8h"; */
+"YP3-OZ-p8h.normalTitle" = "Method";
+
+/* Class = "IBUILabel"; text = "Blah Blah Here asdkdafsh dfs fkjsdh sdf sd fkjsdhf sdfs f skjdfhsjdkfhk  fsdfkjsdkfh  sd fkjshdf sd f skjdhfkjsdhf sf skfjhs fd adsjhadshjd as dkjashd  asd kajhd asdkasjkdh a d asdkjha ds a dkashd khasd adkjashd kjd "; ObjectID = "ZUn-gd-hIN"; */
+"ZUn-gd-hIN.text" = "PLace Holder Here - asdkdafsh dfs fkjsdh sdf sd fkjsdhf sdfs f skjdfhsjdkfhk  fsdfkjsdkfh  sd fkjshdf sd f skjdhfkjsdhf sf skfjhs fd adsjhadshjd as dkjashd  asd kajhd asdkasjkdh a d asdkjha ds a dkashd khasd adkjashd kjd ";
+
+/* Class = "IBUILabel"; text = "Due in 15 minutes"; ObjectID = "aUQ-Pu-1en"; */
+"aUQ-Pu-1en.text" = "Due in 15 minutes";
+
+/* Class = "IBUILabel"; text = "Number of word sets"; ObjectID = "e4Z-If-Baz"; */
+"e4Z-If-Baz.text" = "Number of word sets";
+
+/* Class = "IBUILabel"; text = "5 minutes ago"; ObjectID = "fbf-Wm-UzG"; */
+"fbf-Wm-UzG.text" = "5 minutes ago";
+
+/* Class = "IBUILabel"; text = "1. Ensure there are no aural or visual distractions while giving a lesson (e.g. TV, radio, toys in sight).
+\n2. Read the displayed word while your child looks at the screen and simply say \"This word is ...\".
+
+3. Pause the lesson by double tapping anywhere on the screen.
+"; ObjectID = "gZq-UZ-rqh"; */
+"gZq-UZ-rqh.text" = "1. Ensure there are no aural or visual distractions while giving a lesson (e.g. TV, radio, toys in sight).
+\n2. Read the displayed word while your child looks at the screen and simply say \"This word is ...\".
+
+3. Pause the lesson by double tapping anywhere on the screen.
+";
+
+/* Class = "IBUILabel"; text = "Tip"; ObjectID = "gbI-UP-mz9"; */
+"gbI-UP-mz9.text" = "Tip";
+
+/* Class = "IBUIButton"; normalTitle = "|"; ObjectID = "hUe-lS-uif"; */
+"hUe-lS-uif.normalTitle" = "|";
+
+/* Class = "IBUIButton"; normalTitle = "Continue"; ObjectID = "hmL-yz-E8v"; */
+"hmL-yz-E8v.normalTitle" = "Continue";
+
+/* Class = "IBUILabel"; text = "5 of 9 lessons completed today!"; ObjectID = "huG-zm-KO0"; */
+"huG-zm-KO0.text" = "5 of 9 lessons completed today!";
+
+/* Class = "IBUITextField"; placeholder = "Child's Birth Date"; ObjectID = "iv5-9o-m39"; */
+"iv5-9o-m39.placeholder" = "Child's Birth Date";
+
+/* Class = "IBUILabel"; text = "My baby"; ObjectID = "j8H-9n-yZb"; */
+"j8H-9n-yZb.text" = "My baby";
+
+/* Class = "IBUIButton"; normalTitle = "Done"; ObjectID = "k90-l4-cqI"; */
+"k90-l4-cqI.normalTitle" = "Done";
+
+/* Class = "IBUIButton"; selectedTitle = " "; ObjectID = "k90-l4-cqI"; */
+"k90-l4-cqI.selectedTitle" = " ";
+
+/* Class = "IBUIButton"; normalTitle = "Lessons"; ObjectID = "kaM-O2-vih"; */
+"kaM-O2-vih.normalTitle" = "Lessons";
+
+/* Class = "IBUIButton"; normalTitle = "About Us"; ObjectID = "kgd-xy-zNN"; */
+"kgd-xy-zNN.normalTitle" = "About Us";
+
+/* Class = "IBUITableViewController"; title = "Words"; ObjectID = "rbc-kI-bcy"; */
+"rbc-kI-bcy.title" = "Words";
+
+/* Class = "IBUIButton"; normalTitle = "Edit"; ObjectID = "rcw-Ss-4vd"; */
+"rcw-Ss-4vd.normalTitle" = "Edit";
+
+/* Class = "IBUILabel"; text = "Detail"; ObjectID = "vvf-CG-Ml5"; */
+"vvf-CG-Ml5.text" = "Detail";
+
+/* Class = "IBUIButton"; normalTitle = "Help"; ObjectID = "w7P-CY-oGx"; */
+"w7P-CY-oGx.normalTitle" = "Help";
+
+/* Class = "IBUILabel"; text = "5 sets"; ObjectID = "yUO-TH-gf0"; */
+"yUO-TH-gf0.text" = "5 sets";
+
+/* Class = "IBUILabel"; text = "Spacer"; ObjectID = "zLR-WO-PrF"; */
+"zLR-WO-PrF.text" = "Spacer";
+
+/* Class = "IBUIButton"; normalTitle = "Import/Export"; ObjectID = "zVh-vN-Bdc"; */
+"zVh-vN-Bdc.normalTitle" = "Import/Export";
