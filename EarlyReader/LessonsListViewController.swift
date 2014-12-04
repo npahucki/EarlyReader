@@ -238,7 +238,7 @@ class LessonsListViewController: UITableViewController, NSFetchedResultsControll
     
     override func shouldPerformSegueWithIdentifier(identifier: String?, sender: AnyObject?) -> Bool {
         if identifier == "startLesson" && !NSUserDefaults.standardUserDefaults().boolForKey("shownFirstLessonInstruction") {
-            let vc = self.storyboard?.instantiateViewControllerWithIdentifier("lessonInstructionViewController") as InstructionsViewController!
+            let vc = self.storyboard?.instantiateViewControllerWithIdentifier("lessonInstructionViewController") as LessonInstructionsViewController!
             vc.lessonsListController = self
             _infoPopover = UIPopoverController(contentViewController: vc)
             _infoPopover!.popoverContentSize = CGSize(width: 768, height: 640)

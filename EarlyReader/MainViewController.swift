@@ -42,8 +42,16 @@ class MainViewController : UISplitViewController, UISplitViewControllerDelegate,
 //    *** NOT SUPPORTED IN IOS 7!
 //        preferredDisplayMode = UISplitViewControllerDisplayMode.Automatic
 //        preferredPrimaryColumnWidthFraction = 0.25
+
         // Initial Screen
-        showDetailViewControllerWithId("lessonsController")
+        if let menuController = viewControllers.first as? MenuViewController {
+            if !NSUserDefaults.standardUserDefaults().boolForKey("shownBasicInstruction") {
+                NSUserDefaults.standardUserDefaults().setBool(true, forKey: "shownBasicInstruction")
+                menuController.didClickMenuButton(menuController.instructionsButton)
+            } else {
+                menuController.didClickMenuButton(menuController.lessonsButton)
+            }
+        }
     }
     
     override func viewDidAppear(animated: Bool) {

@@ -10,19 +10,21 @@ import UIKit
 
 class MenuViewController: UIViewController {
 
-    let viewForMenuItem = [1 : "lessonsController", 2 : "wordsController",  3 : "settingsController"]
-    let urlsForMenuItem = [1 : "http://infantiq.com/how-early-reader-works/", 2 : "http://infantiq.com/about-us/",  3 : "http://infantiq.com/early-reader-support/"]
+    let viewForMenuItem = ["lessonsController", "wordsController", "settingsController", "instructionsController"]
+    let urlsForMenuItem = ["http://infantiq.com/how-early-reader-works/", "http://infantiq.com/about-us/", "http://infantiq.com/early-reader-support/"]
     
     @IBOutlet weak var settingsButton: UIButton!
     @IBOutlet weak var wordsButton: UIButton!
     @IBOutlet weak var lessonsButton: UIButton!
-    
+    @IBOutlet weak var instructionsButton: UIButton!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         var pinkBackgroundImage = UIColor.backgroundImageWithColor(UIColor.applicationPinkColor())
         settingsButton.setBackgroundImage(pinkBackgroundImage, forState: .Selected)
         wordsButton.setBackgroundImage(pinkBackgroundImage, forState: .Selected)
         lessonsButton.setBackgroundImage(pinkBackgroundImage, forState: .Selected)
+        instructionsButton.setBackgroundImage(pinkBackgroundImage, forState: .Selected)
     }
 
     private func deselectButtonsInView(theView : UIView) {
@@ -39,13 +41,13 @@ class MenuViewController: UIViewController {
         deselectButtonsInView(view)
         sender.selected = true
         let splitViewController = parentViewController as MainViewController
-        splitViewController.showDetailViewControllerWithId(viewForMenuItem[sender.tag]!)
+        splitViewController.showDetailViewControllerWithId(viewForMenuItem[sender.tag])
     }
     
     @IBAction func didClickWebViewerButton(sender: UIButton) {
         deselectButtonsInView(view)
         let splitViewController = parentViewController as MainViewController
-        splitViewController.showDetailWebViewController(urlsForMenuItem[sender.tag]!, title : sender.titleForState(UIControlState.Normal) ?? "?")
+        splitViewController.showDetailWebViewController(urlsForMenuItem[sender.tag], title : sender.titleForState(UIControlState.Normal) ?? "?")
 
     }
 }
