@@ -48,8 +48,10 @@
             <string>OpenSans</string>
             <string>OpenSans</string>
             <string>OpenSans</string>
+            <string>OpenSans</string>
         </mutableArray>
         <mutableArray key="OpenSans-Semibold.ttf">
+            <string>OpenSans-Semibold</string>
             <string>OpenSans-Semibold</string>
             <string>OpenSans-Semibold</string>
             <string>OpenSans-Semibold</string>
@@ -1071,6 +1073,65 @@
             </objects>
             <point key="canvasLocation" x="533" y="2311"/>
         </scene>
+        <!--Instructions View Controller-->
+        <scene sceneID="qzS-vA-G6t">
+            <objects>
+                <viewController storyboardIdentifier="lessonInstructionViewController" id="nid-kw-I7m" customClass="InstructionsViewController" customModule="EarlyReader" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="vUq-nc-hqg"/>
+                        <viewControllerLayoutGuide type="bottom" id="uln-Vw-26F"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="BY4-O5-FEM">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="640"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gZq-UZ-rqh">
+                                <rect key="frame" x="16" y="16" width="736" height="552"/>
+                                <mutableString key="text">Your first lesson is about to start. Here's what you need to know:  
+
+● A word will be presented for a second or two. Just read the word on the screen to your child, while he/she looks at the screen and you introduce the word by saying, "This word is ...".  ● Don't ask your child to repeat the words, but if he does it himself that's ok.  ● Don't try to explain the word during the lesson, just say the word outloud and nothing else.   ● Make sure there are no aural or visual distractions while giving a lesson (e.g. TV, radio, lots of toys in sight).  ● When the lesson finishes, give lots of enthusiastic praise with hugs and kisses, never bribes like cookies or treats.   ● Double tapping anywhere on the screen during the lesson will pause the lesson and allow you advance the slides manually, or abandon the lesson. Double tapping again will resume from the current slide.   </mutableString>
+                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="19"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hmL-yz-E8v">
+                                <rect key="frame" x="0.0" y="576" width="768" height="64"/>
+                                <color key="backgroundColor" red="0.180392161" green="0.74901962280000001" blue="0.40784317260000003" alpha="1" colorSpace="deviceRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="64" id="W1t-uW-teq"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="33"/>
+                                <state key="normal" title="Continue">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="didClickContinueButton:" destination="nid-kw-I7m" eventType="touchUpInside" id="vWi-BY-kiw"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="gZq-UZ-rqh" secondAttribute="trailing" constant="16" id="0WA-uV-QMr"/>
+                            <constraint firstItem="uln-Vw-26F" firstAttribute="top" secondItem="hmL-yz-E8v" secondAttribute="bottom" id="2uI-ZB-wTa"/>
+                            <constraint firstItem="hmL-yz-E8v" firstAttribute="leading" secondItem="BY4-O5-FEM" secondAttribute="leading" id="HsC-9R-EiM"/>
+                            <constraint firstAttribute="trailing" secondItem="hmL-yz-E8v" secondAttribute="trailing" id="P4O-lG-J2F"/>
+                            <constraint firstItem="gZq-UZ-rqh" firstAttribute="top" secondItem="vUq-nc-hqg" secondAttribute="bottom" constant="16" id="fYL-V6-K0Z"/>
+                            <constraint firstItem="gZq-UZ-rqh" firstAttribute="leading" secondItem="BY4-O5-FEM" secondAttribute="leading" constant="16" id="lJr-Uj-R2Y"/>
+                            <constraint firstItem="hmL-yz-E8v" firstAttribute="top" secondItem="gZq-UZ-rqh" secondAttribute="bottom" constant="8" symbolic="YES" id="oY2-Pj-i2O"/>
+                        </constraints>
+                    </view>
+                    <value key="contentSizeForViewInPopover" type="size" width="768" height="640"/>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="768" height="640"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tUm-bM-f2E" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-236" y="1155"/>
+        </scene>
         <!--Reward Screen-->
         <scene sceneID="5gg-pw-kNo">
             <objects>
@@ -1400,7 +1461,7 @@
                                                 </userDefinedRuntimeAttribute>
                                             </userDefinedRuntimeAttributes>
                                             <connections>
-                                                <segue destination="WjB-gp-FKd" kind="modal" modalTransitionStyle="flipHorizontal" id="1uO-gl-ZM9"/>
+                                                <segue destination="WjB-gp-FKd" kind="modal" identifier="startLesson" modalTransitionStyle="flipHorizontal" id="1uO-gl-ZM9"/>
                                             </connections>
                                         </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Due in 15 minutes" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aUQ-Pu-1en">
