@@ -244,7 +244,7 @@ class LessonsListViewController: UITableViewController, NSFetchedResultsControll
             _infoPopover!.popoverContentSize = CGSize(width: 500 , height: 350)
             _infoPopover!.delegate = self
             _infoPopover!.presentPopoverFromRect(_startButton.frame, inView: _startButton.superview!, permittedArrowDirections: UIPopoverArrowDirection.Right, animated: true)
-            //NSUserDefaults.standardUserDefaults().setBool(true, forKey: "shownFirstLessonInstruction")
+            NSUserDefaults.standardUserDefaults().setBool(true, forKey: "shownFirstLessonInstruction")
             return false
         } else {
             return true
