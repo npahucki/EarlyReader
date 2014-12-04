@@ -11,7 +11,7 @@ import UIKit
 class MenuViewController: UIViewController, UIPopoverControllerDelegate {
 
     let viewForMenuItem = ["lessonsController", "wordsController", "settingsController", "instructionsController"]
-    let urlsForMenuItem = ["http://infantiq.com/how-early-reader-works/", "http://infantiq.com/about-us/", "http://infantiq.com/early-reader-support/"]
+    let urlsForMenuItem = ["http://www.infantiq.com/how-early-reader-works-in-app/?utm_source=app", "http://www.infantiq.com/about-us-in-app/?utm_source=app", "http://www.infantiq.com/early-reader-support-in-app/?utm_source=app"]
     
     @IBOutlet weak var settingsButton: UIButton!
     @IBOutlet weak var wordsButton: UIButton!
