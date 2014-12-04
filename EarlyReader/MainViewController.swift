@@ -43,12 +43,7 @@ class MainViewController : UISplitViewController, UISplitViewControllerDelegate,
 
         // Initial Screen
         if let menuController = viewControllers.first as? MenuViewController {
-            if !NSUserDefaults.standardUserDefaults().boolForKey("shownBasicInstruction") {
-                NSUserDefaults.standardUserDefaults().setBool(true, forKey: "shownBasicInstruction")
-                menuController.didClickMenuButton(menuController.instructionsButton)
-            } else {
-                menuController.didClickMenuButton(menuController.lessonsButton)
-            }
+            menuController.didClickMenuButton(menuController.lessonsButton)
         }
     }
     

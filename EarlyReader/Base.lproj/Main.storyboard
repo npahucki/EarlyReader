@@ -49,8 +49,6 @@
             <string>OpenSans</string>
             <string>OpenSans</string>
             <string>OpenSans</string>
-            <string>OpenSans</string>
-            <string>OpenSans</string>
         </mutableArray>
         <mutableArray key="OpenSans-Semibold.ttf">
             <string>OpenSans-Semibold</string>
@@ -980,77 +978,6 @@
             </objects>
             <point key="canvasLocation" x="4358.5" y="-192"/>
         </scene>
-        <!--Instructions View Controller-->
-        <scene sceneID="AUJ-IS-1P9">
-            <objects>
-                <viewController storyboardIdentifier="instructionsController" title="Guide" id="2Dv-2l-QRd" userLabel="Instructions View Controller" customClass="InstructionsViewController" customModule="EarlyReader" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="21X-9j-qCx"/>
-                        <viewControllerLayoutGuide type="bottom" id="cb8-2e-RVh"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="0dZ-4o-atT">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qwg-73-jOb" userLabel="Fade View">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                <subviews>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Et1-l1-n53">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <mutableString key="text">Teaching your baby to read is easy. Here is what yo uneed to know:
- ● The App will alert you when to start a lesson. Usually, several times per day.
-
-● Each lesson is several seconds long depending on how you have the slide duration adjusted. We recommend showing each slide for not more than one second, however, the default is set to 2 seconds to help ease you into it. You can adjust this on the Settings menu as soon as you're comfortable.  
-
-● For each lesson, just read the word on the screen to your Baby, while he/she looks at the screen and you introduce the word, "This word is...", nothing else.
-
-● Pay attention to the top part of the screen where you will be guided through the program.
-
-● Just repeat when the App prompts you to. The App takes care of spacing repetition and introducing new words when the time is right. 
-
-● You can use the Settings menu to change options like the slide speed, number of word sets and time between lessons.
-
-● The vocabulary words we use are the ones that are best for most kids, but you should also add your child's favorite words, or remove any you don't like by using the Words menu.
- ● If you want to know more about the method used in the program, tap on the Method link in the bottom part of the menu.  ● If you need more help or have questions or feedback, tap on the Help link in the bottom part of the menu. 
-Get started by tapping the Lesson menu.      </mutableString>
-                                        <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
-                                        <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="18"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no" spellCheckingType="no"/>
-                                    </textView>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstItem="Et1-l1-n53" firstAttribute="top" secondItem="qwg-73-jOb" secondAttribute="top" id="VEX-Sp-aZQ"/>
-                                    <constraint firstAttribute="trailing" secondItem="Et1-l1-n53" secondAttribute="trailing" id="lEV-gG-wBx"/>
-                                    <constraint firstItem="Et1-l1-n53" firstAttribute="leading" secondItem="qwg-73-jOb" secondAttribute="leading" id="o4g-Uf-87s"/>
-                                    <constraint firstAttribute="bottom" secondItem="Et1-l1-n53" secondAttribute="bottom" id="uE3-gV-f6c"/>
-                                </constraints>
-                            </view>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstAttribute="bottom" secondItem="qwg-73-jOb" secondAttribute="bottom" id="1nj-1W-PqD"/>
-                            <constraint firstItem="qwg-73-jOb" firstAttribute="top" secondItem="0dZ-4o-atT" secondAttribute="top" id="4SW-DH-HpA"/>
-                            <constraint firstItem="qwg-73-jOb" firstAttribute="leading" secondItem="0dZ-4o-atT" secondAttribute="leading" id="fWt-rc-b2j"/>
-                            <constraint firstAttribute="trailing" secondItem="qwg-73-jOb" secondAttribute="trailing" id="opS-fb-GKd"/>
-                        </constraints>
-                    </view>
-                    <nil key="simulatedStatusBarMetrics"/>
-                    <nil key="simulatedTopBarMetrics"/>
-                    <nil key="simulatedBottomBarMetrics"/>
-                    <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
-                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="600" height="600"/>
-                    <connections>
-                        <outlet property="fadeView" destination="qwg-73-jOb" id="IiN-aa-TN8"/>
-                        <outlet property="testView" destination="Et1-l1-n53" id="YGM-6f-caJ"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="JVZ-u1-nN8" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3341" y="984"/>
-        </scene>
         <!--Lesson View Controller-->
         <scene sceneID="Tik-cX-eCw">
             <objects>
@@ -1163,7 +1090,7 @@ Get started by tapping the Lesson menu.      </mutableString>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalCompressionResistancePriority="500" verticalCompressionResistancePriority="500" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gZq-UZ-rqh">
-                                <rect key="frame" x="16" y="44" width="468" height="235"/>
+                                <rect key="frame" x="16" y="43.5" width="468" height="234.5"/>
                                 <mutableString key="text">1. Ensure there are no aural or visual distractions while giving a lesson (e.g. TV, radio, toys in sight). 
 2. Read the displayed word while your child looks at the screen and simply say "This word is ...".  3. Pause the lesson by double tapping anywhere on the screen. </mutableString>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="19"/>
@@ -1185,7 +1112,7 @@ Get started by tapping the Lesson menu.      </mutableString>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To Begin" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NVJ-cu-sOZ">
-                                <rect key="frame" x="210" y="8" width="82" height="28"/>
+                                <rect key="frame" x="209.5" y="8" width="81.5" height="27.5"/>
                                 <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="20"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -1303,7 +1230,7 @@ Get started by tapping the Lesson menu.      </mutableString>
                                 <rect key="frame" x="0.0" y="704" width="320" height="64"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="© 2014 InfantIQ" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bk3-ro-inF">
-                                        <rect key="frame" x="123" y="44" width="75" height="12"/>
+                                        <rect key="frame" x="123" y="44" width="74.5" height="12"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                         <color key="textColor" red="0.66248588100000005" green="0.66287415289999996" blue="0.69270048949999996" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -1319,8 +1246,8 @@ Get started by tapping the Lesson menu.      </mutableString>
                                             <action selector="didClickWebViewerButton:" destination="72A-d6-Z3y" eventType="touchUpInside" id="vbI-33-CUc"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="100" horizontalCompressionResistancePriority="500" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L1u-Gr-1wZ">
-                                        <rect key="frame" x="81" y="6" width="47" height="30"/>
+                                    <button opaque="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="100" horizontalCompressionResistancePriority="500" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L1u-Gr-1wZ">
+                                        <rect key="frame" x="81" y="6" width="46.5" height="30"/>
                                         <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="13"/>
                                         <state key="normal" title="|">
                                             <color key="titleColor" red="0.66274509800000003" green="0.66274509800000003" blue="0.69411764710000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -1341,7 +1268,7 @@ Get started by tapping the Lesson menu.      </mutableString>
                                             <action selector="didClickWebViewerButton:" destination="72A-d6-Z3y" eventType="touchUpInside" id="HfS-4C-I8P"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" tag="1" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kgd-xy-zNN">
+                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kgd-xy-zNN">
                                         <rect key="frame" x="132" y="6" width="56" height="30"/>
                                         <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="13"/>
                                         <state key="normal" title="About Us">
@@ -1352,7 +1279,7 @@ Get started by tapping the Lesson menu.      </mutableString>
                                             <action selector="didClickWebViewerButton:" destination="72A-d6-Z3y" eventType="touchUpInside" id="Exe-YL-8fy"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="100" horizontalCompressionResistancePriority="500" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hUe-lS-uif">
+                                    <button opaque="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="100" horizontalCompressionResistancePriority="500" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hUe-lS-uif">
                                         <rect key="frame" x="192" y="6" width="55" height="30"/>
                                         <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="13"/>
                                         <state key="normal" title="|">
@@ -1444,28 +1371,6 @@ Get started by tapping the Lesson menu.      </mutableString>
                                             <action selector="didClickMenuButton:" destination="72A-d6-Z3y" eventType="touchUpInside" id="AQM-53-WeG"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kmq-sO-qbv">
-                                        <rect key="frame" x="0.0" y="176" width="320" height="44"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="44" id="M7Z-cy-2uc"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="21"/>
-                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        <state key="normal" title="Guide">
-                                            <color key="titleColor" red="0.94117647059999998" green="0.015686274510000001" blue="0.35294117650000001" alpha="1" colorSpace="deviceRGB"/>
-                                            <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <state key="selected">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <state key="highlighted">
-                                            <color key="titleColor" red="0.94117647059999998" green="0.015686274510000001" blue="0.35294117650000001" alpha="1" colorSpace="deviceRGB"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="didClickMenuButton:" destination="72A-d6-Z3y" eventType="touchUpInside" id="gej-QK-gWq"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="kaM-O2-vih" firstAttribute="top" secondItem="MmD-wy-eOL" secondAttribute="top" constant="44" id="5m6-K7-tFR"/>
@@ -1473,10 +1378,7 @@ Get started by tapping the Lesson menu.      </mutableString>
                                     <constraint firstAttribute="trailing" secondItem="ORn-BN-PK1" secondAttribute="trailing" id="CQu-e4-Osp"/>
                                     <constraint firstItem="ORn-BN-PK1" firstAttribute="top" secondItem="kaM-O2-vih" secondAttribute="bottom" id="Kr0-my-HzZ"/>
                                     <constraint firstItem="kaM-O2-vih" firstAttribute="leading" secondItem="MmD-wy-eOL" secondAttribute="leading" id="ZQm-3i-MxU"/>
-                                    <constraint firstItem="kmq-sO-qbv" firstAttribute="leading" secondItem="MmD-wy-eOL" secondAttribute="leading" id="d6W-Xv-kOd"/>
                                     <constraint firstItem="831-DE-uNq" firstAttribute="leading" secondItem="MmD-wy-eOL" secondAttribute="leading" id="dWf-EF-GCQ"/>
-                                    <constraint firstItem="kmq-sO-qbv" firstAttribute="top" secondItem="831-DE-uNq" secondAttribute="bottom" id="eTU-Ts-9wI"/>
-                                    <constraint firstAttribute="trailing" secondItem="kmq-sO-qbv" secondAttribute="trailing" id="plL-tL-v67"/>
                                     <constraint firstItem="ORn-BN-PK1" firstAttribute="leading" secondItem="MmD-wy-eOL" secondAttribute="leading" id="rMT-Fh-bPD"/>
                                     <constraint firstAttribute="trailing" secondItem="kaM-O2-vih" secondAttribute="trailing" id="rS9-Mh-gq6"/>
                                     <constraint firstItem="831-DE-uNq" firstAttribute="top" secondItem="ORn-BN-PK1" secondAttribute="bottom" id="rbT-o7-Diu"/>
@@ -1507,7 +1409,7 @@ Get started by tapping the Lesson menu.      </mutableString>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="320" height="768"/>
                     <connections>
-                        <outlet property="instructionsButton" destination="kmq-sO-qbv" id="2e2-Ig-PSc"/>
+                        <outlet property="helpButton" destination="w7P-CY-oGx" id="Ld1-is-H5V"/>
                         <outlet property="lessonsButton" destination="kaM-O2-vih" id="fXL-2p-bzp"/>
                         <outlet property="settingsButton" destination="831-DE-uNq" id="lBE-II-dEZ"/>
                         <outlet property="wordsButton" destination="ORn-BN-PK1" id="VO6-DM-nZX"/>
