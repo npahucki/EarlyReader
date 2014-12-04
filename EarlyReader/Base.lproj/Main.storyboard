@@ -996,7 +996,7 @@
                                     <constraint firstAttribute="width" constant="44" id="fsi-dd-jsf"/>
                                     <constraint firstAttribute="height" constant="44" id="tyt-Yn-YPu"/>
                                 </constraints>
-                                <state key="normal" image="ButtonArrow">
+                                <state key="normal" image="ButtonArrowNext">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -1582,8 +1582,8 @@
         <image name="AgeSetupOwl" width="202" height="192"/>
         <image name="BackgroundFull" width="1024" height="768"/>
         <image name="BackgroundNavigation" width="250" height="768"/>
-        <image name="ButtonArrow" width="23" height="43"/>
-        <image name="ButtonArrowBack" width="23" height="43"/>
+        <image name="ButtonArrowBack" width="23" height="44"/>
+        <image name="ButtonArrowNext" width="23" height="44"/>
         <image name="ButtonBack" width="21" height="22"/>
         <image name="IconCheckMark" width="17" height="13"/>
         <image name="IconClose" width="12" height="12"/>
