@@ -91,9 +91,7 @@ public class Baby: NSManagedObject {
                     if wordSet.words.count < numberOfWordsPerSet {
                         var fillResult = wordSet.fill(numberOfWordsPerSet)
                         if wordSet.words.count < numberOfWordsPerSet && fillResult.numberOfWordsAdded < numberOfWordsPerSet {
-                            // TODO: this probably means that we are running out of words
-                            // we may need to send an alert, or signal an error.
-                            NSLog("WARNING: Did not completely fill word set %d. Added %d of %d words",wordSet.number,fillResult.numberOfWordsAdded,numberOfWordsPerSet)
+                            //NSLog("WARNING: Did not completely fill word set %d. Added %d of %d words",wordSet.number,fillResult.numberOfWordsAdded,numberOfWordsPerSet)
                             break // No point to keep trying the rest
                         } else if let e = fillResult.error {
                             // Stop here, report error

@@ -121,8 +121,7 @@ class WordListViewController: UITableViewController,ManagedObjectContextHolder, 
 
     private func startEditingAvailableWords() {
         if let headerView = _sectionHeaderViews[.AvailableWords] {
-            // TODO: localize
-            headerView.editButton.setTitle("Done", forState: UIControlState.Normal)
+            headerView.editButton.setTitle(NSLocalizedString("words_editing_done_button",comment:"Text shown when editing the word list"), forState: UIControlState.Normal)
             headerView.addButton.hidden = true
             tableView.setEditing(true, animated: true)
         }
@@ -131,8 +130,7 @@ class WordListViewController: UITableViewController,ManagedObjectContextHolder, 
     private func endEditingAvailableWords() {
         if let headerView = _sectionHeaderViews[.AvailableWords] {
             headerView.addButton.hidden = false
-            // TODO: localize
-            headerView.editButton.setTitle("Edit", forState: UIControlState.Normal)
+            headerView.editButton.setTitle(NSLocalizedString("words_editing_edit_button",comment:"Text shown when editing the word list"), forState: UIControlState.Normal)
             tableView.setEditing(false, animated: true)
         }
         updateHeaderTextForAllSections()
@@ -239,15 +237,14 @@ class WordListViewController: UITableViewController,ManagedObjectContextHolder, 
         // TODO: Localize!
         if (word.wordSet != nil) {
             if let viewedOn = word.lastViewedOn {
-                cell.detailTextLabel!.text = NSString(format: "View %d times, last time was %@", word.timesViewed, viewedOn.stringWithHumanizedTimeDifference())
+                cell.detailTextLabel!.text = NSString(format: NSLocalizedString("words_details_in_set_with_last_viewed_on_date", comment:""), word.timesViewed, viewedOn.stringWithHumanizedTimeDifference())
             } else {
-                cell.detailTextLabel!.text = NSString(format: "View %d times", word.timesViewed)
+                cell.detailTextLabel!.text = NSString(format: NSLocalizedString("words_details_in_set", comment:""), word.timesViewed)
             }
         } else {
             if let date = word.retiredOn {
-                cell.detailTextLabel!.text = NSString(format: " Retired %@", date.stringWithHumanizedTimeDifference())
+                cell.detailTextLabel!.text = NSString(format: NSLocalizedString("words_details_retired", comment:""), date.stringWithHumanizedTimeDifference())
             } else {
-                // TODO: Needed an added date.
                 cell.detailTextLabel!.text = nil; // "Added \(word.activatedOn?.stringWithHumanizedTimeDifference())"
             }
         }

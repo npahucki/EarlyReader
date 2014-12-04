@@ -9,8 +9,6 @@
 import UIKit
 import CoreData
 
-// TODO: Where to show day of program?
-
 class MainViewController : UISplitViewController, UISplitViewControllerDelegate, ManagedObjectContextHolder {
     
     private var _managedContext : NSManagedObjectContext? = nil

@@ -56,7 +56,7 @@ class ChildInfoViewController: UIViewController, UITextFieldDelegate, ChildInfoB
                         UIAlertView.showLocalizedErrorMessageWithOkButton("error_msg_download_word_list", title_key : "error_title_download_word_list")
                         UsageAnalytics.instance.trackError("Could not load initial word list", error: err)
                     } else {
-                        self.baby.populateWordSets(1) // TODO: Maybe change depending on age?
+                        self.baby.populateWordSets(1)
                         self.dismissViewControllerAnimated(true, nil)
                     }
                 }
