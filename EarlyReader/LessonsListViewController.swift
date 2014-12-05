@@ -157,10 +157,10 @@ class LessonsListViewController: UITableViewController, NSFetchedResultsControll
     }
 
     func didClickHeaderDiscloseButton(sender: UIButton) {
-
+        var labelText = ""
         if let planner = _planner {
-            var key = "previous_lesson_info_bubble_normal" // default previous lesson
             if sender.tag == sectionForNextLesson {
+                var key : String
                 let nextLessonDue = planner.nextLessonDate ?? NSDate()
                 if planner.wordPreviewForNextLesson().isEmpty {
                     key = "next_lesson_info_bubble_no_words"
@@ -171,6 +171,16 @@ class LessonsListViewController: UITableViewController, NSFetchedResultsControll
                 } else {
                     key = "next_lesson_info_bubble_waiting"
                 }
+                labelText = NSLocalizedString(key, comment: "")
+            } else if sender.tag == sectionForPreviousLessons {
+                let lastWeek = NSDate().dateByAddingDays(-7)
+                let dailyLessonCompletionRating = planner.calcPerDayConsistencyRating(lastWeek).rating
+                if(dailyLessonCompletionRating > 0) {
+                    let consistencyRating = Int(dailyLessonCompletionRating * 100)
+                    labelText = NSString(format: NSLocalizedString("previous_lesson_info_bubble_with_rating", comment: ""),consistencyRating)
+                } else {
+                    labelText = NSLocalizedString("previous_lesson_info_bubble_no_lessons", comment: "")
+                }
             }
             
             var popoverContentView = UIView()
@@ -180,7 +190,7 @@ class LessonsListViewController: UITableViewController, NSFetchedResultsControll
             label.font = UIFont(name: "OpenSans-Light", size : 17.0)
             label.textColor = UIColor.applicationTextColor()
             label.numberOfLines = 0
-            label.text = NSLocalizedString(key, comment: "")
+            label.text = labelText
             let labelSize = label.sizeThatFits(CGSize(width: 500 - 40, height: CGFloat.max))
             let size = CGSize(width: 500, height: labelSize.height + 40)
             popoverContentView.addSubview(label)
