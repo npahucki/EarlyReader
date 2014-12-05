@@ -383,5 +383,79 @@ public class LessonPlanner {
         count = _managedObjectContext.countForFetchRequest(fetchRequest, error: &error)
         return (count, error)
     }
+    
+    private func calcConsistencyRating() -> (rating:Float, error: NSError?) {
+        var error: NSError? = nil
+        var rating : Float = -1
+        
+        
+        return (rating, error)
+    }
+    
+    public func calcPerDayConsistencyRating(startingAt : NSDate) -> (rating:Float, error: NSError?) {
+        var error: NSError? = nil
+        var rating : Float = -1
+       
+        
+        
+        // daysLessonsGiven[] = Find all unique use days
+        // For Each Date in daysLessonsGiven :
+        //   countOfLessonsGivenOnDate = find total number of lessons given on this date
+        //   wordSetsForDate = find the highest number of wordSets for the date 
+        //   totalLessonsForDate = wordSetsForDate * 3
+        //   ratingForDate = countOfLessonsGivenOnDate / totalLessonsForDate
+        // Average all ratings.
+        
+        let fetchRequest = NSFetchRequest(entityName: "LessonLog")
+        let entity = NSEntityDescription.entityForName("LessonLog", inManagedObjectContext: _managedObjectContext)!
+        fetchRequest.resultType = NSFetchRequestResultType.DictionaryResultType
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "useDay", ascending: true)]
+        fetchRequest.propertiesToFetch = ["useDay", "totalNumberOfWordSets"]
+        fetchRequest.returnsDistinctResults = true
+        fetchRequest.predicate = NSPredicate(format: "lessonDate >= %@", startingAt)
+        // Now it should yield an NSArray of distinct values in dictionaries.
+        let dictionaries = _managedObjectContext.executeFetchRequest(fetchRequest, error:&error) as [NSDictionary]
+        
+        
+        var useDayDict = [Int : Int]()
+        for dict in dictionaries {
+            let useDay = dict["useDay"] as Int
+            let existingUseDayWordSets = useDayDict[useDay] ?? 0
+            useDayDict[useDay] = max(existingUseDayWordSets, dict["totalNumberOfWordSets"] as Int)
+        }
+        
+        var totalRating  : Float = 0
+        for (k,v) in useDayDict {
+            let countRequest = NSFetchRequest(entityName: "LessonLog")
+            countRequest.predicate = NSPredicate(format: "useDay = %d", k)
+            let lessonsTakenOnDay = Float(_managedObjectContext.countForFetchRequest(countRequest, error: &error))
+            let lessonScheduledToBeTaken = Float(v * 3) // Each word set 3 times a day
+            totalRating += lessonsTakenOnDay /  lessonScheduledToBeTaken
+        }
+
+        rating = totalRating / Float(useDayDict.count)
+        
+        return (rating, error)
+    }
+    
+    
+    /// Since the program started, how many days were lessons given. 
+    /// 100% is 5 days out of 7.
+    private func calcWeeklyConsistencyRating(startingAt : NSDate) -> (rating:Float, error: NSError?) {
+        var error: NSError? = nil
+        var rating : Float = -1
+        
+        // totalDaysSinceStart = Find how many days since first lesson
+        // numberOfDaysUsedSinceStart = Find how many days the program has been used since first lesson
+        // adjustedNumberOfDaysSince start = totalDaysSinceStart / 7 * 5 (get 5/7s)
+        // return adjustedNumberOfDaysSinceStart / numberOfDaysUsedSinceStart
+        
+        
+        
+        return (rating, error)
+    }
+
+    
+    
 }
 
