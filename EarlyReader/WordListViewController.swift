@@ -28,6 +28,7 @@ class WordListViewController: UITableViewController,ManagedObjectContextHolder, 
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.tableFooterView = UIView(frame: CGRectZero)
     }
 
     private func reloadTable() {
@@ -251,15 +252,17 @@ class WordListViewController: UITableViewController,ManagedObjectContextHolder, 
         return cell
     }
 
-    override func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        let footerView = UIView()
-        footerView.backgroundColor = UIColor.whiteColor()
-        // A little hackery to work around a sometimes appearing separator.
-        let separatorView = UIView(frame: (CGRect(x: tableView.separatorInset.left, y:-1, width: tableView.frame.width - tableView.separatorInset.right * 2 ,height: 1)))
-        separatorView.backgroundColor = UIColor.applicationTableCellSelectedBackgroundColor()
-        footerView.addSubview(separatorView)
-        return footerView
-    }
+    
+    // Unfortunately, this causes crashes! See http://w3facility.org/question/cell-animation-stop-fraction-must-be-greater-than-start-fraction/
+//    override func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+//        let footerView = UIView()
+//        footerView.backgroundColor = UIColor.whiteColor()
+//        // A little hackery to work around a sometimes appearing separator.
+//        let separatorView = UIView(frame: (CGRect(x: tableView.separatorInset.left, y:-1, width: tableView.frame.width - tableView.separatorInset.right * 2 ,height: 1)))
+//        separatorView.backgroundColor = UIColor.applicationTableCellSelectedBackgroundColor()
+//        footerView.addSubview(separatorView)
+//        return footerView
+//    }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let vc = segue.destinationViewController as? AddWordsViewController {
