@@ -44,7 +44,7 @@ class AddWordsViewController: UIViewController {
     func didShowKeyBoard(notification: NSNotification) {
         if let keyboardInfo = notification.userInfo {
             let keyboardFrameBegin = keyboardInfo[UIKeyboardFrameBeginUserInfoKey] as NSValue
-            let keyboardFrameBeginRect = keyboardFrameBegin.CGRectValue()
+            let keyboardFrameBeginRect = view.convertRect(keyboardFrameBegin.CGRectValue(), fromView: nil)
             view.layoutIfNeeded()
             textViewBottomConstraint.constant = keyboardFrameBeginRect.height + 8
             UIView.animateWithDuration(0.5, animations: { () -> Void in
