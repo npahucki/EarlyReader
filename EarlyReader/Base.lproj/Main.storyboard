@@ -1473,7 +1473,7 @@
                                                 </userDefinedRuntimeAttribute>
                                             </userDefinedRuntimeAttributes>
                                             <connections>
-                                                <segue destination="WjB-gp-FKd" kind="modal" identifier="startLesson" modalTransitionStyle="flipHorizontal" id="1uO-gl-ZM9"/>
+                                                <segue destination="WjB-gp-FKd" kind="modal" identifier="startLesson" id="1uO-gl-ZM9"/>
                                             </connections>
                                         </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Due in 15 minutes" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aUQ-Pu-1en">
@@ -1599,6 +1599,6 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="MAW-iu-DCN"/>
+        <segue reference="wwl-ZB-s1J"/>
     </inferredMetricsTieBreakers>
 </document>

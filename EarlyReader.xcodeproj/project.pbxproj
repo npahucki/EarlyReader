@@ -74,6 +74,7 @@
 		E8DB1FBC1A1EA249001B904D /* NotificationsDisplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8DB1FB91A1EA249001B904D /* NotificationsDisplayViewController.swift */; };
 		E8DB1FBD1A1EA249001B904D /* EarlyReader.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E8DB1FBA1A1EA249001B904D /* EarlyReader.xcdatamodeld */; };
 		E8DB32A11A2FE97D00B8B373 /* LessonInstructionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8DB32A01A2FE97D00B8B373 /* LessonInstructionsViewController.swift */; };
+		E8E34E741A37523C006518FB /* SlideInFromRightAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E34E731A37523C006518FB /* SlideInFromRightAnimationController.swift */; };
 		E8F4B3351A1E98BB00904C07 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8F4B3341A1E98BB00904C07 /* Notification.swift */; };
 		E8F807451A12793E00FC427F /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8F807441A12793E00FC427F /* MenuViewController.swift */; };
 		E8FBFD441A012B6600087BE2 /* LessonPlanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8FBFD431A012B6600087BE2 /* LessonPlanner.swift */; };
@@ -179,6 +180,7 @@
 		E8DB1FB91A1EA249001B904D /* NotificationsDisplayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = NotificationsDisplayViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		E8DB1FBB1A1EA249001B904D /* EarlyReader.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = EarlyReader.xcdatamodel; sourceTree = "<group>"; };
 		E8DB32A01A2FE97D00B8B373 /* LessonInstructionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LessonInstructionsViewController.swift; sourceTree = "<group>"; };
+		E8E34E731A37523C006518FB /* SlideInFromRightAnimationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideInFromRightAnimationController.swift; sourceTree = "<group>"; };
 		E8F4B3341A1E98BB00904C07 /* Notification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = Notification.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		E8F807441A12793E00FC427F /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = MenuViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		E8FBFD431A012B6600087BE2 /* LessonPlanner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = LessonPlanner.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -326,6 +328,7 @@
 				E88CB79C1A29506700299542 /* WebViewController.swift */,
 				E873B8051A2F356F00877DC8 /* RewardScreenViewController.swift */,
 				E83B19731A2F3DB500FB85F3 /* RewardScreenSegue.swift */,
+				E8E34E731A37523C006518FB /* SlideInFromRightAnimationController.swift */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -649,6 +652,7 @@
 				E841F67619FA935800684DD6 /* NSDate+HumanizedTime.m in Sources */,
 				E8ACF33F1A1827D3005D6740 /* ChildInfoBirthDatePopoverViewController.swift in Sources */,
 				E82DEC0519F6B97300EED0A8 /* UsageAnalytics.swift in Sources */,
+				E8E34E741A37523C006518FB /* SlideInFromRightAnimationController.swift in Sources */,
 				E841F67219FA868700684DD6 /* WordListViewController.swift in Sources */,
 				E88916D71A047CB0002C8F13 /* Baby.swift in Sources */,
 				E8DB32A11A2FE97D00B8B373 /* LessonInstructionsViewController.swift in Sources */,

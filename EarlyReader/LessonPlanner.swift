@@ -193,8 +193,8 @@ public class LessonPlanner {
     /// Call to get the next bunch of words to display.
     public func startLesson() -> [Word]? {
         assert(_lessonStartTime == nil, "Lesson already started")
-        _lessonStartTime = NSDate()
-        
+        _wordsViewedInLesson.removeAllObjects()
+
         var words : [Word]? = nil
         if let wordSet = findNextWordSet() {
             _currentWordSet = wordSet
@@ -202,6 +202,7 @@ public class LessonPlanner {
             words!.sort {(_,_) in arc4random() % 2 == 0}
         }
         
+        _lessonStartTime = NSDate()
         return words
     }
     
@@ -232,7 +233,6 @@ public class LessonPlanner {
         
         // Reset for resuse 
         _currentWordSet = nil
-        _wordsViewedInLesson.removeAllObjects()
         _lessonStartTime = nil
     }
     

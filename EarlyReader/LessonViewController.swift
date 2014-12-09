@@ -17,7 +17,7 @@ import CoreData
     func didAbortLesson()
 }
 
-class LessonViewController: UIViewController {
+class LessonViewController: UIViewController, UIViewControllerTransitioningDelegate {
 
     @IBOutlet weak var textLabel: UILabel!
 
@@ -28,19 +28,29 @@ class LessonViewController: UIViewController {
     private var _currentIdx  = -1
     private var _currentWords : [Word]?
     private var _isManualMode = UserPreferences.alwaysUseManualMode
+    private var  _transitionController : SlideInFromRightAnimationController?
+
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var previousButton: UIButton!
     @IBOutlet weak var abortButton: UIButton!
     
     var delegate : LessonStateDelegate?
     
+    required init(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        transitioningDelegate = self
+        modalPresentationStyle = UIModalPresentationStyle.Custom
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         assert(lessonPlanner != nil,"LessonPlanner must be set before starting lesson!")
-
+        _currentWords = lessonPlanner.startLesson()
+        assert(_currentWords?.count > 0,"LessonViewController should not be show if there are no words!")
         
         textLabel.font = UIFont.systemFontOfSize(500)
-        textLabel.text = ""
+        textLabel.text = _currentWords!.first?.text ?? ""
         
         nextButton.alpha = 0
         previousButton.alpha = 0
@@ -114,8 +124,6 @@ class LessonViewController: UIViewController {
 
     
     func startNextLesson() {
-        _currentWords = lessonPlanner.startLesson()
-        assert(_currentWords?.count > 0,"LessonViewController should not be show if there are no words!")
         willStartLesson()
         showNextWord()
     }
@@ -234,5 +242,24 @@ class LessonViewController: UIViewController {
     private func presentRewardScreen() {
         performSegueWithIdentifier("presentRewardScreen", sender: self)
     }
+    
+    func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        
+        let transitionController = SlideInFromRightAnimationController()
+        transitionController.isPresenting = true
+        transitionController.duration = 0.75
+        return transitionController
+        
+    }
+    
+    func animationControllerForDismissedController(dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        
+        let transitionController = SlideInFromRightAnimationController()
+        transitionController.isPresenting = false
+        transitionController.duration = 0.75
+        return transitionController
+        
+    }
+
 
 }

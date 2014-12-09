@@ -224,7 +224,7 @@ class LessonsListViewController: UITableViewController, NSFetchedResultsControll
         if let lvc = segue.destinationViewController as? LessonViewController {
             assert(Baby.currentBaby != nil, "Current Baby must be set before a lesson can be started!")
             lvc.lessonPlanner = _planner
-            lvc.delegate = self;
+            lvc.delegate = self
         }
     }
     

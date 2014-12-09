@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class DetailViewController: UIViewController,NotificationsDisplayViewControllerDelegate, ManagedObjectContextHolder {
+class DetailViewController: UIViewController,NotificationsDisplayViewControllerDelegate, ManagedObjectContextHolder,LessonStateDelegate {
 
     private var _notificationsViewController : NotificationsDisplayViewController!
     private var _currentDetailViewController : UIViewController?
@@ -72,6 +72,20 @@ class DetailViewController: UIViewController,NotificationsDisplayViewControllerD
             notificationsController.delegate = self
         }
     }
+
+    func willStartLesson() {
+        // NOOP
+    }
+    
+    func didCompleteLesson() {
+        updateLessonProgress()
+    }
+    
+    func didAbortLesson() {
+        updateLessonProgress()
+    }
+
+    
     
     // Once the delegate has set the final size of the view, it should call back containerDidFinishExpanding()
     func needsContainerSizeAdjusted(displayController: NotificationsDisplayViewController) {
@@ -108,5 +122,7 @@ class DetailViewController: UIViewController,NotificationsDisplayViewControllerD
             }
         }
     }
+    
+    
     
 }
