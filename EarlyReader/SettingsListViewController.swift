@@ -53,6 +53,13 @@ class SettingsListViewController: UITableViewController, ManagedObjectContextHol
             babysAgeLabel.text = babyInfoString
             
         }
+        
+        if UIApplication.sharedApplication().respondsToSelector("currentUserNotificationSettings") {
+            let settings = UIUserNotificationSettings(forTypes: UIUserNotificationType.Sound | UIUserNotificationType.Alert | UIUserNotificationType.Badge, categories: nil)
+            if !UIApplication.sharedApplication().currentUserNotificationSettings().isEqual(settings) {
+                UIAlertView.showLocalizedErrorMessageWithOkButton("msg_error_activate_alerts", title_key: "error_title_reminders_cannot_be_sent")
+            }
+        }
     }
     
     @IBAction func didChangeNumberOfWordSets(sender: UISlider) {
@@ -80,12 +87,6 @@ class SettingsListViewController: UITableViewController, ManagedObjectContextHol
         UserPreferences.lessonReminderInverval = NSTimeInterval(sender.value * 60.0)
         let intervalString = NSLocalizedString("settings_label_reminder", comment:"Label in the settings pane for reminder inverval")
         self.reminderIntervalLabel.text = NSString(format: intervalString, Int(sender.value))
-        if UIApplication.sharedApplication().respondsToSelector("currentUserNotificationSettings") {
-            let settings = UIUserNotificationSettings(forTypes: UIUserNotificationType.Sound | UIUserNotificationType.Alert | UIUserNotificationType.Badge, categories: nil)
-            if !UIApplication.sharedApplication().currentUserNotificationSettings().isEqual(settings) {
-                UIAlertView.showLocalizedErrorMessageWithOkButton("msg_error_activate_alerts", title_key: "error_title_reminders_cannot_be_sent")
-            }
-        }
     }
     
     @IBAction func didChangeSlideDuration(sender: UISlider) {
