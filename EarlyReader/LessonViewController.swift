@@ -39,8 +39,8 @@ class LessonViewController: UIViewController, UIViewControllerTransitioningDeleg
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         transitioningDelegate = self
-        modalPresentationStyle = UIModalPresentationStyle.Custom
-    }
+        modalPresentationStyle = UIModalPresentationStyle.FullScreen
+   }
     
     
     override func viewDidLoad() {

@@ -9,15 +9,6 @@
 import UIKit
 
 
-class SlideInFromRightSegue : UIStoryboardSegue {
-    override func perform() {
-            let source = sourceViewController as UIViewController
-            let destination = destinationViewController as UIViewController
-            UIView.transitionFromView(source.view, toView:destination.view, duration:0.50, options:UIViewAnimationOptions.TransitionFlipFromLeft,completion:nil)
-    }
-}
-
-
 class SlideInFromRightAnimationController : NSObject, UIViewControllerAnimatedTransitioning {
 
     var isPresenting = true
@@ -42,23 +33,23 @@ class SlideInFromRightAnimationController : NSObject, UIViewControllerAnimatedTr
     
     func executePresentationAnimation(context : UIViewControllerContextTransitioning) {
         let inView = context.containerView()
-        let dstVc = context.viewControllerForKey(UITransitionContextToViewControllerKey)!
-        let srcVc = context.viewControllerForKey(UITransitionContextFromViewControllerKey)!
+        let dstView = toViewInContext(context)!
+        let srcView = fromViewInContext(context)!
         
-        // Important that the frame is set BEFORE adding to the container
-        dstVc.view.frame = inView.frame;
-        inView.addSubview(dstVc.view)
+        dstView.frame = inView.convertRect(inView.frame , fromView: nil)
+        inView.addSubview(dstView)
         inView.backgroundColor = UIColor.whiteColor()
+
+        let centerScreen = inView.convertPoint(inView.center, fromView: nil)
+        var centerOffScreen = centerScreen
+        var centerOffScreen2 = centerScreen
+        centerOffScreen.x = dstView.frame.size.width * 1.5
+        centerOffScreen2.x = dstView.frame.size.width * -0.5
         
-        var centerOffScreen = inView.center
-        centerOffScreen.y = inView.frame.size.height * -0.5 // Note this causes a slide from the right in portrait mode!
-        dstVc.view.center = centerOffScreen
-        var centerOffScreen2 = inView.center
-        centerOffScreen2.y = inView.frame.size.height * 1.5
-        
+        dstView.center = centerOffScreen
         UIView.animateWithDuration(duration, delay: 0.0, usingSpringWithDamping: 0.8, initialSpringVelocity: 1.0, options: UIViewAnimationOptions.allZeros, animations: {
-                dstVc.view.center = inView.center
-                srcVc.view.center  = centerOffScreen2
+                dstView.center = centerScreen
+                srcView.center  = centerOffScreen2
             }, completion: { finished in
                 context.completeTransition(true)
         })
@@ -66,26 +57,45 @@ class SlideInFromRightAnimationController : NSObject, UIViewControllerAnimatedTr
 
     func executeDismissalAnimation(context : UIViewControllerContextTransitioning) {
         let inView = context.containerView()
-        let dstVc = context.viewControllerForKey(UITransitionContextToViewControllerKey)!
-        let srcVc = context.viewControllerForKey(UITransitionContextFromViewControllerKey)!
+        let dstView = toViewInContext(context)!
+        let srcView = fromViewInContext(context)!
         
-        // Important that the frame is set BEFORE adding to the container
-        dstVc.view.frame = inView.frame;
-        inView.addSubview(dstVc.view)
+        // Important that the frame is set BEFORE adding to the container (Bug in iOS 8?)
+        dstView.frame = inView.convertRect(inView.frame , fromView: nil)
+        inView.addSubview(dstView)
         inView.backgroundColor = UIColor.whiteColor()
+
         
-        var centerOffScreen = inView.center
-        centerOffScreen.y = 1.5 * inView.frame.size.height // Note this causes a slide from the right in portrait mode!
-        dstVc.view.center = centerOffScreen
-        var centerOffScreen2 = inView.center
-        centerOffScreen2.y = inView.frame.size.height * -0.5
+        let centerScreen = inView.convertPoint(inView.center, fromView: nil)
+        var centerOffScreen = centerScreen
+        var centerOffScreen2 = centerScreen
+        centerOffScreen.x = dstView.frame.size.width * -0.5
+        centerOffScreen2.x = dstView.frame.size.width * 1.5
         
+        dstView.center = centerOffScreen
         UIView.animateWithDuration(duration, delay: 0.0, usingSpringWithDamping: 0.8, initialSpringVelocity: 1.0, options: UIViewAnimationOptions.allZeros, animations: {
-            dstVc.view.center = inView.center
-            srcVc.view.center  = centerOffScreen2
+            dstView.center = centerScreen
+            srcView.center  = centerOffScreen2
             }, completion: { finished in
                 context.completeTransition(true)
         })
     }
+    
+    private func fromViewInContext(transitionContext : UIViewControllerContextTransitioning) -> UIView? {
+        if transitionContext.respondsToSelector("viewForKey") {
+            return transitionContext.viewForKey(UITransitionContextFromViewKey) // iOS 8+
+        } else {
+            return transitionContext.viewControllerForKey(UITransitionContextFromViewControllerKey)?.view
+        }
+    }
+    
+    private func toViewInContext(transitionContext : UIViewControllerContextTransitioning) -> UIView? {
+        if transitionContext.respondsToSelector("viewForKey") {
+            return transitionContext.viewForKey(UITransitionContextToViewKey) // iOS 8+
+        } else {
+            return transitionContext.viewControllerForKey(UITransitionContextToViewControllerKey)?.view
+        }
+    }
+
     
 }
