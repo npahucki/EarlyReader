@@ -174,6 +174,25 @@ public class LessonPlanner {
         }
     }
 
+    public var currentConsistencyRating : Float {
+        get {
+            var startDate = NSDate().dateByAddingDays(-7)
+            if let lastDate = self.lastLessonDate {
+                if lastDate.timeIntervalSince1970 > startDate.timeIntervalSince1970 {
+                    startDate = lastDate
+                }
+
+                let results = calcConsistencyRating(startDate)
+                if let e = results.error {
+                    UsageAnalytics.instance.trackError("Error calculating consitency rating", error: e)
+                }
+                return results.rating > 1 ? 1 : results.rating
+            } else {
+                return 0
+            }
+        }
+    }
+    
     public func wordPreviewForNextLesson() -> [Word] {
         if let wordSet = findNextWordSet() {
             return (wordSet.words.allObjects as [Word])
@@ -392,19 +411,12 @@ public class LessonPlanner {
         return (rating, error)
     }
     
-    public func calcPerDayConsistencyRating(startingAt : NSDate) -> (rating:Float, error: NSError?) {
+    public func calcConsistencyRating(startingAt : NSDate) -> (rating:Float, error: NSError?) {
         var error: NSError? = nil
         var rating : Float = -1
-       
-        
-        
-        // daysLessonsGiven[] = Find all unique use days
-        // For Each Date in daysLessonsGiven :
-        //   countOfLessonsGivenOnDate = find total number of lessons given on this date
-        //   wordSetsForDate = find the highest number of wordSets for the date 
-        //   totalLessonsForDate = wordSetsForDate * 3
-        //   ratingForDate = countOfLessonsGivenOnDate / totalLessonsForDate
-        // Average all ratings.
+
+        // 100% is 5 of 7 days use.
+        let expectedDaysOfUse = (abs(Float(startingAt.daysFromNow())) / 7) * 5
         
         let fetchRequest = NSFetchRequest(entityName: "LessonLog")
         let entity = NSEntityDescription.entityForName("LessonLog", inManagedObjectContext: _managedObjectContext)!
@@ -433,29 +445,10 @@ public class LessonPlanner {
             totalRating += lessonsTakenOnDay /  lessonScheduledToBeTaken
         }
 
-        rating = totalRating / Float(useDayDict.count)
+        rating = totalRating / expectedDaysOfUse
         
         return (rating, error)
     }
-    
-    
-    /// Since the program started, how many days were lessons given. 
-    /// 100% is 5 days out of 7.
-    private func calcWeeklyConsistencyRating(startingAt : NSDate) -> (rating:Float, error: NSError?) {
-        var error: NSError? = nil
-        var rating : Float = -1
-        
-        // totalDaysSinceStart = Find how many days since first lesson
-        // numberOfDaysUsedSinceStart = Find how many days the program has been used since first lesson
-        // adjustedNumberOfDaysSince start = totalDaysSinceStart / 7 * 5 (get 5/7s)
-        // return adjustedNumberOfDaysSinceStart / numberOfDaysUsedSinceStart
-        
-        
-        
-        return (rating, error)
-    }
-
-    
     
 }
 

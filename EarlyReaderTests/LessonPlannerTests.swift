@@ -144,7 +144,9 @@ class LessonPlannerTests: CoreDataUnitTestBase {
     }
 
     func testLessonConsistencyRating() {
-        let firstLessonDate = NSDate()
+        let now = NSDate()
+        let referenceDate = now.dateByAddingDays(-7)
+        let firstLessonDate = referenceDate.dateByAddingDays(1)
         // Simulate several lesosns on the same day.
         createLessonLogEntry(firstLessonDate, wordSetNumber :  0, useDay : 1).totalNumberOfWordSets = 3
         createLessonLogEntry(firstLessonDate, wordSetNumber :  0, useDay : 1).totalNumberOfWordSets = 1
@@ -156,24 +158,26 @@ class LessonPlannerTests: CoreDataUnitTestBase {
         saveContext()
     
         // All lessons taken, should be 100%
-        let rating1 = _planner.calcPerDayConsistencyRating(firstLessonDate).rating
+        let rating1 = _planner.calcConsistencyRating(referenceDate).rating
         XCTAssert(rating1 > Float(0.7) && rating1 < Float(0.8))
     
     
 //        // Following day...100%
-        createLessonLogEntry(firstLessonDate.dateByAddingDays(1), wordSetNumber :  0, useDay : 2).totalNumberOfWordSets = 1
-        createLessonLogEntry(firstLessonDate.dateByAddingDays(1), wordSetNumber :  0, useDay : 2).totalNumberOfWordSets = 1
-        createLessonLogEntry(firstLessonDate.dateByAddingDays(1), wordSetNumber :  0, useDay : 2).totalNumberOfWordSets = 1
+        let secondLessonDate = referenceDate.dateByAddingDays(2)
+        createLessonLogEntry(secondLessonDate, wordSetNumber :  0, useDay : 2).totalNumberOfWordSets = 1
+        createLessonLogEntry(secondLessonDate, wordSetNumber :  0, useDay : 2).totalNumberOfWordSets = 1
+        createLessonLogEntry(secondLessonDate, wordSetNumber :  0, useDay : 2).totalNumberOfWordSets = 1
         saveContext()
-        let rating2 = _planner.calcPerDayConsistencyRating(firstLessonDate).rating
+        let rating2 = _planner.calcConsistencyRating(firstLessonDate).rating
         XCTAssert(rating2 > Float(0.888) && rating2 < Float(0.9))
         
         // Following day...50%
-        createLessonLogEntry(firstLessonDate.dateByAddingDays(2), wordSetNumber :  0, useDay : 3).totalNumberOfWordSets = 2
-        createLessonLogEntry(firstLessonDate.dateByAddingDays(2), wordSetNumber :  0, useDay : 3).totalNumberOfWordSets = 2
-        createLessonLogEntry(firstLessonDate.dateByAddingDays(2), wordSetNumber :  0, useDay : 3).totalNumberOfWordSets = 2
+        let thirdLessonDate = referenceDate.dateByAddingDays(3)
+        createLessonLogEntry(thirdLessonDate, wordSetNumber :  0, useDay : 3).totalNumberOfWordSets = 2
+        createLessonLogEntry(thirdLessonDate, wordSetNumber :  0, useDay : 3).totalNumberOfWordSets = 2
+        createLessonLogEntry(thirdLessonDate, wordSetNumber :  0, useDay : 3).totalNumberOfWordSets = 2
         saveContext()
-        let rating3 = _planner.calcPerDayConsistencyRating(firstLessonDate).rating
+        let rating3 = _planner.calcConsistencyRating(firstLessonDate).rating
         XCTAssert(rating3 > Float(0.75) && rating3 < Float(0.8))
     }
     

@@ -16,7 +16,6 @@ extension NSDate {
     class func now() -> NSDate {
         return NSDate()
     }
-
     
     class func dateWithDaysFromNow(days : Int) -> NSDate {
         return NSDate().dateByAddingDays(days)
@@ -43,6 +42,17 @@ extension NSDate {
         dateComponents.day = days
         return gregorian?.dateByAddingComponents(dateComponents, toDate:self, options:NSCalendarOptions.allZeros) ?? self
     }
+    
+    func daysFrom(date : NSDate) -> Float {
+        let gregorian = NSCalendar(calendarIdentifier : NSGregorianCalendar)!
+        let components = gregorian.components(NSCalendarUnit.DayCalendarUnit | NSCalendarUnit.HourCalendarUnit | NSCalendarUnit.MinuteCalendarUnit, fromDate:self, toDate: date, options: NSCalendarOptions.allZeros)
+        return Float(components.day) + Float(components.hour) / 24.0 + Float(components.minute) / 60.0
+    }
+
+    func daysFromNow() -> Float {
+        return daysFrom(NSDate())
+    }
+    
     
     /// Calculate the next morning at 7 am.
     func theNextMorning() -> NSDate {

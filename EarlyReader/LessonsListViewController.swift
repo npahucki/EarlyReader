@@ -173,13 +173,12 @@ class LessonsListViewController: UITableViewController, NSFetchedResultsControll
                 }
                 labelText = NSLocalizedString(key, comment: "")
             } else if sender.tag == sectionForPreviousLessons {
-                let lastWeek = NSDate().dateByAddingDays(-7)
-                let dailyLessonCompletionRating = planner.calcPerDayConsistencyRating(lastWeek).rating
-                if(dailyLessonCompletionRating > 0) {
-                    let consistencyRating = Int(dailyLessonCompletionRating * 100)
-                    labelText = NSString(format: NSLocalizedString("previous_lesson_info_bubble_with_rating", comment: ""),consistencyRating)
-                } else {
+                if planner.lastLessonDate == nil {
                     labelText = NSLocalizedString("previous_lesson_info_bubble_no_lessons", comment: "")
+                } else {
+                    let dailyLessonCompletionRating = planner.currentConsistencyRating
+                    let consistencyRating = dailyLessonCompletionRating > 0 ? Int(dailyLessonCompletionRating * 100) : 0
+                    labelText = NSString(format: NSLocalizedString("previous_lesson_info_bubble_with_rating", comment: ""),consistencyRating)
                 }
             }
             

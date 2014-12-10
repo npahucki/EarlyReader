@@ -10,6 +10,17 @@ import XCTest
 
 class NSDateExtensionsTests: XCTestCase {
 
+    func testDaysFromNow() {
+        let now = NSDate()
+        let yesterday = now.dateYesterday()
+        let tomorrow = now.dateTomorrow()
+        
+        XCTAssert(now.daysFrom(yesterday) <= -1)
+        XCTAssert(now.daysFrom(tomorrow) > 0.95)
+        XCTAssert(now.daysFrom(now) == 0.0)
+        
+    }
+    
     func testNextMorning() {
         let components = NSDateComponents()
         components.day = 11
