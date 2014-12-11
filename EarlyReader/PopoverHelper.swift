@@ -16,8 +16,8 @@ class PopoverHelper : NSObject, UIPopoverControllerDelegate {
     
     
     var pinToView : UIView?
-    var maxWidth = 450
-    var maxHeight = 450
+    var maxWidth = UIScreen.mainScreen().bounds.width / 3 * 2
+    var maxHeight = UIScreen.mainScreen().bounds.width / 3 * 2
     var permittedArrowDirections = UIPopoverArrowDirection.Any
     private var _infoPopover : UIPopoverController?
     private var _callBack: (() -> ())?
@@ -34,10 +34,9 @@ class PopoverHelper : NSObject, UIPopoverControllerDelegate {
         label.textColor = UIColor.applicationTextColor()
         label.numberOfLines = 0
         label.text = textToShow
-        let width = CGFloat(maxWidth)
         let padding = CGFloat(16)
-        let labelSize = label.sizeThatFits(CGSize(width: width - padding, height: CGFloat.max))
-        let size = CGSize(width: width, height: labelSize.height + padding)
+        let labelSize = label.sizeThatFits(CGSize(width: CGFloat(maxWidth) - padding, height: CGFloat(maxHeight) - padding))
+        let size = CGSize(width: labelSize.width + padding, height: labelSize.height + padding)
         popoverContentView.addSubview(label)
         label.center = CGPoint(x: size.width / 2.0, y: size.height / 2.0)
         label.bounds = CGRect(x:0,y:0,width:labelSize.width, height: labelSize.height)

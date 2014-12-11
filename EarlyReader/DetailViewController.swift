@@ -148,7 +148,6 @@ class DetailViewController: UIViewController,NotificationsDisplayViewControllerD
 
     func showBirdHelpText() {
         _bubble = PopoverHelper()
-        _bubble?.maxWidth = 325
         _bubble!.pinToView = rewardBirdImageView
         _bubble!.permittedArrowDirections = UIPopoverArrowDirection.Up
         _bubble!.showToolTipBubble(NSLocalizedString("bird_help_text", comment: "")) { () -> () in

@@ -184,7 +184,6 @@ class LessonsListViewController: UITableViewController, NSFetchedResultsControll
             
             _bubble = PopoverHelper()
             _bubble!.permittedArrowDirections = UIPopoverArrowDirection.Up
-            _bubble!.maxWidth = 500
             _bubble!.pinToView = sender
             _bubble!.showToolTipBubble(labelText) { () -> () in
                 self._bubble = nil
