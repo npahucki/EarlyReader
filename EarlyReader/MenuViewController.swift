@@ -17,6 +17,9 @@ class MenuViewController: UIViewController {
     @IBOutlet weak var wordsButton: UIButton!
     @IBOutlet weak var lessonsButton: UIButton!
     @IBOutlet weak var helpButton: UIButton!
+    @IBOutlet weak var methodButton: UIButton!
+    @IBOutlet weak var aboutUsButton: UIButton!
+    
     
     private var _bubble : PopoverHelper?
 
@@ -27,8 +30,8 @@ class MenuViewController: UIViewController {
         wordsButton.setBackgroundImage(pinkBackgroundImage, forState: .Selected)
         lessonsButton.setBackgroundImage(pinkBackgroundImage, forState: .Selected)
         
-        if  NSUserDefaults.checkFlagNotSetWithKey("shownWhereHelpIsLocated") {
-            NSTimer.scheduledTimerWithTimeInterval(5.0, target: self, selector: "showHelpIsHerePopover", userInfo: nil, repeats: false)
+        if  NSUserDefaults.checkFlagNotSetWithKey("shownWhereMethodLinkIsLocated") {
+            NSTimer.scheduledTimerWithTimeInterval(5.0, target: self, selector: "shownWhereMethodLinkIsLocated", userInfo: nil, repeats: false)
         }
     }
 
@@ -55,14 +58,15 @@ class MenuViewController: UIViewController {
         }
     }
     
-    func showHelpIsHerePopover() {
+    func shownWhereMethodLinkIsLocated() {
         if view.window == nil {
             // Try again later
-            NSTimer.scheduledTimerWithTimeInterval(15.0, target: self, selector: "showHelpIsHerePopover", userInfo: nil, repeats: false)
+            NSTimer.scheduledTimerWithTimeInterval(15.0, target: self, selector: "shownWhereMethodLinkIsLocated", userInfo: nil, repeats: false)
         } else {
             _bubble = PopoverHelper()
-            _bubble!.pinToView = helpButton
-            _bubble!.showToolTipBubble(NSLocalizedString("menu_help_is_here", comment: "")) { () -> () in
+            _bubble!.pinToView = methodButton
+            _bubble!.permittedArrowDirections = UIPopoverArrowDirection.Down
+            _bubble!.showToolTipBubble(NSLocalizedString("menu_method_is_here", comment: "")) { () -> () in
                 self._bubble = nil
             }
         }
