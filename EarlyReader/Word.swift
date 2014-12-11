@@ -26,9 +26,11 @@ public class Word: NSManagedObject {
     
     @NSManaged public var lastViewedOn: NSDate?
     @NSManaged public var activatedOn: NSDate?
+    @NSManaged public var addedOn: NSDate
     @NSManaged public var retiredOn: NSDate?
     @NSManaged public var text: String
     @NSManaged public var timesViewed: UInt16
+    @NSManaged public var importOrder: UInt16
     @NSManaged public var wordSet: WordSet?
     @NSManaged public var baby: Baby
 

@@ -32,7 +32,10 @@ public class WordImporter {
                 if error == nil {
                     if let wordString = NSString(data:data, encoding: NSUTF8StringEncoding) {
                         if let wordArray = self.parseWords(wordString) {
-                            let result = self.importWords(wordArray)
+                            // Note since we add the words to word sets by the reverser importOrder
+                            // We reverse the words in the list so that the get imported in a manner 
+                            // where the items at the top of the list get used first.
+                            let result = self.importWords(wordArray.reverse())
                             error = result.error
                             numberOfWordsImported = result.numberOfWordsAdded
                         } else {
@@ -58,9 +61,11 @@ public class WordImporter {
         
         
         // Sort words ascending, trim words
-        let words = wordList
-            .map{ $0.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()) }
-            .sorted { $0.localizedCaseInsensitiveCompare($1) == NSComparisonResult.OrderedAscending }
+        let words = wordList.map{ $0.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()) }
+            // Find out how many rows exist so we can do the count 
+            let countRequest = NSFetchRequest(entityName: "Word")
+            countRequest.predicate = NSPredicate(format:"baby = %@", _baby)
+            let startingImportOrder = _managedContext.countForFetchRequest(countRequest, error: nil)
         
             // First get a list of existing words
              let fetchRequest = NSFetchRequest(entityName: "Word")
@@ -78,14 +83,16 @@ public class WordImporter {
                 if !w.isEmpty {
                     if wordsThatAlreadyExist.containsObject(w.lowercaseString) {
                         // Skip, already eixts
-                        NSLog("Skipped import of %@ because it already exists", w)
+                        println("Skipped import of '\(w)'%@ because it already exists")
                     } else {
                         if let entityDescription = NSEntityDescription.entityForName("Word", inManagedObjectContext:_managedContext) {
-                            count++
                             let word = Word(entity: entityDescription, insertIntoManagedObjectContext: _managedContext)
+                            word.addedOn = NSDate()
+                            word.importOrder = UInt16(startingImportOrder + count)
                             word.text = w
                             word.baby = _baby
                             wordsThatAlreadyExist.addObject(w.lowercaseString)
+                            count++
                         }
                     }
                 }

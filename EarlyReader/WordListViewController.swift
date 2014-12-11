@@ -246,7 +246,11 @@ class WordListViewController: UITableViewController,ManagedObjectContextHolder, 
             if let date = word.retiredOn {
                 cell.detailTextLabel!.text = NSString(format: NSLocalizedString("words_details_retired", comment:""), date.stringWithHumanizedTimeDifference())
             } else {
-                cell.detailTextLabel!.text = nil; // "Added \(word.activatedOn?.stringWithHumanizedTimeDifference())"
+                cell.detailTextLabel!.text = NSString(format: NSLocalizedString("words_details_available", comment:""), word.addedOn.stringWithHumanizedTimeDifference())
+                #if DEBUG
+                    cell.detailTextLabel!.text = cell.detailTextLabel!.text! + ". Import Order \(word.importOrder)"
+                #endif
+
             }
         }
         return cell
