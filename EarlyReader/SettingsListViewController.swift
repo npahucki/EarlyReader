@@ -12,6 +12,8 @@ import CoreData
 
 class SettingsListViewController: UITableViewController, ManagedObjectContextHolder {
     
+    private var _bubble : PopoverHelper?
+    
     var managedContext : NSManagedObjectContext? = nil
     
 
@@ -90,6 +92,17 @@ class SettingsListViewController: UITableViewController, ManagedObjectContextHol
         let intervalString = NSLocalizedString("settings_label_reminder", comment:"Label in the settings pane for reminder inverval")
         self.reminderIntervalLabel.text = NSString(format: intervalString, Int(sender.value))
     }
+
+    @IBAction func didTouchSlideDuration(sender : UISlider) {
+        if NSUserDefaults.checkFlagNotSetWithKey("settings_help_slide_to_manual") {
+            _bubble = PopoverHelper()
+            _bubble!.pinToView = sender
+            _bubble!.permittedArrowDirections = UIPopoverArrowDirection.Down
+            _bubble!.showToolTipBubble(NSLocalizedString("settings_help_slide_to_manual", comment:"")) { () -> () in
+                self._bubble = nil
+            }
+        }
+    }
     
     @IBAction func didChangeSlideDuration(sender: UISlider) {
         UserPreferences.slideDisplayInverval = NSTimeInterval(sender.value);
@@ -99,6 +112,7 @@ class SettingsListViewController: UITableViewController, ManagedObjectContextHol
         } else {
             self.slideDurationLabel.text = NSLocalizedString("settings_label_slide_advance_manual", comment:"Label in the settings pane for slide advance manual mode")
         }
+        
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
