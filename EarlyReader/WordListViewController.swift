@@ -14,6 +14,7 @@ class WordListViewController: UITableViewController,ManagedObjectContextHolder, 
     var managedContext : NSManagedObjectContext? = nil
     var fetchedResultsController = NSFetchedResultsController()
     
+    private var _bubble : PopoverHelper?
     
 
     enum WordSection : Int {
@@ -170,6 +171,15 @@ class WordListViewController: UITableViewController,ManagedObjectContextHolder, 
             if headerView.wordSection == .AvailableWords {
                 headerView.addButton.hidden = false
                 headerView.editButton.hidden = tableView(tableView, numberOfRowsInSection: section) < 1
+            }
+        
+            let key = "header_expanded_help_text_\(sectionKeyForSection(headerView.wordSection))"
+            if NSUserDefaults.checkFlagNotSetWithKey(key) {
+                _bubble = PopoverHelper()
+                _bubble!.pinToView = headerView.titleLabel
+                _bubble!.showToolTipBubble(NSLocalizedString(key, comment : "")) { () -> () in
+                        self._bubble = nil
+                }
             }
         }
     }
