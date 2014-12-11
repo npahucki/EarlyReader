@@ -48,6 +48,7 @@
 		E86FF5A11A1BA38C00F71F95 /* WordListHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E86FF5A01A1BA38C00F71F95 /* WordListHeaderView.xib */; };
 		E86FF5A41A1BA8A700F71F95 /* WordListTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86FF5A31A1BA8A700F71F95 /* WordListTableHeaderView.swift */; };
 		E873B8061A2F356F00877DC8 /* RewardScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E873B8051A2F356F00877DC8 /* RewardScreenViewController.swift */; };
+		E87C47001A39F26800EE054D /* NSUserDefaultsExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87C46FF1A39F26800EE054D /* NSUserDefaultsExtensions.swift */; };
 		E884F1951A1BCBFE0040AA13 /* STCollapseTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = E884F1931A1BCBFE0040AA13 /* STCollapseTableView.m */; };
 		E88916D11A04340B002C8F13 /* CoreDataUnitTestBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88916D01A04340B002C8F13 /* CoreDataUnitTestBase.swift */; };
 		E88916D31A0474AA002C8F13 /* BabyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88916D21A0474AA002C8F13 /* BabyTests.swift */; };
@@ -71,6 +72,7 @@
 		E8CEDB631A1D347F00BE4ED8 /* LessonsListTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8CEDB621A1D347F00BE4ED8 /* LessonsListTableViewHeader.swift */; };
 		E8CEDB651A1D348C00BE4ED8 /* LessonsListTableHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E8CEDB641A1D348C00BE4ED8 /* LessonsListTableHeaderView.xib */; };
 		E8CEDB6F1A1E423300BE4ED8 /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8CEDB6E1A1E423300BE4ED8 /* NotificationViewController.swift */; };
+		E8D462831A39D3B400041603 /* PopoverHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D462821A39D3B400041603 /* PopoverHelper.swift */; };
 		E8DB1FBC1A1EA249001B904D /* NotificationsDisplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8DB1FB91A1EA249001B904D /* NotificationsDisplayViewController.swift */; };
 		E8DB1FBD1A1EA249001B904D /* EarlyReader.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E8DB1FBA1A1EA249001B904D /* EarlyReader.xcdatamodeld */; };
 		E8DB32A11A2FE97D00B8B373 /* LessonInstructionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8DB32A01A2FE97D00B8B373 /* LessonInstructionsViewController.swift */; };
@@ -148,6 +150,7 @@
 		E86FF5A01A1BA38C00F71F95 /* WordListHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WordListHeaderView.xib; sourceTree = "<group>"; };
 		E86FF5A31A1BA8A700F71F95 /* WordListTableHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = WordListTableHeaderView.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		E873B8051A2F356F00877DC8 /* RewardScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RewardScreenViewController.swift; sourceTree = "<group>"; };
+		E87C46FF1A39F26800EE054D /* NSUserDefaultsExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSUserDefaultsExtensions.swift; sourceTree = "<group>"; };
 		E884F1931A1BCBFE0040AA13 /* STCollapseTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STCollapseTableView.m; sourceTree = "<group>"; };
 		E884F1941A1BCBFE0040AA13 /* STCollapseTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STCollapseTableView.h; sourceTree = "<group>"; };
 		E88916D01A04340B002C8F13 /* CoreDataUnitTestBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = CoreDataUnitTestBase.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -177,6 +180,7 @@
 		E8CEDB621A1D347F00BE4ED8 /* LessonsListTableViewHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = LessonsListTableViewHeader.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		E8CEDB641A1D348C00BE4ED8 /* LessonsListTableHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LessonsListTableHeaderView.xib; sourceTree = "<group>"; };
 		E8CEDB6E1A1E423300BE4ED8 /* NotificationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
+		E8D462821A39D3B400041603 /* PopoverHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopoverHelper.swift; sourceTree = "<group>"; };
 		E8DB1FB91A1EA249001B904D /* NotificationsDisplayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = NotificationsDisplayViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		E8DB1FBB1A1EA249001B904D /* EarlyReader.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = EarlyReader.xcdatamodel; sourceTree = "<group>"; };
 		E8DB32A01A2FE97D00B8B373 /* LessonInstructionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LessonInstructionsViewController.swift; sourceTree = "<group>"; };
@@ -282,6 +286,7 @@
 		E858B7ED19BA3D3A003C5727 /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				E8D462821A39D3B400041603 /* PopoverHelper.swift */,
 				E858B7EE19BA3D59003C5727 /* StreamReader.swift */,
 				E82DEBFC19F6AA4100EED0A8 /* UserPreferences.swift */,
 				E82DEC0419F6B97300EED0A8 /* UsageAnalytics.swift */,
@@ -291,6 +296,7 @@
 				E84C8B9B1A12936D00B66B74 /* UIColorExtensions.swift */,
 				E8AC79DA1A250D23005E74D3 /* NSStringExtensions.swift */,
 				E851FF4B1A2636EA00DCC578 /* NSManagedObjectExportImport.swift */,
+				E87C46FF1A39F26800EE054D /* NSUserDefaultsExtensions.swift */,
 			);
 			name = Util;
 			sourceTree = "<group>";
@@ -624,6 +630,7 @@
 				E852E8061A1AB0B700DE8540 /* NSErrorExtensions.swift in Sources */,
 				E8F807451A12793E00FC427F /* MenuViewController.swift in Sources */,
 				E8CEDB5F1A1D13E400BE4ED8 /* LessonsListViewTableViewCells.swift in Sources */,
+				E8D462831A39D3B400041603 /* PopoverHelper.swift in Sources */,
 				E86FF5A41A1BA8A700F71F95 /* WordListTableHeaderView.swift in Sources */,
 				E851FF4C1A2636EA00DCC578 /* NSManagedObjectExportImport.swift in Sources */,
 				E8CEDB6F1A1E423300BE4ED8 /* NotificationViewController.swift in Sources */,
@@ -642,6 +649,7 @@
 				E8DB1FBD1A1EA249001B904D /* EarlyReader.xcdatamodeld in Sources */,
 				E81846D019F94B580012EAAF /* ChildInfoViewController.swift in Sources */,
 				E83B19741A2F3DB500FB85F3 /* RewardScreenSegue.swift in Sources */,
+				E87C47001A39F26800EE054D /* NSUserDefaultsExtensions.swift in Sources */,
 				E858B7EF19BA3D59003C5727 /* StreamReader.swift in Sources */,
 				E873B8061A2F356F00877DC8 /* RewardScreenViewController.swift in Sources */,
 				E839D8D219FE802900D0765E /* WordImporter.swift in Sources */,

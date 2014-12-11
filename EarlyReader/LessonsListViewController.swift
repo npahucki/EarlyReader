@@ -9,7 +9,7 @@
 import CoreData
 import UIKit
 
-class LessonsListViewController: UITableViewController, NSFetchedResultsControllerDelegate, LessonStateDelegate,UIPopoverControllerDelegate {
+class LessonsListViewController: UITableViewController, NSFetchedResultsControllerDelegate, LessonStateDelegate {
     
     
     let sectionForNextLesson = 0
@@ -17,7 +17,7 @@ class LessonsListViewController: UITableViewController, NSFetchedResultsControll
     
     private var fetchedResultsController = NSFetchedResultsController()
     private var _planner : LessonPlanner?
-    private var _infoPopover : UIPopoverController?
+    private var _bubble : PopoverHelper?
     private var _startButton : UIButton!
     private var _shouldStartLessonOnPopoverDismiss = false
     
@@ -182,34 +182,17 @@ class LessonsListViewController: UITableViewController, NSFetchedResultsControll
                 }
             }
             
-            var popoverContentView = UIView()
-            popoverContentView.setTranslatesAutoresizingMaskIntoConstraints(false)
-            
-            var label = UILabel()
-            label.font = UIFont(name: "OpenSans-Light", size : 17.0)
-            label.textColor = UIColor.applicationTextColor()
-            label.numberOfLines = 0
-            label.text = labelText
-            let labelSize = label.sizeThatFits(CGSize(width: 500 - 40, height: CGFloat.max))
-            let size = CGSize(width: 500, height: labelSize.height + 40)
-            popoverContentView.addSubview(label)
-            label.center = CGPoint(x: size.width / 2.0, y: size.height / 2.0)
-            label.bounds = CGRect(x:0,y:0,width:labelSize.width, height: labelSize.height)
-
-            let presentationPoint = sender.frame
-            let popoverContentViewController = UIViewController()
-            popoverContentViewController.view = popoverContentView
-            popoverContentViewController.preferredContentSize = size
-            _infoPopover = UIPopoverController(contentViewController: popoverContentViewController)
-            _infoPopover!.popoverContentSize = size
-            _infoPopover!.delegate = self
-            _infoPopover!.presentPopoverFromRect(presentationPoint, inView: sender.superview!, permittedArrowDirections: UIPopoverArrowDirection.Up, animated: true)
+            _bubble = PopoverHelper()
+            _bubble!.permittedArrowDirections = UIPopoverArrowDirection.Up
+            _bubble!.maxWidth = 500
+            _bubble!.pinToView = sender
+            _bubble!.showToolTipBubble(labelText) { () -> () in
+                self._bubble = nil
+            }
         }
+        
     }
     
-    func popoverControllerDidDismissPopover(popoverController: UIPopoverController) {
-        _infoPopover = nil // let it go
-    }
     
     func controllerDidChangeContent(controller: NSFetchedResultsController!) {
         tableView.reloadData()
@@ -246,15 +229,16 @@ class LessonsListViewController: UITableViewController, NSFetchedResultsControll
     }
     
     override func shouldPerformSegueWithIdentifier(identifier: String?, sender: AnyObject?) -> Bool {
-        if identifier == "startLesson" && !NSUserDefaults.standardUserDefaults().boolForKey("shownFirstLessonInstruction") {
+        if identifier == "startLesson" && NSUserDefaults.checkFlagNotSetWithKey("shownFirstLessonInstruction") {
             let vc = self.storyboard?.instantiateViewControllerWithIdentifier("lessonInstructionViewController") as LessonInstructionsViewController!
             vc.lessonsListController = self
             vc.preferredContentSize = CGSize(width: 500 , height: 350)
-            _infoPopover = UIPopoverController(contentViewController: vc)
-            _infoPopover!.popoverContentSize = vc.preferredContentSize
-            _infoPopover!.delegate = self
-            _infoPopover!.presentPopoverFromRect(_startButton.frame, inView: _startButton.superview!, permittedArrowDirections: UIPopoverArrowDirection.Right, animated: true)
-            NSUserDefaults.standardUserDefaults().setBool(true, forKey: "shownFirstLessonInstruction")
+            _bubble = PopoverHelper()
+            _bubble!.permittedArrowDirections = UIPopoverArrowDirection.Right
+            _bubble!.pinToView = _startButton
+            _bubble!.showPopUpWithController(vc) { () -> () in
+                self.performSegueWithIdentifier("startLesson", sender: self)
+            }
             return false
         } else {
             return true
@@ -262,10 +246,9 @@ class LessonsListViewController: UITableViewController, NSFetchedResultsControll
     }
     
     func dismissInstructionsAndStartLesson() {
-        if let p = _infoPopover {
-            p.dismissPopoverAnimated(true)
-            popoverControllerDidDismissPopover(p)
-            performSegueWithIdentifier("startLesson", sender: self)
+        if let b = _bubble {
+            b.dismiss()
+            _bubble = nil
         }
     }
 }
