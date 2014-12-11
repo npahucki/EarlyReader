@@ -73,7 +73,7 @@ public class NotificationGenerator {
             let planner = LessonPlanner(baby: baby)
             let day = planner.dayOfProgram
             if baby.wordSets.count < planner.numberOfWordSetsForToday {
-                let key = "increase_sets_for_program_day_" + String(day)
+                let key = "increase_sets_for_program_day_" + String(planner.numberOfWordSetsForToday)
                 if let notification = Notification.newUniqueNotification(.Guidance, key: key,
                     title: "notification_increase_sets_for_program_day_title", context:baby.managedObjectContext!) {
                         notification.message = NSString(format : NSLocalizedString("notification_increase_sets_for_program_day_msg", comment:""),planner.numberOfWordSetsForToday)

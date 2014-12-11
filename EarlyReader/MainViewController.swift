@@ -48,10 +48,12 @@ class MainViewController : UISplitViewController, UISplitViewControllerDelegate,
     }
     
     override func viewDidAppear(animated: Bool) {
-        if Baby.currentBaby == nil {
+        if Baby.currentBaby == nil && _mainManagedObjectContext != nil {
                 // Show the dialog to enter a baby.
                 self.performSegueWithIdentifier("showNewChildDialog", sender: self)
-        }     }
+        }
+    }
+    
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let vc = segue.destinationViewController as? ManagedObjectContextHolder {

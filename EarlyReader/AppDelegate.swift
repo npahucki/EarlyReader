@@ -16,6 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var notificationGenerator : NotificationGenerator? // Keep ref so it doesn't get collected
     
     func application(application: UIApplication!, didFinishLaunchingWithOptions launchOptions: NSDictionary!) -> Bool {
+        UsageAnalytics.initWithOptions(launchOptions)
         
         // registering for sending user various kinds of notifications
         if application.respondsToSelector("registerUserNotificationSettings:") {
@@ -34,7 +35,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UITextField.appearance().borderStyle = UITextBorderStyle.None
         UITextField.appearance().backgroundColor = UIColor.whiteColor()
         
-        UsageAnalytics.initWithOptions(launchOptions)
         
         return true
     }
