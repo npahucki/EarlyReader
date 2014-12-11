@@ -22,6 +22,9 @@ class DetailViewController: UIViewController,NotificationsDisplayViewControllerD
     @IBOutlet weak var containerHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var rewardBirdImageView: UIImageView!
     @IBOutlet weak var heartsProgressView: HeartsProgressView!
+    
+    private var _bubble : PopoverHelper?
+    
 
     var currentDetailViewController : UIViewController? {
         get {
@@ -54,6 +57,17 @@ class DetailViewController: UIViewController,NotificationsDisplayViewControllerD
         NSTimer.scheduledTimerWithTimeInterval(1.0, target: _notificationsViewController, selector: "loadNotifications", userInfo: nil, repeats: false)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateLessonProgress", name: NS_NOTIFICATION_NUMBER_OF_WORD_SETS_CHANGED, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateLessonProgress", name: UIApplicationDidBecomeActiveNotification, object: nil)
+        
+        let tapRecognizer1 = UITapGestureRecognizer()
+        tapRecognizer1.addTarget(self, action: "showHeartsHelpText")
+        heartsProgressView.addGestureRecognizer(tapRecognizer1)
+        
+        let tapRecognizer2 = UITapGestureRecognizer()
+        tapRecognizer2.addTarget(self, action: "showBirdHelpText")
+        rewardBirdImageView.userInteractionEnabled = true
+        rewardBirdImageView.addGestureRecognizer(tapRecognizer2)
+
+        
     }
     
     deinit {
@@ -123,6 +137,25 @@ class DetailViewController: UIViewController,NotificationsDisplayViewControllerD
         }
     }
     
+    func showHeartsHelpText() {
+        _bubble = PopoverHelper()
+        _bubble!.pinToView = heartsProgressView
+        _bubble!.permittedArrowDirections = UIPopoverArrowDirection.Up
+        _bubble!.showToolTipBubble(NSLocalizedString("hearts_help_text", comment: "")) { () -> () in
+            self._bubble = nil
+        }
+    }
+
+    func showBirdHelpText() {
+        _bubble = PopoverHelper()
+        _bubble?.maxWidth = 325
+        _bubble!.pinToView = rewardBirdImageView
+        _bubble!.permittedArrowDirections = UIPopoverArrowDirection.Up
+        _bubble!.showToolTipBubble(NSLocalizedString("bird_help_text", comment: "")) { () -> () in
+            self._bubble = nil
+        }
+    }
+
     
     
 }
