@@ -31,6 +31,8 @@ class SettingsListViewController: UITableViewController, ManagedObjectContextHol
         reminderIntervalSlider.value = Float(UserPreferences.lessonReminderInverval / 60.0)
         numberOfWordSetsSlider.value = Float(Baby.currentBaby?.wordSets.count ?? 3.0)
         slideDurationSlider.value = Float(UserPreferences.slideDisplayInverval)
+        slideDurationSlider.minimumValue = Float(SLIDE_DURATION_MIN - 0.1)
+        slideDurationSlider.maximumValue = Float(SLIDE_DURATION_MAX + 0.1)
         
         // Force label update
         didChangeNumberOfWordSets(numberOfWordSetsSlider)
@@ -91,7 +93,7 @@ class SettingsListViewController: UITableViewController, ManagedObjectContextHol
     
     @IBAction func didChangeSlideDuration(sender: UISlider) {
         UserPreferences.slideDisplayInverval = NSTimeInterval(sender.value);
-        if(sender.value > 0) {
+        if sender.value > Float(SLIDE_DURATION_MIN) && sender.value < Float(SLIDE_DURATION_MAX) {
             let intervalString = NSLocalizedString("settings_label_slide_advance", comment:"Label in the settings pane for slide advance inverval seconds")
             self.slideDurationLabel.text = NSString(format: intervalString, sender.value)
         } else {

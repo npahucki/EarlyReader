@@ -10,6 +10,9 @@ import Foundation
 import CoreData
 
 
+let SLIDE_DURATION_MIN = 0.5
+let SLIDE_DURATION_MAX = 5.0
+
 
 let WORDS_PER_WORDSET = 5
 let WORD_VIEWS_BEFORE_RETIREMENT : UInt16 = 15

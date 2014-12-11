@@ -41,10 +41,8 @@ class UserPreferences {
 
     class var alwaysUseManualMode : Bool {
         get {
-            return UserPreferences.slideDisplayInverval == 0.0
+            return UserPreferences.slideDisplayInverval < SLIDE_DURATION_MIN || UserPreferences.slideDisplayInverval > SLIDE_DURATION_MAX
         }
     }
-    
-    
 }
 

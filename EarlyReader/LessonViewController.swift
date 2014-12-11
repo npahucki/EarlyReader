@@ -52,9 +52,9 @@ class LessonViewController: UIViewController, UIViewControllerTransitioningDeleg
         textLabel.font = UIFont.systemFontOfSize(500)
         textLabel.text = _currentWords!.first?.text ?? ""
         
-        nextButton.alpha = 0
-        previousButton.alpha = 0
-        abortButton.alpha = 0
+        nextButton.alpha = _isManualMode ? 1 : 0
+        previousButton.alpha = _isManualMode ? 1 : 0
+        abortButton.alpha = _isManualMode ? 1 : 0
         
         updateButtonState()
     }
