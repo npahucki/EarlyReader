@@ -81,7 +81,7 @@ class ChildInfoViewController: UIViewController, UITextFieldDelegate, ChildInfoB
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
-        if textField == childNameTextField && calcDoneButtonEnabled() {
+        if textField == childNameTextField && !childNameTextField.text.isEmpty {
             childBirthDateTextField.becomeFirstResponder()
             return true
         }
