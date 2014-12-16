@@ -75,7 +75,6 @@ class LessonViewController: UIViewController, UIViewControllerTransitioningDeleg
             // The lesson is done, no need to prompt 
             didCompleteLesson()
         } else {
-            pauseAutomaticAdvance()
             let title = NSLocalizedString("prompt_title_abort_lesson", comment:"")
             let msg = NSLocalizedString("prompt_msg_abort_lesson", comment:"")
             let cancelButtonTitle = NSLocalizedString("prompt_button_no", comment:"")
@@ -84,8 +83,6 @@ class LessonViewController: UIViewController, UIViewControllerTransitioningDeleg
             prompt.showAlertWithButtonBlock(){
                 if $0 == 1 {
                     self.didAbortLesson()
-                } else {
-                    self.resumeAutomaticAdvance()
                 }
             }
         }
