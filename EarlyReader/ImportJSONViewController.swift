@@ -51,6 +51,8 @@ class ImportJSONViewController: UIViewController, UIPickerViewDataSource, UIPick
                 UIAlertView(title: "Oh shucks!", message: "Failed to export the JSON. This should not happen! See log for error details.", delegate: nil, cancelButtonTitle: "Ok").show()
 
             } else {
+                UIPasteboard.generalPasteboard().string = result.json
+                UIAlertView(title: "Goody!", message: "Export results copied to clipboard", delegate: nil, cancelButtonTitle: "Ok").show()
                 jsonTextView.text = result.json
             }
         }
