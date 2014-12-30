@@ -30,7 +30,7 @@ class ChildInfoBirthDatePopoverViewController: UIViewController {
         if let bd = baby.birthDate {
             birthDate.date = bd
         }
-        bornOnLabel.text = bornOnLabel.text?.stringByReplacingOccurrencesOfString("${name}", withString: baby.name)
+        bornOnLabel.text = bornOnLabel.text?.stringByReplacingOccurrencesOfString("${name}", withString: baby.name ?? "?")
         self.modalInPopover = true // Don't allow touch outside to dismiss
     }
     

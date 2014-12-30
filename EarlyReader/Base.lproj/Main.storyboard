@@ -49,6 +49,7 @@
             <string>OpenSans</string>
             <string>OpenSans</string>
             <string>OpenSans</string>
+            <string>OpenSans</string>
         </mutableArray>
         <mutableArray key="OpenSans-Semibold.ttf">
             <string>OpenSans-Semibold</string>
@@ -834,9 +835,25 @@
                                             <action selector="didClickDoneButton:" destination="caz-NO-Bej" eventType="touchUpInside" id="Xz7-cc-lpm"/>
                                         </connections>
                                     </button>
-                                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="Ig9-Nq-Vhe">
-                                        <rect key="frame" x="494" y="416" width="37" height="37"/>
-                                    </activityIndicatorView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="emf-X2-emB">
+                                        <rect key="frame" x="352" y="555" width="320" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="awI-1E-XBJ"/>
+                                            <constraint firstAttribute="width" constant="320" id="ntu-P7-Clq"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="13"/>
+                                        <color key="tintColor" red="0.90980392160000001" green="0.0" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" title="Skip For Now">
+                                            <color key="titleColor" red="0.90980392160000001" green="0.0" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <state key="disabled">
+                                            <color key="titleColor" red="0.25882352939999997" green="0.82352941180000006" blue="0.4823529412" alpha="1" colorSpace="deviceRGB"/>
+                                            <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="didClickDoneButton:" destination="caz-NO-Bej" eventType="touchUpInside" id="foW-ja-L30"/>
+                                        </connections>
+                                    </button>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Child's Birth Date" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iv5-9o-m39">
                                         <rect key="frame" x="352" y="364" width="320" height="44"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -854,12 +871,17 @@
                                             </segue>
                                         </connections>
                                     </textField>
+                                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="Ig9-Nq-Vhe">
+                                        <rect key="frame" x="494" y="494" width="37" height="37"/>
+                                    </activityIndicatorView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="Ig9-Nq-Vhe" firstAttribute="top" secondItem="44x-6G-Y8T" secondAttribute="top" id="3Gs-m2-59H"/>
+                                    <constraint firstItem="Ig9-Nq-Vhe" firstAttribute="top" secondItem="44x-6G-Y8T" secondAttribute="top" constant="78" id="3Gs-m2-59H"/>
                                     <constraint firstItem="J6J-cR-3P9" firstAttribute="top" secondItem="qa5-kf-IAQ" secondAttribute="bottom" constant="8" id="5ie-zn-PvL"/>
+                                    <constraint firstAttribute="centerX" secondItem="emf-X2-emB" secondAttribute="centerX" id="GKx-a7-K5Q"/>
                                     <constraint firstItem="mhL-rq-AC7" firstAttribute="top" secondItem="AJK-tK-V5o" secondAttribute="top" id="Iyx-gi-Zle"/>
                                     <constraint firstAttribute="trailing" secondItem="mhL-rq-AC7" secondAttribute="trailing" id="LaJ-bb-HxP"/>
+                                    <constraint firstItem="emf-X2-emB" firstAttribute="top" secondItem="44x-6G-Y8T" secondAttribute="bottom" constant="95" id="M8O-Ni-7dR"/>
                                     <constraint firstAttribute="bottom" secondItem="mhL-rq-AC7" secondAttribute="bottom" id="M9P-5M-HXR"/>
                                     <constraint firstItem="mhL-rq-AC7" firstAttribute="leading" secondItem="AJK-tK-V5o" secondAttribute="leading" id="SYX-qy-DPb"/>
                                     <constraint firstAttribute="centerY" secondItem="J6J-cR-3P9" secondAttribute="centerY" constant="50" id="Tmv-od-yry"/>
@@ -891,6 +913,7 @@
                         <outlet property="childBirthDateTextField" destination="iv5-9o-m39" id="GfZ-Jb-ZBl"/>
                         <outlet property="childNameTextField" destination="J6J-cR-3P9" id="NyX-FE-tL2"/>
                         <outlet property="doneButton" destination="44x-6G-Y8T" id="2rV-kW-CZR"/>
+                        <outlet property="skipButton" destination="emf-X2-emB" id="mbM-vr-gsl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sOk-WM-gsK" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1248,7 +1271,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="100" horizontalCompressionResistancePriority="500" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L1u-Gr-1wZ">
-                                        <rect key="frame" x="81" y="6" width="47" height="30"/>
+                                        <rect key="frame" x="82" y="6" width="47" height="30"/>
                                         <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="13"/>
                                         <state key="normal" title="|">
                                             <color key="titleColor" red="0.66274509800000003" green="0.66274509800000003" blue="0.69411764710000001" alpha="1" colorSpace="calibratedRGB"/>

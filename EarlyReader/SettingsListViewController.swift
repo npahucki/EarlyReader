@@ -52,10 +52,14 @@ class SettingsListViewController: UITableViewController, ManagedObjectContextHol
         super.viewWillAppear(animated)
         // Do this here, so that it gets updated after the user changes it in the dialog.
         if let b = Baby.currentBaby {
-            var babyInfoString = NSLocalizedString("settings_baby_info", comment:"Label in the settings pane to display the current baby's info")
-            babyInfoString = NSString(format: babyInfoString,  b.name,  b.birthDate.stringWithHumanizedTimeDifference(false))
+            var babyInfoString = ""
+            if b.name == nil || b.birthDate == nil {
+                babyInfoString = NSLocalizedString("settings_baby_info_unspecified", comment:"Label in the settings pane to display unspecified baby info")
+            } else {
+                babyInfoString = NSLocalizedString("settings_baby_info", comment:"Label in the settings pane to display the current baby's info")
+                babyInfoString = NSString(format: babyInfoString,  b.name!,  b.birthDate!.stringWithHumanizedTimeDifference(false))
+            }
             babysAgeLabel.text = babyInfoString
-            
         }
         
         if UIApplication.sharedApplication().respondsToSelector("currentUserNotificationSettings") {
@@ -121,6 +125,7 @@ class SettingsListViewController: UITableViewController, ManagedObjectContextHol
         }
         if let childInfoVc = segue.destinationViewController as? ChildInfoViewController {
             childInfoVc.baby = Baby.currentBaby
+            childInfoVc.shouldHideSkipButton = true
         }
     }
 }

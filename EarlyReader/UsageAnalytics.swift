@@ -45,7 +45,7 @@ class UsageAnalytics {
     func identify() {
         var props : [String:AnyObject]? = nil
         if let baby = Baby.currentBaby {
-            props = ["babyName" : baby.name, "babyDOB" : baby.birthDate]
+            props = ["babyName" : baby.name ?? "Unspecified", "babyDOB" : baby.birthDate ?? "Unspecified"]
         }
         trackEvent("identify", eventProperties: props)
     }
@@ -71,7 +71,7 @@ class UsageAnalytics {
             var planner = LessonPlanner(baby: b)
             
             props = [
-                "babyName" : b.name,
+                "babyName" : b.name ?? "Unspecified",
                 "numberOfWordSets" : String(b.wordSets.count),
                 "dayOfProgram" : String(planner.dayOfProgram),
                 "reminderInterval" : String(format:"%.1f",UserPreferences.lessonReminderInverval)
@@ -84,7 +84,7 @@ class UsageAnalytics {
     // Lessons 
     func trackLessonStarted(planner: LessonPlanner) {
         var props : [String:String] = [
-            "babyName" : planner.baby.name,
+            "babyName" : planner.baby.name ?? "Unspecified" ,
             "slideDisplayInterval" : String(format:"%.1f",UserPreferences.slideDisplayInverval)
         ]
         props["totalNumberOfLessonsForToday"] = String(planner.numberOfLessonsPerDay)
@@ -108,7 +108,7 @@ class UsageAnalytics {
 
     func trackLessonFinished(planner : LessonPlanner) {
         var props : [String:String] = [
-            "babyName" : planner.baby.name,
+            "babyName" : planner.baby.name ?? "Unspecified",
             "numberOfWordsSeen" : String(planner.numberOfWordsSeenDuringCurrentLesson),
             "totalNumberOfLessonsForToday" : String(planner.numberOfLessonsPerDay),
             "lessonNumber" : String(planner.numberOfLessonsTakenToday + 1),

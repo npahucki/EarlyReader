@@ -15,17 +15,21 @@ import CoreData
 class ChildInfoViewController: UIViewController, UITextFieldDelegate, ChildInfoBirthDatePopoverViewControllerDelegate  {
 
     var baby : Baby!
+    var shouldHideSkipButton = false
+
     private var popover : UIPopoverController?
 
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var doneButton: UIButton!
     @IBOutlet weak var childBirthDateTextField: UITextField!
     @IBOutlet weak var childNameTextField: UITextField!
+    @IBOutlet weak var skipButton: UIButton!
 
     override func viewDidLoad() {
         assert(baby != nil, "Expected a baby would be set before view is loaded!")
         childNameTextField.text = baby.name
         childBirthDateTextField.text = childsDisplayAge()
+        skipButton.hidden = shouldHideSkipButton
         calcDoneButtonEnabled()
     }
     
@@ -36,7 +40,14 @@ class ChildInfoViewController: UIViewController, UITextFieldDelegate, ChildInfoB
     @IBAction func didClickDoneButton(sender: UIButton) {
         sender.enabled = false;
         activityIndicator.startAnimating()
-        baby.name = childNameTextField.text
+        
+        if sender == skipButton {
+            baby.name = nil
+            baby.birthDate = nil
+        } else {
+            baby.name = childNameTextField.text
+        }
+        
         var error : NSError? = nil
         baby.managedObjectContext!.save(&error)
         if let e = error {

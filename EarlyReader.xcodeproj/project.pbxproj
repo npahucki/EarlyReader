@@ -166,7 +166,6 @@
 		E8BF775C19F932DA00F1BF0A /* Baby.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = Baby.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		E8BFC82C1A155FB7004929EF /* applause-01.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "applause-01.mp3"; sourceTree = "<group>"; };
 		E8BFC82E1A15635A004929EF /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
-		E8C3C7911A3122C50085A0A1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		E8CDE7E3199FD18F0036CFE8 /* EarlyReader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EarlyReader.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8CDE7E7199FD18F0036CFE8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E8CDE7E8199FD18F0036CFE8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = AppDelegate.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -699,7 +698,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				E8CDE7F0199FD18F0036CFE8 /* Base */,
-				E8C3C7911A3122C50085A0A1 /* en */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
