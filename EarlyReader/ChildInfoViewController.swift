@@ -38,7 +38,9 @@ class ChildInfoViewController: UIViewController, UITextFieldDelegate, ChildInfoB
     }
     
     @IBAction func didClickDoneButton(sender: UIButton) {
-        sender.enabled = false;
+        doneButton.enabled = false
+        skipButton.enabled = false
+        
         activityIndicator.startAnimating()
         
         if sender == skipButton {
@@ -51,7 +53,8 @@ class ChildInfoViewController: UIViewController, UITextFieldDelegate, ChildInfoB
         var error : NSError? = nil
         baby.managedObjectContext!.save(&error)
         if let e = error {
-            sender.enabled = true
+            doneButton.enabled = true
+            skipButton.enabled = true
             self.activityIndicator.stopAnimating()
             UsageAnalytics.instance.trackError("Could not save baby", error: e)
             UIAlertView.showGenericLocalizedErrorMessage("msg_error_baby_save")
@@ -62,7 +65,8 @@ class ChildInfoViewController: UIViewController, UITextFieldDelegate, ChildInfoB
                 let importer = WordImporter(baby : baby)
                 importer.importWordListNamed("basic") { (error, numberOfWordsImported) -> () in
                     self.activityIndicator.stopAnimating()
-                    sender.enabled = true
+                    self.doneButton.enabled = true
+                    self.skipButton.enabled = true
                     if let err = error {
                         UIAlertView.showLocalizedErrorMessageWithOkButton("error_msg_download_word_list", title_key : "error_title_download_word_list")
                         UsageAnalytics.instance.trackError("Could not load initial word list", error: err)
