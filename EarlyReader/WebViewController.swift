@@ -51,8 +51,12 @@ class WebViewController: UIViewController, UIWebViewDelegate {
 
     func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool {
         if navigationType == UIWebViewNavigationType.LinkClicked {
-            UIApplication.sharedApplication().openURL(request.URL)
-            return false
+            if let currentUrlString = request.URL.absoluteString {
+                if !currentUrlString.hasPrefix(_url ?? "") {
+                    UIApplication.sharedApplication().openURL(request.URL)
+                    return false
+                }
+            }
         }
         return true
     }
