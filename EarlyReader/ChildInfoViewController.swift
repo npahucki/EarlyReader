@@ -15,7 +15,7 @@ import CoreData
 class ChildInfoViewController: UIViewController, UITextFieldDelegate, ChildInfoBirthDatePopoverViewControllerDelegate  {
 
     var baby : Baby!
-    var shouldHideSkipButton = false
+    var skipButtonShouldCancel = false
 
     private var popover : UIPopoverController?
 
@@ -29,8 +29,8 @@ class ChildInfoViewController: UIViewController, UITextFieldDelegate, ChildInfoB
         assert(baby != nil, "Expected a baby would be set before view is loaded!")
         childNameTextField.text = baby.name
         childBirthDateTextField.text = childsDisplayAge()
-        skipButton.hidden = shouldHideSkipButton
         calcDoneButtonEnabled()
+        skipButton.hidden = baby.name != nil // Once the baby name is filled in, then just show save button. 
     }
     
     @IBAction func didChangeNameField(sender: AnyObject) {
@@ -44,8 +44,14 @@ class ChildInfoViewController: UIViewController, UITextFieldDelegate, ChildInfoB
         activityIndicator.startAnimating()
         
         if sender == skipButton {
-            baby.name = nil
-            baby.birthDate = nil
+            if skipButtonShouldCancel {
+                baby.managedObjectContext?.rollback()
+                dismissViewControllerAnimated(true, completion: nil)
+                return
+            } else {
+                baby.name = nil
+                baby.birthDate = nil
+            }
         } else {
             baby.name = childNameTextField.text
         }

@@ -125,7 +125,7 @@ class SettingsListViewController: UITableViewController, ManagedObjectContextHol
         }
         if let childInfoVc = segue.destinationViewController as? ChildInfoViewController {
             childInfoVc.baby = Baby.currentBaby
-            childInfoVc.shouldHideSkipButton = true
+            childInfoVc.skipButtonShouldCancel = true
         }
     }
 }
