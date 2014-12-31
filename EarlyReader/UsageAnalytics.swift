@@ -137,6 +137,10 @@ class UsageAnalytics {
             ])
     }
     
+    func trackSkippedEnteringBabyInfo() {
+        trackEvent("skippedEnteringBabyInfo", eventProperties: nil)
+    }
+    
 }
 
 class UsageAnalyticsProd: UsageAnalytics {

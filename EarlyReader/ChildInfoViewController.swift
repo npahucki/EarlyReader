@@ -44,6 +44,7 @@ class ChildInfoViewController: UIViewController, UITextFieldDelegate, ChildInfoB
         activityIndicator.startAnimating()
         
         if sender == skipButton {
+            UsageAnalytics.instance.trackSkippedEnteringBabyInfo()
             if skipButtonShouldCancel {
                 baby.managedObjectContext?.rollback()
                 dismissViewControllerAnimated(true, completion: nil)
