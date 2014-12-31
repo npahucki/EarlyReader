@@ -15,7 +15,7 @@ public class LessonPlanner {
     private var _currentWordSet : WordSet? = nil
     private let _baby : Baby
     private let _managedObjectContext : NSManagedObjectContext
-    private var _wordsViewedInLesson = NSMutableSet()
+    private var _wordsViewedInLesson = [Word]()
     private var _lessonStartTime : NSDate? = nil
     
     var managedContext : NSManagedObjectContext {
@@ -212,7 +212,7 @@ public class LessonPlanner {
     /// Call to get the next bunch of words to display.
     public func startLesson() -> [Word]? {
         assert(_lessonStartTime == nil, "Lesson already started")
-        _wordsViewedInLesson.removeAllObjects()
+        _wordsViewedInLesson.removeAll(keepCapacity: true)
 
         var words : [Word]? = nil
         if let wordSet = findNextWordSet() {
@@ -259,7 +259,7 @@ public class LessonPlanner {
     public func markWordViewed(word : Word) {
         word.lastViewedOn = NSDate()
         word.timesViewed++
-        _wordsViewedInLesson.addObject(word)
+        _wordsViewedInLesson.append(word)
     }
     
     private func calcNextLessonDate() -> (date : NSDate, error: NSError?) {
@@ -311,7 +311,7 @@ public class LessonPlanner {
             log.baby = _baby
             log.numberOfWordsViewed = UInt16(_wordsViewedInLesson.count)
             log.wordSetNumber = wordSet.number
-            log.words = ",".join((_wordsViewedInLesson.allObjects as [Word]).map { $0.text })
+            log.words = ",".join(_wordsViewedInLesson.map { $0.text })
             log.lessonDate = _lessonStartTime!
             log.durationSeconds = -_lessonStartTime!.timeIntervalSinceNow
             log.totalNumberOfWordSets = UInt16(_baby.wordSets!.count)

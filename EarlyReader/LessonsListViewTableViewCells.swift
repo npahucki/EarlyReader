@@ -32,7 +32,16 @@ class NextLessonTableViewCell : UITableViewCell {
     
     func setWords(words: [Word]) {
         contentView.backgroundColor = UIColor.whiteColor()
-        wordsLabel.text = ", ".join(words.map { $0.text.capitalizedString })
+        // NOTE: This used to be done using the map function, but the compiler does something 
+        // very odd during optimization and it does not capitalize the words at all.
+        //wordsLabel.text = ", ".join(words.map { $0.text.capitalizedString}) - FAIL in Release!
+        
+        var wordsText = ""
+        for (idx,w) in enumerate(words) {
+            if idx > 0 { wordsText += ", " }
+            wordsText += w.text.capitalizedString
+        }
+        wordsLabel.text = wordsText
     }
     
     func setDueIn(nextLesson : NSDate) {
@@ -76,7 +85,7 @@ class PastLessonTableViewCell : UITableViewCell {
     
     func setLessonLog(log: LessonLog) {
         let words = log.words.componentsSeparatedByString(",")
-        wordsLabel.text = ", ".join(words.map { $0.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()).capitalizedString })
+        wordsLabel.text = ", ".join(words.map { $0.capitalizedString })
         let formatter = NSNumberFormatter()
         formatter.maximumFractionDigits = 1
         let duration = formatter.stringFromNumber(log.durationSeconds)!
