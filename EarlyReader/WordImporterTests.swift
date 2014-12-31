@@ -26,15 +26,25 @@ class WordImporterTests : CoreDataUnitTestBase {
     
     
     func testWordsCanBeImported() {
+        
+        
         let wordList1 = ["one", "two", "three"]
+        
         let result = importer.importWords(wordList1)
         XCTAssertNil(result.error, "Unexpected error during import: \(result.error)")
         XCTAssert(result.numberOfWordsAdded == wordList1.count, "Not all words from list were imported")
         
         // Verify a count of items.
         let fetchRequest = NSFetchRequest(entityName: "Word")
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "importOrder", ascending: true)]
         let actuallyInserted = ctx.countForFetchRequest(fetchRequest, error: nil)
         XCTAssert(actuallyInserted == wordList1.count, "Not all words from list were inserted into DB!")
+        
+        // verify each word is present
+        let words = ctx.executeFetchRequest(fetchRequest, error: nil) as [EarlyReader.Word]
+        XCTAssertEqual(words[0].text, wordList1[0])
+        XCTAssertEqual(words[1].text, wordList1[1])
+        XCTAssertEqual(words[2].text, wordList1[2])
     }
 
     func testDuplicateWordsRejected() {
