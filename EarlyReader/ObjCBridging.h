@@ -16,6 +16,8 @@
 #import <AppsFlyer-SDK/AppsFlyerTracker.h>
 #import <UXCam/UXCam.h>
 #import <FacebookSDK/FacebookSDK.h>
+#import "HTKParentalGateConstants.h"
+#import "HTKParentalGateViewController.h"
 
 
 #endif

@@ -7,6 +7,7 @@ target 'EarlyReader' do
   pod 'AppsFlyer-SDK', '2.5.3.10'
   pod 'UXCam', '1.0.7'
   pod 'Facebook-iOS-SDK', '3.20.0'
+  pod 'HTKUltimateParentalGate', '~> 0.0.4'
 end
 
 # Bug in cocoapods and Swift projects...n order for bridging header to compile for the tests, we need to include this here..it's messy but it works until there is a real fix. 

@@ -8,9 +8,12 @@
 
 import UIKit
 
+@objc
 class WebViewController: UIViewController, UIWebViewDelegate {
 
     private var _url : String?
+    private var _pendingExternalUrl : NSURL?
+    private var _parentalGateUnlocked : Bool = false
     
     @IBOutlet weak var webView: UIWebView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
@@ -26,6 +29,7 @@ class WebViewController: UIViewController, UIWebViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "handleValidationStateChangedNotification:", name: "HTKParentalGateValidationStateChangedNotification", object: nil)
         webView.delegate = self
         if let url = _url {
             if let nsUrl = NSURL(string: url) {
@@ -34,6 +38,10 @@ class WebViewController: UIViewController, UIWebViewDelegate {
         }
     }
 
+    deinit {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
+    
     func webViewDidStartLoad(webView: UIWebView) {
         activityIndicator.hidden = false
         activityIndicator.startAnimating()
@@ -53,11 +61,39 @@ class WebViewController: UIViewController, UIWebViewDelegate {
         if navigationType == UIWebViewNavigationType.LinkClicked {
             if let currentUrlString = request.URL.absoluteString {
                 if !currentUrlString.hasPrefix(_url ?? "") {
-                    UIApplication.sharedApplication().openURL(request.URL)
+                    openExternalUrl(request.URL)
                     return false
                 }
             }
         }
         return true
+    }
+
+    func openExternalUrl(externalUrl : NSURL) {
+        if _parentalGateUnlocked {
+            UIApplication.sharedApplication().openURL(externalUrl)
+        } else {
+            _pendingExternalUrl = externalUrl
+            let gateController = HTKParentalGateViewController()
+            gateController.showInParentViewController(self, fullScreen: false)
+        }
+    }
+    
+    
+    func handleValidationStateChangedNotification(notification : NSNotification ) {
+       assert(NSThread.isMainThread())
+        let state = notification.userInfo!["HTKParentalGateValidationStateChangedKey"]! as NSNumber
+        if state.integerValue  == Int(HTKParentalGateValidationState.IsValidated.rawValue) {
+            if let url = _pendingExternalUrl {
+                _parentalGateUnlocked = true
+                openExternalUrl(url)
+            }
+        } else {
+            // TODO: Message
+            //            case HTKParentalGateValidationStateInvalid:
+            //            case HTKParentalGateValidationStateTimesUp:
+            //            case HTKParentalGateValidationStateTooManyAttempts:
+            //            case HTKParentalGateValidationStateTooManyIncorrectAnswers:
+        }
     }
 }
