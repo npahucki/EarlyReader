@@ -12,8 +12,10 @@ import UIKit
 class WebViewController: UIViewController, UIWebViewDelegate {
 
     private var _url : String?
-    private var _pendingExternalUrl : NSURL?
+    private var _pendingUrlRequest : NSURLRequest?
     private var _parentalGateUnlocked : Bool = false
+    private var _gateController =  HTKParentalGateViewController()
+
     
     @IBOutlet weak var webView: UIWebView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
@@ -58,35 +60,42 @@ class WebViewController: UIViewController, UIWebViewDelegate {
     }
 
     func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool {
-        if navigationType == UIWebViewNavigationType.LinkClicked {
+        
+        var requiresParentalGate = false;
+        switch(navigationType) {
+        case .LinkClicked:
             if let currentUrlString = request.URL.absoluteString {
                 if !currentUrlString.hasPrefix(_url ?? "") {
-                    openExternalUrl(request.URL)
-                    return false
+                    requiresParentalGate = true
                 }
             }
+        case .FormSubmitted, .FormResubmitted:
+            requiresParentalGate = true
+        default:
+            requiresParentalGate = false
         }
+        
+        if requiresParentalGate && !_parentalGateUnlocked {
+            _pendingUrlRequest = request
+            _gateController.showInParentViewController(self, fullScreen: true)
+            return false
+        }
+
         return true
     }
-
-    func openExternalUrl(externalUrl : NSURL) {
-        if _parentalGateUnlocked {
-            UIApplication.sharedApplication().openURL(externalUrl)
-        } else {
-            _pendingExternalUrl = externalUrl
-            let gateController = HTKParentalGateViewController()
-            gateController.showInParentViewController(self, fullScreen: false)
-        }
-    }
-    
     
     func handleValidationStateChangedNotification(notification : NSNotification ) {
        assert(NSThread.isMainThread())
         let state = notification.userInfo!["HTKParentalGateValidationStateChangedKey"]! as NSNumber
         if state.integerValue  == Int(HTKParentalGateValidationState.IsValidated.rawValue) {
-            if let url = _pendingExternalUrl {
-                _parentalGateUnlocked = true
-                openExternalUrl(url)
+            _parentalGateUnlocked = true
+            if let request = _pendingUrlRequest {
+                _pendingUrlRequest = nil
+                if request.HTTPMethod == "GET" {
+                    UIApplication.sharedApplication().openURL(request.URL)
+                } else {
+                    self.webView.loadRequest(request)
+                }
             }
         } else {
             // TODO: Message
@@ -94,6 +103,10 @@ class WebViewController: UIViewController, UIWebViewDelegate {
             //            case HTKParentalGateValidationStateTimesUp:
             //            case HTKParentalGateValidationStateTooManyAttempts:
             //            case HTKParentalGateValidationStateTooManyIncorrectAnswers:
+            
+            
+            // Required to reload, or WebView will not allow submission of forms again!
+            self.webView.reload()
         }
     }
 }
